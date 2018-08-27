@@ -182,6 +182,10 @@ class Ion_auth_model extends CI_Model
 		$this->load->helper('date');
 		$this->lang->load('ion_auth');
 
+		$this->load->model('Funcionario_model', 'fm');
+		$this->load->model('Entidade_model', 'em');
+		$this->load->model('Cargo_model', 'cm');
+
 		// initialize the database
 		$this->db = $this->load->database($this->config->item('database_group_name', 'ion_auth'), TRUE, TRUE);
 
@@ -1031,7 +1035,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		$query = $this->db->select($this->identity_column . ', email, idusuario, password, active, last_login')
+		$query = $this->db->select($this->identity_column . ', email, idusuario, password, active, last_login, idcargo, idfuncionario')
 						  ->where($this->identity_column, $identity)
 						  ->limit(1)
 						  ->order_by('idusuario', 'desc')
@@ -1064,7 +1068,12 @@ class Ion_auth_model extends CI_Model
 					return FALSE;
 				}
 
-				$this->set_session($user);
+				$this->fm->table = "funcionarios";
+				$fun = $this->fm->GetById('idfuncionario', $user->idfuncionario);
+				$ent = $this->em->GetById('identidade', $fun['identidade']);
+				$cargo = $this->cm->GetById('idcargo', $user->idcargo);
+
+				$this->set_session($user, $fun, $ent, $cargo);
 
 				$this->update_last_login($user->id);
 
@@ -2006,9 +2015,11 @@ class Ion_auth_model extends CI_Model
 	 * @return bool
 	 * @author jrmadsen67
 	 */
-	public function set_session($user)
+	public function set_session($user, $fun, $ent, $cargo)
 	{
 		$this->trigger_events('pre_set_session');
+
+		$fun =
 
 		$session_data = array(
 		    'identity'             => $user->{$this->identity_column},
@@ -2017,6 +2028,13 @@ class Ion_auth_model extends CI_Model
 		    'user_id'              => $user->idusuario, //everyone likes to overwrite id so we'll use user_id
 		    'old_last_login'       => $user->last_login,
 		    'last_check'           => time(),
+			'idfuncionario'		   => $fun['idfuncionario'],
+			'user_nome'		       => $fun['nome'],
+			'user_cpf'		       => $fun['cpf'],
+			'entidade_id'		   => $ent['identidade'],
+			'entidade_nome'		   => $ent['nome'],
+			'cargo_id'		       => $cargo['idcargo'],
+			'cargo_nome'	       => $cargo['nome'],
 		);
 
 		$this->session->set_userdata($session_data);

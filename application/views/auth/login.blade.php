@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="{{base_url('assets/')}}/img/favicon.ico"/>
 	<title>GSE</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -30,12 +31,18 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-	<div class="login-logo">
-		<a href="{{base_url()}}"><b>GSE</b><br/>Gestor Sócio-Educativo</a>
+	<div class="login-logo text-center">
+		<a href="{{base_url()}}">
+			<img class="" src="{{base_url('assets/')}}img/newLogo.png"/><br/>
+			Gestor Sócio-Educativo</a>
 	</div>
 	<!-- /.login-logo -->
 	<div class="login-box-body">
 		<p class="login-box-msg">Digite seu Usuário e Senha para entrar</p>
+
+		@if(isset($_SESSION['message']))
+			<div id="infoMessage" class="alert alert-danger">{!!$_SESSION['message']!!}</div>
+		@endif
 
 		<form action="{{base_url('auth/login')}}" method="post" accept-charset="utf-8">
 			<div class="form-group has-feedback">
@@ -47,7 +54,6 @@
 				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 			</div>
 			<div class="row">
-
 				<div class="col-xs-offset-8 col-xs-4">
 					<button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
 				</div>

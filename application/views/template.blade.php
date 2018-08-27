@@ -3,15 +3,28 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="{{base_url('assets/')}}/img/favicon.ico"/>
 	<title>GSE</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/animate.css">
+
+	<link rel="stylesheet"
+		  href="{{base_url('assets/')}}bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/datatables.net/responsive.dataTables.min.css">
+	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/datatables.net/responsive.bootstrap.min.css">
+
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/font-awesome/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/Ionicons/css/ionicons.min.css">
+
+	<!-- Select2 -->
+	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/select2/dist/css/select2.min.css">
+
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}dist/css/AdminLTE.min.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
@@ -27,6 +40,12 @@
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/bootstrap-daterangepicker/daterangepicker.css">
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/sweetalert2/dist/sweetalert2.min.css">
+
+
+	<link rel="stylesheet" href="{{base_url('assets/')}}css/style.css">
+
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,9 +64,9 @@
 		<!-- Logo -->
 		<a href="{{base_url()}}" class="logo">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
-			<span class="logo-mini"><b>G</b>SE</span>
+			<span class="logo-mini"><b>GSE</b></span>
 			<!-- logo for regular state and mobile devices -->
-			<span class="logo-lg"><b>G</b>SE</span>
+			<span class="logo-lg"><b>GSE</b></span>
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top">
@@ -55,85 +74,42 @@
 			<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
 				<span class="sr-only">Toggle navigation</span>
 			</a>
-
+			<b class="hidden-xs navbar-corp-name">{{$_SESSION['entidade_nome']}}</b>
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
 					<!-- Notifications: style can be found in dropdown.less -->
-				{{--<li class="dropdown notifications-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning">10</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header">You have 10 notifications</li>
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-warning text-yellow"></i> Very long description here that
-                                        may not fit into the
-                                        page and may cause design problems
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-users text-red"></i> 5 new members joined
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user text-red"></i> You changed your username
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="footer"><a href="#">View all</a></li>
-                    </ul>
-                </li>--}}
 
-				<!-- User Account: style can be found in dropdown.less -->
+					<!-- User Account: style can be found in dropdown.less -->
 					<li class="dropdown user user-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="{{base_url('assets/')}}dist/img/user2-160x160.jpg" class="user-image"
+							<img src="{{base_url('assets/img/user_padrao.png')}}" class="user-image"
 								 alt="User Image">
-							<span class="hidden-xs">Ronan Adriel Zenatti</span>
+							<span class="hidden-xs">{{$_SESSION['user_nome']}}</span>
 						</a>
 						<ul class="dropdown-menu">
 							<!-- User image -->
 							<li class="user-header">
-								<img src="{{base_url('assets/')}}dist/img/user2-160x160.jpg" class="img-circle"
+								<img src="{{base_url('assets/img/user_padrao.png')}}" class="img-circle"
 									 alt="User Image">
 								<p>
-									Alexander Pierce
-									<small>Assistente Social</small>
-									<small>CREAS</small>
+									{{$_SESSION['user_nome']}}
+									<small>{{$_SESSION['entidade_nome']}}</small>
 								</p>
 							</li>
 							<!-- Menu Footer-->
 							<li class="user-footer">
-								<div class="pull-left">
-									<a href="#" class="btn btn-default btn-flat">Cadastro</a>
-								</div>
+								{{--<div class="pull-left">--}}
+								{{--<a href="#" class="btn btn-default btn-flat">Cadastro</a>--}}
+								{{--</div>--}}
 								<div class="pull-right">
-									<a href="#" class="btn btn-default btn-flat">Sair</a>
+									<a href="{{base_url("auth/logout")}}" class="btn btn-default btn-flat">Sair</a>
 								</div>
 							</li>
 						</ul>
 					</li>
 					<!-- Control Sidebar Toggle Button -->
 					<li>
-						<a href="#"><i class="fa fa-sign-out"></i></a>
+						<a href="{{base_url("auth/logout")}}"><i class="fa fa-sign-out"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -145,49 +121,45 @@
 		<section class="sidebar">
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu" data-widget="tree">
-				{{--<li class="header">MAIN NAVIGATION</li>--}}
 				<li class="treeview">
 					<a href="#">
-						<i class="fa fa-dashboard"></i> <span>Cadastros</span>
+						<i class="fa fa-user"></i> <span>Adolescentes</span>
 						<span class="pull-right-container">
 							<i class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li class="active"><a href="{{base_url('assets/')}}index.html"><i class="fa fa-circle-o"></i>
-								Dashboard v1</a></li>
-						<li>
-							<a href="{{base_url('assets/')}}index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a>
+						<li class="active"><a href="{{base_url('adolescente/')}}"><i class="fa fa-circle-o"></i>
+								Cadastro Geral</a>
+						</li>
+						<li class="active"><a href="{{base_url('situacaohabitacional/')}}">
+								<i class="fa fa-circle-o"></i>
+								Situação Habitacional</a>
+						</li>
+						<li class="active"><a href="{{base_url('camposicaofamiliar/')}}"><i class="fa fa-circle-o"></i>
+								Composição Familiar</a>
 						</li>
 					</ul>
 				</li>
+			</ul>
+			<ul class="sidebar-menu" data-widget="tree">
 				<li class="treeview">
 					<a href="#">
-						<i class="fa fa-share"></i> <span>Multilevel</span>
-						<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+						<i class="fa fa-info"></i> <span>Cadastros</span>
+						<span class="pull-right-container">
+							<i class="fa fa-angle-left pull-right"></i>
+						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-						<li class="treeview">
-							<a href="#"><i class="fa fa-circle-o"></i> Level One
-								<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-								<li class="treeview">
-									<a href="#"><i class="fa fa-circle-o"></i> Level Two
-										<span class="pull-right-container">
-											<i class="fa fa-angle-left pull-right"></i>
-										</span>
-									</a>
-									<ul class="treeview-menu">
-										<li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-										<li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-									</ul>
-								</li>
-							</ul>
+						<li class="active"><a href="{{base_url('entidade/')}}"><i class="fa fa-circle-o"></i>
+								Entidades</a>
 						</li>
-						<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+						<li class="active"><a href="{{base_url('cargo/')}}"><i class="fa fa-circle-o"></i>
+								Cargos</a>
+						</li>
+						<li class="active"><a href="{{base_url('funcionario/')}}"><i class="fa fa-circle-o"></i>
+								Funcionários</a>
+						</li>
 					</ul>
 				</li>
 			</ul>
@@ -200,7 +172,7 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				@yield('titulo')
+				<strong>@yield('titulo')</strong>
 				<small>@yield('subtitulo')</small>
 			</h1>
 			<ol class="breadcrumb">
@@ -210,9 +182,9 @@
 
 		<!-- Main content -->
 		<section class="content">
-			<div class="box">
+			<div class="box @yield('box-color')">
 				<div class="box-body">
-					@section('corpo')
+					@yield('content')
 				</div>
 			</div>
 		</section>
@@ -239,6 +211,9 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{base_url('assets/')}}bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="{{base_url('assets/')}}bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="{{base_url('assets/')}}bower_components/select2/dist/js/i18n/pt-BR.js"></script>
 <!-- Morris.js charts -->
 <script src="{{base_url('assets/')}}bower_components/raphael/raphael.min.js"></script>
 <script src="{{base_url('assets/')}}bower_components/morris.js/morris.min.js"></script>
@@ -254,17 +229,95 @@
 <script src="{{base_url('assets/')}}bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"
+		charset="UTF-8"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{base_url('assets/')}}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
 <script src="{{base_url('assets/')}}bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="{{base_url('assets/')}}bower_components/fastclick/lib/fastclick.js"></script>
+<!-- DataTables -->
+<script src="{{base_url('assets/')}}bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="{{base_url('assets/')}}bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- DataTables Responsive -->
+<script src="{{base_url('assets/')}}bower_components/datatables.net/js/dataTables.responsive.min.js"></script>
+<script src="{{base_url('assets/')}}bower_components/datatables.net/js/responsive.bootstrap.min.js"></script>
+<!-- DataTables Buttons -->
+<script src="{{base_url('assets/bower_components/datatables.net/js/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{base_url('assets/bower_components/datatables.net/js/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{base_url('assets/bower_components/datatables.net/js/buttons.html5.min.js')}}"></script>
+<script src="{{base_url('assets/bower_components/datatables.net/js/buttons.print.min.js')}}"></script>
+<script src="{{base_url('assets/bower_components/datatables.net/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{base_url('assets/bower_components/datatables.net/js/buttons.bootstrap.min.js')}}"></script>
+<!-- InputMask -->
+<script src="{{base_url('assets/')}}plugins/input-mask/jquery.inputmask.js"></script>
+<script src="{{base_url('assets/')}}plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="{{base_url('assets/')}}plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- jQuery Validate -->
+<script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/jquery.validate.js"></script>
+<script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/additional-methods.js"></script>
+<script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/localization/messages_pt_BR.js"></script>
+<!-- SweetAlert2 -->
+<script src="{{base_url('assets/')}}bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+
 <!-- AdminLTE App -->
 <script src="{{base_url('assets/')}}dist/js/adminlte.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{base_url('assets/')}}dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-{{--<script src="{{base_url('assets/')}}dist/js/demo.js"></script>--}}
+
+<script>
+	$.fn.select2.defaults.set("language", "pt-BR");
+	$.fn.select2.defaults.set("width", "100%");
+	$('select').select2();
+	$('select').on('select2:select', function (e) {
+		$(this).valid();
+	});
+
+	$('.mask_date').inputmask('99/99/9999');
+	$('.mask_time').inputmask('00:00:00');
+	$('.mask_datetime').inputmask('99/99/9999 00:00');
+	$('.mask_date_time').inputmask('99/99/9999 00:00:00');
+	$('.mask_CEP').inputmask('99.999-999');
+	$('.mask_phone9').inputmask('(99) 9 9999-9999');
+	$('.mask_phone8').inputmask('(99) 9999-9999');
+	$('.mask_CNPJ').inputmask('99.999.999/9999-99');
+	$('.mask_CPF').inputmask('999.999.999-99');
+
+	function deletarRegistro(tabela, id) {
+		var base_url = "/GSE/";
+		swal({
+			title: "Deletar Registro",
+			text: "Deseja deletar o registro #" + id + "?",
+			type: "warning",
+			animation: false,
+			customClass: 'animated tada',
+			showCancelButton: true,
+			confirmButtonText: "Sim, Deletar!",
+			cancelButtonText: "Não, Cancelar.",
+			confirmButtonColor: '#d33',
+			cancelButtonColor: '#3085d6',
+		}).then((result) => {
+			if (result.value) {
+				$.ajax({
+					url: base_url + tabela + "/deletar",
+					type: "POST",
+					data: {
+						id: id
+					},
+					success: function (data) {
+						$('table').DataTable().ajax.reload();
+						swal("Deletado!", "Seu Registro foi Deletado com Sucesso!", "success");
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						alert(errorThrown);
+					}
+				});
+			}
+		});
+	}
+</script>
+
+@yield('js')
+
 </body>
 </html>
