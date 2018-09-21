@@ -45,7 +45,7 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 				<div class="form-group">
 					<div class="col-sm-2">
 						<label for="cep">CEP</label>
-						<input type="text" class="form-control text-center mask_CEP" id="cep" name="cep"
+						<input type="text" class="form-control mask_CEP" id="cep" name="cep"
 							   maxlength="10" minlength="10" value="{{(isset($obj['cep']) ? $obj['cep'] : null)}}">
 					</div>
 					<div class="col-sm-8">
@@ -157,21 +157,23 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 			</div>
 			<br/>
 			<h3 class="form-title">Dados do Usuário</h3>
+			<input name="idusuario" id="idusuario" type="hidden"
+				   value="{{(isset($objU['idusuario']) ? $objU['idusuario'] : null)}}"/>
 			<div class="row">
 				<div class="col-sm-6">
 					<label for="email">E-mail:</label>
 					<input type="email" class="form-control" id="email" name="email" required
-						   value="{{(isset($obj['email']) ? $obj['email'] : null)}}">
+						   value="{{(isset($objU['email']) ? $objU['email'] : null)}}">
 				</div>
 				<div class="col-sm-3">
 					<label for="senha">Senha:</label>
-					<input type="password" class="form-control" id="senha" name="senha" required minlength="6"
-						   value="{{(isset($obj['senha']) ? $obj['senha'] : null)}}">
+					<input type="password" class="form-control" id="senha" name="senha" minlength="6"
+							{{(!isset($obj['idfuncionario']) ? "required" : null)}} >
 				</div>
 				<div class="col-sm-3">
 					<label for="confirma">Confirme a Senha:</label>
-					<input type="password" class="form-control" id="confirma" name="confirma" required minlength="6"
-						   value="{{(isset($obj['confirma']) ? $obj['confirma'] : null)}}">
+					<input type="password" class="form-control" id="confirma" name="confirma" minlength="6"
+							{{(!isset($obj['idfuncionario']) ? "required" : null)}} >
 				</div>
 			</div>
 		</div>
@@ -204,7 +206,8 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 				url: '/GSE/entidade/select2Json',
 				dataType: 'json',
 				method: "post",
-			}
+			},
+			cache: true
 		});
 
 		$("#idcargo").select2({
@@ -212,7 +215,8 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 				url: '/GSE/cargo/select2Json',
 				dataType: 'json',
 				method: "post",
-			}
+			},
+			cache: true
 		});
 
 		$("form").validate({
@@ -231,7 +235,10 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 
 		@if(isset($obj['idfuncionario']))
 		$('#estado').val("{{$obj['estado']}}").trigger('change');
-		$('#tipo').val("{{$obj['tipo']}}").trigger('change');
+		$('#sexo').val("{{$obj['sexo']}}").trigger('change');
+
+		$('#identidade').empty().append('<option value="{{$obj['identidade']}}">{{$objE['nome']}}</option>').val({{$obj['identidade']}}).trigger('change');
+		$('#idcargo').empty().append('<option value="{{$objU['idcargo']}}">{{$objC['nome']}}</option>').val({{$objU['idcargo']}}).trigger('change');
 		@endif
 
 	</script>

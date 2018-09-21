@@ -1,7 +1,760 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="456e082b-1985-4b14-984c-1a25ec962c33" name="Default Changelist" comment="Login" />
+    <list default="true" id="456e082b-1985-4b14-984c-1a25ec962c33" name="Default Changelist" comment="Login">
+      <change afterPath="$PROJECT_DIR$/application/views/adolescentes/iuAdolescente.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application/views/adolescentes/listar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Adolescente.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Adolescente.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Contato.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Contato.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Documento.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Documento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Endereco.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Endereco.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Funcionario.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Funcionario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Adolescente_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Adolescente_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Contato_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Contato_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Documento_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Documento_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Endereco_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Endereco_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Usuario_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Usuario_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/funcionarios/iuFuncionario.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/funcionarios/iuFuncionario.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/template.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bower_components/inputmask/dist/min/jquery.inputmask.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/bower_components/inputmask/dist/min/jquery.inputmask.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/config/ion_auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/contributing.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/controllers/Auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/arabic/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/arabic/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/bengali/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/bengali/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/bulgarian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/bulgarian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/catalan/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/catalan/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/croatian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/croatian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/czech/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/czech/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/danish/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/danish/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/dutch/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/dutch/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/english/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/english/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/estonian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/estonian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/filipino/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/filipino/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/finnish/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/finnish/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/french/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/french/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/german/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/german/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/greek/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/greek/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/hungarian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/hungarian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/indonesian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/indonesian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/italian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/italian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/japanese/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/japanese/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/korean/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/korean/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/lithuanian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/lithuanian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/norwegian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/norwegian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/persian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/persian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/pirate/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/pirate/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/polish/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/polish/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/portuguese/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/portuguese/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/romanian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/romanian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/russian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/russian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/slovak/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/slovak/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/slovenian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/slovenian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/spanish/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/spanish/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/swedish/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/swedish/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/thai/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/thai/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/turkish/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/turkish/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/ukrainian/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/ukrainian/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/vietnamese/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/vietnamese/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/zh_cn/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/zh_cn/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/zh_tw/auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/language/zh_tw/ion_auth_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/libraries/Bcrypt.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/libraries/Ion_auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/migrations/001_install_ion_auth.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/models/Ion_auth_model.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/sql/ion_auth.mssql.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/sql/ion_auth.postgre.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/sql/ion_auth.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/images/arrow.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/images/nav_bg_darker.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/images/nav_separator_darker.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/images/nav_toggle_darker.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/js/functions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/userguide/userguide.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/change_password.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/create_group.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/create_user.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/deactivate_user.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/edit_group.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/edit_user.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/email/activate.tpl.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/email/forgot_password.tpl.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/email/new_password.tpl.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/forgot_password.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/CodeIgniter-Ion-Auth-2/views/auth/reset_password.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/README.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/changelog.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/core/MY_Lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/arabic/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/armenian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/azerbaijani/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bengali/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/bulgarian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/catalan/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/croatian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/czech/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/danish/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/dutch/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/filipino/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/french/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/german/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/greek/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/gujarati/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hindi/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/hungarian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/indonesian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/italian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/japanese/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/khmer/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/korean/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/latvian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/lithuanian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/norwegian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/persian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/polish/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese-brazilian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/portuguese/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/romanian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/russian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/serbian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/simplified-chinese/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovak/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/slovenian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/spanish/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/swedish/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/tamil/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/thai/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/traditional-chinese/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/turkish/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/ukrainian/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/urdu/upload_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/calendar_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/date_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/db_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/email_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/form_validation_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/ftp_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/imglib_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/migration_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/number_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/pagination_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/profiler_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/unit_test_lang.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/codeigniter3-translations-develop/language/vietnamese/upload_lang.php" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,74 +832,106 @@
     <session id="-257843767">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
+          <entry key="project.closed" value="34" />
           <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.26" value="1" />
-          <entry key="project.open.time.29" value="1" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.26" value="2" />
+          <entry key="project.open.time.29" value="2" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.31" value="3" />
+          <entry key="project.open.time.32" value="1" />
+          <entry key="project.open.time.33" value="3" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.36" value="1" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.38" value="1" />
           <entry key="project.open.time.39" value="2" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.open.time.42" value="1" />
-          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.42" value="2" />
+          <entry key="project.open.time.43" value="1" />
+          <entry key="project.open.time.44" value="1" />
+          <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.75" value="1" />
           <entry key="project.open.time.78" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="13" />
+          <entry key="css" value="15" />
           <entry key="gitignore" value="2" />
-          <entry key="html" value="3" />
+          <entry key="html" value="5" />
           <entry key="ico" value="1" />
-          <entry key="js" value="14" />
+          <entry key="js" value="18" />
           <entry key="md" value="1" />
-          <entry key="php" value="156" />
+          <entry key="php" value="208" />
           <entry key="rnc" value="1" />
           <entry key="rst" value="3" />
+          <entry key="ts" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="49" />
-          <entry key="CSS" value="13" />
-          <entry key="HTML" value="3" />
+          <entry key="Blade" value="76" />
+          <entry key="CSS" value="15" />
+          <entry key="HTML" value="5" />
           <entry key="Image" value="1" />
-          <entry key="JavaScript" value="14" />
+          <entry key="JavaScript" value="18" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="107" />
+          <entry key="PHP" value="132" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="RNG Compact" value="1" />
           <entry key="ReST" value="3" />
+          <entry key="TypeScript" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="367" />
+          <entry key="css" value="446" />
           <entry key="dummy" value="1" />
           <entry key="gitignore" value="17" />
-          <entry key="php" value="5813" />
+          <entry key="php" value="13999" />
           <entry key="txt" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="3352" />
-          <entry key="CSS" value="368" />
-          <entry key="PHP" value="2460" />
+          <entry key="Blade" value="10792" />
+          <entry key="CSS" value="447" />
+          <entry key="PHP" value="3206" />
           <entry key="PLAIN_TEXT" value="34" />
         </counts>
       </usages-collector>
-      <usages-collector id="statistics.js.language.service.starts" />
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="1" />
+        </counts>
+      </usages-collector>
       <usages-collector id="statistics.php.new.test" />
       <usages-collector id="statistics.php.composer.command.options" />
       <usages-collector id="statistics.php.rename.constructor" />
       <usages-collector id="statistics.php.new.class" />
       <usages-collector id="statistics.php.composer.actions" />
+      <usages-collector id="statistics.vcs.git.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/adolescentes/iuAdolescente.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="551">
+              <caret line="899" column="39" selection-start-line="899" selection-start-column="39" selection-end-line="899" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -158,11 +943,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>purple</find>
-      <find>error_404</find>
-      <find>{{base_url('assets/')}}</find>
-      <find>idusua</find>
-      <find>id,</find>
       <find>'id'</find>
       <find>users</find>
       <find>'name</find>
@@ -172,7 +952,6 @@
       <find>side</find>
       <find>identidade</find>
       <find>em</find>
-      <find>`</find>
       <find>cm-&gt;</find>
       <find>cargo</find>
       <find>entidade</find>
@@ -188,6 +967,12 @@
       <find>idfun</find>
       <find>idcar</find>
       <find>fm</find>
+      <find>pai</find>
+      <find>Checkbox</find>
+      <find>Nascimento d</find>
+      <find>Nascimen</find>
+      <find>Respon</find>
+      <find>`</find>
     </findStrings>
     <replaceStrings>
       <replace>href=&quot;{{base_url()}}</replace>
@@ -196,9 +981,10 @@
       <replace>&lt;?php echo e(base_url('assets/')); ?&gt;</replace>
       <replace>idcargo</replace>
       <replace>cm</replace>
-      <replace>'</replace>
       <replace>fm-&gt;</replace>
       <replace>funcionario</replace>
+      <replace>mae</replace>
+      <replace>'</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\GSE\assets\dist\js</dir>
@@ -217,11 +1003,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/application/views/welcome_message.html" />
         <option value="$PROJECT_DIR$/application/views/welcome_message.php" />
         <option value="$PROJECT_DIR$/application/views/template_.blade.php" />
-        <option value="$PROJECT_DIR$/application/config/config.php" />
         <option value="$PROJECT_DIR$/application/views/errors/html/error_404.blade.php" />
         <option value="$PROJECT_DIR$/application/views/errors/html/error_404.php" />
         <option value="$PROJECT_DIR$/application/libraries/Blade.php" />
@@ -240,17 +1024,9 @@
         <option value="$PROJECT_DIR$/application/views/entidade/listar.blade.php" />
         <option value="$PROJECT_DIR$/application/views/entidades/listar.blade.php" />
         <option value="$PROJECT_DIR$/application/views/entidades/iuEntidade.blade.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Adolescente.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Documento.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Contato.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Endereco.php" />
         <option value="$PROJECT_DIR$/application/controllers/SituacaoHabitacional.php" />
         <option value="$PROJECT_DIR$/application/controllers/Trabalho.php" />
         <option value="$PROJECT_DIR$/application/models/Cargo_model.php" />
-        <option value="$PROJECT_DIR$/application/models/Adolescente_model.php" />
-        <option value="$PROJECT_DIR$/application/models/Contato_model.php" />
-        <option value="$PROJECT_DIR$/application/models/Documento_model.php" />
-        <option value="$PROJECT_DIR$/application/models/Endereco_model.php" />
         <option value="$PROJECT_DIR$/application/models/SituacaoHabitacional_model.php" />
         <option value="$PROJECT_DIR$/application/models/Trabalho_model.php" />
         <option value="$PROJECT_DIR$/application/views/cargos/listar.blade.php" />
@@ -259,13 +1035,25 @@
         <option value="$PROJECT_DIR$/application/views/funcionarios/listar.blade.php" />
         <option value="$PROJECT_DIR$/application/core/MY_Model.php" />
         <option value="$PROJECT_DIR$/application/controllers/Entidade.php" />
-        <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/application/controllers/Cargo.php" />
-        <option value="$PROJECT_DIR$/application/views/funcionarios/iuFuncionario.blade.php" />
+        <option value="$PROJECT_DIR$/application/models/Ion_auth_model.php" />
         <option value="$PROJECT_DIR$/application/models/Usuario_model.php" />
         <option value="$PROJECT_DIR$/application/controllers/Funcionario.php" />
-        <option value="$PROJECT_DIR$/application/models/Ion_auth_model.php" />
+        <option value="$PROJECT_DIR$/application/models/Endereco_model.php" />
+        <option value="$PROJECT_DIR$/application/views/funcionarios/iuFuncionario.blade.php" />
+        <option value="$PROJECT_DIR$/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/application/controllers/Contato.php" />
+        <option value="$PROJECT_DIR$/application/models/Contato_model.php" />
+        <option value="$PROJECT_DIR$/application/config/config.php" />
+        <option value="$PROJECT_DIR$/application/views/adolescentes/listar.blade.php" />
+        <option value="$PROJECT_DIR$/application/models/Documento_model.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Documento.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/application/models/Adolescente_model.php" />
         <option value="$PROJECT_DIR$/application/views/template.blade.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Adolescente.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Endereco.php" />
+        <option value="$PROJECT_DIR$/application/views/adolescentes/iuAdolescente.blade.php" />
       </list>
     </option>
   </component>
@@ -344,7 +1132,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -352,32 +1139,100 @@
               <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
               <item name="GSE" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="adolescentes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="entidades" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+              <item name="inputmask" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+              <item name="inputmask" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GSE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GSE" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
+              <item name="inputmask" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="min" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/models/Ion_auth_model.php&#10;fun&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/models/Funcionario_model.php&#10;sty&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/assets/css/style.css&#10;Carg&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/controllers/Cargo.php&#10;my&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/core/MY_Model.php&#10;mym&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/core/MY_Model.php&#10;func&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/controllers/Funcionario.php&#10;tem&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/template.blade.php&#10;st&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/assets/css/style.css&#10;log&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/auth/login.blade.php&#10;templa&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/template.blade.php&#10;wel&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="te&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/template.blade.php&#10;mom&#9;null&#9;null&#10;tem&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/template.blade.php&#10;iuA&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/adolescentes/iuAdolescente.blade.php&#10;iu&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/adolescentes/iuAdolescente.blade.php&#10;temp&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/template.blade.php&#10;st&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/assets/css/style.css&#10;sty&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/assets/css/style.css&#10;ado&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/controllers/Adolescente.php&#10;fun&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/models/Funcionario_model.php&#10;Carg&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/controllers/Cargo.php&#10;my&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/core/MY_Model.php&#10;mym&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/core/MY_Model.php&#10;func&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/controllers/Funcionario.php&#10;log&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/auth/login.blade.php&#10;templa&#9;FILE&#9;file://C:/xampp7/htdocs/GSE/application/views/template.blade.php&#10;wel&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp7\htdocs\GSE\assets\bower_components\select2" />
-      <recent name="C:\xampp7\htdocs\GSE\application\views" />
-      <recent name="C:\xampp7\htdocs\GSE\application\models" />
-      <recent name="C:\xampp7\htdocs\GSE\application\controllers" />
-      <recent name="C:\xampp7\htdocs\GSE\assets\bower_components\datatables.net\js" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\GSE\application" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp7\htdocs\GSE\assets\bower_components\inputmask\dist\min" />
+      <recent name="C:\xampp7\htdocs\GSE\application\views" />
+      <recent name="C:\xampp7\htdocs\GSE\assets\bower_components\select2" />
+      <recent name="C:\xampp7\htdocs\GSE\application\models" />
+      <recent name="C:\xampp7\htdocs\GSE\application\controllers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -423,16 +1278,39 @@
       <workItem from="1535247210993" duration="5854000" />
       <workItem from="1535323054293" duration="522000" />
       <workItem from="1535323603785" duration="7850000" />
+      <workItem from="1535333440538" duration="7974000" />
+      <workItem from="1535391548691" duration="3766000" />
+      <workItem from="1535486299418" duration="230000" />
+      <workItem from="1535487127580" duration="633000" />
+      <workItem from="1535489310155" duration="3783000" />
+      <workItem from="1535661137332" duration="15540000" />
+      <workItem from="1535708894309" duration="508000" />
+      <workItem from="1535709972957" duration="31335000" />
+      <workItem from="1535825688885" duration="592000" />
+      <workItem from="1535929563347" duration="10740000" />
+      <workItem from="1535947304148" duration="737000" />
+      <workItem from="1536435640455" duration="5974000" />
+      <workItem from="1536541188319" duration="7242000" />
+      <workItem from="1536697871888" duration="2269000" />
+      <workItem from="1536879838619" duration="30000" />
+      <workItem from="1536879963584" duration="7701000" />
+      <workItem from="1536918941730" duration="3734000" />
+      <workItem from="1536924943124" duration="5369000" />
+      <workItem from="1536944966054" duration="14404000" />
+      <workItem from="1537049837997" duration="440000" />
+      <workItem from="1537292710916" duration="6763000" />
+      <workItem from="1537492839269" duration="400000" />
+      <workItem from="1537493283961" duration="22000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123291000" />
+    <option name="totallyTimeSpent" value="253477000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21801706" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2468017" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -445,15 +1323,16 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32925472" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32925472" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.329718" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="REST Client" order="13" weight="0.3381535" />
-      <window_info anchor="right" id="SQL Formatter" />
+      <window_info anchor="bottom" id="TypeScript" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SQL Formatter" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -467,119 +1346,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Login" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/core/MY_Lang.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Principal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/bower_components/datatables.net/js/pdfmake/vfs_fonts.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/bower_components/datatables.net/js/pdfmake/pdfmake.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/dist/js/adminlte.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3299">
-          <caret line="315" column="42" selection-start-line="315" selection-start-column="42" selection-end-line="315" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/dist/css/AdminLTE.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="144" column="21" lean-forward="true" selection-start-line="144" selection-start-column="21" selection-end-line="144" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/bower_components/jquery-validation/demo/bootstrap/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="225" column="17" lean-forward="true" selection-start-line="220" selection-start-column="16" selection-end-line="225" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/bower_components/sweetalert2/dist/sweetalert2.all.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/bower_components/sweetalert2/dist/sweetalert2.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/entidades/listar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Documento.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Contato.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Adolescente.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/SituacaoHabitacional.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Trabalho.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Adolescente_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Contato_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="32" lean-forward="true" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Documento_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Endereco_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/SituacaoHabitacional_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -594,38 +1360,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Endereco.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/cargos/listar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/cargos/iuCargo.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/funcionarios/listar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/entidades/iuEntidade.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="166" lean-forward="true" selection-end-line="174" />
         </state>
       </provider>
     </entry>
@@ -687,13 +1425,6 @@
     <entry file="file://$PROJECT_DIR$/assets/bower_components/select2/dist/js/i18n/af.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Cargo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="732">
@@ -701,24 +1432,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/funcionarios/iuFuncionario.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3842">
-          <caret line="226" column="11" selection-start-line="226" selection-start-column="11" selection-end-line="226" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Cargo_model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="69" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Usuario_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -732,20 +1449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Entidade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="51" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Funcionario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -770,10 +1473,190 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Usuario_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Funcionario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="101" column="43" selection-start-line="101" selection-start-column="43" selection-end-line="101" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/pages/forms/advanced.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="1215" column="6" lean-forward="true" selection-start-line="1201" selection-start-column="4" selection-end-line="1215" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/funcionarios/listar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Contato_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Contato.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="284" column="4" selection-start-line="284" selection-start-column="4" selection-end-line="284" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/bower_components/bootstrap/dist/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="403" column="3" selection-start-line="403" selection-start-column="3" selection-end-line="403" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/bower_components/jquery/dist/jquery.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Documento.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="62" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Documento_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="257" selection-start-line="9" selection-start-column="257" selection-end-line="9" selection-end-column="257" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="56" column="47" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Adolescente_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/adolescentes/listar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/funcionarios/iuFuncionario.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="902">
+          <caret line="107" column="18" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="107" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/cargos/iuCargo.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="18" lean-forward="true" selection-start-line="21" selection-start-column="12" selection-end-line="29" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/bower_components/inputmask/dist/jquery.inputmask.bundle.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/bower_components/inputmask/dist/min/jquery.inputmask.bundle.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/bower_components/moment/moment.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="412" column="12" selection-start-line="412" selection-start-column="12" selection-end-line="412" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/template.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="76" column="80" selection-start-line="76" selection-start-column="80" selection-end-line="76" selection-end-column="80" />
+        <state relative-caret-position="596">
+          <caret line="303" column="7" lean-forward="true" selection-start-line="301" selection-start-column="4" selection-end-line="303" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Endereco_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/entidades/iuEntidade.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="681">
+          <caret line="170" column="14" lean-forward="true" selection-start-line="167" selection-start-column="4" selection-end-line="170" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Adolescente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="64" column="109" selection-start-line="64" selection-start-column="109" selection-end-line="64" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Entidade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="51" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Endereco.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/adolescentes/iuAdolescente.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="899" column="39" selection-start-line="899" selection-start-column="39" selection-end-line="899" selection-end-column="39" />
         </state>
       </provider>
     </entry>

@@ -9,6 +9,8 @@ class Funcionario extends CI_Controller
 		parent::__construct();
 		$this->load->model('Funcionario_model', 'fm');
 		$this->load->model('Usuario_model', 'um');
+		$this->load->model('Cargo_model', 'cm');
+		$this->load->model('Entidade_model', 'em');
 		$this->load->model('Ion_auth_model', 'iam');
 	}
 
@@ -50,7 +52,7 @@ class Funcionario extends CI_Controller
 
 		$usr['idcargo'] = $this->input->post('idcargo');
 		$usr['email'] = $this->input->post('email');
-		$usr['password'] = $this->iam->hash_password($this->input->post('senha'));
+		$usr['password'] = (!empty($this->input->post('senha'))) ? $this->iam->hash_password($this->input->post('senha')) : null;
 		$usr['active'] = 1;
 		$usr['termo'] = 0;
 
@@ -70,11 +72,12 @@ class Funcionario extends CI_Controller
 			$usr['updated_at'] = date('Y-m-d H:i:s');
 
 			$this->fm->Update('idfuncionario', $id, $obj);
-			$usrBD = $this->um->GetByFuncionario($id);
+
 			if (empty($usr['password']))
 				unset($usr['password']);
 
-			$usr['idusuario'] = $usrBD['idusuario'];
+			$id = $this->input->post('idusuario');
+
 			$this->um->Update('idusuario', $id, $usr);
 		}
 
@@ -85,6 +88,10 @@ class Funcionario extends CI_Controller
 	{
 		$dados = Array();
 		$dados['obj'] = $this->fm->GetById('idfuncionario', $id);
+		$dados['obj']['dt_nasc'] = (!empty($dados['obj']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['dt_nasc'])) : null;
+		$dados['objU'] = $this->um->GetByFuncionario($id);
+		$dados['objC'] = $this->cm->GetById('idcargo', $dados['objU']['idcargo']);
+		$dados['objE'] = $this->em->GetById('identidade', $dados['obj']['identidade']);
 		$this->blade->view('funcionarios/iufuncionario', $dados);
 	}
 
@@ -93,7 +100,10 @@ class Funcionario extends CI_Controller
 		$id = $this->input->post('id');
 		$dados = Array();
 		$dados['deleted_at'] = date('Y-m-d H:i:s');
-		return $this->fm->Update('idfuncionario', $id, $dados);
+		$this->fm->Update('idfuncionario', $id, $dados);
+		$obj = $this->um->GetByFuncionario($id);
+		$dados['active'] = 0;
+		$this->um->Update('idusuario', $obj['idusuario'], $dados);
 	}
 
 

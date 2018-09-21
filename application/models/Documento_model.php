@@ -5,10 +5,10 @@ class Documento_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->table = "cargos";
-        $this->column_order = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->column_search = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->order = array('idcargo');
+        $this->table = "documentos";
+        $this->column_order = array('idadolescente', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai', 'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at');
+        $this->column_search = array('idadolescente', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai', 'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at');
+        $this->order = array('iddocumento');
         $this->dates = array('created_at', 'updated_at', 'deleted_at');
     }
 }

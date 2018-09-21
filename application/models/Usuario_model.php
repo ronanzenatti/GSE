@@ -21,7 +21,7 @@ class Usuario_model extends MY_Model
 	{
 		if (is_null($idfuncionario))
 			return false;
-		$this->db->where('u.ifuncionario', $idfuncionario);
+		$this->db->where('u.idfuncionario', $idfuncionario);
 		$query = $this->db->get($this->table);
 		if ($query->num_rows() > 0) {
 			return $query->row_array();

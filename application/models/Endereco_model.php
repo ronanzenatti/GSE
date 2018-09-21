@@ -2,13 +2,24 @@
 
 class Endereco_model extends MY_Model
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->table = "cargos";
-        $this->column_order = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->column_search = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->order = array('idcargo');
-        $this->dates = array('created_at', 'updated_at', 'deleted_at');
-    }
+	public function __construct()
+	{
+		parent::__construct();
+		$this->table = "enderecos";
+		$this->column_order = array('idendereco', 'descricao', 'numero', 'bairro', 'cidade');
+		$this->column_search = array('idendereco', 'descricao', 'numero', 'bairro', 'cidade');
+		$this->order = array('idendereco');
+		$this->dates = array('dt_mudanca');
+	}
+
+	public function enderecosPorAdolescente($idAdolescente)
+	{
+		$this->db->select("COUNT(idendereco) AS enderecos");
+		$this->db->from($this->table);
+		$this->db->where("idadolescente", $idAdolescente);
+		$this->db->where('dt_mudanca IS NULL ', null, false);
+		$this->db->where('deleted_at IS NULL ', null, false);
+		$query = $this->db->get();
+		return $query->row_object();
+	}
 }

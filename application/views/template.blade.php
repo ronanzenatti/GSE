@@ -40,8 +40,10 @@
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/bootstrap-daterangepicker/daterangepicker.css">
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
+	<!-- Sweetalert 2 -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/sweetalert2/dist/sweetalert2.min.css">
+	<!-- iCheck -->
+	<link rel="stylesheet" href="{{base_url('assets/')}}plugins/iCheck/all.css">
 
 
 	<link rel="stylesheet" href="{{base_url('assets/')}}css/style.css">
@@ -172,8 +174,9 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				<strong>@yield('titulo')</strong>
-				<small>@yield('subtitulo')</small>
+				<strong>@yield('titulo', "Menu Principal")
+					<small class="text-danger">@yield('subtitulo')</small>
+				</strong>
 			</h1>
 			<ol class="breadcrumb">
 				<li>{{"Ibitinga-SP, " . date('d/m/Y')}}</li>
@@ -192,9 +195,8 @@
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
 		<div class="pull-right hidden-xs"><b>Version</b> 0.1.0</div>
-		<strong>Copyright &copy; 2018 <a target="_blank" href="http://www.etecibitinga.com.br">ETEC de
-				Ibitinga</a>.</strong> Todos os
-		direitos reservados.
+		<strong>Copyright &copy; 2018 <a target="_blank" href="http://www.etecibitinga.com.br">
+				ETEC de Ibitinga</a>.</strong> Todos os direitos reservados.
 	</footer>
 
 
@@ -251,15 +253,16 @@
 <script src="{{base_url('assets/bower_components/datatables.net/js/dataTables.buttons.min.js')}}"></script>
 <script src="{{base_url('assets/bower_components/datatables.net/js/buttons.bootstrap.min.js')}}"></script>
 <!-- InputMask -->
-<script src="{{base_url('assets/')}}plugins/input-mask/jquery.inputmask.js"></script>
-<script src="{{base_url('assets/')}}plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="{{base_url('assets/')}}plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="{{base_url('assets/')}}bower_components/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+
 <!-- jQuery Validate -->
 <script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/jquery.validate.js"></script>
 <script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/additional-methods.js"></script>
 <script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/localization/messages_pt_BR.js"></script>
 <!-- SweetAlert2 -->
 <script src="{{base_url('assets/')}}bower_components/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<!-- iCheck -->
+<script src="{{base_url('assets/')}}plugins/iCheck/icheck.js"></script>
 
 
 <!-- AdminLTE App -->
@@ -282,6 +285,43 @@
 	$('.mask_phone8').inputmask('(99) 9999-9999');
 	$('.mask_CNPJ').inputmask('99.999.999/9999-99');
 	$('.mask_CPF').inputmask('999.999.999-99');
+
+	$('.mask_phone').inputmask({mask: ["(99) 9999-9999", "(99) 99999-9999"]}).on('focusout', function (event) {
+		var target, phone, element;
+		target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+		phone = target.value.replace(/\D/g, '');
+		element = $(target);
+		$(target).inputmask('remove');
+		if (phone.length > 10) {
+			element.inputmask("(99) 9 9999-999[9]");
+		} else {
+			element.inputmask("(99) 9999-9999[9]");
+		}
+	});
+
+	$('.datepicker').datepicker({
+		language: 'pt-BR'
+	});
+
+	//iCheck for checkbox and radio inputs
+	$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+		checkboxClass: 'icheckbox_minimal-blue',
+		radioClass: 'iradio_minimal-blue'
+	});
+	//Red color scheme for iCheck
+	$('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+		checkboxClass: 'icheckbox_minimal-red',
+		radioClass: 'iradio_minimal-red'
+	});
+	//Flat red color scheme for iCheck
+	$('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+		checkboxClass: 'icheckbox_flat-green',
+		radioClass: 'iradio_flat-green'
+	});
+
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
 
 	function deletarRegistro(tabela, id) {
 		var base_url = "/GSE/";

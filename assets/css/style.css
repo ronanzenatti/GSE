@@ -29,7 +29,7 @@ label {
 
 .error {
 	color: red;
-	font-size: small;
+	font-size: x-small;
 }
 
 .swal2-popup {
@@ -50,4 +50,13 @@ label {
 .btn-select2 {
 	height: 34px !important;
 	padding-top: 7px !important;
+}
+
+textarea {
+	max-width: 100%;
+	min-width: 100%;
+}
+
+.mask_date, .mask_CEP, .mask_CNPJ, .mask_CPF {
+	text-align: center !important;
 }
