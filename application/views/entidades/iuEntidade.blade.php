@@ -144,7 +144,7 @@ $cor = (isset($obj['identidade'])) ? "warning" : "success";
 		<div class="box-footer">
 			<div class="row">
 				<div class="col-sm-4 text-left">
-					<a href="#" class="btn btn-default">Voltar</a>
+					<a href="{{base_url("entidade")}}" class="btn btn-default">Voltar</a>
 				</div>
 				<div class="col-sm-4 text-center">
 					<button type="reset" class="btn btn-default">Limpar</button>

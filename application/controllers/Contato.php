@@ -19,29 +19,33 @@ class Contato extends CI_Controller
 	public function save()
 	{
 		parse_str($this->input->post('form'), $form);
-		$form['idpessoa'] = $this->input->post('idpessoa');
+		$form['idadolescente'] = $this->input->post('idadolescente');
 
-		$form['ativo'] = isset($form['ativo']) ? 1 : 0;
+		$form['ativo'] = isset($form['ativoC']) ? 1 : 0;
+
+		$form['descricao'] = $form['descricaoC'];
+		unset($form['descricaoC']);
+		unset($form['ativoC']);
 
 		if (empty($form['idcontato'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			echo $this->cm->Insert($form);
+			echo $this->com->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->cm->Update('idcontato', $form['idcontato'], $form);
+			$this->com->Update('idcontato', $form['idcontato'], $form);
 			echo $form['idcontato'];
 		}
 	}
 
-	public function iu()
+	public function alterar()
 	{
-		$idPessoa = $this->input->post('idpessoa');
+		$idA = $this->input->post('idadolescente');
 		$idC = $this->input->post('idC');
 
-		$dados = Array();
-		$dados['obj'] = $this->cm->GetById('idcontato', $idC);
-		$this->blade->view('usuarios/modals/iuContato', $dados);
+		$dados = $this->com->GetById('idcontato', $idC);
+
+		echo json_encode($dados);
 	}
 
 	public function show()
@@ -55,8 +59,8 @@ class Contato extends CI_Controller
 
 	public function Ajax_Datatables()
 	{
-		$idpessoa = $this->input->post('idpessoa');
-		$idpessoa = 0;
+		$idpessoa = $this->input->post('idadolescente');
+		//$idpessoa = 0;
 		$where = array("idadolescente" => $idpessoa);
 		$list = $this->com->Get_Datatables(null, $where);
 		$data = array();
@@ -71,7 +75,7 @@ class Contato extends CI_Controller
 			$row[] = ($obj->ativo) ? "<strong class='text-success'>SIM</strong>" : "<strong class='text-danger'>NÃO</strong>";
 
 			$btns = "<button type='button' onclick='iuContato($obj->idcontato)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
-			$btns .= " <button type='button' onclick='deletarRegistro(\"contatos\", " . $obj->idcontato . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			$btns .= " <button type='button' onclick='deletarRegistro(\"contato\", " . $obj->idcontato . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
 
 			$data[] = $row;
@@ -92,6 +96,13 @@ class Contato extends CI_Controller
 		$id = $this->input->post('id');
 		$obj = Array();
 		$obj['deleted_at'] = date('Y-m-d H:i:s');
-		return $this->cm->Update('idcontato', $id, $obj);
+		return $this->com->Update('idcontato', $id, $obj);
 	}
+
+	public $tipo = array(
+		"C" => "Celular",
+		"F" => "Fixo",
+		"E" => "E-mail",
+		"O" => "Outros",
+	);
 }

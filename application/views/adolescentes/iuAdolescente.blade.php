@@ -312,7 +312,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 	<div class="box-footer">
 		<div class="row">
 			<div class="col-sm-4 text-left">
-				<a href="#" class="btn btn-default">Voltar</a>
+				<a href="{{base_url("adolescente")}}" class="btn btn-default">Voltar</a>
 			</div>
 			<div class="col-sm-4 text-center">
 				<button type="reset" class="btn btn-default">Limpar</button>
@@ -590,6 +590,32 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 					}
 
 					$('#modalEndereco').modal({
+						show: true,
+						keyboard: false,
+					});
+				}
+			});
+		}
+		function iuContato(idC) {
+			$.ajax({
+				url: '/GSE/contato/alterar',
+				type: 'POST',
+				data: {
+					idC: idC,
+					idadolescente: $("#idadolescente").val()
+				},
+				success: function (result) {
+					var obj = JSON.parse(result);
+					$("#idcontato").val(obj.idcontato);
+					$("#descricaoC").val(obj.descricao);
+					$("#contato").val(obj.contato);
+					$("#tipo_cont").val(obj.tipo_cont);
+
+					if (obj.ativo == 0) {
+						$("#ativoE").removeAttr("checked");
+					}
+
+					$('#modalContato').modal({
 						show: true,
 						keyboard: false,
 					});
