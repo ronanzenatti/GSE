@@ -6,8 +6,8 @@ class Endereco_model extends MY_Model
 	{
 		parent::__construct();
 		$this->table = "enderecos";
-		$this->column_order = array('idendereco', 'descricao', 'numero', 'bairro', 'cidade');
-		$this->column_search = array('idendereco', 'descricao', 'numero', 'bairro', 'cidade');
+		$this->column_order = array('idendereco', 'descricao', 'logradouro', 'numero', 'bairro', 'cidade');
+		$this->column_search = array('idendereco', 'descricao', 'logradouro', 'numero', 'bairro', 'cidade');
 		$this->order = array('idendereco');
 		$this->dates = array('dt_mudanca');
 	}
