@@ -60,7 +60,7 @@ class Contato extends CI_Controller
 	public function Ajax_Datatables()
 	{
 		$idpessoa = $this->input->post('idadolescente');
-		//$idpessoa = 0;
+		$listar = (empty($this->input->post('listar'))) ? 1 : 0;
 		$where = array("idadolescente" => $idpessoa);
 		$list = $this->com->Get_Datatables(null, $where);
 		$data = array();
@@ -73,8 +73,11 @@ class Contato extends CI_Controller
 			$row[] = $this->tipo[$obj->tipo_cont];
 			$row[] = $obj->contato;
 			$row[] = ($obj->ativo) ? "<strong class='text-success'>SIM</strong>" : "<strong class='text-danger'>NÃO</strong>";
+			$btns = "";
+			if ($listar) {
+				$btns = "<button type='button' onclick='iuContato($obj->idcontato)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+			}
 
-			$btns = "<button type='button' onclick='iuContato($obj->idcontato)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
 			$btns .= " <button type='button' onclick='deletarRegistro(\"contato\", " . $obj->idcontato . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
 

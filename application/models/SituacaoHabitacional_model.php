@@ -5,10 +5,10 @@ class SituacaoHabitacional_model extends MY_Model
     public function __construct()
     {
         parent::__construct();
-        $this->table = "cargos";
-        $this->column_order = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->column_search = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->order = array('idcargo');
+        $this->table = "situacao_habitacional";
+        $this->column_order = array('idsh', 'tipo', 'situacao', 'valor', 'agua', 'esgoto', 'energia', 'pavimento', 'coleta_lixo', 'qtde_comodos', 'espaco', 'qtde_pessoas', 'idendereco', 'obs', 'created_at', 'updated_at', 'deleted_at');
+        $this->column_search = array('idsh', 'tipo', 'situacao', 'valor', 'agua', 'esgoto', 'energia', 'pavimento', 'coleta_lixo', 'qtde_comodos', 'espaco', 'qtde_pessoas', 'idendereco', 'obs', 'created_at', 'updated_at', 'deleted_at');
+        $this->order = array('idsh');
         $this->dates = array('created_at', 'updated_at', 'deleted_at');
     }
 }

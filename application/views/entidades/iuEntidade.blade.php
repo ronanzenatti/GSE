@@ -97,7 +97,7 @@ $cor = (isset($obj['identidade'])) ? "warning" : "success";
 					</div>
 					<div class="col-sm-5">
 						<label for="cidade">Cidade</label>
-						<input type="text" class="form-control" id="cidade" name="cidade"
+						<input type="text" class="form-control" id="cidade" name="cidade" required
 							   value="{{(isset($obj['cidade']) ? $obj['cidade'] : null)}}">
 					</div>
 				</div>
@@ -133,7 +133,7 @@ $cor = (isset($obj['identidade'])) ? "warning" : "success";
 					</div>
 					<div class="col-sm-4">
 						<label for="resp_email">E-mail do Responsável</label>
-						<input type="text" class="form-control" id="resp_email" name="resp_email" required
+						<input type="email" class="form-control" id="resp_email" name="resp_email" required
 							   value="{{(isset($obj['resp_email']) ? $obj['resp_email'] : null)}}">
 					</div>
 				</div>

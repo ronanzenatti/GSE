@@ -95,7 +95,9 @@ class Adolescente extends CI_Controller
 			$row[] = "<button type='button' onclick='showContatos($obj->idadolescente)' class='btn btn-default btn-sm'><span class='badge'>$contatos->contatos</span></button>";
 
 			$btns = "<a href='" . base_url('adolescente/alterar/' . $obj->idadolescente) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescentes\", " . $obj->idadolescente . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescente\", " . $obj->idadolescente . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
+			$btns .= "<a href='" . base_url('situacaohabitacional/adolescente/' . $obj->idadolescente) . "' class='btn btn-info btn-sm'><i class='fa fa-home' aria-hidden='true'></i></a> ";
+			$btns .= "<a href='" . base_url('composicaofamiliar/adolescente/' . $obj->idadolescente) . "' class='btn btn-info btn-sm'><i class='fa fa-users' aria-hidden='true'></i></a> ";
 			$row[] = $btns;
 
 			$data[] = $row;

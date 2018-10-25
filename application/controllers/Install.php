@@ -89,17 +89,14 @@ class Install extends CI_Controller
 
 	public function renew()
 	{
-		$sql = "TRUNCATE `adolescentes`;
-		TRUNCATE `cargos`;
-		TRUNCATE `contatos`;
-		TRUNCATE `documentos`;
-		TRUNCATE `enderecos`;
-		TRUNCATE `entidades`;
-		TRUNCATE `funcionarios`;
-		TRUNCATE `login_attempts`;
-		TRUNCATE `situacao_habitacional`;
-		TRUNCATE `trabalhos`;
-		TRUNCATE `usuarios`;";
+		$sql = "SET FOREIGN_KEY_CHECKS = 1;";
+		if ($this->db->query($sql)) {
+			echo "<h1>Banco Limpo com Sucesso!!!</h1>";
+			redirect("/install");
+		} else {
+			echo "<h1>Erro!!!</h1>";
+			echo $error = $this->db->error(); // Has keys 'code' and 'message'
+		}
 	}
 
 }

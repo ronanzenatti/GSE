@@ -1,5 +1,5 @@
 @extends('template')
-@section('titulo', 'Listar Adolescentes')
+@section('titulo', 'Lista de Adolescentes')
 
 @section('content')
 	<div class="text-right">

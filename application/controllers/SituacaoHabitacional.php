@@ -12,6 +12,11 @@ class SituacaoHabitacional extends CI_Controller
 
 	public function index()
 	{
-		$this->blade->view('situacao_habitacional/listar');
+		$this->blade->view('adolescentes/listar');
+	}
+
+	public function adolescente($id)
+	{
+		$this->blade->view('enderecos/endereco_adolescente');
 	}
 }

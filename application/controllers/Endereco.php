@@ -70,6 +70,7 @@ class Endereco extends CI_Controller
 	public function Ajax_Datatables()
 	{
 		$idpessoa = (empty($this->input->post('idadolescente'))) ? 0 : $this->input->post('idadolescente');
+		$listar = (empty($this->input->post('listar'))) ? 1 : 0;
 		$where = array("idadolescente" => $idpessoa);
 		$list = $this->emm->Get_Datatables(null, $where);
 		$data = array();
@@ -84,8 +85,12 @@ class Endereco extends CI_Controller
 			$row[] = $obj->bairro;
 			$row[] = $obj->cidade . " - " . $obj->estado;
 			$row[] = (empty($obj->dt_mudanca)) ? "<strong class='text-success'>SIM</strong>" : "<strong class='text-danger'>NÃO</strong>";
-
-			$btns = "<button type='button' onclick='iuEndereco($obj->idendereco)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+			if ($listar) {
+				$btns = "<button type='button' onclick='iuEndereco($obj->idendereco)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+			}else{
+				$btns = "<a href='" . base_url('situacaohabitacional/end/' . $obj->idendereco) . "' class='btn btn-info btn-sm'><i class='fa fa-home' aria-hidden='true'></i></a> ";
+				$btns .= "<a href='" . base_url('composicaofamiliar/end/' . $obj->idendereco) . "' class='btn btn-info btn-sm'><i class='fa fa-users' aria-hidden='true'></i></a> ";
+			}
 			$btns .= " <button type='button' onclick='deletarRegistro(\"endereco\", " . $obj->idendereco . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
 
