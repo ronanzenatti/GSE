@@ -87,9 +87,9 @@ class Endereco extends CI_Controller
 			$row[] = (empty($obj->dt_mudanca)) ? "<strong class='text-success'>SIM</strong>" : "<strong class='text-danger'>NÃO</strong>";
 			if ($listar) {
 				$btns = "<button type='button' onclick='iuEndereco($obj->idendereco)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
-			}else{
-				$btns = "<a href='" . base_url('situacaohabitacional/end/' . $obj->idendereco) . "' class='btn btn-info btn-sm'><i class='fa fa-home' aria-hidden='true'></i></a> ";
-				$btns .= "<a href='" . base_url('composicaofamiliar/end/' . $obj->idendereco) . "' class='btn btn-info btn-sm'><i class='fa fa-users' aria-hidden='true'></i></a> ";
+			} else {
+				$btns = "<a href='" . base_url('situacaohabitacional/end/' . $obj->idendereco) . "' class='btn btn-info btn-sm' class='btn btn-info btn-sm' data-toggle='tooltip' data-placement='top' title='Situação Habitacional' data-original-title='Situação Habitacional'><i class='fa fa-home' aria-hidden='true'></i></a> ";
+				$btns .= "<a href='" . base_url('composicaofamiliar/end/' . $obj->idendereco) . "' class='btn btn-info btn-sm' class='btn btn-info btn-sm' data-toggle='tooltip' data-placement='top' title='Composição Familiar' data-original-title='Composição Familiar'><i class='fa fa-users' aria-hidden='true'></i></a> ";
 			}
 			$btns .= " <button type='button' onclick='deletarRegistro(\"endereco\", " . $obj->idendereco . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;

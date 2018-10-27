@@ -319,9 +319,7 @@
 		radioClass: 'iradio_flat-green'
 	});
 
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip();
-	});
+	$('[data-toggle="tooltip"]').tooltip();
 
 	function deletarRegistro(tabela, id) {
 		var base_url = "/GSE/";

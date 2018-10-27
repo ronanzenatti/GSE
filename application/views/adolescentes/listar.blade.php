@@ -32,7 +32,10 @@
 				serverSide: true,
 				ajax: {
 					url: "{{base_url('adolescente/Ajax_Datatables')}}",
-					type: "POST"
+					type: "POST",
+				},
+				"initComplete": function (settings, json) {
+					$('[data-toggle="tooltip"]').tooltip();
 				},
 				pagingType: "full_numbers",
 				columnDefs: [
@@ -95,7 +98,7 @@
 					data: function (a) {
 						a.idadolescente = idA;
 						a.listar = 1
-					}
+					},
 				},
 				pagingType: "full_numbers",
 				columnDefs: [
@@ -150,6 +153,9 @@
 						a.idadolescente = idA;
 						a.listar = 1
 					}
+				},
+				"initComplete": function (settings, json) {
+					$('[data-toggle="tooltip"]').tooltip();
 				},
 				pagingType: "full_numbers",
 				columnDefs: [
