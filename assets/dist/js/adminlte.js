@@ -709,7 +709,7 @@ throw new Error('AdminLTE requires jQuery')
   var DataKey = 'lte.pushmenu';
 
   var Default = {
-    collapseScreenSize   : 767,
+    collapseScreenSize   : 800,
     expandOnHover        : false,
     expandTransitionDelay: 200
   };

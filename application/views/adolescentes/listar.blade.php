@@ -39,7 +39,7 @@
 				},
 				pagingType: "full_numbers",
 				columnDefs: [
-					{targets: [4], orderable: false,}
+					{targets: [4, 5, 6], orderable: false, search: false, class: "text-center"}
 				],
 				language: {
 					decimal: ",",

@@ -123,28 +123,11 @@
 		<section class="sidebar">
 			<!-- sidebar menu: : style can be found in sidebar.less -->
 			<ul class="sidebar-menu" data-widget="tree">
-				<li class="treeview">
-					<a href="#">
+				<li>
+					<a href="{{base_url('adolescente/')}}">
 						<i class="fa fa-user"></i> <span>Adolescentes</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
 					</a>
-					<ul class="treeview-menu">
-						<li class="active"><a href="{{base_url('adolescente/')}}"><i class="fa fa-circle-o"></i>
-								Cadastro Geral</a>
-						</li>
-						<li class="active"><a href="{{base_url('situacaohabitacional/')}}">
-								<i class="fa fa-circle-o"></i>
-								Situação Habitacional</a>
-						</li>
-						<li class="active"><a href="{{base_url('camposicaofamiliar/')}}"><i class="fa fa-circle-o"></i>
-								Composição Familiar</a>
-						</li>
-					</ul>
 				</li>
-			</ul>
-			<ul class="sidebar-menu" data-widget="tree">
 				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info"></i> <span>Cadastros</span>
@@ -264,6 +247,8 @@
 <!-- iCheck -->
 <script src="{{base_url('assets/')}}plugins/iCheck/icheck.js"></script>
 
+<!-- Mask Money -->
+<script src="{{base_url()}}assets/bower_components/jquery.maskMoney.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="{{base_url('assets/')}}dist/js/adminlte.min.js"></script>
@@ -320,6 +305,42 @@
 	});
 
 	$('[data-toggle="tooltip"]').tooltip();
+
+
+	$(".Money2").maskMoney({
+		decimal: ",",
+		thousands: ".",
+		allowZero: true,
+		allowNegative: true,
+		precision: 2,
+	});
+
+	$(".Money4").maskMoney({
+		decimal: ",",
+		thousands: ".",
+		allowZero: true,
+		allowNegative: true,
+		precision: 4,
+	});
+
+	$(".MoneyRS2").maskMoney({
+		decimal: ",",
+		thousands: ".",
+		allowZero: true,
+		allowNegative: true,
+		precision: 2,
+		prefix:'R$ '
+
+	});
+
+	$(".MoneyRS4").maskMoney({
+		decimal: ",",
+		thousands: ".",
+		allowZero: true,
+		allowNegative: true,
+		precision: 4,
+		prefix:'R$ '
+	});
 
 	function deletarRegistro(tabela, id) {
 		var base_url = "/GSE/";
