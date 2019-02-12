@@ -4,6 +4,7 @@
  */
 
 CKEDITOR.editorConfig = function (config) {
+	config.height = 100;
 	config.language = 'pt-br';
 	config.toolbarGroups = [
 		{name: 'document', groups: ['mode', 'document', 'doctools']},

@@ -17,6 +17,30 @@
 	<link rel="stylesheet" href="{{base_url('assets/')}}dist/css/AdminLTE.min.css">
 	<!-- iCheck -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}plugins/iCheck/square/blue.css">
+	<style type="text/css">
+		.login-logo, .register-logo {
+			margin-bottom: 0;
+			font-size: 30px;
+		}
+		.box-header {
+			padding: 5px 10px 5px 10px;
+		}
+
+		body {
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-align: center;
+			align-items: center;
+			padding-top: 40px;
+			padding-bottom: 40px;
+		}
+		.box {
+			margin: 0 !important;
+		}
+		.login-box, .register-box{
+			margin: 0 auto;
+		}
+	</style>
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +58,7 @@
 	<div class="login-logo text-center">
 		<a href="{{base_url()}}">
 			<img class="" src="{{base_url('assets/')}}img/newLogo.png"/><br/>
-			Gestor Sócio-Educativo</a>
+			Gestor Socioeducativo</a>
 	</div>
 	<!-- /.login-logo -->
 	<div class="login-box-body">
@@ -62,6 +86,30 @@
 		</form>
 	</div>
 	<!-- /.login-box-body -->
+	<div class="box box-primary">
+		<div class="box-header with-border">
+			Este projeto é uma parceria entre:
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<div class="col-sm-4 col-xs-4">
+				<a href="https://www.cps.sp.gov.br/" target="_blank">
+					<img src="{{base_url('assets/img/cps600.png')}}" class="img-responsive"/>
+				</a>
+			</div>
+			<div class="col-sm-4 col-xs-4">
+				<a href="http://www.mpsp.mp.br" target="_blank">
+					<img src="{{base_url('assets/img/mpsp.png')}}" class="img-responsive"/>
+				</a>
+			</div>
+			<div class="col-sm-4 col-xs-4">
+				<a href="http://www.etecibitinga.com.br/" target="_blank">
+					<img src="{{base_url('assets/img/etec_ibitinga600.png')}}" class="img-responsive"/>
+				</a>
+			</div>
+		</div>
+		<!-- /.box-body -->
+	</div>
 </div>
 <!-- /.login-box -->
 

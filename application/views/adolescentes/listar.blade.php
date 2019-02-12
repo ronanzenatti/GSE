@@ -26,7 +26,7 @@
 @section('js')
 	<script>
 		$(function () {
-			$('table').dataTable({
+			$('#tableAdolescente').dataTable({
 				responsive: true,
 				processing: true,
 				serverSide: true,
