@@ -329,7 +329,7 @@
 		allowZero: true,
 		allowNegative: true,
 		precision: 2,
-		prefix:'R$ '
+		prefix: 'R$ '
 
 	});
 
@@ -339,10 +339,10 @@
 		allowZero: true,
 		allowNegative: true,
 		precision: 4,
-		prefix:'R$ '
+		prefix: 'R$ '
 	});
 
-	function deletarRegistro(tabela, id) {
+	function deletarRegistro(tabela, id, nomeTable) {
 		var base_url = "/GSE/";
 		swal({
 			title: "Deletar Registro",
@@ -364,7 +364,12 @@
 						id: id
 					},
 					success: function (data) {
-						$('table').DataTable().ajax.reload();
+						if (nomeTable) {
+							$("#" + nomeTable).DataTable().ajax.reload();
+							console.log("nome");
+						} else {
+							$('table').DataTable().ajax.reload();
+						}
 						swal("Deletado!", "Seu Registro foi Deletado com Sucesso!", "success");
 					},
 					error: function (jqXHR, textStatus, errorThrown) {

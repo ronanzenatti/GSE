@@ -34,7 +34,7 @@ class Funcionario extends CI_Controller
 		$usr = Array();
 		$id = $this->input->post('id_');
 
-		$obj['nome'] = $this->input->post('nome');
+		$obj['nome'] = mb_strtoupper($this->input->post('nome'), 'UTF-8');
 		$obj['dt_nasc'] = $this->input->post('dt_nasc');
 		$obj['dt_nasc'] = (!empty($obj['dt_nasc'])) ? date('Y-m-d', strtotime(str_replace("/", "-", $obj['dt_nasc']))) : null;
 		$obj['sexo'] = $this->input->post('sexo');

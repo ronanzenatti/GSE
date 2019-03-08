@@ -759,11 +759,13 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 					});
 
 					$('#modalEndereco').on('hide.bs.modal', function (e) {
-						$("#formEndereco input[type=text], input[type=password], input[type=number], input[type=email], textarea").each(function () {
-							$(this).val(null);
-						});
-						$('#formEndereco').find('input[type=checkbox]').prop('checked', true);
-						$('#formEndereco select option:first').prop('selected', true);
+						if (e.target.id != "dt_mudanca") {
+							$("#formEndereco input[type=text], input[type=password], input[type=number], input[type=email], textarea").each(function () {
+								$(this).val(null);
+							});
+							$('#formEndereco').find('input[type=checkbox]').prop('checked', true);
+							$('#formEndereco select option:first').prop('selected', true);
+						}
 					});
 
 					$("#ativoE").on('ifChecked', function () {

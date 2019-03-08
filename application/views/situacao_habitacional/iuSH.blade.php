@@ -10,7 +10,7 @@ $cor = (isset($sh['idsh'])) ? "warning" : "success";
 			<h2 class="page-header" style="padding-right: 10px; padding-left: 10px; margin: 10px 0 0 0;">
 				<i class="fa fa-user"></i> <strong class="text-primary"> &nbsp;
 					Adolescente: </strong>{{mb_strtoupper($ado['nome'], 'UTF-8')}}
-				<span class="pull-right"><strong class="text-primary">RG:</strong> 56564654</span>
+				<span class="pull-right"><strong class="text-primary">RG:</strong> {{$doc['RG']}}</span>
 				<br/>
 				<i class="fa fa-home"></i>&nbsp;
 				<strong class="text-primary">Endereço: </strong> {{$end['logradouro'] . ", " .$end['numero']}}
@@ -82,10 +82,10 @@ $cor = (isset($sh['idsh'])) ? "warning" : "success";
 						<select class="form-control" id="situacao" name="situacao" required>
 							<option value=""> - SELECIONE -</option>
 							<option value="1">Próprio</option>
-							<option value="2"> Financiado</option>
+							<option value="2">Financiado</option>
 							<option value="3">Alugado</option>
 							<option value="4">Cedido</option>
-							<option value="5"> Invadido</option>
+							<option value="5">Invadido</option>
 						</select>
 					</div>
 					<div class="col-sm-4">

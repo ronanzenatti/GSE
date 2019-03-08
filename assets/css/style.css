@@ -60,3 +60,7 @@ textarea {
 .mask_date, .mask_CEP, .mask_CNPJ, .mask_CPF {
 	text-align: center !important;
 }
+
+#nome{
+	text-transform: uppercase;
+}

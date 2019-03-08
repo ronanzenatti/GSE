@@ -31,6 +31,7 @@ class Adolescente extends CI_Controller
 		$this->am->table = "adolescentes";
 		parse_str($this->input->post('form'), $form);
 		$form['idadolescente'] = $this->input->post('idadolescente');
+		$form['nome'] = mb_strtoupper($form['nome'], 'UTF-8');
 
 		$form['dt_nasc'] = (empty($form['dt_nasc'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['dt_nasc'])));
 
@@ -95,9 +96,8 @@ class Adolescente extends CI_Controller
 			$row[] = "<button type='button' onclick='showContatos($obj->idadolescente)' class='btn btn-default btn-sm'><span class='badge'>$contatos->contatos</span></button>";
 
 			$btns = "<a href='" . base_url('adolescente/alterar/' . $obj->idadolescente) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescente\", " . $obj->idadolescente . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
-			//$btns .= "<a href='" . base_url('situacaohabitacional/adolescente/' . $obj->idadolescente) . "' class='btn btn-info btn-sm' data-toggle='tooltip' data-placement='top' title='Situação Habitacional' data-original-title='Situação Habitacional'><i class='fa fa-home' aria-hidden='true'></i></a> ";
-			//$btns .= "<a href='" . base_url('composicaofamiliar/adolescente/' . $obj->idadolescente) . "' class='btn btn-info btn-sm' data-toggle='tooltip' data-placement='top' title='Composição Familiar' data-original-title='Composição Familiar'><i class='fa fa-users' aria-hidden='true'></i></a> ";
+			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescente\", " . $obj->idadolescente . ", \"tableAdolescente\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
+
 			$row[] = $btns;
 
 			$data[] = $row;
