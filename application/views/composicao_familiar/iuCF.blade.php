@@ -154,7 +154,7 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 		function salvaFamilia() {
 			if ($("#formFamilia").valid()) {
 				$.ajax({
-					url: '/GSE/composicaofamiliar/save',
+					url: '/ComposicaoFamiliar/save',
 					type: 'POST',
 					data: {
 						form: $('#formFamilia').serialize(),
@@ -176,7 +176,7 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 
 		function iuResidente(idR) {
 			$.ajax({
-				url: '/GSE/pessoafamilia/alterar',
+				url: '/PessoaFamilia/alterar',
 				type: 'POST',
 				data: {
 					idpf: idR,
@@ -210,7 +210,7 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 			processing: true,
 			serverSide: true,
 			ajax: {
-				url: "{{base_url('pessoafamilia/Ajax_Datatables')}}",
+				url: "{{base_url('PessoaFamilia/Ajax_Datatables')}}",
 				type: "POST",
 				data: function (a) {
 					a.idcf = $("#idcf").val()
@@ -426,7 +426,7 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 					function salvaResidente() {
 						if ($("#formResidente").valid()) {
 							$.ajax({
-								url: '/GSE/pessoafamilia/save',
+								url: '/PessoaFamilia/save',
 								type: 'POST',
 								data: {
 									form: $('#formResidente').serialize(),

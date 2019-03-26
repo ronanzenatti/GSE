@@ -72,7 +72,7 @@ class PessoaFamilia extends CI_Controller
 			if ($listar) {
 				$btns = "<button type='button' onclick='iuResidente($obj->idpf)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
 			}
-			$btns .= " <button type='button' onclick='deletarRegistro(\"pessoafamilia\", " . $obj->idpf . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			$btns .= " <button type='button' onclick='deletarRegistro(\"PessoaFamilia\", " . $obj->idpf . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
 
 			$data[] = $row;

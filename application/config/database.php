@@ -74,11 +74,15 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn' => '',
+	//'hostname' => 'gse_elo.mysql.dbaas.com.br',
+	//'username' => 'gse_elo',
+	//'password' => 'n2gm2772',
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'gse',
+
+	'database' => 'gse_elo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

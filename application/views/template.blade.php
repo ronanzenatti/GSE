@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="shortcut icon" href="{{base_url('assets/')}}/img/favicon.ico"/>
-	<title>GSE</title>
+	<title>ELO</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
@@ -66,9 +66,9 @@
 		<!-- Logo -->
 		<a href="{{base_url()}}" class="logo">
 			<!-- mini logo for sidebar mini 50x50 pixels -->
-			<span class="logo-mini"><b>GSE</b></span>
+			<span class="logo-mini"><b>ELO</b></span>
 			<!-- logo for regular state and mobile devices -->
-			<span class="logo-lg"><b>GSE</b></span>
+			<span class="logo-lg"><b>ELO</b></span>
 		</a>
 		<!-- Header Navbar: style can be found in header.less -->
 		<nav class="navbar navbar-static-top">
@@ -146,6 +146,11 @@
 								Funcionários</a>
 						</li>
 					</ul>
+				</li>
+				<li>
+					<a href="https://goo.gl/forms/x9wcoIDNRsmlf1eH2" target="_blank">
+						<i class="fa fa-support"></i> <span>Suporte</span>
+					</a>
 				</li>
 			</ul>
 		</section>
@@ -343,7 +348,7 @@
 	});
 
 	function deletarRegistro(tabela, id, nomeTable) {
-		var base_url = "/GSE/";
+		var base_url = "/";
 		swal({
 			title: "Deletar Registro",
 			text: "Deseja deletar o registro #" + id + "?",

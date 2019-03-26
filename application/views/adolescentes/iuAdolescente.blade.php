@@ -513,7 +513,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 				var salvoA = false;
 				var salvoD = false;
 				$.ajax({
-					url: '/GSE/adolescente/save',
+					url: '/adolescente/save',
 					type: 'POST',
 					data: {
 						form: $('#formAdolescente').serialize(),
@@ -523,7 +523,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 						$("#idadolescente").val(result);
 						if ($.isNumeric(parseInt(result))) {
 							$.ajax({
-								url: '/GSE/documento/save',
+								url: '/documento/save',
 								type: 'POST',
 								data: {
 									form: $('#formDocumento').serialize(),
@@ -564,7 +564,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 
 		function iuEndereco(idE) {
 			$.ajax({
-				url: '/GSE/endereco/alterar',
+				url: '/endereco/alterar',
 				type: 'POST',
 				data: {
 					idE: idE,
@@ -599,7 +599,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 
 		function iuContato(idC) {
 			$.ajax({
-				url: '/GSE/contato/alterar',
+				url: '/contato/alterar',
 				type: 'POST',
 				data: {
 					idC: idC,
@@ -784,7 +784,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 					$("#salvarEnd").click(function (e) {
 						if ($("#formEndereco").valid()) {
 							$.ajax({
-								url: '/GSE/endereco/save',
+								url: '/endereco/save',
 								type: 'POST',
 								data: {
 									form: $('#formEndereco').serialize(),
@@ -914,7 +914,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
 					$("#salvarCont").click(function (e) {
 						if ($("#formContato").valid()) {
 							$.ajax({
-								url: '/GSE/contato/save',
+								url: '/contato/save',
 								type: 'POST',
 								data: {
 									form: $('#formContato').serialize(),

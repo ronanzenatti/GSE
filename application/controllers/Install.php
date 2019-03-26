@@ -12,6 +12,8 @@ class Install extends CI_Controller
 		$this->load->model('Funcionario_model', 'fm');
 		$this->load->model('Usuario_model', 'um');
 		$this->load->model('Ion_auth_model', 'iam');
+		$this->fm->table = "funcionarios";
+		$this->um->table = "usuarios";
 	}
 
 	public function index()
@@ -19,8 +21,6 @@ class Install extends CI_Controller
 		$adm = $this->um->GetById('email', 'ronan.zenatti@etec.sp.gov.br');
 
 		if (!$adm) {
-			$this->fm->table = "funcionarios";
-			$this->um->table = "usuarios";
 
 			$entidade = array(
 				'nome' => 'ETEC de Ibitinga',
@@ -82,17 +82,31 @@ class Install extends CI_Controller
 			$usr['created_at'] = date('Y-m-d H:i:s');
 			$usr['updated_at'] = date('Y-m-d H:i:s');
 			$this->um->Insert($usr);
-			redirect("/");
+			return redirect("/");
 		}
 
 	}
 
 	public function renew()
 	{
-		$sql = "SET FOREIGN_KEY_CHECKS = 1;";
+		$sql = "SET FOREIGN_KEY_CHECKS = 1; ";
+		$sql .= "TRUNCATE adolescentes;
+				TRUNCATE cargos;
+				TRUNCATE composicao_familiar;
+				TRUNCATE contatos;
+				TRUNCATE documentos;
+				TRUNCATE enderecos;
+				TRUNCATE entidades;
+				TRUNCATE funcionarios;
+				TRUNCATE login_attempts;
+				TRUNCATE pessoa_familia;
+				TRUNCATE situacao_habitacional;
+				TRUNCATE trabalhos;
+				TRUNCATE usuarios;";
+		$sql .= "SET FOREIGN_KEY_CHECKS = 0; ";
 		if ($this->db->query($sql)) {
 			echo "<h1>Banco Limpo com Sucesso!!!</h1>";
-			redirect("/install");
+			//redirect("/install");
 		} else {
 			echo "<h1>Erro!!!</h1>";
 			echo $error = $this->db->error(); // Has keys 'code' and 'message'

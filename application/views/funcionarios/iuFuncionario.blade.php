@@ -203,7 +203,7 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 	<script>
 		$("#identidade").select2({
 			ajax: {
-				url: '/GSE/entidade/select2Json',
+				url: '/entidade/select2Json',
 				dataType: 'json',
 				method: "post",
 			},
@@ -212,7 +212,7 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 
 		$("#idcargo").select2({
 			ajax: {
-				url: '/GSE/cargo/select2Json',
+				url: '/cargo/select2Json',
 				dataType: 'json',
 				method: "post",
 			},

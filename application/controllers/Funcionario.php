@@ -22,7 +22,7 @@ class Funcionario extends CI_Controller
 
 	public function inserir()
 	{
-		$this->blade->view('funcionarios/iufuncionario');
+		$this->blade->view('funcionarios/iuFuncionario');
 	}
 
 	public function save()
@@ -92,7 +92,7 @@ class Funcionario extends CI_Controller
 		$dados['objU'] = $this->um->GetByFuncionario($id);
 		$dados['objC'] = $this->cm->GetById('idcargo', $dados['objU']['idcargo']);
 		$dados['objE'] = $this->em->GetById('identidade', $dados['obj']['identidade']);
-		$this->blade->view('funcionarios/iufuncionario', $dados);
+		$this->blade->view('funcionarios/iuFuncionario', $dados);
 	}
 
 	public function deletar()

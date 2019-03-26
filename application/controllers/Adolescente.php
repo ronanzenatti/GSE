@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Knp\Snappy\Pdf;
+
 class Adolescente extends CI_Controller
 {
 
@@ -11,6 +13,7 @@ class Adolescente extends CI_Controller
 		$this->load->model('Documento_model', 'dm');
 		$this->load->model("Contato_model", "com");
 		$this->load->model("Endereco_model", "edm");
+		$this->load->model('Entidade_model', 'em');
 	}
 
 	public function index()
@@ -97,6 +100,7 @@ class Adolescente extends CI_Controller
 
 			$btns = "<a href='" . base_url('adolescente/alterar/' . $obj->idadolescente) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
 			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescente\", " . $obj->idadolescente . ", \"tableAdolescente\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
+			$btns .= "<a target='_blank' href='" . base_url('adolescente/gerar/' . $obj->idadolescente . '/' . $_SESSION['entidade_id']) . "' class='btn btn-primary btn-sm'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a> ";
 
 			$row[] = $btns;
 
@@ -111,5 +115,50 @@ class Adolescente extends CI_Controller
 		);
 		//output to json format
 		echo json_encode($output);
+	}
+
+	public function gerarpdf($id, $ide)
+	{
+		//$snappy = new Pdf('C:\xampp\htdocs\GSE\vendor\wemersonjanuario\wkhtmltopdf-windows\bin\64bit\wkhtmltopdf.exe');
+		$snappy = new Pdf('/home/etecibitinga1/public_html/gse/vendor/rvanlaak/wkhtmltopdf-amd64-centos7/bin/wkhtmltopdf-amd64');
+
+
+		//header('Content-Type: application/pdf');
+		//header('Content-Disposition: inline; filename="cadastro_completo_adolescente.pdf"');
+
+		echo $snappy->getOutput('http://elo.etecibitinga.com:82/adolescente/verpdf/' . $id . '/' . $ide);
+	}
+
+	public function verpdf($id, $ide)
+	{
+		$dados = array();
+		$dados['ado'] = $this->am->GetById('idadolescente', $id);
+		$dados['doc'] = $this->dm->GetById('idadolescente', $id);
+		$dados['ent'] = $this->em->GetById('identidade', $ide);
+		$dados['conts'] = $this->com->GetAll($sort = 'ativo', $order = 'desc', $null = true, $where = 'idadolescente = ' . $id);
+		$dados['ends'] = $this->edm->GetAll($sort = 'dt_mudanca', $order = 'asc', $null = true, $where = 'idadolescente = ' . $id);
+		$this->blade->view('adolescentes/relatorios/cadastro_completo_table', $dados);
+	}
+
+	public function gerar($id, $ide)
+	{
+		$mpdf = new \Mpdf\Mpdf([
+			'margin_top' => 10,
+			'margin_left' => 20,
+			'margin_right' => 10,
+			'margin_bottom' => 10
+		]);
+
+		$dados = array();
+		$dados['ado'] = $this->am->GetById('idadolescente', $id);
+		$dados['doc'] = $this->dm->GetById('idadolescente', $id);
+		$dados['ent'] = $this->em->GetById('identidade', $ide);
+		$dados['conts'] = $this->com->GetAll($sort = 'ativo', $order = 'desc', $null = true, $where = 'idadolescente = ' . $id);
+		$dados['ends'] = $this->edm->GetAll($sort = 'dt_mudanca', $order = 'asc', $null = true, $where = 'idadolescente = ' . $id);
+
+		$html = $this->blade->render('adolescentes/relatorios/cadastro_completo_table', $dados);
+
+		$mpdf->WriteHTML($html);
+		$mpdf->Output(); // opens in browser
 	}
 }
