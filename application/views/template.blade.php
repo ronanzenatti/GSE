@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="shortcut icon" href="{{base_url('assets/')}}/img/favicon.ico"/>
-	<title>ELO</title>
+	<title>Software ELO</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
@@ -60,7 +60,7 @@
 	<link rel="stylesheet"
 		  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini ">
 <div class="wrapper">
 	<header class="main-header">
 		<!-- Logo -->
@@ -126,6 +126,11 @@
 				<li>
 					<a href="{{base_url('adolescente/')}}">
 						<i class="fa fa-user"></i> <span>Adolescentes</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{base_url('pia/')}}">
+						<i class="fa fa-file-powerpoint-o"></i> <span>P. I. A.</span>
 					</a>
 				</li>
 				<li class="treeview">
