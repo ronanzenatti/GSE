@@ -11,6 +11,11 @@ class MY_Model extends CI_Model
 	var $chars = Array(); //Campos de Chars
 	var $joins = Array(); //Joins de Tabelas
 	var $select = "*"; // SELECT do BD
+	var $pk_name = "id";
+
+	//Dados de Auditoria
+	var $audit_table = 'audit';
+
 
 	/**
 	 * Método Construtor
@@ -32,9 +37,21 @@ class MY_Model extends CI_Model
 	{
 		if (!isset($data))
 			return false;
-		if ($this->db->insert($this->table, $data))
-			return $this->db->insert_id();
-		else
+		if ($this->db->insert($this->table, $data)) {
+			$id_insert = $this->db->insert_id();
+			$audit = array(
+				'model_id' => $id_insert,
+				'model' => $this->table,
+				'tipo' => 'C',
+				'user_id' => $this->session->user_id,
+				'antes' => null,
+				'depois' => json_encode($data, JSON_UNESCAPED_UNICODE),
+				'ip' => $this->input->ip_address(),
+				'created_at' => date('Y-m-d H:i:s'),
+			);
+			$this->db->insert($this->audit_table, $audit);
+			return $id_insert;
+		} else
 			return false;
 	}
 
@@ -45,11 +62,11 @@ class MY_Model extends CI_Model
 	 *
 	 * @return array
 	 */
-	function GetById($idname, $id)
+	function GetById($idName, $id)
 	{
 		if (is_null($id))
 			return false;
-		$this->db->where($idname, $id);
+		$this->db->where($idName, $id);
 		$query = $this->db->get($this->table);
 		if ($query->num_rows() > 0) {
 			return $query->row_array();
@@ -67,7 +84,7 @@ class MY_Model extends CI_Model
 	 *
 	 * @return array
 	 */
-	function GetAll($sort = 'id', $order = 'asc', $null = true, $where = false)
+	function GetAll($sort = '1', $order = 'asc', $null = true, $where = false)
 	{
 		if ($where) {
 			$this->db->where($where);
@@ -81,7 +98,7 @@ class MY_Model extends CI_Model
 		if ($query->num_rows() > 0) {
 			return $query->result_array();
 		} else {
-			return null;
+			return array();
 		}
 	}
 
@@ -95,12 +112,45 @@ class MY_Model extends CI_Model
 	 *
 	 * @return boolean
 	 */
-	function Update($idname, $id, $data)
+	function Update($id, $data)
 	{
+		$old = array();
+
+		$data_old = $this->GetById($this->pk_name, $id);
+//		echo "<pre>";
+//		print_r($data);
+//		print_r($data_old);
+		$data = array_diff($data, $data_old);
+//		print_r($data);
+		unset($data[$this->pk_name]);
+		unset($data['deleted_at']);
+
 		if (is_null($id) || !isset($data))
 			return false;
-		$this->db->where($idname, $id);
-		return $this->db->update($this->table, $data);
+		else {
+			$this->db->where($this->pk_name, $id);
+			if ($this->db->update($this->table, $data)) {
+
+				foreach ($data as $key => $v) {
+					$old[$key] = $data_old[$key];
+				}
+
+				$audit = array(
+					'model_id' => $id,
+					'model' => $this->table,
+					'tipo' => 'U',
+					'user_id' => $this->session->user_id,
+					'antes' => json_encode($old, JSON_UNESCAPED_UNICODE),
+					'depois' => json_encode($data, JSON_UNESCAPED_UNICODE),
+					'ip' => $this->input->ip_address(),
+					'created_at' => date('Y-m-d H:i:s'),
+				);
+
+				$this->db->insert($this->audit_table, $audit);
+
+				return $id;
+			}
+		}
 	}
 
 	/**
@@ -111,12 +161,36 @@ class MY_Model extends CI_Model
 	 *
 	 * @return boolean
 	 */
-	function DeleteLogico($idname, $id, $data)
+	function DeleteLogico($id)
 	{
+		$data_old = $this->GetById($this->pk_name, $id);
+		$data = array(
+			'deleted_at' => date('Y-m-d H:i:s')
+		);
+
 		if (is_null($id))
 			return false;
-		$this->db->where($idname, $id);
-		return $this->db->update($this->table, $data);
+		else {
+			$this->db->where($this->pk_name, $id);
+			if ($this->db->update($this->table, $data)) {
+				$audit = array(
+					'model_id' => $id,
+					'model' => $this->table,
+					'tipo' => 'D',
+					'user_id' => $this->session->user_id,
+					'antes' => json_encode($data_old, JSON_UNESCAPED_UNICODE),
+					'depois' => json_encode($data, JSON_UNESCAPED_UNICODE),
+					'ip' => $this->input->ip_address(),
+					'created_at' => date('Y-m-d H:i:s'),
+				);
+
+				$this->db->insert($this->audit_table, $audit);
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 	}
 
 	/**
@@ -127,12 +201,30 @@ class MY_Model extends CI_Model
 	 *
 	 * @return boolean
 	 */
-	function Delete($idname, $id)
+	function Delete($id)
 	{
+		$data_old = $this->GetById($this->pk_name, $id);
+
 		if (is_null($id))
 			return false;
-		$this->db->where($idname, $id);
-		return $this->db->delete($this->table);
+		$this->db->where($this->pk_name, $id);
+		if ($this->db->delete($this->table)) {
+			$audit = array(
+				'model_id' => $id,
+				'model' => $this->table,
+				'tipo' => 'D',
+				'user_id' => $this->session->user_id,
+				'antes' => json_encode($data_old, JSON_UNESCAPED_UNICODE),
+				'depois' => null,
+				'ip' => $this->input->ip_address(),
+				'created_at' => date('Y-m-d H:i:s'),
+			);
+
+			$this->db->insert($this->audit_table, $audit);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	function Datatables_Query($prefix = null, $where = false)
@@ -184,6 +276,8 @@ class MY_Model extends CI_Model
 		} else {
 			$this->db->where('deleted_at IS NULL ', null, false);
 		}
+
+
 	}
 
 	function Get_Datatables($prefix = null, $where = false)
@@ -192,6 +286,9 @@ class MY_Model extends CI_Model
 		if ($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);
 		$query = $this->db->get();
+		/*echo "<pre>";
+		print_r($this->db->last_query());
+		exit();*/
 		return $query->result();
 	}
 

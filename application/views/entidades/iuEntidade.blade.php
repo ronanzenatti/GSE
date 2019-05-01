@@ -114,7 +114,7 @@ $cor = (isset($obj['identidade'])) ? "warning" : "success";
 					</div>
 					<div class="col-sm-5">
 						<label for="email">E-mail</label>
-						<input type="text" class="form-control" id="email" name="email"
+						<input type="email" class="form-control" id="email" name="email"
 							   value="{{(isset($obj['email']) ? $obj['email'] : null)}}">
 					</div>
 				</div>

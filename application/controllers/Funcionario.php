@@ -70,15 +70,15 @@ class Funcionario extends CI_Controller
 		} else {
 			$obj['updated_at'] = date('Y-m-d H:i:s');
 			$usr['updated_at'] = date('Y-m-d H:i:s');
-
-			$this->fm->Update('idfuncionario', $id, $obj);
+			$this->fm->table = "funcionarios";
+			$this->fm->Update($id, $obj);
 
 			if (empty($usr['password']))
 				unset($usr['password']);
 
 			$id = $this->input->post('idusuario');
 
-			$this->um->Update('idusuario', $id, $usr);
+			$this->um->Update($id, $usr);
 		}
 
 		redirect('funcionario/');
@@ -87,7 +87,7 @@ class Funcionario extends CI_Controller
 	public function alterar($id)
 	{
 		$dados = Array();
-		$dados['obj'] = $this->fm->GetById('idfuncionario', $id);
+		$dados['obj'] = $this->fm->GetById('idfuncionario',$id);
 		$dados['obj']['dt_nasc'] = (!empty($dados['obj']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['dt_nasc'])) : null;
 		$dados['objU'] = $this->um->GetByFuncionario($id);
 		$dados['objC'] = $this->cm->GetById('idcargo', $dados['objU']['idcargo']);
@@ -98,11 +98,10 @@ class Funcionario extends CI_Controller
 	public function deletar()
 	{
 		$id = $this->input->post('id');
-		$dados = Array();
-		$dados['deleted_at'] = date('Y-m-d H:i:s');
-		$this->fm->Update('idfuncionario', $id, $dados);
+		$this->fm->DeleteLogico($id);
 		$obj = $this->um->GetByFuncionario($id);
 		$dados['active'] = 0;
+		$dados['deletec_at'] = date('Y-m-d H:i:s');
 		$this->um->Update('idusuario', $obj['idusuario'], $dados);
 	}
 

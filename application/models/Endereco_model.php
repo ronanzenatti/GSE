@@ -10,6 +10,7 @@ class Endereco_model extends MY_Model
 		$this->column_search = array('idendereco', 'descricao', 'logradouro', 'numero', 'bairro', 'cidade');
 		$this->order = array('idendereco');
 		$this->dates = array('dt_mudanca');
+		$this->pk_name = "idendereco";
 	}
 
 	public function enderecosPorAdolescente($idAdolescente)

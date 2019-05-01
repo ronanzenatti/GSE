@@ -6,6 +6,7 @@ class Adolescente_model extends MY_Model
 	{
 		parent::__construct();
 		$this->table = "adolescentes a";
+		$this->pk_name = 'idadolescente';
 		$this->column_order = array('a.idadolescente', 'a.nome', 'd.RG', 'a.responsavel');
 		//$this->column_order = array('idadolescente', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai', 'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at');
 		$this->column_search = array('a.idadolescente', 'a.nome', 'd.RG', 'a.responsavel');

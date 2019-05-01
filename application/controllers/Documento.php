@@ -33,7 +33,7 @@ class Documento extends CI_Controller
 			echo $this->dm->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->dm->Update('iddocumento', $form['iddocumento'], $form);
+			$this->dm->Update($form['iddocumento'], $form);
 			echo $form['iddocumento'];
 		}
 

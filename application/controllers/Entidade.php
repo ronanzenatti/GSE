@@ -25,7 +25,7 @@ class Entidade extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
-		$obj['nome'] = $this->input->post('nome');
+		$obj['nome'] = mb_strtoupper($this->input->post('nome'), 'UTF-8');
 		$obj['tipo'] = $this->input->post('tipo');
 		$obj['cnpj'] = $this->input->post('cnpj');
 		$obj['logradouro'] = $this->input->post('logradouro');
@@ -46,7 +46,7 @@ class Entidade extends CI_Controller
 			$this->em->Insert($obj);
 		} else {
 			$obj['updated_at'] = date('Y-m-d H:i:s');
-			$this->em->Update('identidade', $id, $obj);
+			$this->em->Update($id, $obj);
 		}
 		redirect('entidade/');
 	}
@@ -61,9 +61,7 @@ class Entidade extends CI_Controller
 	public function deletar()
 	{
 		$id = $this->input->post('id');
-		$entidades = Array();
-		$entidades['deleted_at'] = date('Y-m-d H:i:s');
-		return $this->em->Update('identidade', $id, $entidades);
+		return $this->em->DeleteLogico($id);
 	}
 
 

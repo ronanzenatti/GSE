@@ -49,7 +49,7 @@ class Endereco extends CI_Controller
 			echo $this->emm->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->emm->Update('idendereco', $form['idendereco'], $form);
+			$this->emm->Update($form['idendereco'], $form);
 			echo $form['idendereco'];
 		}
 	}
@@ -109,8 +109,6 @@ class Endereco extends CI_Controller
 	public function deletar()
 	{
 		$id = $this->input->post('id');
-		$obj = Array();
-		$obj['deleted_at'] = date('Y-m-d H:i:s');
-		return $this->emm->Update('idendereco', $id, $obj);
+		return $this->emm->DeleteLogico($id);
 	}
 }

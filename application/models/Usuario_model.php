@@ -15,6 +15,7 @@ class Usuario_model extends MY_Model
 			['tabela' => 'cargos c', 'juncao' => 'c.idcargo = u.idcargo', 'tipo' => 'INNER'],
 		);
 		$this->select = "f.idfuncionario, f.nome, c.nome AS cargo, u.email";
+		$this->pk_name = 'idusuario';
 	}
 
 	public function GetByFuncionario($idfuncionario)

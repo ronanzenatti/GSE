@@ -33,7 +33,7 @@ class Contato extends CI_Controller
 			echo $this->com->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->com->Update('idcontato', $form['idcontato'], $form);
+			$this->com->Update($form['idcontato'], $form);
 			echo $form['idcontato'];
 		}
 	}
@@ -97,9 +97,7 @@ class Contato extends CI_Controller
 	public function deletar()
 	{
 		$id = $this->input->post('id');
-		$obj = Array();
-		$obj['deleted_at'] = date('Y-m-d H:i:s');
-		return $this->com->Update('idcontato', $id, $obj);
+		return $this->com->DeleteLogico($id);
 	}
 
 	public $tipo = array(

@@ -12,7 +12,7 @@ class Pia extends CI_Controller
 		$this->load->model("Contato_model", "com");
 		$this->load->model("Endereco_model", "edm");
 		$this->load->model('Entidade_model', 'em');
-		$this->load->model('Pia_Model', 'pm');
+		$this->load->model('Pia_model', 'pm');
 	}
 
 	public function index()

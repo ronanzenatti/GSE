@@ -9,6 +9,7 @@ class Contato_model extends MY_Model
 		$this->column_order = array('idcontato', 'descricao', 'tipo_cont', 'contato');
 		$this->column_search = array('idcontato', 'descricao', 'tipo_cont', 'contato');
 		$this->order = array('idcontato');
+		$this->pk_name = 'idcontato';
 	}
 
 	public function contatosPorAdolescente($idAdolescente)

@@ -25,7 +25,7 @@ class Cargo extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
-		$obj['nome'] = $this->input->post('nome');
+		$obj['nome'] = mb_strtoupper($this->input->post('nome'), 'UTF-8');
 		$obj['descricao'] = $this->input->post('descricao');
 
 		if (empty($id)) {
@@ -34,7 +34,7 @@ class Cargo extends CI_Controller
 			$this->cm->Insert($obj);
 		} else {
 			$obj['updated_at'] = date('Y-m-d H:i:s');
-			$this->cm->Update('idcargo', $id, $obj);
+			$this->cm->Update($id, $obj);
 		}
 		redirect('cargo/');
 	}
@@ -49,9 +49,7 @@ class Cargo extends CI_Controller
 	public function deletar()
 	{
 		$id = $this->input->post('id');
-		$dados = Array();
-		$dados['deleted_at'] = date('Y-m-d H:i:s');
-		return $this->cm->Update('idcargo', $id, $dados);
+		return $this->cm->DeleteLogico($id);
 	}
 
 

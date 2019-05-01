@@ -53,7 +53,7 @@ class SituacaoHabitacional extends CI_Controller
 			$this->shm->Insert($obj);
 		} else {
 			$obj['updated_at'] = date('Y-m-d H:i:s');
-			$this->shm->Update('idsh', $id, $obj);
+			$this->shm->Update($id, $obj);
 		}
 		redirect('SituacaoHabitacional/');
 	}

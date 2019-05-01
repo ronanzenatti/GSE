@@ -10,5 +10,6 @@ class Cargo_model extends MY_Model
         $this->column_search = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
         $this->order = array('idcargo');
         $this->dates = array('created_at', 'updated_at', 'deleted_at');
+        $this->pk_name = 'idcargo';
     }
 }

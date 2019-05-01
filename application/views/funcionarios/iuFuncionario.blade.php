@@ -162,17 +162,17 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 			<div class="row">
 				<div class="col-sm-6">
 					<label for="email">E-mail:</label>
-					<input type="email" class="form-control" id="email" name="email" required
+					<input type="email" class="form-control" id="email" name="email" required autocomplete="off"
 						   value="{{(isset($objU['email']) ? $objU['email'] : null)}}">
 				</div>
 				<div class="col-sm-3">
 					<label for="senha">Senha:</label>
-					<input type="password" class="form-control" id="senha" name="senha" minlength="6"
+					<input type="password" class="form-control" id="senha" name="senha" minlength="6" autocomplete="off"
 							{{(!isset($obj['idfuncionario']) ? "required" : null)}} >
 				</div>
 				<div class="col-sm-3">
 					<label for="confirma">Confirme a Senha:</label>
-					<input type="password" class="form-control" id="confirma" name="confirma" minlength="6"
+					<input type="password" class="form-control" id="confirma" name="confirma" minlength="6" autocomplete="off"
 							{{(!isset($obj['idfuncionario']) ? "required" : null)}} >
 				</div>
 			</div>

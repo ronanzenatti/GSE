@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use Knp\Snappy\Pdf;
+//use Knp\Snappy\Pdf;
 
 class Adolescente extends CI_Controller
 {
@@ -55,7 +55,7 @@ class Adolescente extends CI_Controller
 			echo $this->am->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->am->Update('idadolescente', $form['idadolescente'], $form);
+			$this->am->Update($form['idadolescente'], $form);
 			echo $form['idadolescente'];
 		}
 	}
@@ -75,9 +75,7 @@ class Adolescente extends CI_Controller
 	public function deletar()
 	{
 		$id = $this->input->post('id');
-		$adolescentes = Array();
-		$adolescentes['deleted_at'] = date('Y-m-d H:i:s');
-		return $this->am->Update('idadolescente', $id, $adolescentes);
+		return $this->am->DeleteLogico($id);
 	}
 
 	public function Ajax_Datatables()

@@ -1,11 +1,13 @@
 @extends('template')
 <?php
-$cor = (isset($cf['idcf'])) ? "warning" : "success";
+$cor = "success";
 ?>
 @section('titulo', 'Composição Familiar')
 @section('subtitulo',' - '.$end['descricao'] )
 @section('box-color', 'box-' . $cor)
 @section('content')
+	<input name="idendereco" id="idendereco" type="hidden"
+		   value="{{(isset($end['idendereco']) ? $end['idendereco'] : null)}}"/>
 	<div class="row">
 		<div class="col-xs-12">
 			<h2 class="page-header" style="padding-right: 10px; padding-left: 10px; margin: 10px 0 0 0;">
@@ -19,49 +21,6 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 			</h2>
 		</div>
 	</div>
-	<form role="form" id="formFamilia" method="post" action="#">
-		<input name="idcf" id="idcf" type="hidden" value="{{(isset($cf['idcf']) ? $cf['idcf'] : null)}}"/>
-		<input name="idendereco" id="idendereco" type="hidden"
-			   value="{{(isset($end['idendereco']) ? $end['idendereco'] : null)}}"/>
-		<div class="box-body">
-			<div class="row">
-				<div class="col-sm-4">
-					<label for="recebe_beneficio">Recebe Benefício:</label>
-					<select class="form-control" id="recebe_beneficio" name="recebe_beneficio" required>
-						<option value=""> - SELECIONE -</option>
-						<option value="1">NÃO</option>
-						<option value="2">SIM</option>
-						<option value="3">Parou de Receber</option>
-					</select>
-				</div>
-				<div class="col-sm-8">
-					<label for="beneficios">Benefícios Recebidos:</label>
-					<input type="text" class="form-control" disabled id="beneficios" name="beneficios"
-						   value="{{(isset($cf['beneficios']) ? $cf['beneficios'] : null)}}">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<label for="obs">Observações:</label>
-					<textarea name="obs" id="obs"
-							  class="form-control">{{(isset($cf['obs']) ? $cf['obs'] : null)}}</textarea>
-				</div>
-			</div>
-		</div>
-		<div class="box-footer">
-			<div class="row">
-				<div class="col-sm-4 text-left">
-					<a href="{{base_url("adolescente")}}" class="btn btn-default">Voltar</a>
-				</div>
-				<div class="col-sm-4 text-center">
-
-				</div>
-				<div class="col-sm-4 text-right">
-					<button type="button" class="btn btn-{{$cor}}" id="salvaFamilia">Salvar</button>
-				</div>
-			</div>
-		</div>
-	</form>
 	<hr style="margin-top: 0px; margin-bottom: 0px;"/>
 	<div style="padding: 0 10px 0 10px;">
 		<h3><strong>Residentes no endereço</strong>
@@ -94,96 +53,27 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 	<script src="{{base_url()}}assets/bower_components/ckeditor/lang/pt-br.js"></script>
 
 	<script>
-		@if(isset($cf['idcf']))
-		$('#recebe_beneficio').val("{{$cf['recebe_beneficio']}}").trigger('change');
-		if ($('#recebe_beneficio').val() > 1) {
-			$('#beneficios').removeAttr('disabled');
-			$('#beneficios').prop('required', true);
-		} else {
-			$('#beneficios').val(null);
-			$('#beneficios').prop('disabled', true);
-			$('#beneficios').removeAttr('required');
-		}
-		$("#formFamilia").valid();
-		@endif
-
-		$('input[type="checkbox"].minimal-blue, input[type="radio"].minimal-blue').iCheck({
-			checkboxClass: 'icheckbox_minimal-blue',
-			radioClass: 'iradio_minimal-blue'
-		});
-		$("form").validate();
-
-		// CKEDITOR.replace('obs', {
-		// 	customConfig: 'config.js'
-		// });
-
-		$('#recebe_beneficio').on('change', function (e) {
-			if ($('#recebe_beneficio').val() > 1) {
-				$('#beneficios').removeAttr('disabled');
-				$('#beneficios').prop('required', true);
-			} else {
-				$('#beneficios').val(null);
-				$('#beneficios').prop('disabled', true);
-				$('#beneficios').removeAttr('required');
-			}
-			$("#formFamilia").valid();
-		});
-
-		$("#salvaFamilia").click(function (e) {
-			salvaFamilia();
-		});
+		$('body').addClass('sidebar-collapse');
 
 		$("#addResidente").click(function (e) {
-			if ($("#idcf").val() > 0) {
-				$('#showIUResidente').modal({
-					show: true,
-					keyboard: false,
-				});
-			} else {
-				swal({
-					type: "error",
-					animation: false,
-					customClass: 'animated tada',
-					title: 'Primeiro Salve a Familia!!!',
-					showConfirmButton: true,
-					//timer: 1500
-				});
-			}
-		});
 
-		function salvaFamilia() {
-			if ($("#formFamilia").valid()) {
-				$.ajax({
-					url: '/ComposicaoFamiliar/save',
-					type: 'POST',
-					data: {
-						form: $('#formFamilia').serialize(),
-					},
-					success: function (result) {
-						$("#idcf").val(result);
-						console.log(result);
-						swal({
-							position: 'top-end',
-							type: 'success',
-							title: 'Familia salva com Sucesso!!!',
-							showConfirmButton: true,
-							//timer: 1500
-						});
-					}
-				});
-			}
-		}
+			$('#showIUResidente').modal({
+				show: true,
+				keyboard: false,
+			});
+
+		});
 
 		function iuResidente(idR) {
 			$.ajax({
-				url: '/PessoaFamilia/alterar',
+				url: '/ComposicaoFamiliar/alterar',
 				type: 'POST',
 				data: {
-					idpf: idR,
+					idcf: idR,
 				},
 				success: function (result) {
 					var obj = JSON.parse(result);
-					$("#idpf").val(obj.idpf);
+					$("#idcf").val(obj.idcf);
 					$("#nome").val(obj.nome);
 					$("#parentesco").val(obj.parentesco).trigger('change');
 					$("#dt_nasc").val(obj.dt_nasc);
@@ -210,10 +100,10 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 			processing: true,
 			serverSide: true,
 			ajax: {
-				url: "{{base_url('PessoaFamilia/Ajax_Datatables')}}",
+				url: "{{base_url('ComposicaoFamiliar/Ajax_Datatables')}}",
 				type: "POST",
 				data: function (a) {
-					a.idcf = $("#idcf").val()
+					a.idendereco = $("#idendereco").val()
 				}
 			},
 			columnDefs: [
@@ -264,7 +154,7 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 				</div>
 				<div class="modal-body">
 					<form id="formResidente" role="form" action="#" method="post">
-						<input name="idpf" id="idpf" type="hidden"/>
+						<input name="idcf" id="idcf" type="hidden"/>
 						<div class="box-body">
 							<div class="row">
 								<div class="form-group">
@@ -416,21 +306,17 @@ $cor = (isset($cf['idcf'])) ? "warning" : "success";
 					});
 
 					$("#salvaResidente").click(function (e) {
-						if ($("#idcf").val() > 0) {
-							salvaResidente();
-						} else {
-							salvaFamilia();
-						}
+						salvaResidente();
 					});
 
 					function salvaResidente() {
 						if ($("#formResidente").valid()) {
 							$.ajax({
-								url: '/PessoaFamilia/save',
+								url: '/ComposicaoFamiliar/save',
 								type: 'POST',
 								data: {
 									form: $('#formResidente').serialize(),
-									idcf: $("#idcf").val()
+									idendereco: $("#idendereco").val()
 								},
 								success: function (result) {
 									$('#formResidente').each(function () {

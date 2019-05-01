@@ -11,5 +11,6 @@ class Entidade_model extends MY_Model
         $this->order = array('identidade');
         $this->dates = array('created_at', 'updated_at', 'deleted_at');
         $this->chars = array('tipo');
+        $this->pk_name = 'identidade';
     }
 }

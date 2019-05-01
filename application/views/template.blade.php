@@ -141,16 +141,21 @@
 						</span>
 					</a>
 					<ul class="treeview-menu">
-						<li class="active"><a href="{{base_url('entidade/')}}"><i class="fa fa-circle-o"></i>
-								Entidades</a>
+						<li class="active">
+							<a href="{{base_url('entidade/')}}"><i class="fa fa-circle-o"></i> Entidades</a>
 						</li>
-						<li class="active"><a href="{{base_url('cargo/')}}"><i class="fa fa-circle-o"></i>
-								Cargos</a>
+						<li class="active">
+							<a href="{{base_url('cargo/')}}"><i class="fa fa-circle-o"></i> Cargos</a>
 						</li>
-						<li class="active"><a href="{{base_url('funcionario/')}}"><i class="fa fa-circle-o"></i>
-								Funcionários</a>
+						<li class="active">
+							<a href="{{base_url('funcionario/')}}"><i class="fa fa-circle-o"></i> Funcionários</a>
 						</li>
 					</ul>
+				</li>
+				<li>
+					<a href="{{base_url('audit/')}}">
+						<i class="fa fa-eye"></i> <span>Auditoria</span>
+					</a>
 				</li>
 				<li>
 					<a href="https://goo.gl/forms/x9wcoIDNRsmlf1eH2" target="_blank">
@@ -224,8 +229,9 @@
 <script src="{{base_url('assets/')}}bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"
-		charset="UTF-8"></script>
+<script
+	src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"
+	charset="UTF-8"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{base_url('assets/')}}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->

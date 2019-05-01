@@ -14,5 +14,6 @@ class Funcionario_model extends MY_Model
 			['tabela' => 'entidades e', 'juncao' => 'e.identidade = f.identidade', 'tipo' => 'INNER']
 		);
 		$this->select = "f.idfuncionario, f.nome, e.nome AS entidade, f.telefones";
+		$this->pk_name = 'idfuncionario';
 	}
 }

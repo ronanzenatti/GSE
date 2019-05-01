@@ -76,11 +76,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn' => '',
 	//'hostname' => 'gse_elo.mysql.dbaas.com.br',
-	//'username' => 'gse_elo',
-	//'password' => 'n2gm2772',
+
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'n2gm2772',
 
 	'database' => 'gse_elo',
 	'dbdriver' => 'mysqli',
