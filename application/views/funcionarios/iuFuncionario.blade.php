@@ -7,7 +7,7 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 @section('box-color', 'box-' . $cor)
 
 @section('content')
-	<form role="form" action="{{base_url('funcionario/save')}}" method="post">
+	<form role="form" action="{{base_url('funcionario/save')}}" method="post" autocomplete="off">
 		<input name="id_" id="id_" type="hidden"
 			   value="{{(isset($obj['idfuncionario']) ? $obj['idfuncionario'] : null)}}"/>
 		<div class="box-body">
