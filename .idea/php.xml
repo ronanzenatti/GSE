@@ -35,6 +35,8 @@
       <path value="$PROJECT_DIR$/vendor/xiaoler/blade" />
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/rvanlaak/wkhtmltopdf-amd64-centos7" />
+      <path value="$PROJECT_DIR$/vendor/h4cc/wkhtmltopdf-i386" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7" />

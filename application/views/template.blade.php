@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,9 +80,12 @@
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
 					<!-- Notifications: style can be found in dropdown.less -->
-
+					<li>
+						<a href="#"><strong>Ultimo login:</strong> ???? </a>
+					</li>
 					<!-- User Account: style can be found in dropdown.less -->
 					<li class="dropdown user user-menu">
+
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<img src="{{base_url('assets/img/user_padrao.png')}}" class="user-image"
 								 alt="User Image">
@@ -98,6 +101,7 @@
 									<small>{{$_SESSION['entidade_nome']}}</small>
 								</p>
 							</li>
+
 							<!-- Menu Footer-->
 							<li class="user-footer">
 								{{--<div class="pull-left">--}}
