@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="shortcut icon" href="{{base_url('assets/')}}/img/favicon.ico"/>
-	<title>Software GSE</title>
+	<title>Software ELO</title>
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
@@ -68,7 +68,7 @@
 			<div id="infoMessage" class="alert alert-danger">{!!$_SESSION['message']!!}</div>
 		@endif
 
-		<form action="{{base_url('auth/login')}}" method="post" accept-charset="utf-8">
+		<form action="{{base_url('Auth/login')}}" method="post" accept-charset="utf-8">
 			<div class="form-group has-feedback">
 				<input type="email" class="form-control" placeholder="E-mail" name="identity" id="identity">
 				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
