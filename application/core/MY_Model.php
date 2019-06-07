@@ -15,6 +15,7 @@ class MY_Model extends CI_Model
 
     //Dados de Auditoria
     var $audit_table = 'audit';
+    var $exclude = false;
 
 
     /**
@@ -39,17 +40,19 @@ class MY_Model extends CI_Model
             return false;
         if ($this->db->insert($this->table, $data)) {
             $id_insert = $this->db->insert_id();
-            $audit = array(
-                'model_id' => $id_insert,
-                'model' => $this->table,
-                'tipo' => 'C',
-                'user_id' => $this->session->user_id,
-                'antes' => null,
-                'depois' => json_encode($data, JSON_UNESCAPED_UNICODE),
-                'ip' => $this->input->ip_address(),
-                'created_at' => date('Y-m-d H:i:s'),
-            );
-            $this->db->insert($this->audit_table, $audit);
+            if(!$this->exclude) {
+				$audit = array(
+					'model_id' => $id_insert,
+					'model' => $this->table,
+					'tipo' => 'C',
+					'user_id' => $this->session->user_id,
+					'antes' => null,
+					'depois' => json_encode($data, JSON_UNESCAPED_UNICODE),
+					'ip' => $this->input->ip_address(),
+					'created_at' => date('Y-m-d H:i:s'),
+				);
+				$this->db->insert($this->audit_table, $audit);
+			}
             return $id_insert;
         } else
             return false;

@@ -15,7 +15,8 @@
 		"xiaoler/blade": "^5.4",
 		"mpdf/mpdf": "^8.0",
 		"ext-json": "*",
-		"ext-mbstring": "*"
+		"ext-mbstring": "*",
+		"sinergi/browser-detector": "^6.1"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
@@ -25,4 +26,3 @@
 		"phpunit/phpunit": "4.* || 5.*"
 	}
 }
-

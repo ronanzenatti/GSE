@@ -81,7 +81,9 @@
 				<ul class="nav navbar-nav">
 					<!-- Notifications: style can be found in dropdown.less -->
 					<li>
-						<a href="#"><strong>Ultimo login:</strong> ???? </a>
+						<a href="{{base_url("HistoricoLogins/")}}">
+							<strong>Ultimo login:</strong> {{date('d/m/Y H:i:s', $_SESSION['old_last_login'])}}
+						</a>
 					</li>
 					<!-- User Account: style can be found in dropdown.less -->
 					<li class="dropdown user user-menu">
