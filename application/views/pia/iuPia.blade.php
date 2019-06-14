@@ -7,7 +7,7 @@ $cor = (isset($obj['idcargo'])) ? "warning" : "success";
 @section('box-color', 'box-' . $cor)
 
 <style>
-	.list-group{
+	.list-group {
 		padding-right: 5px;
 		border-right: 1px solid #000;
 	}
@@ -18,11 +18,9 @@ $cor = (isset($obj['idcargo'])) ? "warning" : "success";
 		<div class="col-sm-3">
 			<div class="list-group">
 				<a href="#" class="list-group-item active">
-					Dados do P. I. A.
+					Dados do P. I. A. / Processo Judicial
 				</a>
-				<a href="#" class="list-group-item">Situação Processual</a>
-				<a href="#" class="list-group-item">Situação Habitacional</a>
-				<a href="#" class="list-group-item">Composição Familiar</a>
+				<a href="#" class="list-group-item">Situação Habitacional / Composição Familiar</a>
 				<a href="#" class="list-group-item">Rede de Serviços</a>
 				<a href="#" class="list-group-item">Histórico Familiar</a>
 				<a href="#" class="list-group-item">Histórico do Adolescente</a>
@@ -34,7 +32,7 @@ $cor = (isset($obj['idcargo'])) ? "warning" : "success";
 				<a href="#" class="list-group-item">Planejamento dos Atendimentos</a>
 			</div>
 		</div>
-		<div class="col-sm-9">
+		<div class="col-sm-9" id="formularios">
 
 			<form role="form" action="{{base_url('cargo/save')}}" method="post">
 				<input name="id_" id="id_" type="hidden" value="{{(isset($obj['idcargo']) ? $obj['idcargo'] : null)}}"/>

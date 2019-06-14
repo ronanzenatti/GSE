@@ -86,8 +86,8 @@ class Funcionario extends CI_Controller
 
     public function alterar($id)
     {
-        $this->fm->table = "funcionarios";
-        $this->um->table = "usuarios";
+//        $this->fm->table = "funcionarios";
+//        $this->um->table = "usuarios";
         $dados = Array();
         $dados['obj'] = $this->fm->GetById('idfuncionario', $id);
         $dados['obj']['dt_nasc'] = (!empty($dados['obj']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['dt_nasc'])) : null;

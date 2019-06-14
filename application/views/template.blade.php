@@ -134,11 +134,11 @@
 						<i class="fa fa-user"></i> <span>Adolescentes</span>
 					</a>
 				</li>
-				<li>
-					<a href="{{base_url('pia/')}}">
-						<i class="fa fa-file-powerpoint-o"></i> <span>P. I. A.</span>
-					</a>
-				</li>
+{{--				<li>--}}
+{{--					<a href="{{base_url('pia/')}}">--}}
+{{--						<i class="fa fa-file-powerpoint-o"></i> <span>P. I. A.</span>--}}
+{{--					</a>--}}
+{{--				</li>--}}
 				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info"></i> <span>Cadastros</span>
