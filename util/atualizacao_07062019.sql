@@ -69,9 +69,9 @@ DROP TABLE `pessoa_familia`;
 --
 -- Ajustes na tabela `situacao_habitacional`
 --
-ALTER TABLE `situacao_habitacional` COLUMN `qtde_comodos` tinyint(4) DEFAULT NULL;
-ALTER TABLE `situacao_habitacional` COLUMN `espaco` decimal(10,2) UNSIGNED DEFAULT NULL;
-ALTER TABLE `situacao_habitacional` COLUMN `qtde_pessoas` tinyint(4) DEFAULT NULL;
+ALTER TABLE `situacao_habitacional` MODIFY `qtde_comodos` tinyint(4) DEFAULT NULL;
+ALTER TABLE `situacao_habitacional` MODIFY `espaco` decimal(10,2) UNSIGNED DEFAULT NULL;
+ALTER TABLE `situacao_habitacional` MODIFY `qtde_pessoas` tinyint(4) DEFAULT NULL;
 
 
 

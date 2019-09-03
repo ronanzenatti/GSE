@@ -25,6 +25,11 @@ class Pia extends CI_Controller
 		$this->blade->view('pia/iuPia');
 	}
 
+	public function elaboracao()
+	{
+		$this->blade->view('pia/bodyPia');
+	}
+
 	public function Ajax_Datatables()
 	{
 		$list = $this->pm->Get_Datatables('p');

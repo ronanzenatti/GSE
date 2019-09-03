@@ -134,11 +134,11 @@
 						<i class="fa fa-user"></i> <span>Adolescentes</span>
 					</a>
 				</li>
-{{--				<li>--}}
-{{--					<a href="{{base_url('pia/')}}">--}}
-{{--						<i class="fa fa-file-powerpoint-o"></i> <span>P. I. A.</span>--}}
-{{--					</a>--}}
-{{--				</li>--}}
+				<li>
+					<a href="{{base_url('pia/')}}">
+						<i class="fa fa-file-powerpoint-o"></i> <span>P. I. A.</span>
+					</a>
+				</li>
 				<li class="treeview">
 					<a href="#">
 						<i class="fa fa-info"></i> <span>Cadastros</span>
@@ -178,7 +178,7 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				<strong>@yield('titulo', "Menu Principal")
+				<strong>@yield('titulo', "Menu Principal") <span class="text-danger">@yield('moreInfo', '')</span>
 					<small class="text-danger">@yield('subtitulo')</small>
 				</strong>
 			</h1>
@@ -198,7 +198,7 @@
 	</div>
 	<!-- /.content-wrapper -->
 	<footer class="main-footer">
-		<div class="pull-right hidden-xs"><b>Version</b> 0.1.0</div>
+		<div class="pull-right hidden-xs"><b>Version</b> 0.3.0</div>
 		<strong>Copyright &copy; 2018 <a target="_blank" href="http://www.etecibitinga.com.br">
 				ETEC de Ibitinga</a>.</strong> Todos os direitos reservados.
 	</footer>
