@@ -80,7 +80,6 @@ $db['default'] = array(
 	'hostname' => '127.0.0.1',
 	'username' => 'root',
 	'password' => ''
-	
 	'database' => 'gse_elo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
