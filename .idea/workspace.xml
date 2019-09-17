@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="975174bc-0a81-4eaa-8fc5-6cf09dd02213" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/models/Cargo_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Cargo_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/funcionarios/listar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/funcionarios/listar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/template.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/access.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,17 +98,17 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/application/views/historico_logins" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/application/views/teste" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/application/views/historico_logins" />
-      <recent name="$PROJECT_DIR$/application/models" />
+      <recent name="$PROJECT_DIR$/application/views/teste" />
       <recent name="$PROJECT_DIR$/application/controllers" />
+      <recent name="$PROJECT_DIR$/application/models" />
+      <recent name="$PROJECT_DIR$/application/views/historico_logins" />
       <recent name="$PROJECT_DIR$/system" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -278,7 +281,11 @@
       <workItem from="1561433940428" duration="600000" />
       <workItem from="1567537042863" duration="1643000" />
       <workItem from="1567539135895" duration="594000" />
-      <workItem from="1567540546194" duration="978000" />
+      <workItem from="1567540546194" duration="1491000" />
+      <workItem from="1568401334357" duration="197000" />
+      <workItem from="1568401545507" duration="1693000" />
+      <workItem from="1568403287466" duration="9058000" />
+      <workItem from="1568755474611" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="Deppin to Ubuntu">
       <created>1556730083538</created>
@@ -315,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567541772839</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Atualizacao">
+      <created>1567543681276</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1567543681276</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
