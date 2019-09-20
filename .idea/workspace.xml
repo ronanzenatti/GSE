@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="975174bc-0a81-4eaa-8fc5-6cf09dd02213" name="Default Changelist" comment="">
+    <list default="true" id="975174bc-0a81-4eaa-8fc5-6cf09dd02213" name="Default Changelist" comment="Install validado com Auditoria e Renovação das tabelas funcionando.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Cargo_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Cargo_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/funcionarios/listar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/funcionarios/listar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/template.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/template.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/Install.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Install.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/access.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +30,12 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="gse_elo@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="Git.Settings">
@@ -88,6 +92,7 @@
   </component>
   <component name="ProjectId" id="1QL9hOFLS2hC6uDZFwchBrcX3I7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
@@ -233,6 +238,26 @@
       </list>
     </option>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@49ac7658" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@49ac7658" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@18dde772" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -285,7 +310,8 @@
       <workItem from="1568401334357" duration="197000" />
       <workItem from="1568401545507" duration="1693000" />
       <workItem from="1568403287466" duration="9058000" />
-      <workItem from="1568755474611" duration="32000" />
+      <workItem from="1568755474611" duration="99000" />
+      <workItem from="1569002772026" duration="6862000" />
     </task>
     <task id="LOCAL-00001" summary="Deppin to Ubuntu">
       <created>1556730083538</created>
@@ -329,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567543681276</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="BD novo">
+      <created>1568755539544</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1568755539544</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,6 +388,7 @@
     <MESSAGE value="Historico Login ok" />
     <MESSAGE value="Bug Alteração Funcionários" />
     <MESSAGE value="Atualizacao" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualizacao" />
+    <MESSAGE value="BD novo" />
+    <option name="LAST_COMMIT_MESSAGE" value="BD novo" />
   </component>
 </project>

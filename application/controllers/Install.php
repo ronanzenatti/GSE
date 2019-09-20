@@ -18,9 +18,14 @@ class Install extends CI_Controller
 
 	public function index()
 	{
+
 		$adm = $this->um->GetById('email', 'ronan.zenatti@etec.sp.gov.br');
 
+		$this->session->sess_destroy();
+
 		if (!$adm) {
+
+			$this->session->set_userdata('user_id', '1');
 
 			$entidade = array(
 				'nome' => 'ETEC de Ibitinga',
@@ -87,32 +92,22 @@ class Install extends CI_Controller
 
 	}
 
-	public function renew()
+	function renew()
 	{
+		$dis = $this->db->query("SET FOREIGN_KEY_CHECKS=0;");
 
-		$sql = "SET FOREIGN_KEY_CHECKS = 0; ";
-		$sql .= "
-				TRUNCATE adolescentes;
-				TRUNCATE cargos;
-				TRUNCATE composicao_familiar;
-				TRUNCATE contatos;
-				TRUNCATE documentos;
-				TRUNCATE enderecos;
-				TRUNCATE entidades;
-				TRUNCATE funcionarios;
-				TRUNCATE login_attempts;
-				TRUNCATE pessoa_familia;
-				TRUNCATE situacao_habitacional;
-				TRUNCATE trabalhos;
-				TRUNCATE usuarios;";
-		$sql .= "SET FOREIGN_KEY_CHECKS = 1; ";
-		if ($this->db->simple_query($sql)) {
-			echo "<h1>Banco Limpo com Sucesso!!!</h1>";
-			//redirect("/install");
-		} else {
-			echo "<h1>Erro!!!</h1>";
-			print_r($error = $this->db->error()); // Has keys 'code' and 'message'
+		$query = $this->db->query("SHOW TABLES");
+		$name = $this->db->database;
+		foreach ($query->result_array() as $row) {
+			$table = $row['Tables_in_' . $name];
+			$this->db->query("TRUNCATE " . $table);
+			$this->db->query("ALTER TABLE " . $table . " AUTO_INCREMENT = 1");
 		}
+
+		$this->session->sess_destroy();
+
+		$dis = $this->db->query("SET FOREIGN_KEY_CHECKS=1;");
+		redirect('/');
 	}
 
 }
