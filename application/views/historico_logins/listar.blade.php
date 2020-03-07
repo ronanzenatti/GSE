@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 @section('titulo', 'Histórico de Logins do Usuário')
 
 @section('content')

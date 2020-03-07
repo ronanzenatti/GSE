@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 @section('titulo', 'Listar Planos Individuais de Atendimento (P. I. A.)')
 
 @section('content')

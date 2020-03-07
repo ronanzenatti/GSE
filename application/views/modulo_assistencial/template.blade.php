@@ -60,7 +60,7 @@
 	<link rel="stylesheet"
 		  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini ">
+<body class="hold-transition skin-black sidebar-mini ">
 <div class="wrapper">
 	<header class="main-header">
 		<!-- Logo -->
@@ -76,7 +76,7 @@
 			<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
 				<span class="sr-only">Toggle navigation</span>
 			</a>
-			<b class="hidden-xs navbar-corp-name">{{$_SESSION['entidade_nome']}}</b>
+			<b style="color: #333" class="hidden-xs navbar-corp-name">{{$_SESSION['entidade_nome']}}</b>
 			<div class="navbar-custom-menu">
 				<ul class="nav navbar-nav">
 					<!-- Notifications: style can be found in dropdown.less -->

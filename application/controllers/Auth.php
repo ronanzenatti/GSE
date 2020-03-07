@@ -18,7 +18,7 @@ class Auth extends CI_Controller
 
 		$this->lang->load('auth');
 	}
-
+	
 	/**
 	 * Redirect if needed, otherwise display the user list
 	 */
@@ -47,7 +47,7 @@ class Auth extends CI_Controller
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->idusuario)->result();
 			}
-			redirect('Principal/index', $this->data);
+			redirect('principal/', $this->data);
 		}
 	}
 
@@ -73,7 +73,10 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('Principal/');
+				// redirect('principal/');
+				
+				redirect('principal/');
+
 			}
 			else
 			{
@@ -130,7 +133,7 @@ class Auth extends CI_Controller
 
 		if (!$this->ion_auth->logged_in())
 		{
-			//redirect('auth/login');
+		//redirect('auth/login');
 			$this->blade->view('auth/login');
 		}
 

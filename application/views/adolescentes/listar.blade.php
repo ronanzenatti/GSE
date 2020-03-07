@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 @section('titulo', 'Listar Adolescentes')
 
 @section('content')
@@ -259,4 +259,3 @@
 		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal Contatos -->
 @endsection
-
