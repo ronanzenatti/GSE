@@ -53,10 +53,10 @@ class ComposicaoFamiliar extends CI_Controller
 	{
 
 		$dados = array();
-		$dados['end'] = $this->edm->GetById('idendereco', $id);
-		$dados['ado'] = $this->am->GetById('idadolescente', $dados['end']['idadolescente']);
-		$dados['doc'] = $this->dm->GetById('idadolescente', $dados['end']['idadolescente']);
-		$dados['cf'] = $this->cfm->GetById('idendereco', $dados['end']['idendereco']);
+		$dados['end'] = $this->edm->GetById('id_endereco', $id);
+		$dados['ado'] = $this->am->GetById('id_adolescente', $dados['end']['adolescente_id']);
+		$dados['doc'] = $this->dm->GetById('adolescente_id', $dados['end']['adolescente_id']);
+		$dados['cf'] = $this->cfm->GetById('endereco_id', $dados['end']['id_endereco']);
 
 
 		$this->blade->view('composicao_familiar/iuCF', $dados);
@@ -66,7 +66,7 @@ class ComposicaoFamiliar extends CI_Controller
 	{
 		$idendereco = (empty($this->input->post('idendereco'))) ? 0 : $this->input->post('idendereco');
 		$listar = (empty($this->input->post('listar'))) ? 1 : 0;
-		$where = array("idendereco" => $idendereco);
+		$where = array("id_endereco" => $idendereco);
 		$list = $this->cfm->Get_Datatables(null, $where);
 		$data = array();
 		$no = $_POST['start'];
@@ -84,9 +84,9 @@ class ComposicaoFamiliar extends CI_Controller
 			$row[] = number_format($obj->renda, 2, ',', '.');
 			$row[] = $obj->telefones;
 			if ($listar) {
-				$btns = "<button type='button' onclick='iuResidente($obj->idcf)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+				$btns = "<button type='button' onclick='iuResidente($obj->id_cf)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
 			}
-			$btns .= " <button type='button' onclick='deletarRegistro(\"ComposicaoFamiliar\", " . $obj->idcf . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			$btns .= " <button type='button' onclick='deletarRegistro(\"ComposicaoFamiliar\", " . $obj->id_cf . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
 
 			$data[] = $row;
@@ -105,7 +105,7 @@ class ComposicaoFamiliar extends CI_Controller
 	{
 		parse_str($this->input->post('form'), $form);
 
-		$form['idendereco'] = $this->input->post('idendereco');
+		$form['id_endereco'] = $this->input->post('idendereco');
 
 		$form['nome'] = mb_strtoupper($form['nome'], 'UTF-8');
 
@@ -120,21 +120,21 @@ class ComposicaoFamiliar extends CI_Controller
 			$form['dt_nasc'] = date('Y-m-d', strtotime(str_replace("/", "-", $form['dt_nasc'])));
 		}
 
-		if (empty($form['idcf'])) {
+		if (empty($form['id_cf'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');
 			echo $this->cfm->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->cfm->Update($form['idcf'], $form);
-			echo $form['idcf'];
+			$this->cfm->Update($form['id_cf'], $form);
+			echo $form['id_cf'];
 		}
 	}
 
 	public function alterar()
 	{
 		$id = $this->input->post('idcf');
-		$dados = $this->cfm->GetById('idcf', $id);
+		$dados = $this->cfm->GetById('id_cf', $id);
 		$dados['renda'] = number_format($dados['renda'], 2, ',', '.');
 		$dados['dt_nasc'] = date('d/m/Y', strtotime($dados['dt_nasc']));
 		echo json_encode($dados);

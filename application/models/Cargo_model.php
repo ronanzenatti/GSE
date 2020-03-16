@@ -7,10 +7,10 @@ class Cargo_model extends MY_Model
         parent::__construct();
 
         $this->table = "cargos";
-        $this->column_order = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->column_search = array('idcargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
-        $this->order = array('idcargo');
+        $this->column_order = array('id_cargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
+        $this->column_search = array('id_cargo', 'nome', 'descricao', 'created_at', 'updated_at', 'deleted_at');
+        $this->order = array('id_cargo');
         $this->dates = array('created_at', 'updated_at', 'deleted_at');
-        $this->pk_name = 'idcargo';
+        $this->pk_name = 'id_cargo';
     }
 }

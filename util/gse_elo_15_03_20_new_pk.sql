@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Mar-2020 às 22:21
--- Versão do servidor: 10.4.10-MariaDB
--- versão do PHP: 7.3.12
+-- Tempo de geração: 16-Mar-2020 às 18:15
+-- Versão do servidor: 10.4.11-MariaDB
+-- versão do PHP: 7.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -23,6 +23,7 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `gse_elo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `gse_elo`;
+
 -- --------------------------------------------------------
 
 --
@@ -30,7 +31,7 @@ USE `gse_elo`;
 --
 
 CREATE TABLE `adolescentes` (
-  `idadolescente` bigint(20) UNSIGNED NOT NULL,
+  `id_adolescente` bigint(20) UNSIGNED NOT NULL,
   `nome` varchar(191) DEFAULT NULL,
   `dt_nasc` date DEFAULT NULL,
   `nome_tratamento` varchar(50) DEFAULT NULL,
@@ -38,12 +39,6 @@ CREATE TABLE `adolescentes` (
   `estado_civil` char(1) DEFAULT NULL,
   `natural` varchar(50) DEFAULT NULL,
   `responsavel` varchar(150) DEFAULT NULL,
-  `pai` varchar(150) DEFAULT NULL,
-  `pai_nasc` date DEFAULT NULL,
-  `pai_natural` varchar(50) DEFAULT NULL,
-  `mae` varchar(150) DEFAULT NULL,
-  `mae_nasc` date DEFAULT NULL,
-  `mae_natural` varchar(50) DEFAULT NULL,
   `obs` text DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -57,8 +52,8 @@ CREATE TABLE `adolescentes` (
 --
 
 CREATE TABLE `audit` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `model_id` int(10) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL,
   `model` varchar(50) NOT NULL,
   `tipo` char(1) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
@@ -74,8 +69,10 @@ CREATE TABLE `audit` (
 --
 
 INSERT INTO `audit` (`id`, `model_id`, `model`, `tipo`, `user_id`, `antes`, `depois`, `ip`, `created_at`, `deleted_at`) VALUES
-(110, 6, 'cargos', 'C', 1, NULL, '{\"nome\":\"IASDI\",\"descricao\":\"Teste\",\"created_at\":\"2019-09-20 16:11:56\",\"updated_at\":\"2019-09-20 16:11:56\"}', '127.0.0.1', '2019-09-20 16:11:56', NULL),
-(111, 6, 'cargos', 'D', 1, '{\"idcargo\":\"6\",\"nome\":\"IASDI\",\"descricao\":\"Teste\",\"created_at\":\"2019-09-20 16:11:56\",\"updated_at\":\"2019-09-20 16:11:56\",\"deleted_at\":null}', '{\"deleted_at\":\"2019-09-20 16:12:27\"}', '127.0.0.1', '2019-09-20 16:12:27', NULL);
+(1, 1, 'entidades', 'C', 1, NULL, '{\"nome\":\"ETEC de Ibitinga\",\"cnpj\":\"62.823.257\\/0161-02\",\"tipo\":\"R\",\"logradouro\":\"Rua Rosalbino Tucci\",\"numero\":\"431\",\"bairro\":\"Centro\",\"cidade\":\"Ibitinga\",\"estado\":\"SP\",\"cep\":\"14.940-000\",\"telefones\":\"(16) 3341-7046 \\/ 3342-6039\",\"email\":\"e161dir@cps.sp.gov.br\",\"responsavel\":\"Patricia\",\"resp_tel\":\"(16) 3341-7046\",\"resp_email\":\"e161dir@cps.sp.gov.br\",\"created_at\":\"2020-03-16 14:13:37\",\"updated_at\":\"2020-03-16 14:13:37\"}', '127.0.0.1', '2020-03-16 14:13:37', NULL),
+(2, 1, 'cargos', 'C', 1, NULL, '{\"nome\":\"Administrador\",\"descricao\":\"Administrador do Sistema\",\"created_at\":\"2020-03-16 14:13:37\",\"updated_at\":\"2020-03-16 14:13:37\"}', '127.0.0.1', '2020-03-16 14:13:37', NULL),
+(3, 1, 'funcionarios', 'C', 1, NULL, '{\"nome\":\"Ronan Adriel Zenatti\",\"dt_nasc\":\"1988-02-25\",\"sexo\":\"M\",\"cpf\":\"355.936.478-79\",\"rg\":\"41.324.990-6\",\"registro\":\"57852\",\"logradouro\":\"Rua dos Lavradores\",\"numero\":\"302\",\"bairro\":\"Centro\",\"cidade\":\"Boracéia\",\"estado\":\"SP\",\"cep\":\"17.270-000\",\"telefones\":\"(14) 9 8157-5657\",\"obs\":\"Cadastro Automático.\",\"entidade_id\":1,\"created_at\":\"2020-03-16 14:13:37\",\"updated_at\":\"2020-03-16 14:13:37\"}', '127.0.0.1', '2020-03-16 14:13:37', NULL),
+(4, 1, 'usuarios', 'C', 1, NULL, '{\"ip_address\":\"127.0.0.1\",\"cargo_id\":1,\"email\":\"ronan.zenatti@etec.sp.gov.br\",\"password\":\"$2y$08$fU0TxeSd\\/iW9iZfuwDSVW.s4d.Gou7llcjyok7us5Dy1sIvnAX2vu\",\"active\":1,\"termo\":1,\"funcionario_id\":1,\"created_at\":\"2020-03-16 14:13:37\",\"updated_at\":\"2020-03-16 14:13:37\"}', '127.0.0.1', '2020-03-16 14:13:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -84,7 +81,7 @@ INSERT INTO `audit` (`id`, `model_id`, `model`, `tipo`, `user_id`, `antes`, `dep
 --
 
 CREATE TABLE `cargos` (
-  `idcargo` bigint(20) UNSIGNED NOT NULL,
+  `id_cargo` bigint(20) UNSIGNED NOT NULL,
   `nome` varchar(100) NOT NULL,
   `descricao` varchar(191) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -96,10 +93,8 @@ CREATE TABLE `cargos` (
 -- Extraindo dados da tabela `cargos`
 --
 
-INSERT INTO `cargos` (`idcargo`, `nome`, `descricao`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Administrador', 'Administrador do Sistema', '2019-03-15 11:16:13', '2019-03-15 11:16:13', NULL),
-(2, 'Orientadora de Medida Socioeducativa', '', '2019-03-15 11:21:44', '2019-03-15 11:21:44', NULL),
-(6, 'IASDI', 'Teste', '2019-09-20 16:11:56', '2019-09-20 16:11:56', '2019-09-20 16:12:27');
+INSERT INTO `cargos` (`id_cargo`, `nome`, `descricao`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Administrador', 'Administrador do Sistema', '2020-03-16 14:13:37', '2020-03-16 14:13:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -108,8 +103,8 @@ INSERT INTO `cargos` (`idcargo`, `nome`, `descricao`, `created_at`, `updated_at`
 --
 
 CREATE TABLE `composicao_familiar` (
-  `idcf` bigint(20) UNSIGNED NOT NULL,
-  `idendereco` bigint(20) UNSIGNED NOT NULL,
+  `id_cf` bigint(20) UNSIGNED NOT NULL,
+  `endereco_id` bigint(20) UNSIGNED NOT NULL,
   `nome` varchar(191) NOT NULL,
   `parentesco` tinyint(4) NOT NULL COMMENT '(Própria / Mãe / Pai / Madastra / Padastro / Irmã(o) / Avó(Avo) / Tia(o) / Prima(o) / Outros)',
   `dt_nasc` date NOT NULL,
@@ -149,12 +144,12 @@ CREATE TABLE `composicao_familiar1` (
 --
 
 CREATE TABLE `contatos` (
-  `idcontato` bigint(20) UNSIGNED NOT NULL,
+  `id_contato` bigint(20) UNSIGNED NOT NULL,
+  `adolescente_id` bigint(20) UNSIGNED NOT NULL,
   `descricao` varchar(50) DEFAULT NULL,
   `tipo_cont` char(1) DEFAULT NULL,
   `contato` varchar(191) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT NULL,
-  `idadolescente` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -167,25 +162,25 @@ CREATE TABLE `contatos` (
 --
 
 CREATE TABLE `documentos` (
-  `iddocumento` bigint(20) UNSIGNED NOT NULL,
+  `id_documento` bigint(20) UNSIGNED NOT NULL,
+  `adolescente_id` bigint(20) UNSIGNED NOT NULL,
   `cert_nasc` int(11) DEFAULT NULL,
   `cert_livro` varchar(10) DEFAULT NULL,
   `cert_folhas` varchar(15) DEFAULT NULL,
   `cert_cartorio` varchar(150) DEFAULT NULL,
   `bairro_cartorio` varchar(50) DEFAULT NULL,
   `municipio_cartorio` varchar(50) DEFAULT NULL,
-  `RG` varchar(20) DEFAULT NULL,
-  `RG_emissao` date DEFAULT NULL,
-  `CTPS` int(11) DEFAULT NULL,
-  `CTPS_serie` varchar(15) DEFAULT NULL,
-  `CPF` varchar(20) DEFAULT NULL,
+  `rg` varchar(20) DEFAULT NULL,
+  `rg_emissao` date DEFAULT NULL,
+  `ctps` int(11) DEFAULT NULL,
+  `ctps_serie` varchar(15) DEFAULT NULL,
+  `cpf` varchar(20) DEFAULT NULL,
   `titulo_eleitor` varchar(20) DEFAULT NULL,
   `te_secao` int(11) DEFAULT NULL,
   `te_zona` int(11) DEFAULT NULL,
-  `CAM` varchar(20) DEFAULT NULL,
-  `CDI_CR` varchar(20) DEFAULT NULL,
-  `providenciar` varchar(191) DEFAULT NULL,
-  `idadolescente` bigint(20) UNSIGNED DEFAULT NULL,
+  `cam` varchar(20) DEFAULT NULL,
+  `cdi_cr` varchar(20) DEFAULT NULL,
+  `cartao_sus` bigint(20) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -198,19 +193,19 @@ CREATE TABLE `documentos` (
 --
 
 CREATE TABLE `enderecos` (
-  `idendereco` bigint(20) UNSIGNED NOT NULL,
+  `id_endereco` bigint(20) UNSIGNED NOT NULL,
+  `adolescente_id` bigint(20) UNSIGNED NOT NULL,
   `descricao` varchar(45) DEFAULT NULL,
   `logradouro` varchar(150) DEFAULT NULL,
   `numero` varchar(10) DEFAULT NULL,
   `complemento` varchar(45) DEFAULT NULL,
-  `bairro` varchar(45) DEFAULT NULL,
-  `cidade` varchar(45) DEFAULT NULL,
+  `bairro` varchar(50) DEFAULT NULL,
+  `cidade` varchar(50) DEFAULT NULL,
   `estado` char(2) DEFAULT NULL,
   `cep` varchar(15) DEFAULT NULL,
   `referencia` varchar(45) DEFAULT NULL,
   `dt_mudanca` date DEFAULT NULL,
-  `motivo` text DEFAULT NULL,
-  `idadolescente` bigint(20) UNSIGNED NOT NULL,
+  `motivo` varchar(191) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -223,7 +218,7 @@ CREATE TABLE `enderecos` (
 --
 
 CREATE TABLE `entidades` (
-  `identidade` bigint(20) UNSIGNED NOT NULL,
+  `id_entidade` bigint(20) UNSIGNED NOT NULL,
   `nome` varchar(191) NOT NULL,
   `cnpj` varchar(18) DEFAULT NULL,
   `tipo` char(1) DEFAULT NULL COMMENT 'C(CREAS) - M(MP-SP) - S(Saude) - E(Educação) - A(Assistencial) - O(Outros)',
@@ -247,13 +242,8 @@ CREATE TABLE `entidades` (
 -- Extraindo dados da tabela `entidades`
 --
 
-INSERT INTO `entidades` (`identidade`, `nome`, `cnpj`, `tipo`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `telefones`, `email`, `responsavel`, `resp_tel`, `resp_email`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'ETEC de Ibitinga', '62.823.257/0161-02', 'R', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2019-03-15 11:16:13', '2019-03-15 11:16:13', NULL),
-(2, 'Centro de Referência Especializado de Assistência Social - Ibitinga', '', 'C', 'Rua Rosalbino Tucci', '6200', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16)3341-8592', 'creas@ibitinga.sp.gov.br', 'Valquiria e Eliana', '(16) 3341-8592', 'creas-mse@ibitinga.sp.gov.br', '2019-03-15 11:21:20', '2019-03-15 11:21:20', NULL),
-(4, 'ETEC de Ibitinga', '62.823.257/0161-02', 'R', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2019-09-18 21:45:06', '2019-09-18 21:45:06', NULL),
-(5, 'ETEC de Ibitinga', '62.823.257/0161-02', 'R', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2019-09-18 21:56:59', '2019-09-18 21:56:59', NULL),
-(6, 'ETEC de Ibitinga', '62.823.257/0161-02', 'R', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2019-09-18 21:57:02', '2019-09-18 21:57:02', NULL),
-(7, 'ETEC de Ibitinga', '62.823.257/0161-02', 'R', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2019-09-19 18:32:43', '2019-09-19 18:32:43', NULL);
+INSERT INTO `entidades` (`id_entidade`, `nome`, `cnpj`, `tipo`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `telefones`, `email`, `responsavel`, `resp_tel`, `resp_email`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'ETEC de Ibitinga', '62.823.257/0161-02', 'R', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2020-03-16 14:13:37', '2020-03-16 14:13:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -262,7 +252,8 @@ INSERT INTO `entidades` (`identidade`, `nome`, `cnpj`, `tipo`, `logradouro`, `nu
 --
 
 CREATE TABLE `funcionarios` (
-  `idfuncionario` bigint(20) UNSIGNED NOT NULL,
+  `id_funcionario` bigint(20) UNSIGNED NOT NULL,
+  `entidade_id` bigint(20) UNSIGNED NOT NULL,
   `nome` varchar(191) DEFAULT NULL,
   `dt_nasc` date DEFAULT NULL,
   `sexo` char(1) DEFAULT NULL,
@@ -277,7 +268,6 @@ CREATE TABLE `funcionarios` (
   `cep` varchar(10) DEFAULT NULL,
   `telefones` varchar(50) DEFAULT NULL,
   `obs` text DEFAULT NULL,
-  `identidade` bigint(20) UNSIGNED NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -287,9 +277,8 @@ CREATE TABLE `funcionarios` (
 -- Extraindo dados da tabela `funcionarios`
 --
 
-INSERT INTO `funcionarios` (`idfuncionario`, `nome`, `dt_nasc`, `sexo`, `cpf`, `rg`, `registro`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `telefones`, `obs`, `identidade`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'RONAN ADRIEL ZENATTI', '1988-02-25', 'M', '355,936,478-79', '41,324,990-6', '57852', 'Rua dos Lavradores', '302', 'Centro', 'Boracéia', 'SP', '17.270-000', '(14) 9 8157-5657', 'Cadastro Automático.', 1, '2019-03-15 11:16:13', '2019-03-15 11:24:59', NULL),
-(2, 'ELIANA CAMPITELLI DE SOUZA', '1953-06-14', 'F', NULL, NULL, NULL, '', '', '', '', 'SP', '', '', '', 2, '2019-03-15 11:23:43', '2019-03-15 11:24:25', NULL);
+INSERT INTO `funcionarios` (`id_funcionario`, `entidade_id`, `nome`, `dt_nasc`, `sexo`, `cpf`, `rg`, `registro`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `telefones`, `obs`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Ronan Adriel Zenatti', '1988-02-25', 'M', '355.936.478-79', '41.324.990-6', '57852', 'Rua dos Lavradores', '302', 'Centro', 'Boracéia', 'SP', '17.270-000', '(14) 9 8157-5657', 'Cadastro Automático.', '2020-03-16 14:13:37', '2020-03-16 14:13:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -298,8 +287,8 @@ INSERT INTO `funcionarios` (`idfuncionario`, `nome`, `dt_nasc`, `sexo`, `cpf`, `
 --
 
 CREATE TABLE `historico_logins` (
-  `idhl` int(10) UNSIGNED NOT NULL,
-  `idusuario` int(10) UNSIGNED NOT NULL,
+  `id_hl` bigint(20) UNSIGNED NOT NULL,
+  `usuario_id` bigint(20) UNSIGNED NOT NULL,
   `ip_address` varchar(15) NOT NULL,
   `navegador` varchar(30) NOT NULL,
   `so` varchar(30) NOT NULL,
@@ -311,9 +300,8 @@ CREATE TABLE `historico_logins` (
 -- Extraindo dados da tabela `historico_logins`
 --
 
-INSERT INTO `historico_logins` (`idhl`, `idusuario`, `ip_address`, `navegador`, `so`, `created_at`, `deleted_at`) VALUES
-(16, 1, '127.0.0.1', 'Chrome / 77.0.3865.90', 'Windows', '2019-09-20 15:39:13', NULL),
-(17, 1, '127.0.0.1', 'Chrome / 78.0.3904.108', 'Windows', '2020-02-11 21:52:50', NULL);
+INSERT INTO `historico_logins` (`id_hl`, `usuario_id`, `ip_address`, `navegador`, `so`, `created_at`, `deleted_at`) VALUES
+(1, 1, '127.0.0.1', 'Chrome / 80.0.3987.132', 'Windows', '2020-03-16 14:13:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -350,7 +338,8 @@ CREATE TABLE `pia` (
 --
 
 CREATE TABLE `situacao_habitacional` (
-  `idsh` bigint(20) UNSIGNED NOT NULL,
+  `id_sh` bigint(20) UNSIGNED NOT NULL,
+  `endereco_id` bigint(20) UNSIGNED NOT NULL,
   `tipo` tinyint(1) DEFAULT NULL COMMENT 'Tipo de Domicilio',
   `situacao` tinyint(1) DEFAULT NULL COMMENT 'Situação do Domicilio',
   `valor` decimal(12,2) DEFAULT NULL,
@@ -362,7 +351,6 @@ CREATE TABLE `situacao_habitacional` (
   `qtde_comodos` tinyint(4) DEFAULT NULL,
   `espaco` decimal(10,2) UNSIGNED DEFAULT NULL,
   `qtde_pessoas` tinyint(4) DEFAULT NULL,
-  `idendereco` bigint(20) UNSIGNED NOT NULL,
   `obs` text NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -376,7 +364,8 @@ CREATE TABLE `situacao_habitacional` (
 --
 
 CREATE TABLE `trabalhos` (
-  `idtrabalho` bigint(20) UNSIGNED NOT NULL,
+  `id_trabalho` bigint(20) UNSIGNED NOT NULL,
+  `adolescente_id` bigint(20) UNSIGNED NOT NULL,
   `descricao` varchar(150) DEFAULT NULL,
   `empresa` varchar(250) DEFAULT NULL,
   `dt_inicio` datetime DEFAULT NULL,
@@ -384,7 +373,6 @@ CREATE TABLE `trabalhos` (
   `obs` longtext DEFAULT NULL,
   `motivo_recisao` longtext DEFAULT NULL,
   `tipo` char(1) DEFAULT NULL COMMENT '(F)ormal / (I)nformal',
-  `idadolescente` bigint(20) UNSIGNED NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -397,10 +385,10 @@ CREATE TABLE `trabalhos` (
 --
 
 CREATE TABLE `usuarios` (
-  `idusuario` bigint(10) UNSIGNED NOT NULL,
+  `id_usuario` bigint(20) UNSIGNED NOT NULL,
+  `funcionario_id` bigint(20) UNSIGNED NOT NULL,
+  `cargo_id` bigint(20) UNSIGNED NOT NULL,
   `ip_address` varchar(45) NOT NULL,
-  `idfuncionario` bigint(10) UNSIGNED NOT NULL,
-  `idcargo` bigint(10) UNSIGNED NOT NULL,
   `salt` varchar(191) DEFAULT NULL,
   `email` varchar(191) NOT NULL,
   `password` varchar(191) NOT NULL,
@@ -422,8 +410,8 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`idusuario`, `ip_address`, `idfuncionario`, `idcargo`, `salt`, `email`, `password`, `username`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `last_login`, `active`, `termo`, `data_termo`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '127.0.0.1', 1, 1, NULL, 'ronan.zenatti@etec.sp.gov.br', '$2y$08$9IBqHxaEu9CTN5hrRXFytenbAkw9YcS2q877eLvr.dQCpqJLRKlUS', NULL, NULL, NULL, NULL, NULL, 1581465170, 1, 0, NULL, '2019-05-26 21:44:26', '2019-06-14 14:53:56', NULL);
+INSERT INTO `usuarios` (`id_usuario`, `funcionario_id`, `cargo_id`, `ip_address`, `salt`, `email`, `password`, `username`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `last_login`, `active`, `termo`, `data_termo`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 1, '127.0.0.1', NULL, 'ronan.zenatti@etec.sp.gov.br', '$2y$08$fU0TxeSd/iW9iZfuwDSVW.s4d.Gou7llcjyok7us5Dy1sIvnAX2vu', NULL, NULL, NULL, NULL, NULL, 1584378820, 1, 1, NULL, '2020-03-16 14:13:37', '2020-03-16 14:13:37', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -433,7 +421,7 @@ INSERT INTO `usuarios` (`idusuario`, `ip_address`, `idfuncionario`, `idcargo`, `
 -- Índices para tabela `adolescentes`
 --
 ALTER TABLE `adolescentes`
-  ADD PRIMARY KEY (`idadolescente`);
+  ADD PRIMARY KEY (`id_adolescente`);
 
 --
 -- Índices para tabela `audit`
@@ -445,13 +433,14 @@ ALTER TABLE `audit`
 -- Índices para tabela `cargos`
 --
 ALTER TABLE `cargos`
-  ADD PRIMARY KEY (`idcargo`);
+  ADD PRIMARY KEY (`id_cargo`);
 
 --
 -- Índices para tabela `composicao_familiar`
 --
 ALTER TABLE `composicao_familiar`
-  ADD PRIMARY KEY (`idcf`);
+  ADD PRIMARY KEY (`id_cf`),
+  ADD KEY `fk_cf_endereco_idx` (`endereco_id`);
 
 --
 -- Índices para tabela `composicao_familiar1`
@@ -463,41 +452,42 @@ ALTER TABLE `composicao_familiar1`
 -- Índices para tabela `contatos`
 --
 ALTER TABLE `contatos`
-  ADD PRIMARY KEY (`idcontato`),
-  ADD KEY `fk_adolescente` (`idadolescente`);
+  ADD PRIMARY KEY (`id_contato`),
+  ADD KEY `fk_contatos_adolescentes_idx` (`adolescente_id`);
 
 --
 -- Índices para tabela `documentos`
 --
 ALTER TABLE `documentos`
-  ADD PRIMARY KEY (`iddocumento`),
-  ADD KEY `fk_adolecente_documento` (`idadolescente`);
+  ADD PRIMARY KEY (`id_documento`),
+  ADD KEY `fk_documentos_adolescentes_idx` (`adolescente_id`);
 
 --
 -- Índices para tabela `enderecos`
 --
 ALTER TABLE `enderecos`
-  ADD PRIMARY KEY (`idendereco`),
-  ADD KEY `fk_adolecente_endereco` (`idadolescente`);
+  ADD PRIMARY KEY (`id_endereco`),
+  ADD KEY `fk_adolecente_endereco` (`adolescente_id`);
 
 --
 -- Índices para tabela `entidades`
 --
 ALTER TABLE `entidades`
-  ADD PRIMARY KEY (`identidade`);
+  ADD PRIMARY KEY (`id_entidade`);
 
 --
 -- Índices para tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  ADD PRIMARY KEY (`idfuncionario`),
-  ADD KEY `fk_entidade_funcionario` (`identidade`);
+  ADD PRIMARY KEY (`id_funcionario`),
+  ADD KEY `fk_entidade_funcionario` (`entidade_id`);
 
 --
 -- Índices para tabela `historico_logins`
 --
 ALTER TABLE `historico_logins`
-  ADD PRIMARY KEY (`idhl`);
+  ADD PRIMARY KEY (`id_hl`),
+  ADD KEY `fk_hl_usuarios_idx` (`usuario_id`);
 
 --
 -- Índices para tabela `login_attempts`
@@ -515,24 +505,23 @@ ALTER TABLE `pia`
 -- Índices para tabela `situacao_habitacional`
 --
 ALTER TABLE `situacao_habitacional`
-  ADD PRIMARY KEY (`idsh`),
-  ADD KEY `fk_adolescente_sh` (`idendereco`);
+  ADD PRIMARY KEY (`id_sh`),
+  ADD KEY `fk_sh_enderecos_idx` (`endereco_id`);
 
 --
 -- Índices para tabela `trabalhos`
 --
 ALTER TABLE `trabalhos`
-  ADD PRIMARY KEY (`idtrabalho`),
-  ADD KEY `fk_adolescente_trabalho` (`idadolescente`);
+  ADD PRIMARY KEY (`id_trabalho`);
 
 --
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`idusuario`),
+  ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `fk_funcionario_usuario` (`idfuncionario`),
-  ADD KEY `fk_cargo_usuario` (`idcargo`);
+  ADD KEY `fk_usuario_funcionario_idx` (`funcionario_id`),
+  ADD KEY `fk_usuario_cargo_idx` (`cargo_id`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -542,25 +531,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `adolescentes`
 --
 ALTER TABLE `adolescentes`
-  MODIFY `idadolescente` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_adolescente` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `cargos`
 --
 ALTER TABLE `cargos`
-  MODIFY `idcargo` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cargo` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `composicao_familiar`
 --
 ALTER TABLE `composicao_familiar`
-  MODIFY `idcf` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cf` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `composicao_familiar1`
@@ -572,43 +561,43 @@ ALTER TABLE `composicao_familiar1`
 -- AUTO_INCREMENT de tabela `contatos`
 --
 ALTER TABLE `contatos`
-  MODIFY `idcontato` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_contato` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `iddocumento` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_documento` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `enderecos`
 --
 ALTER TABLE `enderecos`
-  MODIFY `idendereco` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_endereco` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `entidades`
 --
 ALTER TABLE `entidades`
-  MODIFY `identidade` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_entidade` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `idfuncionario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_funcionario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `historico_logins`
 --
 ALTER TABLE `historico_logins`
-  MODIFY `idhl` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_hl` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `pia`
@@ -620,66 +609,72 @@ ALTER TABLE `pia`
 -- AUTO_INCREMENT de tabela `situacao_habitacional`
 --
 ALTER TABLE `situacao_habitacional`
-  MODIFY `idsh` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_sh` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `trabalhos`
 --
 ALTER TABLE `trabalhos`
-  MODIFY `idtrabalho` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_trabalho` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idusuario` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas
 --
 
 --
+-- Limitadores para a tabela `composicao_familiar`
+--
+ALTER TABLE `composicao_familiar`
+  ADD CONSTRAINT `fk_cf_endereco` FOREIGN KEY (`endereco_id`) REFERENCES `enderecos` (`id_endereco`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Limitadores para a tabela `contatos`
 --
 ALTER TABLE `contatos`
-  ADD CONSTRAINT `fk_adolescente` FOREIGN KEY (`idadolescente`) REFERENCES `adolescentes` (`idadolescente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_contatos_adolescentes` FOREIGN KEY (`adolescente_id`) REFERENCES `adolescentes` (`id_adolescente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `documentos`
 --
 ALTER TABLE `documentos`
-  ADD CONSTRAINT `fk_adolecente_documento` FOREIGN KEY (`idadolescente`) REFERENCES `adolescentes` (`idadolescente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_documentos_adolescentes` FOREIGN KEY (`adolescente_id`) REFERENCES `adolescentes` (`id_adolescente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `enderecos`
 --
 ALTER TABLE `enderecos`
-  ADD CONSTRAINT `fk_adolecente_endereco` FOREIGN KEY (`idadolescente`) REFERENCES `adolescentes` (`idadolescente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_enderecos_adolescentes` FOREIGN KEY (`adolescente_id`) REFERENCES `adolescentes` (`id_adolescente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  ADD CONSTRAINT `fk_entidade_funcionario` FOREIGN KEY (`identidade`) REFERENCES `entidades` (`identidade`);
+  ADD CONSTRAINT `fk_funcionarios_entidades` FOREIGN KEY (`entidade_id`) REFERENCES `entidades` (`id_entidade`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `historico_logins`
+--
+ALTER TABLE `historico_logins`
+  ADD CONSTRAINT `fk_hl_usuarios` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `situacao_habitacional`
 --
 ALTER TABLE `situacao_habitacional`
-  ADD CONSTRAINT `fk_adolescente_sh` FOREIGN KEY (`idendereco`) REFERENCES `enderecos` (`idendereco`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `trabalhos`
---
-ALTER TABLE `trabalhos`
-  ADD CONSTRAINT `fk_adolescente_trabalho` FOREIGN KEY (`idadolescente`) REFERENCES `adolescentes` (`idadolescente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_sh_enderecos` FOREIGN KEY (`endereco_id`) REFERENCES `enderecos` (`id_endereco`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_cargo_usuario` FOREIGN KEY (`idcargo`) REFERENCES `cargos` (`idcargo`),
-  ADD CONSTRAINT `fk_funcionario_usuario` FOREIGN KEY (`idfuncionario`) REFERENCES `funcionarios` (`idfuncionario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_usuario_cargo` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_usuario_funcionario` FOREIGN KEY (`funcionario_id`) REFERENCES `funcionarios` (`id_funcionario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

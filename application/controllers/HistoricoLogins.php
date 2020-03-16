@@ -17,7 +17,7 @@ class HistoricoLogins extends CI_Controller
 	public function Ajax_Datatables()
 	{
 		$idusuario = $this->session->user_id;
-		$where = ['idusuario', $idusuario];
+		$where = array('usuario_id' => $idusuario);
 
 		$list = $this->hlm->Get_Datatables(null, $where);
 
@@ -27,7 +27,7 @@ class HistoricoLogins extends CI_Controller
 			$no++;
 			$row = array();
 			//    $row[] = $no;
-			$row[] = $obj->created_at;
+			$row[] = $obj->created;
 			$row[] = $obj->ip_address;
 			$row[] = $obj->navegador;
 			$row[] = $obj->so;

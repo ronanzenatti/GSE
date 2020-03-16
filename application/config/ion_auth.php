@@ -49,8 +49,8 @@ $config['tables']['login_attempts']  = 'login_attempts';
  | Joins from users.id
  | Joins from groups.id
  */
-$config['join']['users']  = 'idusuario';
-$config['join']['groups'] = 'idcargo';
+$config['join']['users']  = 'id_usuario';
+$config['join']['groups'] = 'cargo_id';
 
 /*
  | -------------------------------------------------------------------------

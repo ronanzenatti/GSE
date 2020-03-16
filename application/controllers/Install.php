@@ -70,7 +70,7 @@ class Install extends CI_Controller
 				'cep' => '17.270-000',
 				'telefones' => '(14) 9 8157-5657',
 				'obs' => 'Cadastro Automático.',
-				'identidade' => $idE,
+				'entidade_id' => $idE,
 				'created_at' => date("Y-m-d H:i:s"),
 				'updated_at' => date("Y-m-d H:i:s")
 			);
@@ -78,12 +78,12 @@ class Install extends CI_Controller
 
 			$usr['ip_address'] = $this->input->ip_address();
 
-			$usr['idcargo'] = $idC;
+			$usr['cargo_id'] = $idC;
 			$usr['email'] = 'ronan.zenatti@etec.sp.gov.br';
 			$usr['password'] = $this->iam->hash_password('P#ssw0rdr');
 			$usr['active'] = 1;
 			$usr['termo'] = 1;
-			$usr['idfuncionario'] = $idF;
+			$usr['funcionario_id'] = $idF;
 			$usr['created_at'] = date('Y-m-d H:i:s');
 			$usr['updated_at'] = date('Y-m-d H:i:s');
 			$this->um->Insert($usr);

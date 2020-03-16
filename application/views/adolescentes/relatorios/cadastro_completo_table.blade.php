@@ -196,37 +196,6 @@ $tipo = array(
 <br/>
 <table>
 	<tr>
-		<td colspan="12" class="strong text-center col-12">FILIAÇÃO</td>
-	</tr>
-	<tr>
-		<td class="strong col-2" colspan="2">NOME DO PAI:</td>
-		<td class="col-10" colspan="10">{{$ado['pai']}}</td>
-	</tr>
-	<tr>
-		<td class="strong col-2" colspan="2">NASCIMENTO:</td>
-		<td class="col-2 text-center"
-			colspan="2">{{($ado['pai_nasc']) ? date('d/m/Y', strtotime($ado['pai_nasc'])) : null}}</td>
-		<td class="strong col-2" colspan="2">NATURAL:</td>
-		<td class="col-6" colspan="6">{{$ado['pai_natural']}}</td>
-	</tr>
-	<tr>
-		<td class="col-12" colspan="12"></td>
-	</tr>
-	<tr>
-		<td class="strong col-2" colspan="2">NOME DA MÃE:</td>
-		<td class="col-10" colspan="10">{{$ado['mae']}}</td>
-	</tr>
-	<tr>
-		<td class="strong col-2" colspan="2">NASCIMENTO:</td>
-		<td class="col-2 text-center"
-			colspan="2">{{($ado['mae_nasc']) ? date('d/m/Y', strtotime($ado['mae_nasc'])) : null}}</td>
-		<td class="strong col-2" colspan="2">NATURAL:</td>
-		<td class="col-6" colspan="6">{{$ado['mae_natural']}}</td>
-	</tr>
-</table>
-<br/>
-<table>
-	<tr>
 		<td colspan="12" class="strong text-center col-12">DOCUMENTOS</td>
 	</tr>
 	<tr>
@@ -252,12 +221,12 @@ $tipo = array(
 	</tr>
 	<tr>
 		<td class="strong col-1">CPF:</td>
-		<td class="text-center col-3" colspan="3">{{ $doc['CPF'] }}</td>
+		<td class="text-center col-3" colspan="3">{{ $doc['cpf'] }}</td>
 		<td class="strong col-1">RG:</td>
-		<td class="col-3 text-center" colspan="3">{{ $doc['RG']  }}</td>
+		<td class="col-3 text-center" colspan="3">{{ $doc['rg']  }}</td>
 		<td class="strong col-2" colspan="2">EMISSÃO:</td>
 		<td class="col-2 text-center"
-			colspan="2">{{ ($doc['RG_emissao']) ? date('d/m/Y', strtotime($doc['RG_emissao'])) : null }}</td>
+			colspan="2">{{ ($doc['rg_emissao']) ? date('d/m/Y', strtotime($doc['rg_emissao'])) : null }}</td>
 	</tr>
 	<tr>
 		<td class="col-12" colspan="12"></td>
@@ -275,18 +244,18 @@ $tipo = array(
 	</tr>
 	<tr>
 		<td class="strong col-1">CTPS:</td>
-		<td class="col-5 text-center" colspan="5">{{$doc['CTPS']}}</td>
+		<td class="col-5 text-center" colspan="5">{{$doc['ctps']}}</td>
 		<td class="strong col-1">SÉRIE:</td>
-		<td class="col-5 text-center" colspan="5">{{$doc['CTPS_serie']}}</td>
+		<td class="col-5 text-center" colspan="5">{{$doc['ctps_serie']}}</td>
 	</tr>
 	<tr>
 		<td class="col-12" colspan="12"></td>
 	</tr>
 	<tr>
 		<td class="strong col-1">CAM:</td>
-		<td class="col-5 text-center" colspan="5">{{$doc['CAM']}}</td>
+		<td class="col-5 text-center" colspan="5">{{$doc['cam']}}</td>
 		<td class="strong col-2" colspan="2">CDI / CR:</td>
-		<td class="col-4 text-center" colspan="4">{{$doc['CDI_CR']}}</td>
+		<td class="col-4 text-center" colspan="4">{{$doc['cdi_cr']}}</td>
 	</tr>
 	<tr>
 		<td class="strong col-2" colspan="2">PROVIDENCIAR</td>

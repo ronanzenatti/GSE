@@ -21,10 +21,10 @@ class SituacaoHabitacional extends CI_Controller
     public function endereco($id)
     {
         $dados = array();
-        $dados['end'] = $this->edm->GetById('idendereco', $id);
-        $dados['ado'] = $this->am->GetById('idadolescente', $dados['end']['idadolescente']);
-        $dados['doc'] = $this->dm->GetById('idadolescente', $dados['end']['idadolescente']);
-        $dados['sh'] = $this->shm->GetById('idendereco', $dados['end']['idendereco']);
+        $dados['end'] = $this->edm->GetById('id_endereco', $id);
+        $dados['ado'] = $this->am->GetById('id_adolescente', $dados['end']['adolescente_id']);
+        $dados['doc'] = $this->dm->GetById('adolescente_id', $dados['end']['adolescente_id']);
+        $dados['sh'] = $this->shm->GetById('endereco_id', $dados['end']['id_endereco']);
 
         $this->blade->view('situacao_habitacional/iuSH', $dados);
     }
@@ -34,7 +34,7 @@ class SituacaoHabitacional extends CI_Controller
         $obj = Array();
 
         $id = $this->input->post('idsh');
-        $obj['idendereco'] = $this->input->post('idendereco');
+        $obj['endereco_id'] = $this->input->post('idendereco');
         $obj['agua'] = !empty($this->input->post('agua')) ? 1 : 0;
         $obj['esgoto'] = $this->input->post('esgoto') ? 1 : 0;
         $obj['energia'] = $this->input->post('energia') ? 1 : 0;

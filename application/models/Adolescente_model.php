@@ -6,14 +6,14 @@ class Adolescente_model extends MY_Model
 	{
 		parent::__construct();
 		$this->table = "adolescentes a";
-		$this->pk_name = 'idadolescente';
-		$this->column_order = array('a.idadolescente', 'a.nome', 'd.RG', 'a.responsavel');
-		//$this->column_order = array('idadolescente', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai', 'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at');
-		$this->column_search = array('a.idadolescente', 'a.nome', 'd.RG', 'a.responsavel');
-		$this->order = array('idadolescente');
+		$this->pk_name = 'id_adolescente';
+		$this->column_order = array('a.id_adolescente', 'a.nome', 'd.rg', 'a.responsavel');
+		//$this->column_order = array('id_adolescente', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai', 'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at');
+		$this->column_search = array('a.id_adolescente', 'a.nome', 'd.rg', 'a.responsavel');
+		$this->order = array('id_adolescente');
 		$this->dates = array('dt_nasc', 'created_at', 'updated_at', 'deleted_at');
 		$this->joins = array(
-			['tabela' => 'documentos d', 'juncao' => 'a.idadolescente = d.idadolescente', 'tipo' => 'LEFT']
+			['tabela' => 'documentos d', 'juncao' => 'a.id_adolescente = d.adolescente_id', 'tipo' => 'LEFT']
 		);
 	}
 }

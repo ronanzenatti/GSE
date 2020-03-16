@@ -18,23 +18,23 @@ class Documento extends CI_Controller
 	public function save()
 	{
 		parse_str($this->input->post('form'), $form);
-		$form['idadolescente'] = $this->input->post('idadolescente');
-		$form['iddocumento'] = $this->input->post('iddocumento');
+		$form['adolescente_id'] = $this->input->post('id_adolescente');
+		$form['id_documento'] = $this->input->post('id_documento');
 
-		if (empty($form['RG_emissao'])) {
-			$form['RG_emissao'] = null;
+		if (empty($form['rg_emissao'])) {
+			$form['rg_emissao'] = null;
 		} else {
-			$form['RG_emissao'] = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $form['RG_emissao'])));
+			$form['rg_emissao'] = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $form['rg_emissao'])));
 		}
 
-		if (empty($form['iddocumento'])) {
+		if (empty($form['id_documento'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');
 			echo $this->dm->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->dm->Update($form['iddocumento'], $form);
-			echo $form['iddocumento'];
+			$this->dm->Update($form['id_documento'], $form);
+			echo $form['id_documento'];
 		}
 
 

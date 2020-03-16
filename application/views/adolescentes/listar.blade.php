@@ -96,7 +96,7 @@
 					url: "{{base_url('contato/Ajax_Datatables')}}",
 					type: "POST",
 					data: function (a) {
-						a.idadolescente = idA;
+						a.id_adolescente = idA;
 						a.listar = 1
 					},
 				},
@@ -150,7 +150,7 @@
 					url: "{{base_url('endereco/Ajax_Datatables')}}",
 					type: "POST",
 					data: function (a) {
-						a.idadolescente = idA;
+						a.id_adolescente = idA;
 						a.listar = 1
 					}
 				},

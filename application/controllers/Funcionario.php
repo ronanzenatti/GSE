@@ -46,11 +46,11 @@ class Funcionario extends CI_Controller
         $obj['cep'] = $this->input->post('cep');
         $obj['telefones'] = $this->input->post('telefones');
         $obj['obs'] = $this->input->post('obs');
-        $obj['identidade'] = $this->input->post('identidade');
+        $obj['entidade_id'] = $this->input->post('identidade');
 
         $usr['ip_address'] = $this->input->ip_address();
 
-        $usr['idcargo'] = $this->input->post('idcargo');
+        $usr['cargo_id'] = $this->input->post('idcargo');
         $usr['email'] = $this->input->post('email');
         $usr['password'] = (!empty($this->input->post('senha'))) ? $this->iam->hash_password($this->input->post('senha')) : null;
         $usr['active'] = 1;
@@ -65,7 +65,7 @@ class Funcionario extends CI_Controller
 
             $id = $this->fm->Insert($obj);
 
-            $usr['idfuncionario'] = $id;
+            $usr['funcionario_id'] = $id;
             $this->um->Insert($usr);
         } else {
             $obj['updated_at'] = date('Y-m-d H:i:s');
@@ -89,11 +89,11 @@ class Funcionario extends CI_Controller
 //        $this->fm->table = "funcionarios";
 //        $this->um->table = "usuarios";
         $dados = Array();
-        $dados['obj'] = $this->fm->GetById('idfuncionario', $id);
+        $dados['obj'] = $this->fm->GetById('id_funcionario', $id);
         $dados['obj']['dt_nasc'] = (!empty($dados['obj']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['dt_nasc'])) : null;
         $dados['objU'] = $this->um->GetByFuncionario($id);
-        $dados['objC'] = $this->cm->GetById('idcargo', $dados['objU']['idcargo']);
-        $dados['objE'] = $this->em->GetById('identidade', $dados['obj']['identidade']);
+        $dados['objC'] = $this->cm->GetById('id_cargo', $dados['objU']['cargo_id']);
+        $dados['objE'] = $this->em->GetById('id_entidade', $dados['obj']['entidade_id']);
         $this->blade->view('funcionarios/iuFuncionario', $dados);
     }
 
@@ -105,7 +105,7 @@ class Funcionario extends CI_Controller
         $obj = $this->um->GetByFuncionario($id);
         $dados['active'] = 0;
         $dados['deletec_at'] = date('Y-m-d H:i:s');
-        $this->um->Update('idusuario', $obj['idusuario'], $dados);
+        $this->um->Update('id_usuario', $obj['id_usuario'], $dados);
     }
 
 
@@ -119,13 +119,13 @@ class Funcionario extends CI_Controller
             $no++;
             $row = array();
             //    $row[] = $no;
-            $row[] = $obj->idfuncionario;
+            $row[] = $obj->id_funcionario;
             $row[] = $obj->nome;
             $row[] = $obj->entidade;
             $row[] = $obj->telefones;
 
-            $btns = "<a href='" . base_url('funcionario/alterar/' . $obj->idfuncionario) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-            $btns .= "<button type='button' onclick='deletarRegistro(\"funcionario\", " . $obj->idfuncionario . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+            $btns = "<a href='" . base_url('funcionario/alterar/' . $obj->id_funcionario) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
+            $btns .= "<button type='button' onclick='deletarRegistro(\"funcionario\", " . $obj->id_funcionario . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
             $row[] = $btns;
 
             $data[] = $row;

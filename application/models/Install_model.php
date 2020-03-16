@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Cargo_model extends MY_Model
+class Install_model extends MY_Model
 {
     public function __construct()
     {

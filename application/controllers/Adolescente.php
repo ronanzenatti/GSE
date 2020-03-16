@@ -21,7 +21,6 @@ class Adolescente extends CI_Controller
 		$this->blade->view('adolescentes/listar');
 	}
 
-
 	public function inserir()
 	{
 		$this->blade->view('adolescentes/iuAdolescente');
@@ -29,46 +28,30 @@ class Adolescente extends CI_Controller
 
 	public function save()
 	{
-		//'idadolescente', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai',
-		//'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at'
 		$this->am->table = "adolescentes";
 		parse_str($this->input->post('form'), $form);
-		$form['idadolescente'] = $this->input->post('idadolescente');
+		$form['id_adolescente'] = $this->input->post('id_adolescente');
 		$form['nome'] = mb_strtoupper($form['nome'], 'UTF-8');
-
 		$form['dt_nasc'] = (empty($form['dt_nasc'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['dt_nasc'])));
 
-		if (empty($form['pai_nasc'])) {
-			$form['pai_nasc'] = null;
-		} else {
-			$form['pai_nasc'] = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $form['pai_nasc'])));
-		}
-		if (empty($form['mae_nasc'])) {
-			$form['mae_nasc'] = null;
-		} else {
-			$form['mae_nasc'] = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $form['mae_nasc'])));
-		}
-
-		if (empty($form['idadolescente'])) {
+		if (empty($form['id_adolescente'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');
 			echo $this->am->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->am->Update($form['idadolescente'], $form);
-			echo $form['idadolescente'];
+			$this->am->Update($form['id_adolescente'], $form);
+			echo $form['id_adolescente'];
 		}
 	}
 
 	public function alterar($id)
 	{
 		$dados = Array();
-		$dados['obj'] = $this->am->GetById('idadolescente', $id);
+		$dados['obj'] = $this->am->GetById('id_adolescente', $id);
 		$dados['obj']['dt_nasc'] = (!empty($dados['obj']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['dt_nasc'])) : null;
-		$dados['obj']['pai_nasc'] = (!empty($dados['obj']['pai_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['pai_nasc'])) : null;
-		$dados['obj']['mae_nasc'] = (!empty($dados['obj']['mae_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['mae_nasc'])) : null;
-		$dados['objD'] = $this->dm->GetById('idadolescente', $id);
-		$dados['objD']['RG_emissao'] = (!empty($dados['objD']['RG_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['RG_emissao'])) : null;
+		$dados['objD'] = $this->dm->GetById('adolescente_id', $id);
+		$dados['objD']['rg_emissao'] = (!empty($dados['objD']['rg_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['rg_emissao'])) : null;
 		$this->blade->view('adolescentes/iuAdolescente', $dados);
 	}
 
@@ -86,20 +69,20 @@ class Adolescente extends CI_Controller
 		$no = $_POST['start'];
 		foreach ($list as $obj) {
 			$no++;
-			$contatos = $this->com->contatosPorAdolescente($obj->idadolescente);
-			$end = $this->edm->enderecosPorAdolescente($obj->idadolescente);
+			$contatos = $this->com->contatosPorAdolescente($obj->id_adolescente);
+			$end = $this->edm->enderecosPorAdolescente($obj->id_adolescente);
 			$row = array();
 			//    $row[] = $no;
-			$row[] = $obj->idadolescente;
+			$row[] = $obj->id_adolescente;
 			$row[] = $obj->nome;
-			$row[] = $obj->RG;
+			$row[] = $obj->rg;
 			$row[] = $obj->responsavel;
-			$row[] = "<button type='button' onclick='showEnderecos($obj->idadolescente)' class='btn btn-default btn-sm'><span class='badge'>$end->enderecos</span></button>";
-			$row[] = "<button type='button' onclick='showContatos($obj->idadolescente)' class='btn btn-default btn-sm'><span class='badge'>$contatos->contatos</span></button>";
+			$row[] = "<button type='button' onclick='showEnderecos($obj->id_adolescente)' class='btn btn-default btn-sm'><span class='badge'>$end->enderecos</span></button>";
+			$row[] = "<button type='button' onclick='showContatos($obj->id_adolescente)' class='btn btn-default btn-sm'><span class='badge'>$contatos->contatos</span></button>";
 
-			$btns = "<a href='" . base_url('adolescente/alterar/' . $obj->idadolescente) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescente\", " . $obj->idadolescente . ", \"tableAdolescente\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
-			$btns .= "<a target='_blank' href='" . base_url('adolescente/gerar/' . $obj->idadolescente . '/' . $_SESSION['entidade_id']) . "' class='btn btn-primary btn-sm'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a> ";
+			$btns = "<a href='" . base_url('adolescente/alterar/' . $obj->id_adolescente) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
+			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescente\", " . $obj->id_adolescente . ", \"tableAdolescente\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
+			$btns .= "<a target='_blank' href='" . base_url('adolescente/gerar/' . $obj->id_adolescente . '/' . $_SESSION['entidade_id']) . "' class='btn btn-primary btn-sm'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a> ";
 
 			$row[] = $btns;
 
@@ -131,11 +114,11 @@ class Adolescente extends CI_Controller
 	public function verpdf($id, $ide)
 	{
 		$dados = array();
-		$dados['ado'] = $this->am->GetById('idadolescente', $id);
-		$dados['doc'] = $this->dm->GetById('idadolescente', $id);
-		$dados['ent'] = $this->em->GetById('identidade', $ide);
-		$dados['conts'] = $this->com->GetAll($sort = 'ativo', $order = 'desc', $null = true, $where = 'idadolescente = ' . $id);
-		$dados['ends'] = $this->edm->GetAll($sort = 'dt_mudanca', $order = 'asc', $null = true, $where = 'idadolescente = ' . $id);
+		$dados['ado'] = $this->am->GetById('id_adolescente', $id);
+		$dados['doc'] = $this->dm->GetById('adolescente_ids', $id);
+		$dados['ent'] = $this->em->GetById('id_entidade', $ide);
+		$dados['conts'] = $this->com->GetAll($sort = 'ativo', $order = 'desc', $null = true, $where = 'adolescente_id = ' . $id);
+		$dados['ends'] = $this->edm->GetAll($sort = 'dt_mudanca', $order = 'asc', $null = true, $where = 'id_adolescente_id = ' . $id);
 		$this->blade->view('adolescentes/relatorios/cadastro_completo_table', $dados);
 	}
 
@@ -149,11 +132,11 @@ class Adolescente extends CI_Controller
 		]);
 
 		$dados = array();
-		$dados['ado'] = $this->am->GetById('idadolescente', $id);
-		$dados['doc'] = $this->dm->GetById('idadolescente', $id);
-		$dados['ent'] = $this->em->GetById('identidade', $ide);
-		$dados['conts'] = $this->com->GetAll($sort = 'ativo', $order = 'desc', $null = true, $where = 'idadolescente = ' . $id);
-		$dados['ends'] = $this->edm->GetAll($sort = 'dt_mudanca', $order = 'asc', $null = true, $where = 'idadolescente = ' . $id);
+		$dados['ado'] = $this->am->GetById('id_adolescente', $id);
+		$dados['doc'] = $this->dm->GetById('adolescente_id', $id);
+		$dados['ent'] = $this->em->GetById('id_entidade', $ide);
+		$dados['conts'] = $this->com->GetAll($sort = 'ativo', $order = 'desc', $null = true, $where = 'adolescente_id = ' . $id);
+		$dados['ends'] = $this->edm->GetAll($sort = 'dt_mudanca', $order = 'asc', $null = true, $where = 'adolescente_id = ' . $id);
 
 		$html = $this->blade->render('adolescentes/relatorios/cadastro_completo_table', $dados);
 
@@ -165,7 +148,7 @@ class Adolescente extends CI_Controller
 	{
 		$res = array();
 
-		$this->am->select = "a.idadolescente AS id, a.nome, d.RG, d.CPF, a.responsavel, ";
+		$this->am->select = "a.id_adolescente AS id, a.nome, d.RG, d.CPF, a.responsavel, ";
 		$this->am->select .= "DATE_FORMAT(a.dt_nasc, '%d/%m/%Y') AS dt_nasc, ";
 		$this->am->select .= "TIMESTAMPDIFF(YEAR,a.dt_nasc, CURDATE()) AS idade, a.responsavel";
 

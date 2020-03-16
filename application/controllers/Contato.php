@@ -19,7 +19,7 @@ class Contato extends CI_Controller
 	public function save()
 	{
 		parse_str($this->input->post('form'), $form);
-		$form['idadolescente'] = $this->input->post('idadolescente');
+		$form['adolescente_id'] = $this->input->post('id_adolescente');
 
 		$form['ativo'] = isset($form['ativoC']) ? 1 : 0;
 
@@ -27,23 +27,23 @@ class Contato extends CI_Controller
 		unset($form['descricaoC']);
 		unset($form['ativoC']);
 
-		if (empty($form['idcontato'])) {
+		if (empty($form['id_contato'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');
 			echo $this->com->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->com->Update($form['idcontato'], $form);
-			echo $form['idcontato'];
+			$this->com->Update($form['id_contato'], $form);
+			echo $form['id_contato'];
 		}
 	}
 
 	public function alterar()
 	{
-		$idA = $this->input->post('idadolescente');
+		$idA = $this->input->post('id_adolescente');
 		$idC = $this->input->post('idC');
 
-		$dados = $this->com->GetById('idcontato', $idC);
+		$dados = $this->com->GetById('id_contato', $idC);
 
 		echo json_encode($dados);
 	}
@@ -59,9 +59,9 @@ class Contato extends CI_Controller
 
 	public function Ajax_Datatables()
 	{
-		$idpessoa = $this->input->post('idadolescente');
+		$idpessoa = $this->input->post('id_adolescente');
 		$listar = (empty($this->input->post('listar'))) ? 1 : 0;
-		$where = array("idadolescente" => $idpessoa);
+		$where = array("adolescente_id" => $idpessoa);
 		$list = $this->com->Get_Datatables(null, $where);
 		$data = array();
 		$no = $_POST['start'];
@@ -75,10 +75,10 @@ class Contato extends CI_Controller
 			$row[] = ($obj->ativo) ? "<strong class='text-success'>SIM</strong>" : "<strong class='text-danger'>NÃO</strong>";
 			$btns = "";
 			if ($listar) {
-				$btns = "<button type='button' onclick='iuContato($obj->idcontato)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+				$btns = "<button type='button' onclick='iuContato($obj->id_contato)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
 			}
 
-			$btns .= " <button type='button' onclick='deletarRegistro(\"contato\", " . $obj->idcontato . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			$btns .= " <button type='button' onclick='deletarRegistro(\"contato\", " . $obj->id_contato . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
 
 			$data[] = $row;

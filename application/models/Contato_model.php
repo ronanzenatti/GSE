@@ -6,17 +6,17 @@ class Contato_model extends MY_Model
 	{
 		parent::__construct();
 		$this->table = "contatos";
-		$this->column_order = array('idcontato', 'descricao', 'tipo_cont', 'contato');
-		$this->column_search = array('idcontato', 'descricao', 'tipo_cont', 'contato');
-		$this->order = array('idcontato');
-		$this->pk_name = 'idcontato';
+		$this->column_order = array('id_contato', 'descricao', 'tipo_cont', 'contato');
+		$this->column_search = array('id_contato', 'descricao', 'tipo_cont', 'contato');
+		$this->order = array('id_contato');
+		$this->pk_name = 'id_contato';
 	}
 
 	public function contatosPorAdolescente($idAdolescente)
 	{
-		$this->db->select("COUNT(idcontato) AS contatos");
+		$this->db->select("COUNT(id_contato) AS contatos");
 		$this->db->from($this->table);
-		$this->db->where("idadolescente", $idAdolescente);
+		$this->db->where("adolescente_id", $idAdolescente);
 		$this->db->where("ativo", 1);
 		$this->db->where('deleted_at IS NULL ', null, false);
 		$query = $this->db->get();

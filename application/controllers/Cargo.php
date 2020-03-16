@@ -42,7 +42,7 @@ class Cargo extends CI_Controller
 	public function alterar($id)
 	{
 		$dados = Array();
-		$dados['obj'] = $this->cm->GetById('idcargo', $id);
+		$dados['obj'] = $this->cm->GetById('id_cargo', $id);
 		$this->blade->view('cargos/iuCargo', $dados);
 	}
 
@@ -63,12 +63,12 @@ class Cargo extends CI_Controller
 			$no++;
 			$row = array();
 			//    $row[] = $no;
-			$row[] = $obj->idcargo;
+			$row[] = $obj->id_cargo;
 			$row[] = $obj->nome;
 			$row[] = $obj->descricao;
 
-			$btns = "<a href='" . base_url('cargo/alterar/' . $obj->idcargo) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"cargo\", " . $obj->idcargo . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			$btns = "<a href='" . base_url('cargo/alterar/' . $obj->id_cargo) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
+			$btns .= "<button type='button' onclick='deletarRegistro(\"cargo\", " . $obj->id_cargo . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
 
 			$data[] = $row;
@@ -96,7 +96,7 @@ class Cargo extends CI_Controller
 		$all = $this->cm->GetAll('nome', 'asc', true, $where);
 		if (isset($all)) {
 			foreach ($all as $i) {
-				array_push($res, array("id" => (int)$i['idcargo'], "text" => $i['nome']));
+				array_push($res, array("id" => (int)$i['id_cargo'], "text" => $i['nome']));
 			}
 		}
 

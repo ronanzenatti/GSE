@@ -29,6 +29,7 @@
 					type: "POST"
 				},
 				"order": [[0, "desc"]],
+				column: [{ type: 'date-br', targets: 0 }],
 				pagingType: "full_numbers",
 				language: {
 					"sEmptyTable": "Nenhum registro encontrado",

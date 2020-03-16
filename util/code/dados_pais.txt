@@ -1,0 +1,48 @@
+  <div class="row">
+                            <div class="col-sm-6">
+                                <label for="pai">Nome do Pai:</label>
+                                <input type="text" class="form-control" id="pai" name="pai"
+                                       value="{{(isset($obj['pai']) ? $obj['pai'] : null)}}">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="pai_natural">Natural:</label>
+                                <input type="text" class="form-control" id="pai_natural" name="pai_natural"
+                                       value="{{(isset($obj['natural']) ? $obj['natural'] : null)}}">
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="pai_nasc">Nascimento do Pai:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control datepicker text-center mask_date"
+                                           id="pai_nasc"
+                                           name="pai_nasc" minlength="10"
+                                           value="{{(isset($obj['pai_nasc']) ? $obj['pai_nasc'] : null)}}">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="mae">Nome do Mãe:</label>
+                                <input type="text" class="form-control" id="mae" name="mae"
+                                       value="{{(isset($obj['mae']) ? $obj['mae'] : null)}}">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="mae_natural">Natural:</label>
+                                <input type="text" class="form-control" id="mae_natural" name="mae_natural"
+                                       value="{{(isset($obj['natural']) ? $obj['natural'] : null)}}">
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="mae_nasc">Nascimento da Mãe:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control datepicker text-center mask_date"
+                                           id="mae_nasc"
+                                           name="mae_nasc" minlength="10"
+                                           value="{{(isset($obj['mae_nasc']) ? $obj['mae_nasc'] : null)}}">
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

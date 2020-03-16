@@ -250,6 +250,9 @@
 <!-- DataTables -->
 <script src="{{base_url('assets/')}}bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="{{base_url('assets/')}}bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- DataTables MOMENT -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
 <!-- DataTables Responsive -->
 <script src="{{base_url('assets/')}}bower_components/datatables.net/js/dataTables.responsive.min.js"></script>
 <script src="{{base_url('assets/')}}bower_components/datatables.net/js/responsive.bootstrap.min.js"></script>
@@ -285,6 +288,8 @@
 	$('select').on('select2:select', function (e) {
 		$(this).valid();
 	});
+
+	$.fn.dataTable.moment('DD/MM/YYYY');
 
 	$('.mask_date').inputmask('99/99/9999');
 	$('.mask_time').inputmask('00:00:00');

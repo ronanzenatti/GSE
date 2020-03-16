@@ -1,10 +1,10 @@
 @extends('template')
 <?php
-$titulo = (isset($obj['idadolescente'])) ? "Alterar" : "Inserir";
-$cor = (isset($obj['idadolescente'])) ? "warning" : "success";
+$titulo = (isset($obj['id_adolescente'])) ? "Alterar" : "Inserir";
+$cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 ?>
 @section('titulo', $titulo .' Adolescente')
-@if(!isset($obj['idadolescente']))
+@if(!isset($obj['id_adolescente']))
     @section('subtitulo', " - Salve o Adolescente para habilitar os demais dados.")
 @endif
 @section('box-color', 'box-' . $cor)
@@ -32,8 +32,8 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="tab-1">
                     <form id="formAdolescente" role="form" action="{{base_url('adolescente/save')}}" method="post">
-                        <input name="idadolescente" id="idadolescente" type="hidden"
-                               value="{{(isset($obj['idadolescente']) ? $obj['idadolescente'] : null)}}"/>
+                        <input name="id_adolescente" id="id_adolescente" type="hidden"
+                               value="{{(isset($obj['id_adolescente']) ? $obj['id_adolescente'] : null)}}"/>
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-sm-8">
@@ -87,54 +87,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                                        value="{{(isset($obj['responsavel']) ? $obj['responsavel'] : null)}}">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="pai">Nome do Pai:</label>
-                                <input type="text" class="form-control" id="pai" name="pai"
-                                       value="{{(isset($obj['pai']) ? $obj['pai'] : null)}}">
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="pai_natural">Natural:</label>
-                                <input type="text" class="form-control" id="pai_natural" name="pai_natural"
-                                       value="{{(isset($obj['natural']) ? $obj['natural'] : null)}}">
-                            </div>
-                            <div class="col-sm-2">
-                                <label for="pai_nasc">Nascimento do Pai:</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control datepicker text-center mask_date"
-                                           id="pai_nasc"
-                                           name="pai_nasc" minlength="10"
-                                           value="{{(isset($obj['pai_nasc']) ? $obj['pai_nasc'] : null)}}">
-                                    <div class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="mae">Nome do Mãe:</label>
-                                <input type="text" class="form-control" id="mae" name="mae"
-                                       value="{{(isset($obj['mae']) ? $obj['mae'] : null)}}">
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="mae_natural">Natural:</label>
-                                <input type="text" class="form-control" id="mae_natural" name="mae_natural"
-                                       value="{{(isset($obj['natural']) ? $obj['natural'] : null)}}">
-                            </div>
-                            <div class="col-sm-2">
-                                <label for="mae_nasc">Nascimento da Mãe:</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control datepicker text-center mask_date"
-                                           id="mae_nasc"
-                                           name="mae_nasc" minlength="10"
-                                           value="{{(isset($obj['mae_nasc']) ? $obj['mae_nasc'] : null)}}">
-                                    <div class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="obs">Observações:</label>
@@ -146,8 +99,8 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                 </div>
                 <div role="tabpanel" class="tab-pane " id="tab-2">
                     <form role="form" id="formDocumento" action="{{base_url('documento/save')}}" method="post">
-                        <input name="iddocumento" id="iddocumento" type="hidden"
-                               value="{{(isset($objD['iddocumento']) ? $objD['iddocumento'] : null)}}"/>
+                        <input name="id_documento" id="id_documento" type="hidden"
+                               value="{{(isset($objD['id_documento']) ? $objD['id_documento'] : null)}}"/>
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-sm-3">
@@ -190,30 +143,30 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-sm-3">
-                                    <label for="CPF">CPF:</label>
-                                    <input type="text" class="form-control mask_CPF" id="CPF" name="CPF"
-                                           value="{{(isset($objD['CPF']) ? $objD['CPF'] : null)}}">
+                                    <label for="cpf">cpf:</label>
+                                    <input type="text" class="form-control mask_cpf" id="cpf" name="cpf"
+                                           value="{{(isset($objD['cpf']) ? $objD['cpf'] : null)}}">
                                 </div>
                                 <div class="col-sm-2">
-                                    <label for="RG">RG:</label>
-                                    <input type="text" class="form-control" id="RG" name="RG" required
-                                           value="{{(isset($objD['RG']) ? $objD['RG'] : null)}}">
+                                    <label for="rg">rg:</label>
+                                    <input type="text" class="form-control" id="rg" name="rg" required
+                                           value="{{(isset($objD['rg']) ? $objD['rg'] : null)}}">
                                 </div>
                                 <div class="col-sm-2">
-                                    <label for="RG_emissao">Data de Emissão:</label>
-                                    <input type="text" class="form-control mask_date datepicker" id="RG_emissao"
-                                           name="RG_emissao"
-                                           value="{{(isset($objD['RG_emissao']) ? $objD['RG_emissao'] : null)}}">
+                                    <label for="rg_emissao">Data de Emissão:</label>
+                                    <input type="text" class="form-control mask_date datepicker" id="rg_emissao"
+                                           name="rg_emissao"
+                                           value="{{(isset($objD['rg_emissao']) ? $objD['rg_emissao'] : null)}}">
                                 </div>
                                 <div class="col-sm-offset-1 col-sm-2">
-                                    <label for="CTPS">CTPS:</label>
-                                    <input type="text" class="form-control" id="CTPS" name="CTPS"
-                                           value="{{(isset($objD['CTPS']) ? $objD['CTPS'] : null)}}">
+                                    <label for="ctps">CTPS:</label>
+                                    <input type="text" class="form-control" id="ctps" name="ctps"
+                                           value="{{(isset($objD['ctps']) ? $objD['ctps'] : null)}}">
                                 </div>
                                 <div class="col-sm-2">
-                                    <label for="CTPS_serie">Série:</label>
-                                    <input type="text" class="form-control" id="CTPS_serie" name="CTPS_serie"
-                                           value="{{(isset($objD['CTPS_serie']) ? $objD['CTPS_serie'] : null)}}">
+                                    <label for="ctps_serie">Série:</label>
+                                    <input type="text" class="form-control" id="ctps_serie" name="ctps_serie"
+                                           value="{{(isset($objD['ctps_serie']) ? $objD['ctps_serie'] : null)}}">
                                 </div>
                             </div>
                         </div>
@@ -234,29 +187,34 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                                     <input type="text" class="form-control" id="te_zona" name="te_zona"
                                            value="{{(isset($objD['te_zona']) ? $objD['te_zona'] : null)}}">
                                 </div>
-                                <div class="col-sm-offset-1 col-sm-2">
-                                    <label for="CAM" data-toggle="tooltip" data-placement="top"
-                                           title="Certificado de Alistamento Militar">CAM:</label>
-                                    <input type="text" class="form-control" id="CAM" name="CAM"
-                                           value="{{(isset($objD['CAM']) ? $objD['CAM'] : null)}}">
-                                </div>
-                                <div class="col-sm-2">
-                                    <label for="CDI_CR" data-toggle="tooltip" data-placement="top"
-                                           title="Certificado de Dispensa de Incorporação / Certificado de Reservista">
-                                        CDI / CR:
-                                    </label>
-                                    <input type="text" class="form-control" id="CDI_CR" name="CDI_CR"
-                                           value="{{(isset($objD['CDI_CR']) ? $objD['CDI_CR'] : null)}}">
-                                </div>
+								<div class="col-sm-offset-1 col-sm-4">
+									<label for="pis">PIS:</label>
+									<input type="number" class="form-control" id="pis" name="pis"
+										   value="{{(isset($objD['pis']) ? $objD['pis'] : null)}}">
+								</div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <div class="col-sm-12">
-                                    <label for="providenciar" class="text-danger">Providênciar:</label>
-                                    <input type="text" class="form-control" id="providenciar" name="providenciar"
-                                           value="{{(isset($objD['providenciar']) ? $objD['providenciar'] : null)}}">
+                                <div class="col-sm-4">
+                                    <label for="cartao_sus">Cartão SUS:</label>
+                                    <input type="number" class="form-control" id="cartao_sus" name="cartao_sus"
+                                           value="{{(isset($objD['cartao_sus']) ? $objD['cartao_sus'] : null)}}">
                                 </div>
+								<div class="col-sm-offset-4 col-sm-2">
+									<label for="cam" data-toggle="tooltip" data-placement="top"
+										   title="Certificado de Alistamento Militar">CAM:</label>
+									<input type="text" class="form-control" id="cam" name="cam"
+										   value="{{(isset($objD['cam']) ? $objD['cam'] : null)}}">
+								</div>
+								<div class="col-sm-2">
+									<label for="cdi_cr" data-toggle="tooltip" data-placement="top"
+										   title="Certificado de Dispensa de Incorporação / Certificado de Reservista">
+										CDI / CR:
+									</label>
+									<input type="text" class="form-control" id="cdi_cr" name="cdi_cr"
+										   value="{{(isset($objD['cdi_cr']) ? $objD['cdi_cr'] : null)}}">
+								</div>
                             </div>
                         </div>
                     </form>
@@ -408,7 +366,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
             $("#formAdolescente").valid();
         });
 
-        @if(isset($obj['idadolescente']))
+        @if(isset($obj['id_adolescente']))
         $('#estado_civil').val("{{$obj['estado_civil']}}").trigger('change');
         $('#sexo').val("{{$obj['sexo']}}").trigger('change');
         $(".tabEnd").removeClass("disabled");
@@ -423,7 +381,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                 url: "{{base_url('endereco/Ajax_Datatables')}}",
                 type: "POST",
                 data: function (a) {
-                    a.idadolescente = $("#idadolescente").val()
+                    a.id_adolescente = $("#id_adolescente").val()
                 }
             },
             pagingType: "full_numbers",
@@ -469,7 +427,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                 url: "{{base_url('contato/Ajax_Datatables')}}",
                 type: "POST",
                 data: function (a) {
-                    a.idadolescente = $("#idadolescente").val()
+                    a.id_adolescente = $("#id_adolescente").val()
                 }
             },
             pagingType: "full_numbers",
@@ -517,21 +475,21 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                     type: 'POST',
                     data: {
                         form: $('#formAdolescente').serialize(),
-                        idadolescente: $("#idadolescente").val()
+                        id_adolescente: $("#id_adolescente").val()
                     },
                     success: function (result) {
-                        $("#idadolescente").val(result);
+                        $("#id_adolescente").val(result);
                         if ($.isNumeric(parseInt(result))) {
                             $.ajax({
                                 url: '/documento/save',
                                 type: 'POST',
                                 data: {
                                     form: $('#formDocumento').serialize(),
-                                    idadolescente: $("#idadolescente").val(),
-                                    iddocumento: $("#iddocumento").val()
+                                    id_adolescente: $("#id_adolescente").val(),
+                                    id_documento: $("#id_documento").val()
                                 },
                                 success: function (result) {
-                                    $("#iddocumento").val(result);
+                                    $("#id_documento").val(result);
                                     if ($.isNumeric(parseInt(result))) {
                                         salvoD = true;
                                         swal({
@@ -568,11 +526,11 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                 type: 'POST',
                 data: {
                     idE: idE,
-                    idadolescente: $("#idadolescente").val()
+                    id_adolescente: $("#id_adolescente").val()
                 },
                 success: function (result) {
                     var obj = JSON.parse(result);
-                    $("#idendereco").val(obj.idendereco);
+                    $("#id_endereco").val(obj.id_endereco);
                     $("#dt_mudanca").val(obj.dt_mudanca);
                     $("#descricaoE").val(obj.descricao);
                     $("#cep").val(obj.cep);
@@ -604,11 +562,11 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                 type: 'POST',
                 data: {
                     idC: idC,
-                    idadolescente: $("#idadolescente").val()
+                    id_adolescente: $("#id_adolescente").val()
                 },
                 success: function (result) {
                     var obj = JSON.parse(result);
-                    $("#idcontato").val(obj.idcontato);
+                    $("#id_contato").val(obj.id_contato);
                     $("#descricaoC").val(obj.descricao);
                     $("#contato").val(obj.contato);
                     $("#tipo_cont").val(obj.tipo_cont);
@@ -636,7 +594,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                 </div>
                 <div class="modal-body">
                     <form id="formEndereco" role="form" action="#" method="post">
-                        <input name="idendereco" id="idendereco" type="hidden"/>
+                        <input name="id_endereco" id="id_endereco" type="hidden"/>
                         <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
@@ -780,7 +738,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                             });
                             $('#formEndereco').find('input[type=checkbox]').prop('checked', true);
                             $('#formEndereco select option:first').prop('selected', true);
-                            $('#idendereco').val(null);
+                            $('#id_endereco').val(null);
                         }
                     });
 
@@ -804,7 +762,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                                 type: 'POST',
                                 data: {
                                     form: $('#formEndereco').serialize(),
-                                    idadolescente: $("#idadolescente").val()
+                                    id_adolescente: $("#id_adolescente").val()
                                 },
                                 success: function (result) {
                                     $('#formEndereco').each(function () {
@@ -831,7 +789,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                 </div>
                 <div class="modal-body">
                     <form id="formContato" role="form" action="#" method="post">
-                        <input name="idcontato" id="idcontato" type="hidden"/>
+                        <input name="id_contato" id="id_contato" type="hidden"/>
                         <div class="box-body">
                             <div class="row">
                                 <div class="form-group">
@@ -884,12 +842,12 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                     });
 
                     $('#modalContato').on('hide.bs.modal', function (e) {
-                        $("#formEndereco input[type=text], input[type=password], input[type=number], input[type=email], textarea").each(function () {
+                        $("#formContato input[type=text], input[type=password], input[type=number], input[type=email], textarea").each(function () {
                             $(this).val(null);
                         });
                         $('#formContato').find('input[type=checkbox]').prop('checked', true);
                         $('#formContato select option:first').prop('selected', true);
-                        $('#idcontato').val(null);
+                        $('#id_contato').val(null);
                     });
 
                     $("#tipo_cont").change(function () {
@@ -935,7 +893,7 @@ $cor = (isset($obj['idadolescente'])) ? "warning" : "success";
                                 type: 'POST',
                                 data: {
                                     form: $('#formContato').serialize(),
-                                    idadolescente: $("#idadolescente").val()
+                                    id_adolescente: $("#id_adolescente").val()
                                 },
                                 success: function (result) {
                                     $('#formContato').each(function () {
