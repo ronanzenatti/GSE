@@ -6,18 +6,14 @@ $cor = "success";
 @section('subtitulo',' - '.$end['descricao'] )
 @section('box-color', 'box-' . $cor)
 @section('content')
-	<input name="idendereco" id="idendereco" type="hidden"
-		   value="{{(isset($end['idendereco']) ? $end['idendereco'] : null)}}"/>
+	<input name="id_adolescente" id="id_adolescente" type="hidden"
+		   value="{{(isset($ado['id_adolescente']) ? $ado['id_adolescente'] : null)}}"/>
 	<div class="row">
 		<div class="col-xs-12">
 			<h2 class="page-header" style="padding-right: 10px; padding-left: 10px; margin: 10px 0 0 0;">
 				<i class="fa fa-user"></i> <strong class="text-primary"> &nbsp;
 					Adolescente: </strong>{{mb_strtoupper($ado['nome'], 'UTF-8')}}
-				<span class="pull-right"><strong class="text-primary">RG:</strong> {{$doc['RG']}}</span>
-				<br/>
-				<i class="fa fa-home"></i>&nbsp;
-				<strong class="text-primary">Endereço: </strong> {{$end['logradouro'] . ", " .$end['numero']}}
-				- {{$end['bairro']}}, {{$end['cidade']}}-{{$end['estado']}}<br>
+				<span class="pull-right"><strong class="text-primary">RG:</strong> {{$doc['rg']}}</span>
 			</h2>
 		</div>
 	</div>
@@ -73,7 +69,7 @@ $cor = "success";
 				},
 				success: function (result) {
 					var obj = JSON.parse(result);
-					$("#idcf").val(obj.idcf);
+					$("#id_cf").val(obj.id_cf);
 					$("#nome").val(obj.nome);
 					$("#parentesco").val(obj.parentesco).trigger('change');
 					$("#dt_nasc").val(obj.dt_nasc);
@@ -103,7 +99,7 @@ $cor = "success";
 				url: "{{base_url('ComposicaoFamiliar/Ajax_Datatables')}}",
 				type: "POST",
 				data: function (a) {
-					a.idendereco = $("#idendereco").val()
+					a.id_adolescente = $("#id_adolescente").val()
 				}
 			},
 			columnDefs: [
@@ -154,7 +150,7 @@ $cor = "success";
 				</div>
 				<div class="modal-body">
 					<form id="formResidente" role="form" action="#" method="post">
-						<input name="idcf" id="idcf" type="hidden"/>
+						<input name="id_cf" id="id_cf" type="hidden"/>
 						<div class="box-body">
 							<div class="row">
 								<div class="form-group">
@@ -316,7 +312,7 @@ $cor = "success";
 								type: 'POST',
 								data: {
 									form: $('#formResidente').serialize(),
-									idendereco: $("#idendereco").val()
+									id_adolescente: $("#id_adolescente").val()
 								},
 								success: function (result) {
 									$('#formResidente').each(function () {

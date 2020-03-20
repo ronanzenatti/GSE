@@ -45,18 +45,16 @@ class ComposicaoFamiliar extends CI_Controller
 		parent::__construct();
 		$this->load->model('ComposicaoFamiliar_model', 'cfm');
 		$this->load->model('Adolescente_model', 'am');
-		$this->load->model("Endereco_model", "edm");
 		$this->load->model('Documento_model', 'dm');
 	}
 
-	public function endereco($id)
+	public function adolescente($id)
 	{
 
 		$dados = array();
-		$dados['end'] = $this->edm->GetById('id_endereco', $id);
-		$dados['ado'] = $this->am->GetById('id_adolescente', $dados['end']['adolescente_id']);
-		$dados['doc'] = $this->dm->GetById('adolescente_id', $dados['end']['adolescente_id']);
-		$dados['cf'] = $this->cfm->GetById('endereco_id', $dados['end']['id_endereco']);
+		$dados['ado'] = $this->am->GetById('id_adolescente', $id);
+		$dados['doc'] = $this->dm->GetById('adolescente_id', $id);
+		$dados['cf'] = $this->cfm->GetById('adolescente_id', $id);
 
 
 		$this->blade->view('composicao_familiar/iuCF', $dados);
@@ -64,9 +62,9 @@ class ComposicaoFamiliar extends CI_Controller
 
 	public function Ajax_Datatables()
 	{
-		$idendereco = (empty($this->input->post('idendereco'))) ? 0 : $this->input->post('idendereco');
+		$idAdolescente = (empty($this->input->post('id_adolescente'))) ? 0 : $this->input->post('id_adolescente');
 		$listar = (empty($this->input->post('listar'))) ? 1 : 0;
-		$where = array("id_endereco" => $idendereco);
+		$where = array("adolescente_id" => $idAdolescente);
 		$list = $this->cfm->Get_Datatables(null, $where);
 		$data = array();
 		$no = $_POST['start'];
@@ -83,8 +81,9 @@ class ComposicaoFamiliar extends CI_Controller
 			$row[] = $this->ocupacao[$obj->ocupacao];
 			$row[] = number_format($obj->renda, 2, ',', '.');
 			$row[] = $obj->telefones;
+			$btns = "";
 			if ($listar) {
-				$btns = "<button type='button' onclick='iuResidente($obj->id_cf)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+				$btns .= "<button type='button' onclick='iuResidente($obj->id_cf)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
 			}
 			$btns .= " <button type='button' onclick='deletarRegistro(\"ComposicaoFamiliar\", " . $obj->id_cf . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 			$row[] = $btns;
@@ -105,7 +104,7 @@ class ComposicaoFamiliar extends CI_Controller
 	{
 		parse_str($this->input->post('form'), $form);
 
-		$form['id_endereco'] = $this->input->post('idendereco');
+		$form['adolescente_id'] = $this->input->post('id_adolescente');
 
 		$form['nome'] = mb_strtoupper($form['nome'], 'UTF-8');
 
@@ -133,7 +132,7 @@ class ComposicaoFamiliar extends CI_Controller
 
 	public function alterar()
 	{
-		$id = $this->input->post('idcf');
+		$id = $this->input->post('id_cf');
 		$dados = $this->cfm->GetById('id_cf', $id);
 		$dados['renda'] = number_format($dados['renda'], 2, ',', '.');
 		$dados['dt_nasc'] = date('d/m/Y', strtotime($dados['dt_nasc']));

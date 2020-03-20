@@ -1,6 +1,6 @@
 @extends('template')
 <?php
-$cor = (isset($sh['idsh'])) ? "warning" : "success";
+$cor = (isset($sh['id_sh'])) ? "warning" : "success";
 ?>
 @section('titulo', 'Situação Habitacional')
 @section('box-color', 'box-' . $cor)
@@ -10,7 +10,7 @@ $cor = (isset($sh['idsh'])) ? "warning" : "success";
             <h2 class="page-header" style="padding-right: 10px; padding-left: 10px; margin: 10px 0 0 0;">
                 <i class="fa fa-user"></i> <strong class="text-primary"> &nbsp;
                     Adolescente: </strong>{{mb_strtoupper($ado['nome'], 'UTF-8')}}
-                <span class="pull-right"><strong class="text-primary">RG:</strong> {{$doc['RG']}}</span>
+                <span class="pull-right"><strong class="text-primary">RG:</strong> {{$doc['rg']}}</span>
                 <br/>
                 <i class="fa fa-home"></i>&nbsp;
                 <strong class="text-primary">Endereço: </strong> {{$end['logradouro'] . ", " .$end['numero']}}
@@ -19,9 +19,9 @@ $cor = (isset($sh['idsh'])) ? "warning" : "success";
         </div>
     </div>
     <form role="form" action="{{base_url('SituacaoHabitacional/save')}}" method="post">
-        <input name="idsh" id="idsh" type="hidden" value="{{(isset($sh['idsh']) ? $sh['idsh'] : null)}}"/>
-        <input name="idendereco" id="idendereco" type="hidden"
-               value="{{(isset($end['idendereco']) ? $end['idendereco'] : null)}}"/>
+        <input name="id_sh" id="id_sh" type="hidden" value="{{(isset($sh['id_sh']) ? $sh['id_sh'] : null)}}"/>
+        <input name="id_endereco" id="id_endereco" type="hidden"
+               value="{{(isset($end['id_endereco']) ? $end['id_endereco'] : null)}}"/>
         <div class="box-body">
             <div class="row">
                 <div class="col-sm-12 text-center">
@@ -142,7 +142,7 @@ $cor = (isset($sh['idsh'])) ? "warning" : "success";
     <script src="{{base_url()}}assets/bower_components/ckeditor/lang/pt-br.js"></script>
 
     <script>
-        @if(isset($sh['idsh']))
+        @if(isset($sh['id_sh']))
         $('#tipo').val("{{$sh['tipo']}}").trigger('change');
         $('#situacao').val("{{$sh['situacao']}}").trigger('change');
         @endif

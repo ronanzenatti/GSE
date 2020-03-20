@@ -153,7 +153,7 @@ $tipo = array(
 			float: left;
 		}
 
-		.importante{
+		.importante {
 			font-weight: bolder;
 			color: #EA2027;
 		}
@@ -244,22 +244,22 @@ $tipo = array(
 	</tr>
 	<tr>
 		<td class="strong col-1">CTPS:</td>
-		<td class="col-5 text-center" colspan="5">{{$doc['ctps']}}</td>
+		<td class="col-3 text-center" colspan="3">{{$doc['ctps']}}</td>
 		<td class="strong col-1">SÉRIE:</td>
-		<td class="col-5 text-center" colspan="5">{{$doc['ctps_serie']}}</td>
+		<td class="col-3 text-center" colspan="3">{{$doc['ctps_serie']}}</td>
+		<td class="col-1 strong">PIS</td>
+		<td class="col-3 text-center" colspan="3">{{$doc['pis']}}</td>
 	</tr>
 	<tr>
 		<td class="col-12" colspan="12"></td>
 	</tr>
 	<tr>
 		<td class="strong col-1">CAM:</td>
-		<td class="col-5 text-center" colspan="5">{{$doc['cam']}}</td>
-		<td class="strong col-2" colspan="2">CDI / CR:</td>
-		<td class="col-4 text-center" colspan="4">{{$doc['cdi_cr']}}</td>
-	</tr>
-	<tr>
-		<td class="strong col-2" colspan="2">PROVIDENCIAR</td>
-		<td class="col-10 importante" colspan="10">{{$doc['providenciar']}}</td>
+		<td class="col-3 text-center" colspan="3">{{$doc['cam']}}</td>
+		<td class="strong col-2" colspan="1">CDI / CR:</td>
+		<td class="col-3 text-center" colspan="3">{{$doc['cdi_cr']}}</td>
+		<td class="col-1 strong">SUS</td>
+		<td class="col-3 text-center" colspan="3">{{$doc['pis']}}</td>
 	</tr>
 </table>
 <br/>
@@ -320,7 +320,7 @@ $tipo = array(
 
 <footer class="footer">
 	<span class="esquerda"><strong>Emissão: </strong> {{date('d/m/Y H:i:s')}} </span>
-	<span class="direita"> - Software <strong>ELO</strong></span>
+	<span class="direita"> - Software <strong>GSE</strong></span>
 </footer>
 </body>
 </html>

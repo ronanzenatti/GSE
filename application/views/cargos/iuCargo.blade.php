@@ -51,14 +51,7 @@ $cor = (isset($obj['id_cargo'])) ? "warning" : "success";
 
 
 @section('js')
-
 	<script>
 		$("form").validate();
-
-		@if(isset($obj['identidade']))
-		$('#estado').val("{{$obj['estado']}}").trigger('change');
-		$('#tipo').val("{{$obj['tipo']}}").trigger('change');
-		@endif
-
 	</script>
 @endsection

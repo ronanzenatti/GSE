@@ -76,9 +76,9 @@ class Funcionario extends CI_Controller
             if (empty($usr['password']))
                 unset($usr['password']);
 
-            $id = $this->input->post('id_usuario');
+            $idU = $this->input->post('id_usuario');
 
-            $this->um->Update($id, $usr);
+            $this->um->Update($idU, $usr);
         }
 
         redirect('funcionario/');
@@ -103,10 +103,9 @@ class Funcionario extends CI_Controller
         $id = $this->input->post('id');
         $this->fm->DeleteLogico($id);
         $obj = $this->um->GetByFuncionario($id);
-        $this->um->table = "usuarios";
         $dados['active'] = 0;
-        $dados['deleted_at'] = date('Y-m-d H:i:s');
-        $this->um->Update($obj['id_usuario'], $dados);
+        $dados['deletec_at'] = date('Y-m-d H:i:s');
+        $this->um->Update('id_usuario', $obj['id_usuario'], $dados);
     }
 
 

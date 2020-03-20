@@ -33,8 +33,8 @@ class SituacaoHabitacional extends CI_Controller
     {
         $obj = Array();
 
-        $id = $this->input->post('idsh');
-        $obj['endereco_id'] = $this->input->post('idendereco');
+        $id = $this->input->post('id_sh');
+        $obj['endereco_id'] = $this->input->post('id_endereco');
         $obj['agua'] = !empty($this->input->post('agua')) ? 1 : 0;
         $obj['esgoto'] = $this->input->post('esgoto') ? 1 : 0;
         $obj['energia'] = $this->input->post('energia') ? 1 : 0;
