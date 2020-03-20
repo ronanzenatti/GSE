@@ -16,6 +16,8 @@ class Auth extends CI_Controller
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
+		$this->load->model('Entidade_model', 'em');
+
 		$this->lang->load('auth');
 	}
 	
@@ -47,6 +49,7 @@ class Auth extends CI_Controller
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->idusuario)->result();
 			}
+			
 			redirect('principal/', $this->data);
 		}
 	}
@@ -73,9 +76,21 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				// redirect('principal/');
 				
-				redirect('principal/');
+				$entidadeId = $_SESSION["entidade_id"];
+				$tipoEntidade = $this->em->GetById('identidade', $entidadeId);
+				if ($tipoEntidade["tipo"] == "C")
+					redirect("Creas/");
+				elseif ($tipoEntidade["tipo"] == "M")
+					redirect("MinisterioPublico/");
+				elseif ($tipoEntidade["tipo"] == "S")
+					redirect("Saude/");
+				elseif ($tipoEntidade["tipo"] == "E")
+					redirect("Educacao/");
+				elseif ($tipoEntidade["tipo"] == "A")
+					redirect("Assistencial/");
+				elseif ($tipoEntidade["tipo"] == "O")
+					redirect("Outros/");
 
 			}
 			else

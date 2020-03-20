@@ -18,9 +18,7 @@ class Adolescente extends CI_Controller
 
 	public function index()
 	{
-		$data['tipoModulo'] = $_SESSION['tipoModulo'];
-		// var_dump($data);
-		$this->blade->view('adolescentes/listar', $data);
+		$this->blade->view('adolescentes/listar');
 	}
 
 
