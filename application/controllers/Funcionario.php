@@ -46,11 +46,11 @@ class Funcionario extends CI_Controller
         $obj['cep'] = $this->input->post('cep');
         $obj['telefones'] = $this->input->post('telefones');
         $obj['obs'] = $this->input->post('obs');
-        $obj['entidade_id'] = $this->input->post('identidade');
+        $obj['entidade_id'] = $this->input->post('id_entidade');
 
         $usr['ip_address'] = $this->input->ip_address();
 
-        $usr['cargo_id'] = $this->input->post('idcargo');
+        $usr['cargo_id'] = $this->input->post('id_cargo');
         $usr['email'] = $this->input->post('email');
         $usr['password'] = (!empty($this->input->post('senha'))) ? $this->iam->hash_password($this->input->post('senha')) : null;
         $usr['active'] = 1;
@@ -76,7 +76,7 @@ class Funcionario extends CI_Controller
             if (empty($usr['password']))
                 unset($usr['password']);
 
-            $id = $this->input->post('idusuario');
+            $id = $this->input->post('id_usuario');
 
             $this->um->Update($id, $usr);
         }
@@ -103,9 +103,10 @@ class Funcionario extends CI_Controller
         $id = $this->input->post('id');
         $this->fm->DeleteLogico($id);
         $obj = $this->um->GetByFuncionario($id);
+        $this->um->table = "usuarios";
         $dados['active'] = 0;
-        $dados['deletec_at'] = date('Y-m-d H:i:s');
-        $this->um->Update('id_usuario', $obj['id_usuario'], $dados);
+        $dados['deleted_at'] = date('Y-m-d H:i:s');
+        $this->um->Update($obj['id_usuario'], $dados);
     }
 
 

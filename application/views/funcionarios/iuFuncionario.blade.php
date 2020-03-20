@@ -1,7 +1,7 @@
 @extends('template')
 <?php
-$titulo = (isset($obj['idfuncionario'])) ? "Alterar" : "Inserir";
-$cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
+$titulo = (isset($obj['id_funcionario'])) ? "Alterar" : "Inserir";
+$cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 ?>
 @section('titulo', $titulo .' Funcionário')
 @section('box-color', 'box-' . $cor)
@@ -9,7 +9,7 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 @section('content')
 	<form role="form" action="{{base_url('funcionario/save')}}" method="post" autocomplete="off">
 		<input name="id_" id="id_" type="hidden"
-			   value="{{(isset($obj['idfuncionario']) ? $obj['idfuncionario'] : null)}}"/>
+			   value="{{(isset($obj['id_funcionario']) ? $obj['id_funcionario'] : null)}}"/>
 		<div class="box-body">
 			<h3 class="form-title">Dados Pessoais</h3>
 			<div class="row">
@@ -125,9 +125,9 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 			<div class="row">
 				<div class="form-group">
 					<div class="col-sm-6">
-						<label for="identidade">Entidade:</label>
+						<label for="id_entidade">Entidade:</label>
 						<div class="input-group input-group-sm">
-							<select class="form-control" id="identidade" name="identidade" required>
+							<select class="form-control" id="id_entidade" name="id_entidade" required>
 								<option value="" selected> - SELECIONE -</option>
 							</select>
 							<span class="input-group-btn">
@@ -140,9 +140,9 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 					</div>
 
 					<div class="col-sm-6">
-						<label for="idcargo">Cargo:</label>
+						<label for="id_cargo">Cargo:</label>
 						<div class="input-group input-group-sm">
-							<select class="form-control" id="idcargo" name="idcargo" required>
+							<select class="form-control" id="id_cargo" name="id_cargo" required>
 								<option value="" selected> - SELECIONE -</option>
 							</select>
 							<span class="input-group-btn">
@@ -157,8 +157,8 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 			</div>
 			<br/>
 			<h3 class="form-title">Dados do Usuário</h3>
-			<input name="idusuario" id="idusuario" type="hidden"
-				   value="{{(isset($objU['idusuario']) ? $objU['idusuario'] : null)}}"/>
+			<input name="id_usuario" id="id_usuario" type="hidden"
+				   value="{{(isset($objU['id_usuario']) ? $objU['id_usuario'] : null)}}"/>
 			<div class="row">
 				<div class="col-sm-6">
 					<label for="email">E-mail:</label>
@@ -168,12 +168,12 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 				<div class="col-sm-3">
 					<label for="senha">Senha:</label>
 					<input type="password" class="form-control" id="senha" name="senha" minlength="6"
-							{{(!isset($obj['idfuncionario']) ? "required" : null)}} >
+							{{(!isset($obj['id_funcionario']) ? "required" : null)}} >
 				</div>
 				<div class="col-sm-3">
 					<label for="confirma">Confirme a Senha:</label>
 					<input type="password" class="form-control" id="confirma" name="confirma" minlength="6"
-							{{(!isset($obj['idfuncionario']) ? "required" : null)}} >
+							{{(!isset($obj['id_funcionario']) ? "required" : null)}} >
 				</div>
 			</div>
 		</div>
@@ -196,12 +196,10 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 	</form>
 @endsection
 
-
-
 @section('js')
 
 	<script>
-		$("#identidade").select2({
+		$("#id_entidade").select2({
 			ajax: {
 				url: '/entidade/select2Json',
 				dataType: 'json',
@@ -210,7 +208,7 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 			cache: true
 		});
 
-		$("#idcargo").select2({
+		$("#id_cargo").select2({
 			ajax: {
 				url: '/cargo/select2Json',
 				dataType: 'json',
@@ -233,12 +231,12 @@ $cor = (isset($obj['idfuncionario'])) ? "warning" : "success";
 			language: 'pt-BR'
 		});
 
-		@if(isset($obj['idfuncionario']))
+		@if(isset($obj['id_funcionario']))
 		$('#estado').val("{{$obj['estado']}}").trigger('change');
 		$('#sexo').val("{{$obj['sexo']}}").trigger('change');
 
-		$('#identidade').empty().append('<option value="{{$obj['identidade']}}">{{$objE['nome']}}</option>').val({{$obj['identidade']}}).trigger('change');
-		$('#idcargo').empty().append('<option value="{{$objU['idcargo']}}">{{$objC['nome']}}</option>').val({{$objU['idcargo']}}).trigger('change');
+		$('#id_entidade').empty().append('<option value="{{$obj['entidade_id']}}">{{$objE['nome']}}</option>').val({{$obj['entidade_id']}}).trigger('change');
+		$('#id_cargo').empty().append('<option value="{{$objU['cargo_id']}}">{{$objC['nome']}}</option>').val({{$objU['cargo_id']}}).trigger('change');
 		@endif
 
 	</script>

@@ -54,7 +54,7 @@ class Entidade extends CI_Controller
 	public function alterar($id)
 	{
 		$dados = Array();
-		$dados['obj'] = $this->em->GetById('identidade', $id);
+		$dados['obj'] = $this->em->GetById('id_entidade', $id);
 		$this->blade->view('entidades/iuEntidade', $dados);
 	}
 

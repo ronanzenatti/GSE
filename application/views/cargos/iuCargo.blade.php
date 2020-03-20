@@ -1,14 +1,14 @@
 @extends('template')
 <?php
-$titulo = (isset($obj['idcargo'])) ? "Alterar" : "Inserir";
-$cor = (isset($obj['idcargo'])) ? "warning" : "success";
+$titulo = (isset($obj['id_cargo'])) ? "Alterar" : "Inserir";
+$cor = (isset($obj['id_cargo'])) ? "warning" : "success";
 ?>
 @section('titulo', $titulo .' Cargo')
 @section('box-color', 'box-' . $cor)
 
 @section('content')
 	<form role="form" action="{{base_url('cargo/save')}}" method="post">
-		<input name="id_" id="id_" type="hidden" value="{{(isset($obj['idcargo']) ? $obj['idcargo'] : null)}}"/>
+		<input name="id_" id="id_" type="hidden" value="{{(isset($obj['id_cargo']) ? $obj['id_cargo'] : null)}}"/>
 		<div class="box-body">
 			<div class="row">
 				<div class="form-group">

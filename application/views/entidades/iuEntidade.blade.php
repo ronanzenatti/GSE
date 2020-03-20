@@ -1,14 +1,14 @@
 @extends('template')
 <?php
-$titulo = (isset($obj['identidade'])) ? "Alterar" : "Inserir";
-$cor = (isset($obj['identidade'])) ? "warning" : "success";
+$titulo = (isset($obj['id_entidade'])) ? "Alterar" : "Inserir";
+$cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 ?>
 @section('titulo', $titulo .' Entidade')
 @section('box-color', 'box-' . $cor)
 
 @section('content')
 	<form role="form" action="{{base_url('entidade/save')}}" method="post">
-		<input name="id_" id="id_" type="hidden" value="{{(isset($obj['identidade']) ? $obj['identidade'] : null)}}"/>
+		<input name="id_" id="id_" type="hidden" value="{{(isset($obj['id_entidade']) ? $obj['id_entidade'] : null)}}"/>
 		<div class="box-body">
 			<div class="row">
 				<div class="form-group">
@@ -165,7 +165,7 @@ $cor = (isset($obj['identidade'])) ? "warning" : "success";
 	<script>
 		$("form").validate();
 
-		@if(isset($obj['identidade']))
+		@if(isset($obj['id_entidade']))
 		$('#estado').val("{{$obj['estado']}}").trigger('change');
 		$('#tipo').val("{{$obj['tipo']}}").trigger('change');
 		@endif
