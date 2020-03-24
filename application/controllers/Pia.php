@@ -39,13 +39,13 @@ class Pia extends CI_Controller
 			$no++;
 			$row = array();
 			//    $row[] = $no;
-			$row[] = $obj->idadolescente;
+			$row[] = $obj->id_adolescente;
 			$row[] = $obj->nome;
 			$row[] = $obj->RG;
 			$row[] = date('d/m/Y', strtotime($obj->data_recepcao));
 
-			$btns = "<a href='" . base_url('pia/alterar/' . $obj->idpia) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"pia\", " . $obj->idpia . ", \"tablePia\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
+			$btns = "<a href='" . base_url('pia/alterar/' . $obj->id_pia) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
+			$btns .= "<button type='button' onclick='deletarRegistro(\"pia\", " . $obj->id_pia . ", \"tablePia\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
 //			$btns .= "<a target='_blank' href='" . base_url('adolescente/gerar/' . $obj->idadolescente . '/' . $_SESSION['entidade_id']) . "' class='btn btn-primary btn-sm'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a> ";
 
 			$row[] = $btns;
