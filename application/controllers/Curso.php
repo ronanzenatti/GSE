@@ -8,6 +8,7 @@ class Curso extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Curso_model', 'cum');
+		$this->load->model('Adolescente_model', 'am');
 	}
 
 	public function index()
@@ -25,6 +26,7 @@ class Curso extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['nome'] = mb_strtoupper($this->input->post('nome'), 'UTF-8');
 		$obj['instituicao'] = $this->input->post('instituicao');
 		$obj['conclusao'] = $this->input->post('conclusao');

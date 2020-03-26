@@ -8,6 +8,7 @@ class LazerCulturaEsporte extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('LazerCulturaEsporte_model', 'lcem');
+		$this->load->model('Adolescente_model');
 	}
 
 	public function index()
@@ -25,6 +26,7 @@ class LazerCulturaEsporte extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['cultural_participa'] = $this->input->post('cultural_participa');
 		$obj['cultural_interesse'] = $this->input->post('cultural_interesse');
 		$obj['esportiva_participa'] = $this->input->post('esportiva_participa');

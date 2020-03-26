@@ -8,6 +8,8 @@ class Profissionalizacao extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Profissionalizacao_model', 'prom');
+		$this->load->model('Adolescente_model', 'am');
+
 	}
 
 	public function index()
@@ -25,6 +27,7 @@ class Profissionalizacao extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['registrado'] = $this->input->post('registrado');
 		$obj['interesses_cursos'] = $this->input->post('interesses_cursos');
 

@@ -8,6 +8,7 @@ class Saude extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Saude_model', 'sm');
+		$this->load->model('Adolescente_model', 'am');
 	}
 
 	public function index()
@@ -25,6 +26,7 @@ class Saude extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 		
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['problemas_saude'] = $this->input->post('problemas_saude');;
 		$obj['tratamentos'] = $this->input->post('tratamentos');
 		$obj['psicologico_psiquiatrico'] = $this->input->post('psicologico_psiquiatrico');

@@ -8,6 +8,7 @@ class Meta extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Meta_model', 'mm');
+		$this->load->model('Pia_model', 'pm');
 	}
 
 	public function index()
@@ -24,7 +25,8 @@ class Meta extends CI_Controller
 	{
 		$obj = Array();
 		$id = $this->input->post('id_');
-
+		
+		$obj['id_pia'] = $this->input->post('pia_id');
 		$obj['descricao'] = $this->input->post('descricao');
 		$obj['data_limite'] = date("Y-m-d", strtotime(str_replace("/", "-", $this->input->post['data_limite'])));
 		$obj['usuario_id'] = $this->input->post('usuario_id');

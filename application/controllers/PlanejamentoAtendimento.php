@@ -8,6 +8,7 @@ class PlanejamentoAtendimento extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('PlanejamentoAtendimento_model', 'pam');
+		$this->load->model('Pia_model', 'pm');
 	}
 
 	public function index()
@@ -25,6 +26,7 @@ class PlanejamentoAtendimento extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$objj['id_pia'] = $this->input->post('pia_id');
 		$obj['tipo'] = $this->input->post('tipo');
 		$obj['periodo'] = $this->input->post('periodo');
 		$obj['data_inicio'] = date("Y-m-d", strtotime(str_replace("/", "-", $this->input->post['data_inicio'])));;

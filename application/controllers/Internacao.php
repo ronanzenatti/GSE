@@ -8,6 +8,7 @@ class Internacao extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Internacao_model', 'im');
+		$this->load->model('Adolescente_model', 'am');
 	}
 
 	public function index()
@@ -25,6 +26,7 @@ class Internacao extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['nome'] = ($this->input->post('quando'));
 		$obj['descricao'] = $this->input->post('onde');
 		$obj['descricao'] = $this->input->post('periodo');

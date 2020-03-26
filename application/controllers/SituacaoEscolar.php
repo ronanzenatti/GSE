@@ -8,6 +8,7 @@ class SituacaoEscolar extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('SituacaoEscolar_model', 'sem');
+		$this->load->model('Adolescente_model', 'am');
 	}
 
 	public function index()
@@ -25,6 +26,7 @@ class SituacaoEscolar extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 		
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['grau_escolaridade'] = $this->input->post('grau_escolaridade');
 		$obj['estudando'] = $this->input->post('estudando');
 		$obj['ano_abandono'] = $this->input->post('ano_abandono');

@@ -8,6 +8,7 @@ class PlanejamentoFuturo extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('PlanejamentoFuturo_model', 'pfm');
+		$this->load->model('Adolescente_model', 'am');
 	}
 
 	public function index()
@@ -25,6 +26,7 @@ class PlanejamentoFuturo extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['futuro'] = $this->input->post('futuro');
 		$obj['interesse_familia'] = $this->input->post('interesse_familia');
 		$obj['influencia_negativa'] = $this->input->post('influencia_negativa');

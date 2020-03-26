@@ -8,6 +8,7 @@ class HorarioFamiliar extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('HorarioFamiliar_model', 'hfm');
+		$this->load->model('Adolescente_model', 'am');
 	}
 
 	public function index()
@@ -17,7 +18,7 @@ class HorarioFamiliar extends CI_Controller
 
 	public function inserir()
 	{
-		$this->blade->view('horarios_familiar/iuCargo');
+		$this->blade->view('horarios_familiar/iuHF');
 	}
 
 	public function save()
@@ -25,6 +26,7 @@ class HorarioFamiliar extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$obj['id_adolescente'] = $this->input->post('adolescente_id');
 		$obj['chega_tarde'] = ($this->input->post('chega_tarde'));
 		$obj['compromissos'] = ($this->input->post('compromissos'));
 		$obj['periodo_rua'] = ($this->input->post('periodo_rua'));
