@@ -9,7 +9,7 @@ class Endereco_model extends MY_Model
 		$this->column_order = array('id_endereco', 'descricao', 'logradouro', 'numero', 'bairro', 'cidade');
 		$this->column_search = array('id_endereco', 'descricao', 'logradouro', 'numero', 'bairro', 'cidade');
 		$this->order = array('id_endereco');
-		$this->dates = array('dt_mudanca');
+		$this->dates = array('dt_mudanca', 'created_at', 'updated_at', 'deleted_at');
 		$this->pk_name = "id_endereco";
 	}
 
