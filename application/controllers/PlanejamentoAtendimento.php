@@ -69,7 +69,7 @@ class PlanejamentoAtendimento extends CI_Controller
 			$row[] = $obj->id_planejamento_atendimento;
 			$row[] = $obj->tipo;
 			$row[] = $obj->periodo;
-			$row[] = $obj->data_inicio;
+			$row[] = date('d/m/Y', strtotime($obj->data_inicio));
 
 			$btns = "<a href='" . base_url('PlanejamentoAtendimento/alterar/' . $obj->id_planejamento_atendimento) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
 			$btns .= "<button type='button' onclick='deletarRegistro(\"PlanejamentoAtendimento\", " . $obj->id_planejamento_atendimento . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";

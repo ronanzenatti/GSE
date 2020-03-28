@@ -8,6 +8,8 @@ class Encaminhamento extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Encaminhamento_model', 'encm');
+		$this->load->model('Entidade_model', 'em');
+		$this->load->model('Pia_model', 'pm');
 	}
 
 	public function index()
@@ -25,6 +27,8 @@ class Encaminhamento extends CI_Controller
 		$obj = Array();
 		$id = $this->input->post('id_');
 
+		$obj['pia_id'] = $this->input->post('id_pia');
+		$obj['entidade_id'] = $this->input->post('id_entidade');
 		$obj['descricao'] = mb_strtoupper($this->input->post('descricao'), 'UTF-8');
 		$obj['data_limite'] = (!empty($obj['data_limite'])) ? date('Y-m-d', strtotime(str_replace("/", "-", $obj['data_limite']))) : null;
 		$obj['data_envio'] = (!empty($obj['data_envio'])) ? date('Y-m-d', strtotime(str_replace("/", "-", $obj['data_envio']))) : null;
@@ -68,8 +72,8 @@ class Encaminhamento extends CI_Controller
 			$row[] = $obj->pia_id;
 			$row[] = $obj->entidade_id;
 			$row[] = $obj->descricao;
-			$row[] = $obj->data_limite;
-			$row[] = $obj->data_envio;
+			$row[] = date('d/m/Y', strtotime($obj->data_limite));
+			$row[] = date('d/m/Y', strtotime($obj->data_envio));
 			$row[] = $obj->usuario;
 
 			$btns = "<a href='" . base_url('encaminhamento/alterar/' . $obj->id_encaminhamento) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";

@@ -68,7 +68,7 @@ class Meta extends CI_Controller
 			//    $row[] = $no;
 			$row[] = $obj->id_meta;
 			$row[] = $obj->descricao;
-			$row[] = $obj->data_limite;
+			$row[] = date('d/m/Y', strtotime($obj->data_limite));
 			$row[] = $obj->usuario_id;
 
 			$btns = "<a href='" . base_url('Meta/alterar/' . $obj->id_meta) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
