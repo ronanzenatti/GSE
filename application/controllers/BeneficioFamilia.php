@@ -8,6 +8,7 @@ class BeneficioFamilia extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('BeneficioFamilia_model', 'bf');
+		//model do grupo familiar
 	}
 
 	public function index()

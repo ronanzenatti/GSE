@@ -7,7 +7,7 @@ class Endereco extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Endereco_model', 'emm');
+		$this->load->model('Endereco_model', 'enm');
 	}
 
 	public function index()
@@ -46,10 +46,10 @@ class Endereco extends CI_Controller
 		if (empty($form['id_endereco'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			echo $this->emm->Insert($form);
+			echo $this->enm->Insert($form);
 		} else {
 			$form['updated_at'] = date('Y-m-d H:i:s');
-			$this->emm->Update($form['id_endereco'], $form);
+			$this->enm->Update($form['id_endereco'], $form);
 			echo $form['id_endereco'];
 		}
 	}
@@ -60,7 +60,7 @@ class Endereco extends CI_Controller
 		$idE = $this->input->post('idE');
 
 		$dados = Array();
-		$dados = $this->emm->GetById('id_endereco', $idE);
+		$dados = $this->enm->GetById('id_endereco', $idE);
 		if (!empty($dados['dt_mudanca'])) {
 			$dados['dt_mudanca'] = date("d/m/Y", strtotime($dados['dt_mudanca']));
 		}
@@ -72,7 +72,7 @@ class Endereco extends CI_Controller
 		$idpessoa = (empty($this->input->post('id_adolescente'))) ? 0 : $this->input->post('id_adolescente');
 		$listar = (empty($this->input->post('listar'))) ? 1 : 0;
 		$where = array("adolescente_id" => $idpessoa);
-		$list = $this->emm->Get_Datatables(null, $where);
+		$list = $this->enm->Get_Datatables(null, $where);
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $obj) {
@@ -97,8 +97,8 @@ class Endereco extends CI_Controller
 		}
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->emm->count_all(null, $where),
-			"recordsFiltered" => $this->emm->count_filtered(null, $where),
+			"recordsTotal" => $this->enm->count_all(null, $where),
+			"recordsFiltered" => $this->enm->count_filtered(null, $where),
 			"data" => $data,
 		);
 		//output to json format
@@ -108,6 +108,6 @@ class Endereco extends CI_Controller
 	public function deletar()
 	{
 		$id = $this->input->post('id');
-		return $this->emm->DeleteLogico($id);
+		return $this->enm->DeleteLogico($id);
 	}
 }

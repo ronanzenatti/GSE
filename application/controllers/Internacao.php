@@ -27,9 +27,10 @@ class Internacao extends CI_Controller
 		$id = $this->input->post('id_');
 
 		$obj['id_adolescente'] = $this->input->post('adolescente_id');
-		$obj['nome'] = ($this->input->post('quando'));
-		$obj['descricao'] = $this->input->post('onde');
-		$obj['descricao'] = $this->input->post('periodo');
+		$obj['nome'] = ($this->input->post('nome'));
+		$obj['quando'] = $this->input->post('quando');
+		$obj['onde'] = $this->input->post('onde');
+		$obj['periodo'] = $this->input->post('periodo');
 
 		if (empty($id)) {
 			$obj['created_at'] = date('Y-m-d H:i:s');
