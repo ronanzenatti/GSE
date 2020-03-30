@@ -82,7 +82,7 @@ class Adolescente extends CI_Controller
 
 			$btns = "<a href='" . base_url('adolescente/alterar/' . $obj->id_adolescente) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
 			$btns .= "<button type='button' onclick='deletarRegistro(\"adolescente\", " . $obj->id_adolescente . ", \"tableAdolescente\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
-			$btns .= "<a href='" . base_url('ComposicaoFamiliar/adolescente/' . $obj->id_adolescente) . "' class='btn btn-info btn-sm' class='btn btn-info btn-sm' data-toggle='tooltip' data-placement='top' title='Composição Familiar' data-original-title='Composição Familiar'><i class='fa fa-users' aria-hidden='true'></i></a> ";
+			$btns .= "<a href='" . base_url('GrupoFamiliar/save/' . $obj->id_adolescente) . "' class='btn btn-info btn-sm' class='btn btn-info btn-sm' data-toggle='tooltip' data-placement='top' title='Composição Familiar' data-original-title='Composição Familiar'><i class='fa fa-users' aria-hidden='true'></i></a> ";
 			$btns .= "<a target='_blank' href='" . base_url('adolescente/gerar/' . $obj->id_adolescente . '/' . $_SESSION['entidade_id']) . "' class='btn btn-primary btn-sm'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a> ";
 
 			$row[] = $btns;
