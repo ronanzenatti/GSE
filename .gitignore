@@ -13,6 +13,7 @@ $RECYCLE.BIN/
 *.log
 log.txt
 npm-debug.log*
+composer.lock
 
 /.idea
 
