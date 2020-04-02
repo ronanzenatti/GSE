@@ -6,10 +6,12 @@ class Documento_model extends MY_Model
 	{
 		parent::__construct();
 		$this->table = "documentos";
-		$this->column_order = array('adolescente_id', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai', 'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at');
-		$this->column_search = array('adolescente_id', 'nome', 'dt_nasc', 'nome_tratamento', 'sexo', 'estado_civil', 'natural', 'responsavel', 'pai', 'pai_nasc', 'pai_natural', 'mae', 'mae_nasc', 'mae_natural', 'obs', 'created_at', 'updated_at', 'deleted_at');
+		$this->column_order = array('id_documento, adolescente_id, cert_nasc, cert_livro, cert_folhas, cert_cartorio, bairro_cartorio, municipio_cartorio, cpf, rg, rg_emissao, ctps, ctps_serie, pis, titulo_eleitor, te_secao, te_zona, cam, cdi_cr, cartao_sus, created_at, updated_at, deleted_at');
+		$this->column_search = array('id_documento, adolescente_id, cert_nasc, cert_livro, cert_folhas, cert_cartorio, bairro_cartorio, municipio_cartorio, cpf, rg, rg_emissao, ctps, ctps_serie, pis, titulo_eleitor, te_secao, te_zona, cam, cdi_cr, cartao_sus, created_at, updated_at, deleted_at');
 		$this->order = array('id_documento');
-		$this->dates = array('created_at', 'updated_at', 'deleted_at');
+		$this->dates = array('rg_emissao', 'created_at', 'updated_at', 'deleted_at');
 		$this->pk_name = 'id_documento';
 	}
 }
+
+

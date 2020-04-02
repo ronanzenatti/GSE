@@ -9,7 +9,7 @@ class SituacaoHabitacional extends CI_Controller
         parent::__construct();
         $this->load->model('SituacaoHabitacional_model', 'shm');
         $this->load->model('Adolescente_model', 'am');
-        $this->load->model("Endereco_model", "edm");
+        $this->load->model("Endereco_model", "enm");
         $this->load->model('Documento_model', 'dm');
     }
 
@@ -21,7 +21,7 @@ class SituacaoHabitacional extends CI_Controller
     public function endereco($id)
     {
         $dados = array();
-        $dados['end'] = $this->edm->GetById('id_endereco', $id);
+        $dados['end'] = $this->enm->GetById('id_endereco', $id);
         $dados['ado'] = $this->am->GetById('id_adolescente', $dados['end']['adolescente_id']);
         $dados['doc'] = $this->dm->GetById('adolescente_id', $dados['end']['adolescente_id']);
         $dados['sh'] = $this->shm->GetById('endereco_id', $dados['end']['id_endereco']);
@@ -33,6 +33,7 @@ class SituacaoHabitacional extends CI_Controller
     {
         $obj = Array();
 
+        
         $id = $this->input->post('id_sh');
         $obj['endereco_id'] = $this->input->post('id_endereco');
         $obj['agua'] = !empty($this->input->post('agua')) ? 1 : 0;
