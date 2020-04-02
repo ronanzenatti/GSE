@@ -5,12 +5,12 @@ class Endereco_model extends MY_Model
 	public function __construct()
 	{
 		parent::__construct();
-		$this->table = "enderecos";
-		$this->column_order = array('id_endereco', 'descricao', 'logradouro', 'numero', 'bairro', 'cidade');
-		$this->column_search = array('id_endereco', 'descricao', 'logradouro', 'numero', 'bairro', 'cidade');
+		$this->table = "enderecos en";
+		$this->column_order = array('en.id_endereco','en.descricao','en.logradouro','en.numero','en.bairro','en.cidade');
+		$this->column_search = array('en.id_endereco','en.descricao','en.logradouro','en.numero','en.bairro','en.cidade');
 		$this->order = array('id_endereco');
-		$this->dates = array('dt_mudanca');
-		$this->pk_name = "id_endereco";
+		$this->dates = array('dt_mudanca', 'created_at', 'updated_at', 'deleted_at');
+		$this->pk_name = "en.id_endereco";
 	}
 
 	public function enderecosPorAdolescente($idAdolescente)

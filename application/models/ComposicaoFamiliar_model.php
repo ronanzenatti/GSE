@@ -14,3 +14,4 @@ class ComposicaoFamiliar_model extends MY_Model
 		$this->pk_name = 'id_cf';
 	}
 }
+

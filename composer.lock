@@ -217,16 +217,16 @@
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.3.1",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDI.git",
-                "reference": "f58e64e51f61922d4c3ba4c6c91366ac520cb442"
+                "reference": "527761458f504882ab844f15754523825647f291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/f58e64e51f61922d4c3ba4c6c91366ac520cb442",
-                "reference": "f58e64e51f61922d4c3ba4c6c91366ac520cb442",
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/527761458f504882ab844f15754523825647f291",
+                "reference": "527761458f504882ab844f15754523825647f291",
                 "shasum": ""
             },
             "require": {
@@ -243,10 +243,7 @@
                 "tecnickcom/tcpdf": "~6.2"
             },
             "suggest": {
-                "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured.",
-                "setasign/fpdi-fpdf": "Use this package to automatically evaluate dependencies to FPDF.",
-                "setasign/fpdi-tcpdf": "Use this package to automatically evaluate dependencies to TCPDF.",
-                "setasign/fpdi-tfpdf": "Use this package to automatically evaluate dependencies to tFPDF."
+                "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured."
             },
             "type": "library",
             "autoload": {
@@ -277,13 +274,7 @@
                 "fpdi",
                 "pdf"
             ],
-            "funding": [
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/setasign/fpdi",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-03-10T15:28:15+00:00"
+            "time": "2020-03-23T15:53:59+00:00"
         },
         {
             "name": "sinergi/browser-detector",
@@ -1695,20 +1686,6 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-02-03T10:46:43+00:00"
         },
         {
@@ -1770,6 +1747,5 @@
         "ext-json": "*",
         "ext-mbstring": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }
