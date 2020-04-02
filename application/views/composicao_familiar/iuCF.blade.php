@@ -3,7 +3,7 @@
 $cor = "success";
 ?>
 @section('titulo', 'Composição Familiar')
-@section('subtitulo',' - '.$end['descricao'] )
+@section('subtitulo',' - '.$end['descricao'])
 @section('box-color', 'box-' . $cor)
 @section('content')
 	<input name="id_adolescente" id="id_adolescente" type="hidden"
@@ -28,7 +28,7 @@ $cor = "success";
 			<thead>
 			<tr>
 				<th>Nome</th>
-				<th>Parestesco</th>
+				<th>Parentesco</th>
 				<th>Idade</th>
 				<th>Sexo</th>
 				<th>Escolaridade</th>
@@ -39,6 +39,8 @@ $cor = "success";
 				<th>Ações</th>
 			</tr>
 			</thead>
+			<tbody>
+			</tbody>
 		</table>
 	</div>
 @endsection
@@ -65,7 +67,7 @@ $cor = "success";
 				url: '/ComposicaoFamiliar/alterar',
 				type: 'POST',
 				data: {
-					idcf: idR,
+					id_cf: idR,
 				},
 				success: function (result) {
 					var obj = JSON.parse(result);
@@ -149,7 +151,7 @@ $cor = "success";
 					<h4 class="modal-title"><strong>Dados do Residente</strong></h4>
 				</div>
 				<div class="modal-body">
-					<form id="formResidente" role="form" action="#" method="post">
+					<form id="formResidente" role="form" action="{{base_url('ComposicaoFamiliar/save')}}" method="post">
 						<input name="id_cf" id="id_cf" type="hidden"/>
 						<div class="box-body">
 							<div class="row">
@@ -182,7 +184,7 @@ $cor = "success";
 										<label for="dt_nasc">Data de Nascimento:</label>
 										<div class="input-group">
 											<input type="text" class="form-control datepicker text-center mask_date"
-												   id="dt_nasc" name="dt_nasc" minlength="10" required>
+												id="dt_nasc" name="dt_nasc" minlength="10" required>
 											<div class="input-group-addon">
 												<span class="glyphicon glyphicon-calendar"></span>
 											</div>
@@ -221,7 +223,7 @@ $cor = "success";
 									<div class="col-sm-6">
 										<label for="formacao_profissional">Formação:</label>
 										<input type="text" class="form-control" id="formacao_profissional"
-											   name="formacao_profissional">
+											name="formacao_profissional">
 									</div>
 								</div>
 							</div>
@@ -243,8 +245,7 @@ $cor = "success";
 									</div>
 									<div class="col-sm-4">
 										<label for="renda">Renda:</label>
-										<input type="text" class="form-control text-right Money2" id="renda"
-											   name="renda">
+										<input type="text" class="form-control text-right Money2" id="renda" name="renda">
 									</div>
 								</div>
 							</div>

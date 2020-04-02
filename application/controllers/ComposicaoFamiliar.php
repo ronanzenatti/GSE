@@ -44,27 +44,33 @@ class ComposicaoFamiliar extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('ComposicaoFamiliar_model', 'cfm');
+		$this->load->model('GrupoFamiliar_model', 'gfm');
 		$this->load->model('Adolescente_model', 'am');
 		$this->load->model('Documento_model', 'dm');
+		$this->load->model('Endereco_model', 'emm');
 	}
 
 	public function adolescente($id)
 	{
-
 		$dados = array();
 		$dados['ado'] = $this->am->GetById('id_adolescente', $id);
 		$dados['doc'] = $this->dm->GetById('adolescente_id', $id);
-		$dados['cf'] = $this->cfm->GetById('adolescente_id', $id);
-
+		$dados['gf'] = $this->gfm->GetById('adolescente_id', $id);
+		$dados['cf'] = $this->cfm->GetById('grupo_familiar_id', $dados['gf']['id_grupo_familiar']);
+		$dados['end'] = $this->emm->GetById('adolescente_id', $id);
 
 		$this->blade->view('composicao_familiar/iuCF', $dados);
 	}
 
+
 	public function Ajax_Datatables()
 	{
 		$idAdolescente = (empty($this->input->post('id_adolescente'))) ? 0 : $this->input->post('id_adolescente');
+
+		$idGrupoFamiliar = $this->gfm->GetById('adolescente_id', $idAdolescente);
+
 		$listar = (empty($this->input->post('listar'))) ? 1 : 0;
-		$where = array("adolescente_id" => $idAdolescente);
+		$where = array("grupo_familiar_id" => $idGrupoFamiliar['id_grupo_familiar']);
 		$list = $this->cfm->Get_Datatables(null, $where);
 		$data = array();
 		$no = $_POST['start'];
@@ -104,7 +110,11 @@ class ComposicaoFamiliar extends CI_Controller
 	{
 		parse_str($this->input->post('form'), $form);
 
-		$form['adolescente_id'] = $this->input->post('id_adolescente');
+		$idAdolescente = $this->input->post('id_adolescente');
+
+		$grupoFamiliarId = $this->gfm->GetById('adolescente_id', $idAdolescente);
+
+		$form['grupo_familiar_id'] = $grupoFamiliarId['id_grupo_familiar'];
 
 		$form['nome'] = mb_strtoupper($form['nome'], 'UTF-8');
 
