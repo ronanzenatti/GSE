@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Mar-2020 às 21:25
--- Versão do servidor: 10.4.10-MariaDB
--- versão do PHP: 7.3.12
+-- Tempo de geração: 02-Abr-2020 às 23:37
+-- Versão do servidor: 10.4.11-MariaDB
+-- versão do PHP: 7.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `gse_elo`
 --
+CREATE DATABASE IF NOT EXISTS `gse_elo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `gse_elo`;
 
 -- --------------------------------------------------------
 
@@ -31,26 +33,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `adolescentes` (
   `id_adolescente` bigint(20) UNSIGNED NOT NULL,
   `nome` varchar(191) DEFAULT NULL,
-  `dt_nasc` date DEFAULT NULL,
   `nome_tratamento` varchar(50) DEFAULT NULL,
+  `dt_nasc` date DEFAULT NULL,
   `sexo` char(1) DEFAULT NULL,
   `estado_civil` char(1) DEFAULT NULL,
   `natural` varchar(50) DEFAULT NULL,
   `responsavel` varchar(150) DEFAULT NULL,
-  `obs` text DEFAULT NULL,
+  `obs` mediumtext DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `adolescentes`
---
-
-INSERT INTO `adolescentes` (`id_adolescente`, `nome`, `dt_nasc`, `nome_tratamento`, `sexo`, `estado_civil`, `natural`, `responsavel`, `obs`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'ADOLESCENTE TESTE ', NULL, NULL, 'M', 'S', '', 'Não sei ainda', '', '2020-03-30 16:21:37', '2020-03-30 16:21:37', NULL),
-(2, 'ADOLESCENT DE TESTE DE NOVO', NULL, NULL, 'F', 'S', '', 'A', '', '2020-03-30 16:23:43', '2020-03-30 16:23:43', NULL),
-(3, 'TESTE SEM GRUPO FAMILIAR', NULL, NULL, 'M', 'S', '', 'as', '', '2020-03-30 16:25:02', '2020-03-30 16:25:02', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -64,39 +57,22 @@ CREATE TABLE `audit` (
   `model` varchar(50) NOT NULL,
   `tipo` char(1) NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
-  `antes` text DEFAULT NULL,
-  `depois` text NOT NULL,
+  `antes` mediumtext DEFAULT NULL,
+  `depois` mediumtext NOT NULL,
   `ip` varchar(15) NOT NULL,
   `created_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `audit`
 --
 
 INSERT INTO `audit` (`id`, `model_id`, `model`, `tipo`, `user_id`, `antes`, `depois`, `ip`, `created_at`, `deleted_at`) VALUES
-(1, 1, 'entidades', 'C', 1, NULL, '{\"nome\":\"ETEC de Ibitinga\",\"cnpj\":\"62.823.257\\/0161-02\",\"tipo\":\"R\",\"logradouro\":\"Rua Rosalbino Tucci\",\"numero\":\"431\",\"bairro\":\"Centro\",\"cidade\":\"Ibitinga\",\"estado\":\"SP\",\"cep\":\"14.940-000\",\"telefones\":\"(16) 3341-7046 \\/ 3342-6039\",\"email\":\"e161dir@cps.sp.gov.br\",\"responsavel\":\"Patricia\",\"resp_tel\":\"(16) 3341-7046\",\"resp_email\":\"e161dir@cps.sp.gov.br\",\"created_at\":\"2020-03-20 20:38:58\",\"updated_at\":\"2020-03-20 20:38:58\"}', '127.0.0.1', '2020-03-20 20:38:58', NULL),
-(2, 1, 'cargos', 'C', 1, NULL, '{\"nome\":\"Administrador\",\"descricao\":\"Administrador do Sistema\",\"created_at\":\"2020-03-20 20:38:58\",\"updated_at\":\"2020-03-20 20:38:58\"}', '127.0.0.1', '2020-03-20 20:38:58', NULL),
-(3, 1, 'funcionarios', 'C', 1, NULL, '{\"nome\":\"Ronan Adriel Zenatti\",\"dt_nasc\":\"1988-02-25\",\"sexo\":\"M\",\"cpf\":\"355.936.478-79\",\"rg\":\"41.324.990-6\",\"registro\":\"57852\",\"logradouro\":\"Rua dos Lavradores\",\"numero\":\"302\",\"bairro\":\"Centro\",\"cidade\":\"Boracéia\",\"estado\":\"SP\",\"cep\":\"17.270-000\",\"telefones\":\"(14) 9 8157-5657\",\"obs\":\"Cadastro Automático.\",\"entidade_id\":1,\"created_at\":\"2020-03-20 20:38:58\",\"updated_at\":\"2020-03-20 20:38:58\"}', '127.0.0.1', '2020-03-20 20:38:58', NULL),
-(4, 1, 'usuarios', 'C', 1, NULL, '{\"ip_address\":\"127.0.0.1\",\"cargo_id\":1,\"email\":\"ronan.zenatti@etec.sp.gov.br\",\"password\":\"$2y$08$dWnS4EWD0xusqhRUkNQF6.IskdaMreCL6J4nWRR4S0icsoUPr97E2\",\"active\":1,\"termo\":1,\"funcionario_id\":1,\"created_at\":\"2020-03-20 20:38:58\",\"updated_at\":\"2020-03-20 20:38:58\"}', '127.0.0.1', '2020-03-20 20:38:58', NULL),
-(5, 2, 'funcionarios', 'C', 1, NULL, '{\"nome\":\"ADMINISTRADOR\",\"dt_nasc\":null,\"sexo\":\"O\",\"logradouro\":\"\",\"numero\":\"\",\"bairro\":\"\",\"cidade\":\"\",\"estado\":\"SP\",\"cep\":\"\",\"telefones\":\"\",\"obs\":\"\",\"entidade_id\":\"1\",\"created_at\":\"2020-03-20 20:47:36\",\"updated_at\":\"2020-03-20 20:47:36\"}', '127.0.0.1', '2020-03-20 20:47:36', NULL),
-(6, 2, 'usuarios', 'C', 1, NULL, '{\"ip_address\":\"127.0.0.1\",\"cargo_id\":\"1\",\"email\":\"admin@admin.com\",\"password\":\"$2y$08$sS2MUPXBXEHZoGWYl2qYeOgvGSxMC1pB4N6J8sEDdeiPzVDmZgNsS\",\"active\":1,\"termo\":0,\"created_at\":\"2020-03-20 20:47:36\",\"updated_at\":\"2020-03-20 20:47:36\",\"funcionario_id\":2}', '127.0.0.1', '2020-03-20 20:47:36', NULL),
-(7, 1, 'cargos', 'U', 2, '{\"nome\":\"Administrador\",\"updated_at\":\"2020-03-20 20:38:58\"}', '{\"nome\":\"ADMINISTRADOR\",\"updated_at\":\"2020-03-20 20:48:04\"}', '127.0.0.1', '2020-03-20 20:48:04', NULL),
-(8, 1, 'entidades', 'U', 2, '{\"nome\":\"ETEC de Ibitinga\",\"tipo\":\"R\",\"updated_at\":\"2020-03-20 20:38:58\"}', '{\"nome\":\"ETEC DE IBITINGA\",\"tipo\":\"O\",\"updated_at\":\"2020-03-20 20:48:26\"}', '127.0.0.1', '2020-03-20 20:48:26', NULL),
-(9, 1, 'adolescentes', 'C', 2, NULL, '{\"id_adolescente\":\"\",\"nome\":\"ADOLESCENTE TESTE \",\"dt_nasc\":null,\"sexo\":\"M\",\"estado_civil\":\"S\",\"natural\":\"\",\"responsavel\":\"Não sei ainda\",\"obs\":\"\",\"created_at\":\"2020-03-30 16:21:37\",\"updated_at\":\"2020-03-30 16:21:37\"}', '127.0.0.1', '2020-03-30 16:21:37', NULL),
-(10, 1, 'documentos', 'C', 2, NULL, '{\"id_documento\":\"\",\"cert_nasc\":\"\",\"cert_livro\":\"\",\"cert_folhas\":\"\",\"bairro_cartorio\":\"\",\"cert_cartorio\":\"\",\"municipio_cartorio\":\"\",\"cpf\":\"\",\"rg\":\"11660022\",\"rg_emissao\":null,\"ctps\":\"\",\"ctps_serie\":\"\",\"titulo_eleitor\":\"\",\"te_secao\":\"\",\"te_zona\":\"\",\"pis\":\"\",\"cartao_sus\":\"\",\"cam\":\"\",\"cdi_cr\":\"\",\"adolescente_id\":\"1\",\"created_at\":\"2020-03-30 16:21:38\",\"updated_at\":\"2020-03-30 16:21:38\"}', '127.0.0.1', '2020-03-30 16:21:38', NULL),
-(11, 1, 'enderecos', 'C', 2, NULL, '{\"id_endereco\":\"\",\"cep\":\"\",\"logradouro\":\"Rua Não Sei\",\"numero\":\"\",\"bairro\":\"\",\"estado\":\"SP\",\"cidade\":\"\",\"complemento\":\"\",\"referencia\":\"\",\"dt_mudanca\":null,\"motivo\":null,\"adolescente_id\":\"1\",\"descricao\":\"Casa da Mãe\",\"created_at\":\"2020-03-30 16:22:12\",\"updated_at\":\"2020-03-30 16:22:12\"}', '127.0.0.1', '2020-03-30 16:22:12', NULL),
-(12, 1, 'grupos_familiares', 'C', 2, NULL, '{\"adolescente_id\":\"1\",\"created_at\":\"2020-03-30 16:22:27\",\"updated_at\":\"2020-03-30 16:22:27\"}', '127.0.0.1', '2020-03-30 16:22:27', NULL),
-(13, 1, 'composicao_familiar', 'C', 2, NULL, '{\"id_cf\":\"\",\"nome\":\"MÃE DO ADOLESCENTE\",\"parentesco\":\"1\",\"dt_nasc\":\"1980-05-20\",\"sexo\":\"F\",\"escolaridade\":\"\",\"formacao_profissional\":\"\",\"ocupacao\":\"\",\"renda\":\"\",\"telefones\":\"\",\"grupo_familiar_id\":\"1\",\"obs\":\"\",\"created_at\":\"2020-03-30 16:22:57\",\"updated_at\":\"2020-03-30 16:22:57\"}', '127.0.0.1', '2020-03-30 16:22:57', NULL),
-(14, 1, 'composicao_familiar', 'U', 2, '{\"updated_at\":\"2020-03-30 16:22:57\"}', '{\"updated_at\":\"2020-03-30 16:23:05\"}', '127.0.0.1', '2020-03-30 16:23:05', NULL),
-(15, 2, 'adolescentes', 'C', 2, NULL, '{\"id_adolescente\":\"\",\"nome\":\"ADOLESCENT DE TESTE DE NOVO\",\"dt_nasc\":null,\"sexo\":\"F\",\"estado_civil\":\"S\",\"natural\":\"\",\"responsavel\":\"A\",\"obs\":\"\",\"created_at\":\"2020-03-30 16:23:43\",\"updated_at\":\"2020-03-30 16:23:43\"}', '127.0.0.1', '2020-03-30 16:23:43', NULL),
-(16, 2, 'documentos', 'C', 2, NULL, '{\"id_documento\":\"\",\"cert_nasc\":\"\",\"cert_livro\":\"\",\"cert_folhas\":\"\",\"bairro_cartorio\":\"\",\"cert_cartorio\":\"\",\"municipio_cartorio\":\"\",\"cpf\":\"\",\"rg\":\"60603030\",\"rg_emissao\":null,\"ctps\":\"\",\"ctps_serie\":\"\",\"titulo_eleitor\":\"\",\"te_secao\":\"\",\"te_zona\":\"\",\"pis\":\"\",\"cartao_sus\":\"\",\"cam\":\"\",\"cdi_cr\":\"\",\"adolescente_id\":\"2\",\"created_at\":\"2020-03-30 16:23:44\",\"updated_at\":\"2020-03-30 16:23:44\"}', '127.0.0.1', '2020-03-30 16:23:44', NULL),
-(17, 2, 'grupos_familiares', 'C', 2, NULL, '{\"adolescente_id\":\"2\",\"created_at\":\"2020-03-30 16:23:53\",\"updated_at\":\"2020-03-30 16:23:53\"}', '127.0.0.1', '2020-03-30 16:23:53', NULL),
-(18, 2, 'composicao_familiar', 'C', 2, NULL, '{\"id_cf\":\"\",\"nome\":\"AAAAAAA\",\"parentesco\":\"3\",\"dt_nasc\":\"2020-02-23\",\"sexo\":\"M\",\"escolaridade\":\"\",\"formacao_profissional\":\"\",\"ocupacao\":\"\",\"renda\":\"\",\"telefones\":\"\",\"grupo_familiar_id\":\"2\",\"obs\":\"\",\"created_at\":\"2020-03-30 16:24:03\",\"updated_at\":\"2020-03-30 16:24:03\"}', '127.0.0.1', '2020-03-30 16:24:03', NULL),
-(19, 3, 'composicao_familiar', 'C', 2, NULL, '{\"id_cf\":\"\",\"nome\":\"NOVO TESTE \",\"parentesco\":\"8\",\"dt_nasc\":\"2020-02-11\",\"sexo\":\"F\",\"escolaridade\":\"\",\"formacao_profissional\":\"\",\"ocupacao\":\"\",\"renda\":\"\",\"telefones\":\"\",\"grupo_familiar_id\":\"2\",\"obs\":\"\",\"created_at\":\"2020-03-30 16:24:16\",\"updated_at\":\"2020-03-30 16:24:16\"}', '127.0.0.1', '2020-03-30 16:24:16', NULL),
-(20, 3, 'adolescentes', 'C', 2, NULL, '{\"id_adolescente\":\"\",\"nome\":\"TESTE SEM GRUPO FAMILIAR\",\"dt_nasc\":null,\"sexo\":\"M\",\"estado_civil\":\"S\",\"natural\":\"\",\"responsavel\":\"as\",\"obs\":\"\",\"created_at\":\"2020-03-30 16:25:02\",\"updated_at\":\"2020-03-30 16:25:02\"}', '127.0.0.1', '2020-03-30 16:25:03', NULL),
-(21, 3, 'documentos', 'C', 2, NULL, '{\"id_documento\":\"\",\"cert_nasc\":\"\",\"cert_livro\":\"\",\"cert_folhas\":\"\",\"bairro_cartorio\":\"\",\"cert_cartorio\":\"\",\"municipio_cartorio\":\"\",\"cpf\":\"\",\"rg\":\"6666666\",\"rg_emissao\":null,\"ctps\":\"\",\"ctps_serie\":\"\",\"titulo_eleitor\":\"\",\"te_secao\":\"\",\"te_zona\":\"\",\"pis\":\"\",\"cartao_sus\":\"\",\"cam\":\"\",\"cdi_cr\":\"\",\"adolescente_id\":\"3\",\"created_at\":\"2020-03-30 16:25:03\",\"updated_at\":\"2020-03-30 16:25:03\"}', '127.0.0.1', '2020-03-30 16:25:03', NULL);
+(1, 1, 'entidades', 'C', 1, NULL, '{\"nome\":\"ETEC de Ibitinga\",\"cnpj\":\"62.823.257\\/0161-02\",\"tipo\":\"R\",\"logradouro\":\"Rua Rosalbino Tucci\",\"numero\":\"431\",\"bairro\":\"Centro\",\"cidade\":\"Ibitinga\",\"estado\":\"SP\",\"cep\":\"14.940-000\",\"telefones\":\"(16) 3341-7046 \\/ 3342-6039\",\"email\":\"e161dir@cps.sp.gov.br\",\"responsavel\":\"Patricia\",\"resp_tel\":\"(16) 3341-7046\",\"resp_email\":\"e161dir@cps.sp.gov.br\",\"created_at\":\"2020-04-02 18:36:22\",\"updated_at\":\"2020-04-02 18:36:22\"}', '127.0.0.1', '2020-04-02 18:36:22', NULL),
+(2, 1, 'cargos', 'C', 1, NULL, '{\"nome\":\"Administrador\",\"descricao\":\"Administrador do Sistema\",\"created_at\":\"2020-04-02 18:36:22\",\"updated_at\":\"2020-04-02 18:36:22\"}', '127.0.0.1', '2020-04-02 18:36:22', NULL),
+(3, 1, 'funcionarios', 'C', 1, NULL, '{\"nome\":\"Ronan Adriel Zenatti\",\"dt_nasc\":\"1988-02-25\",\"sexo\":\"M\",\"cpf\":\"355.936.478-79\",\"rg\":\"41.324.990-6\",\"registro\":\"57852\",\"logradouro\":\"Rua dos Lavradores\",\"numero\":\"302\",\"bairro\":\"Centro\",\"cidade\":\"Boracéia\",\"estado\":\"SP\",\"cep\":\"17.270-000\",\"telefones\":\"(14) 9 8157-5657\",\"obs\":\"Cadastro Automático.\",\"entidade_id\":1,\"created_at\":\"2020-04-02 18:36:22\",\"updated_at\":\"2020-04-02 18:36:22\"}', '127.0.0.1', '2020-04-02 18:36:22', NULL),
+(4, 1, 'usuarios', 'C', 1, NULL, '{\"ip_address\":\"127.0.0.1\",\"cargo_id\":1,\"email\":\"ronan.zenatti@etec.sp.gov.br\",\"password\":\"$2y$08$eJZqwQZu2lV15G06i.jx6.oQp2n.rrnMJCgyQyyTBAXYkJlFUI.s6\",\"active\":1,\"termo\":1,\"funcionario_id\":1,\"created_at\":\"2020-04-02 18:36:22\",\"updated_at\":\"2020-04-02 18:36:22\"}', '127.0.0.1', '2020-04-02 18:36:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,14 +105,14 @@ CREATE TABLE `cargos` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `cargos`
 --
 
 INSERT INTO `cargos` (`id_cargo`, `nome`, `descricao`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'ADMINISTRADOR', 'Administrador do Sistema', '2020-03-20 20:38:58', '2020-03-20 20:48:04', NULL);
+(1, 'Administrador', 'Administrador do Sistema', '2020-04-02 18:36:22', '2020-04-02 18:36:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,15 +138,6 @@ CREATE TABLE `composicao_familiar` (
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `composicao_familiar`
---
-
-INSERT INTO `composicao_familiar` (`id_cf`, `grupo_familiar_id`, `nome`, `parentesco`, `dt_nasc`, `sexo`, `escolaridade`, `formacao_profissional`, `ocupacao`, `renda`, `telefones`, `obs`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'MÃE DO ADOLESCENTE', 1, '1980-05-20', 'F', 0, '', 1, '0.00', '', '', '2020-03-30 16:22:57', '2020-03-30 16:23:05', NULL),
-(2, 2, 'AAAAAAA', 3, '2020-02-23', 'M', 0, '', 0, '0.00', '', '', '2020-03-30 16:24:03', '2020-03-30 16:24:03', NULL),
-(3, 2, 'NOVO TESTE ', 8, '2020-02-11', 'F', 0, '', 0, '0.00', '', '', '2020-03-30 16:24:16', '2020-03-30 16:24:16', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -187,7 +154,7 @@ CREATE TABLE `contatos` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -236,16 +203,7 @@ CREATE TABLE `documentos` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `documentos`
---
-
-INSERT INTO `documentos` (`id_documento`, `adolescente_id`, `cert_nasc`, `cert_livro`, `cert_folhas`, `cert_cartorio`, `bairro_cartorio`, `municipio_cartorio`, `cpf`, `rg`, `rg_emissao`, `ctps`, `ctps_serie`, `pis`, `titulo_eleitor`, `te_secao`, `te_zona`, `cam`, `cdi_cr`, `cartao_sus`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 0, '', '', '', '', '', '', '11660022', NULL, 0, '', '', '', 0, 0, '', '', 0, '2020-03-30 16:21:38', '2020-03-30 16:21:38', NULL),
-(2, 2, 0, '', '', '', '', '', '', '60603030', NULL, 0, '', '', '', 0, 0, '', '', 0, '2020-03-30 16:23:44', '2020-03-30 16:23:44', NULL),
-(3, 3, 0, '', '', '', '', '', '', '6666666', NULL, 0, '', '', '', 0, 0, '', '', 0, '2020-03-30 16:25:03', '2020-03-30 16:25:03', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -290,14 +248,7 @@ CREATE TABLE `enderecos` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `enderecos`
---
-
-INSERT INTO `enderecos` (`id_endereco`, `adolescente_id`, `descricao`, `logradouro`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`, `dt_mudanca`, `motivo`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Casa da Mãe', 'Rua Não Sei', '', '', '', '', 'SP', '', '', NULL, NULL, '2020-03-30 16:22:12', '2020-03-30 16:22:12', NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -324,14 +275,14 @@ CREATE TABLE `entidades` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `entidades`
 --
 
 INSERT INTO `entidades` (`id_entidade`, `nome`, `cnpj`, `tipo`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `telefones`, `email`, `responsavel`, `resp_tel`, `resp_email`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'ETEC DE IBITINGA', '62.823.257/0161-02', 'O', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2020-03-20 20:38:58', '2020-03-20 20:48:26', NULL);
+(1, 'ETEC de Ibitinga', '62.823.257/0161-02', 'R', 'Rua Rosalbino Tucci', '431', 'Centro', 'Ibitinga', 'SP', '14.940-000', '(16) 3341-7046 / 3342-6039', 'e161dir@cps.sp.gov.br', 'Patricia', '(16) 3341-7046', 'e161dir@cps.sp.gov.br', '2020-04-02 18:36:22', '2020-04-02 18:36:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -355,19 +306,18 @@ CREATE TABLE `funcionarios` (
   `estado` char(2) DEFAULT NULL,
   `cep` varchar(10) DEFAULT NULL,
   `telefones` varchar(50) DEFAULT NULL,
-  `obs` text DEFAULT NULL,
+  `obs` mediumtext DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `funcionarios`
 --
 
 INSERT INTO `funcionarios` (`id_funcionario`, `entidade_id`, `nome`, `dt_nasc`, `sexo`, `cpf`, `rg`, `registro`, `logradouro`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `telefones`, `obs`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Ronan Adriel Zenatti', '1988-02-25', 'M', '355.936.478-79', '41.324.990-6', '57852', 'Rua dos Lavradores', '302', 'Centro', 'Boracéia', 'SP', '17.270-000', '(14) 9 8157-5657', 'Cadastro Automático.', '2020-03-20 20:38:58', '2020-03-20 20:38:58', NULL),
-(2, 1, 'ADMINISTRADOR', NULL, 'O', NULL, NULL, NULL, '', '', '', '', 'SP', '', '', '', '2020-03-20 20:47:36', '2020-03-20 20:47:36', NULL);
+(1, 1, 'Ronan Adriel Zenatti', '1988-02-25', 'M', '355.936.478-79', '41.324.990-6', '57852', 'Rua dos Lavradores', '302', 'Centro', 'Boracéia', 'SP', '17.270-000', '(14) 9 8157-5657', 'Cadastro Automático.', '2020-04-02 18:36:22', '2020-04-02 18:36:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -383,14 +333,6 @@ CREATE TABLE `grupos_familiares` (
   `updated_at` date DEFAULT NULL,
   `deleted_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `grupos_familiares`
---
-
-INSERT INTO `grupos_familiares` (`id_grupo_familiar`, `adolescente_id`, `outras_infomacoes`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, NULL, '2020-03-30', '2020-03-30', NULL),
-(2, 2, NULL, '2020-03-30', '2020-03-30', NULL);
 
 -- --------------------------------------------------------
 
@@ -413,10 +355,7 @@ CREATE TABLE `historico_logins` (
 --
 
 INSERT INTO `historico_logins` (`id_hl`, `usuario_id`, `ip_address`, `navegador`, `so`, `created_at`, `deleted_at`) VALUES
-(1, 1, '127.0.0.1', 'Chrome / 80.0.3987.149', 'OS X', '2020-03-20 20:39:02', NULL),
-(2, 2, '127.0.0.1', 'Chrome / 80.0.3987.149', 'OS X', '2020-03-20 20:47:49', NULL),
-(3, 2, '127.0.0.1', 'Chrome / 80.0.3987.149', 'OS X', '2020-03-20 20:48:40', NULL),
-(4, 2, '127.0.0.1', 'Chrome / 80.0.3987.149', 'Windows', '2020-03-30 16:21:04', NULL);
+(1, 1, '127.0.0.1', 'Chrome / 80.0.3987.132', 'Windows', '2020-04-02 18:36:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -478,11 +417,11 @@ CREATE TABLE `lazeres_culturas_esportes` (
 --
 
 CREATE TABLE `login_attempts` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `ip_address` varchar(45) NOT NULL,
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -582,7 +521,7 @@ CREATE TABLE `profissionalizacao` (
 --
 
 CREATE TABLE `saude` (
-  `id_saude` int(10) UNSIGNED NOT NULL,
+  `id_saude` bigint(20) UNSIGNED NOT NULL,
   `adolescente_id` bigint(20) UNSIGNED NOT NULL,
   `problemas_saude` text DEFAULT NULL,
   `tratamentos` text DEFAULT NULL,
@@ -624,11 +563,11 @@ CREATE TABLE `situacao_habitacional` (
   `qtde_comodos` tinyint(4) DEFAULT NULL,
   `espaco` decimal(10,2) UNSIGNED DEFAULT NULL,
   `qtde_pessoas` tinyint(4) DEFAULT NULL,
-  `obs` text NOT NULL,
+  `obs` mediumtext NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -665,13 +604,13 @@ CREATE TABLE `trabalhos` (
   `horario_inicio` time DEFAULT NULL,
   `horario_fim` time DEFAULT NULL,
   `dt_recisao` datetime DEFAULT NULL,
-  `obs` text DEFAULT NULL,
-  `motivo_recisao` text DEFAULT NULL,
+  `obs` mediumtext DEFAULT NULL,
+  `motivo_recisao` mediumtext DEFAULT NULL,
   `tipo` char(1) DEFAULT NULL COMMENT '(F)ormal / (I)nformal',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -699,15 +638,14 @@ CREATE TABLE `usuarios` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `funcionario_id`, `cargo_id`, `ip_address`, `salt`, `email`, `password`, `username`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `last_login`, `active`, `termo`, `data_termo`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 1, '127.0.0.1', NULL, 'ronan.zenatti@etec.sp.gov.br', '$2y$08$dWnS4EWD0xusqhRUkNQF6.IskdaMreCL6J4nWRR4S0icsoUPr97E2', NULL, NULL, NULL, NULL, NULL, 1584747542, 1, 1, NULL, '2020-03-20 20:38:58', '2020-03-20 20:38:58', NULL),
-(2, 2, 1, '127.0.0.1', NULL, 'admin@admin.com', '$2y$08$sS2MUPXBXEHZoGWYl2qYeOgvGSxMC1pB4N6J8sEDdeiPzVDmZgNsS', NULL, NULL, NULL, NULL, NULL, 1585596064, 1, 0, NULL, '2020-03-20 20:47:36', '2020-03-20 20:47:36', NULL);
+(1, 1, 1, '127.0.0.1', NULL, 'ronan.zenatti@etec.sp.gov.br', '$2y$08$eJZqwQZu2lV15G06i.jx6.oQp2n.rrnMJCgyQyyTBAXYkJlFUI.s6', NULL, NULL, NULL, NULL, NULL, 1585863387, 1, 1, NULL, '2020-04-02 18:36:22', '2020-04-02 18:36:22', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -914,13 +852,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `adolescentes`
 --
 ALTER TABLE `adolescentes`
-  MODIFY `id_adolescente` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_adolescente` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `audit`
 --
 ALTER TABLE `audit`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `beneficios_familias`
@@ -938,7 +876,7 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT de tabela `composicao_familiar`
 --
 ALTER TABLE `composicao_familiar`
-  MODIFY `id_cf` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cf` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `contatos`
@@ -956,7 +894,7 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT de tabela `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id_documento` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_documento` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `encaminhamentos`
@@ -968,7 +906,7 @@ ALTER TABLE `encaminhamentos`
 -- AUTO_INCREMENT de tabela `enderecos`
 --
 ALTER TABLE `enderecos`
-  MODIFY `id_endereco` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_endereco` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `entidades`
@@ -980,19 +918,19 @@ ALTER TABLE `entidades`
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `id_funcionario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_funcionario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `grupos_familiares`
 --
 ALTER TABLE `grupos_familiares`
-  MODIFY `id_grupo_familiar` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_grupo_familiar` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `historico_logins`
 --
 ALTER TABLE `historico_logins`
-  MODIFY `id_hl` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_hl` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `horarios_familiar`
@@ -1016,7 +954,7 @@ ALTER TABLE `lazeres_culturas_esportes`
 -- AUTO_INCREMENT de tabela `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `metas`
@@ -1052,7 +990,7 @@ ALTER TABLE `profissionalizacao`
 -- AUTO_INCREMENT de tabela `saude`
 --
 ALTER TABLE `saude`
-  MODIFY `id_saude` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_saude` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `situacao_habitacional`
@@ -1076,7 +1014,7 @@ ALTER TABLE `trabalhos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas

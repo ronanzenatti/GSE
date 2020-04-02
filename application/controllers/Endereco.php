@@ -42,7 +42,7 @@ class Endereco extends CI_Controller
 		} else {
 			$form['dt_mudanca'] = date('Y-m-d', strtotime(str_replace("/", "-", $form['dt_mudanca'])));
 		}
-
+		$this->enm->table = "enderecos";
 		if (empty($form['id_endereco'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');

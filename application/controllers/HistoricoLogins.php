@@ -19,7 +19,7 @@ class HistoricoLogins extends CI_Controller
 		$idusuario = $this->session->user_id;
 		$where = array('usuario_id' => $idusuario);
 
-		$list = $this->hlm->Get_Datatables(null, $where);
+		$list = $this->hlm->Get_Datatables("hl", $where);
 
 		$data = array();
 		$no = $_POST['start'];
@@ -37,8 +37,8 @@ class HistoricoLogins extends CI_Controller
 
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->hlm->count_all(null, $where),
-			"recordsFiltered" => $this->hlm->count_filtered(null, $where),
+			"recordsTotal" => $this->hlm->count_all("hl", $where),
+			"recordsFiltered" => $this->hlm->count_filtered("hl", $where),
 			"data" => $data,
 		);
 		//output to json format

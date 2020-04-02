@@ -77,7 +77,7 @@ $db['default'] = array(
 	'dsn' => '',
 	//'hostname' => 'gse_elo.mysql.dbaas.com.br',
 
-	'hostname' => 'localhost:3308',
+	'hostname' => 'localhost:3306',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'gse_elo',

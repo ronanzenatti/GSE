@@ -1002,6 +1002,7 @@ class Ion_auth_model extends CI_Model
 					'usuario_id' => $user->id_usuario
 				);
 
+				$this->hlm->table = "historico_logins";
 				$this->hlm->Insert($login);
 
 				$this->set_session($user, $fun, $ent, $cargo);
