@@ -21,10 +21,10 @@ $cor = (isset($obj['id_termo'])) ? "warning" : "success";
 			</div>
 			<div class="row">
 				<div class="form-group">
-					<div class="col-sm-6">
-						<label for="descricao">Descrição do Termo:</label>
-						<input type="text" class="form-control" id="descricao" name="texto" required
-							   value="{{(isset($obj['texto']) ? $obj['texto'] : null)}}">
+					<div class="col-sm-12">
+						<label for="descricao">Digite o termo completo:</label>
+						<textarea class="form-control" id="descricao" 
+										name="texto" required>{{(isset($obj['texto']) ? $obj['texto'] : null)}}</textarea>
 					</div>
 				</div>
 			</div>
@@ -51,7 +51,15 @@ $cor = (isset($obj['id_termo'])) ? "warning" : "success";
 
 
 @section('js')
+	<script src="{{base_url()}}assets/bower_components/ckeditor/ckeditor.js"></script>
+	<script src="{{base_url()}}assets/bower_components/ckeditor/lang/pt-br.js"></script>
+
 	<script>
 		$("form").validate();
+
+		
+		CKEDITOR.replace('descricao', {
+				customConfig: 'config.js'
+		});
 	</script>
 @endsection

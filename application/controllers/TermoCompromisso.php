@@ -81,5 +81,24 @@ class TermoCompromisso extends CI_Controller
 			);
 			//output to json format
 			echo json_encode($output);
-    }
-}
+		}
+
+		public function select2Json()
+		{
+			$res = array();
+			$term = $this->input->post('term');
+			if (isset($term))
+				$where = "nome LIKE '%$term%'";
+			else
+				$where = null;
+	
+			$all = $this->tcm->GetAll('nome', 'asc', true, $where);
+			if (isset($all)) {
+				foreach ($all as $i) {
+					array_push($res, array("id" => (int)$i['id_termo'], "text" => $i['nome']));
+				}
+			}
+	
+			echo json_encode(array("results" => $res));
+		}
+	}

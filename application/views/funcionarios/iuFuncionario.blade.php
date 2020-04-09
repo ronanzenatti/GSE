@@ -124,6 +124,7 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 			<h3 class="form-title">Vínculo Empregatício</h3>
 			<div class="row">
 				<div class="form-group">
+
 					<div class="col-sm-6">
 						<label for="id_entidade">Entidade:</label>
 						<div class="input-group input-group-sm">
@@ -153,6 +154,22 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 							</span>
 						</div>
 					</div>
+
+					<div class="col-sm-6">
+						<label for="id_termo">Termo de Compromisso:</label>
+						<div class="input-group input-group-sm">
+							<select class="form-control" id="id_termo" name="id_termo" required>
+								<option value="" selected> - SELECIONE -</option>
+							</select>
+							<span class="input-group-btn">
+								<a href="{{base_url("TermoCompromisso/inserir")}}" target="_blank"
+								   class="btn btn-success btn-flat btn-select2">
+									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+								</a>
+							</span>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<br/>
@@ -217,6 +234,15 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 			cache: true
 		});
 
+		$("#id_termo").select2({
+			ajax: {
+				url: '/TermoCompromisso/select2Json',
+				dataType: 'json',
+				method: "post",
+			},
+			cache: true
+		});
+
 		$("form").validate({
 			rules: {
 				senha: {
@@ -237,6 +263,7 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 
 		$('#id_entidade').empty().append('<option value="{{$obj['entidade_id']}}">{{$objE['nome']}}</option>').val({{$obj['entidade_id']}}).trigger('change');
 		$('#id_cargo').empty().append('<option value="{{$objU['cargo_id']}}">{{$objC['nome']}}</option>').val({{$objU['cargo_id']}}).trigger('change');
+		$('#id_termo').empty().append('<option value="{{$objU['termo_id']}}">{{$objTC['nome']}}</option>').val({{$objU['termo_id']}}).trigger('change');
 		@endif
 
 	</script>
