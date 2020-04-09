@@ -154,6 +154,9 @@
 							<a href="{{base_url('cargo/')}}"><i class="fa fa-circle-o"></i> Cargos</a>
 						</li>
 						<li class="active">
+							<a href="{{base_url('TermoCompromisso/')}}"><i class="fa fa-circle-o"></i> Compromisso</a>
+						</li>
+						<li class="active">
 							<a href="{{base_url('funcionario/')}}"><i class="fa fa-circle-o"></i> Funcionários</a>
 						</li>
 					</ul>
