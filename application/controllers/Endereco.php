@@ -8,6 +8,7 @@ class Endereco extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Endereco_model', 'enm');
+		$this->load->library('curl');
 	}
 
 	public function index()
@@ -110,4 +111,14 @@ class Endereco extends CI_Controller
 		$id = $this->input->post('id');
 		return $this->enm->DeleteLogico($id);
 	}
+
+	public function consultaCep(){
+		
+        $cep = $this->input->post('cep');
+		$cep = str_replace('-', '', $cep);
+		$cep = str_replace('.','', $cep);
+		
+        echo $this->curl->consultaCep($cep);
+        
+    }	
 }
