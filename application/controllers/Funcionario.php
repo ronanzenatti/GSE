@@ -12,6 +12,7 @@ class Funcionario extends CI_Controller
         $this->load->model('Cargo_model', 'cm');
         $this->load->model('Entidade_model', 'em');
         $this->load->model('Ion_auth_model', 'iam');
+        $this->load->library('curl');
     }
 
     public function index()
@@ -139,5 +140,15 @@ class Funcionario extends CI_Controller
         );
         //output to json format
         echo json_encode($output);
+    }
+
+    public function consultaCep(){
+		
+        $cep = $this->input->post('cep');
+		$cep = str_replace('-', '', $cep);
+		$cep = str_replace('.','', $cep);
+		        
+        echo $this->curl->consultaCep($cep);
+        
     }
 }

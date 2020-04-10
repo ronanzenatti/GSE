@@ -194,6 +194,23 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 
 		</div>
 	</form>
+
+	{{---------------- MODAL  -------------------------------------------------------------------}}
+	<div class="modal fade" id="modalCep">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<p id="loadingTexto">Aguarde</p>
+				</div>
+				<div class="modal-body" id="modalBody">
+					<img id="loadingImagem" src="/assets/img/loading.gif">
+				</div>
+				<div class="modal-footer">
+					<p id="loadingTexto">Buscando endereço...</p>
+				</div>
+			</div>
+		</div>
+	</div>
 @endsection
 
 @section('js')
@@ -230,14 +247,36 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 		$('.datepicker').datepicker({
 			language: 'pt-BR'
 		});
-
+		
 		@if(isset($obj['id_funcionario']))
 		$('#estado').val("{{$obj['estado']}}").trigger('change');
 		$('#sexo').val("{{$obj['sexo']}}").trigger('change');
-
 		$('#id_entidade').empty().append('<option value="{{$obj['entidade_id']}}">{{$objE['nome']}}</option>').val({{$obj['entidade_id']}}).trigger('change');
 		$('#id_cargo').empty().append('<option value="{{$objU['cargo_id']}}">{{$objC['nome']}}</option>').val({{$objU['cargo_id']}}).trigger('change');
 		@endif
-
+		
+		$('#cep').focusout(function(){
+			var cep = $('#cep').val();
+			$.ajax({   
+				url: "/Funcionario/consultaCep",   
+				type : 'POST',   
+				data : {   
+					'cep': cep   
+				},   
+				dataType : 'json',   
+				beforeSend: function(){                     
+					$("#modalCep").modal('show');   
+				},   
+				success: function(dados){
+					$('#logradouro').val(dados.logradouro);
+					$('#bairro').val(dados.bairro);
+					$('#cidade').val(dados.localidade);
+					$('#estado').val(dados.uf);                     
+				},   
+				complete: function(){
+					$("#modalCep").modal('hide')
+				} 
+			});
+		});
 	</script>
 @endsection
