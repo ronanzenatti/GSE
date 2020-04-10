@@ -29,7 +29,7 @@ label {
 
 .error {
 	color: red;
-	font-size: x-small;
+	font-size: small;
 }
 
 .swal2-popup {
