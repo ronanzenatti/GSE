@@ -71,7 +71,7 @@ class Audit extends CI_Controller
 				$this->db->where("(antes LIKE '%$contenha%' OR depois LIKE '%$contenha%')", null, false);
 			}
 		}
-		$list = $this->aum->Get_Datatables(null, $where);
+		$list = $this->aum->Get_Datatables("au", $where);
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $obj) {
@@ -80,7 +80,7 @@ class Audit extends CI_Controller
 			//$row[] = ($obj->tipo == "C") ? 'Novo' : ($obj->tipo == 'U') ? 'Alterado' : ($obj->tipo == 'D') ? 'Deletado' : 'NULL';
 			$row[] = ($obj->tipo == 'C' ? 'Novo' : ($obj->tipo == 'U' ? 'Alterado' : ($obj->tipo == 'D' ? 'Deletado' : 'NULL')));
 			$row[] = date('d/m/Y H:i:s', strtotime($obj->created_at));
-			$row[] = $obj->user_id;
+			$row[] = $obj->nome;
 			$row[] = $this->models[$obj->model];
 			$row[] = $obj->model_id;
 			$row[] = $this->montaLog($obj->antes, $obj->model);
@@ -90,11 +90,10 @@ class Audit extends CI_Controller
 			$data[] = $row;
 		}
 
-
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->aum->count_all(),
-			"recordsFiltered" => $this->aum->count_filtered(),
+			"recordsTotal" => $this->aum->count_all("au"),
+			"recordsFiltered" => $this->aum->count_filtered("au"),
 			"data" => $data,
 		);
 		//output to json format
