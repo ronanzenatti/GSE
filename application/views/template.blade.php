@@ -45,7 +45,6 @@
 	<!-- iCheck -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}plugins/iCheck/all.css">
 
-
 	<link rel="stylesheet" href="{{base_url('assets/')}}css/style.css">
 
 
@@ -170,7 +169,6 @@
 				</li>
 
 
-
 			</ul>
 		</section>
 		<!-- /.sidebar -->
@@ -239,8 +237,8 @@
 <!-- datepicker -->
 <script src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script
-	src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"
-	charset="UTF-8"></script>
+		src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"
+		charset="UTF-8"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{base_url('assets/')}}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->

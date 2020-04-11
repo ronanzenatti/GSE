@@ -144,7 +144,7 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 							<div class="form-group">
 								<div class="col-sm-3">
 									<label for="cpf">cpf:</label>
-									<input type="text" class="form-control mask_cpf" id="cpf" name="cpf"
+									<input type="text" class="form-control mask_CPF" id="cpf" name="cpf"
 										   value="{{(isset($objD['cpf']) ? $objD['cpf'] : null)}}">
 								</div>
 								<div class="col-sm-2">

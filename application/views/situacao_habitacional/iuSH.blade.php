@@ -137,7 +137,7 @@ $cor = (isset($sh['id_sh'])) ? "warning" : "success";
     </form>
 @endsection
 @section('js')
-    <!-- FastClick -->
+    <!-- CKEDITOR -->
     <script src="{{base_url()}}assets/bower_components/ckeditor/ckeditor.js"></script>
     <script src="{{base_url()}}assets/bower_components/ckeditor/lang/pt-br.js"></script>
 

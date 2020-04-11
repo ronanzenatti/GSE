@@ -18,6 +18,7 @@ class Pia extends CI_Controller
 	public function index()
 	{
 		$this->blade->view('pia/listar');
+		//$this->blade->view('pia/bodyPia');
 	}
 
 	public function inserir()
@@ -25,9 +26,43 @@ class Pia extends CI_Controller
 		$this->blade->view('pia/iuPia');
 	}
 
-	public function elaboracao()
+	public function save()
 	{
-		$this->blade->view('pia/bodyPia');
+		$obj = Array();
+
+		$obj['adolescente_id'] = $this->input->post('idadolescente');
+
+		$dataInicio = $this->input->post('data_inicio');
+		$dataRecepcao = $this->input->post('data_recepcao');
+
+		$obj['data_inicio'] = (empty($dataInicio)) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $dataInicio)));
+		$obj['data_recepcao'] = (empty($dataRecepcao)) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $dataRecepcao)));
+
+		$obj['created_at'] = date('Y-m-d H:i:s');
+		$obj['updated_at'] = date('Y-m-d H:i:s');
+		$this->pm->table = "pias";
+		$id = $this->pm->Insert($obj);
+
+		redirect('/pia/elaboracao/' . $id);
+	}
+
+	public function elaboracao($id)
+	{
+		$dados = array();
+		$dados['id'] = $id;
+		$dados['obj'] = $this->pm->GetById('id_pia', $id);
+		$dados['obj']['data_inicio'] = (!empty($dados['obj']['data_inicio'])) ? date("d/m/Y", strtotime($dados['obj']['data_inicio'])) : null;
+		$dados['obj']['data_recepcao'] = (!empty($dados['obj']['data_recepcao'])) ? date("d/m/Y", strtotime($dados['obj']['data_recepcao'])) : null;
+		$dados['obj']['qtdeProcessos'] = 0;
+
+
+		$dados['ado'] = $this->am->GetById('id_adolescente', $dados['obj']['adolescente_id']);
+		$dados['ado']['dt_nasc'] = (!empty($dados['ado']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['ado']['dt_nasc'])) : null;
+
+		$dados['doc'] = $this->dm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+		$dados['doc']['rg_emissao'] = (!empty($dados['objD']['rg_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['rg_emissao'])) : null;
+
+		$this->blade->view('pia/bodyPia', $dados);
 	}
 
 	public function Ajax_Datatables()
