@@ -741,7 +741,6 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 							$('input').iCheck('update');
 							$("#mudanca_div").show();
 						} else {
-							console.log("vazio");
 							$('#ativoE').iCheck('check');
 							$('input').iCheck('update');
 							$("#mudanca_div").hide();
@@ -749,7 +748,7 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 					});
 
 					$('#modalEndereco').on('hide.bs.modal', function (e) {
-						if (e.target.id != "dt_mudanca") {
+						if (e.target.id == "modalEndereco") {
 							$("#formEndereco input[type=text], input[type=password], input[type=number], input[type=email], textarea").each(function () {
 								$(this).val(null);
 							});
@@ -771,7 +770,7 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 					if ($("#ativoE").is(':checked')) {
 						$("#mudanca_div").hide();
 					}
-					
+
 					$("#salvarEnd").click(function (e) {
 						if ($("#formEndereco").valid()) {
 							$.ajax({
@@ -791,31 +790,31 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 							});
 						}
 					});
-					
-					$('#cep').focusout(function(){
+
+					$('#cep').focusout(function () {
 						var cep = $('#cep').val();
-						$.ajax({   
-							url: "/Endereco/consultaCep",   
-							type : 'POST',   
-							data : {   
-								'cep': cep   
-							},   
-							dataType : 'json',   
-							beforeSend: function(){                     
-								$("#modalCep").modal('show');   
-							},   
-							success: function(dados){
-									$('#logradouro').val(dados.logradouro);
-									$('#bairro').val(dados.bairro);
-									$('#cidade').val(dados.localidade);
-									$('#estado').val(dados.uf);
+						$.ajax({
+							url: "/Endereco/consultaCep",
+							type: 'POST',
+							data: {
+								'cep': cep
 							},
-							complete: function(){
+							dataType: 'json',
+							beforeSend: function () {
+								$("#modalCep").modal('show');
+							},
+							success: function (dados) {
+								$('#logradouro').val(dados.logradouro);
+								$('#bairro').val(dados.bairro);
+								$('#cidade').val(dados.localidade);
+								$('#estado').val(dados.uf);
+							},
+							complete: function () {
 								$("#modalCep").modal('hide')
-							} 
+							}
 						});
 					});
-	 
+
 				</script>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
