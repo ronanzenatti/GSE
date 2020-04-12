@@ -115,7 +115,7 @@ $cor = "success";
 				</div>
 				<h3 class="form-title">Dados do P.I.A.</h3>
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-3">
 						<label for="dt_nasc">Data de Recepção:</label>
 						<div class="input-group">
 							<input type="text" class="form-control datepicker text-center mask_date"
@@ -127,7 +127,7 @@ $cor = "success";
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-offset-4 col-sm-4">
+					<div class="col-sm-offset-6 col-sm-3">
 						<label for="data_inicio">Data de Início da MSE:</label>
 						<div class="input-group">
 							<input type="text" class="form-control datepicker text-center mask_date"

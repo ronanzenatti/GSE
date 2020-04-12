@@ -53,8 +53,12 @@ class Pia extends CI_Controller
 		$dados['obj'] = $this->pm->GetById('id_pia', $id);
 		$dados['obj']['data_inicio'] = (!empty($dados['obj']['data_inicio'])) ? date("d/m/Y", strtotime($dados['obj']['data_inicio'])) : null;
 		$dados['obj']['data_recepcao'] = (!empty($dados['obj']['data_recepcao'])) ? date("d/m/Y", strtotime($dados['obj']['data_recepcao'])) : null;
-		$dados['obj']['qtdeProcessos'] = 0;
-
+		$dados['processos'] = $this->pm->getTotalProcessos($dados['obj']['adolescente_id']);
+		$qtdeProcessos = 0;
+		foreach ($dados['processos'] as $p) {
+			$qtdeProcessos = $qtdeProcessos + $p->qtdeProcessos;
+		}
+		$dados['obj']['qtdeProcessos'] = $qtdeProcessos;
 
 		$dados['ado'] = $this->am->GetById('id_adolescente', $dados['obj']['adolescente_id']);
 		$dados['ado']['dt_nasc'] = (!empty($dados['ado']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['ado']['dt_nasc'])) : null;
@@ -74,12 +78,12 @@ class Pia extends CI_Controller
 			$no++;
 			$row = array();
 			//    $row[] = $no;
-			$row[] = $obj->id_adolescente;
+			$row[] = $obj->id_pia;
 			$row[] = $obj->nome;
-			$row[] = $obj->RG;
+			$row[] = $obj->rg;
 			$row[] = date('d/m/Y', strtotime($obj->data_recepcao));
 
-			$btns = "<a href='" . base_url('pia/alterar/' . $obj->id_pia) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
+			$btns = "<a href='" . base_url('pia/elaboracao/' . $obj->id_pia) . "' class='btn btn-warning btn-sm'><i class='fa fa-pencil' aria-hidden='true'></i></a> ";
 			$btns .= "<button type='button' onclick='deletarRegistro(\"pia\", " . $obj->id_pia . ", \"tablePia\")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>  ";
 //			$btns .= "<a target='_blank' href='" . base_url('adolescente/gerar/' . $obj->idadolescente . '/' . $_SESSION['entidade_id']) . "' class='btn btn-primary btn-sm'><i class='fa fa-file-pdf-o' aria-hidden='true'></i></a> ";
 

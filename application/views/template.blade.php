@@ -29,24 +29,17 @@
 	<link rel="stylesheet" href="{{base_url('assets/')}}dist/css/AdminLTE.min.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}dist/css/skins/_all-skins.min.css">
-	<!-- Morris chart -->
-	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/morris.js/morris.css">
-	<!-- jvectormap -->
-	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/jvectormap/jquery-jvectormap.css">
 	<!-- Date Picker -->
 	<link rel="stylesheet"
 		  href="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 	<!-- Daterange picker -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/bootstrap-daterangepicker/daterangepicker.css">
-	<!-- bootstrap wysihtml5 - text editor -->
-	<link rel="stylesheet" href="{{base_url('assets/')}}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 	<!-- Sweetalert 2 -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}bower_components/sweetalert2/dist/sweetalert2.min.css">
 	<!-- iCheck -->
 	<link rel="stylesheet" href="{{base_url('assets/')}}plugins/iCheck/all.css">
 
 	<link rel="stylesheet" href="{{base_url('assets/')}}css/style.css">
-
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -221,16 +214,6 @@
 <!-- Select2 -->
 <script src="{{base_url('assets/')}}bower_components/select2/dist/js/select2.full.min.js"></script>
 <script src="{{base_url('assets/')}}bower_components/select2/dist/js/i18n/pt-BR.js"></script>
-<!-- Morris.js charts -->
-<script src="{{base_url('assets/')}}bower_components/raphael/raphael.min.js"></script>
-<script src="{{base_url('assets/')}}bower_components/morris.js/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="{{base_url('assets/')}}bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="{{base_url('assets/')}}plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="{{base_url('assets/')}}plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{base_url('assets/')}}bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
 <script src="{{base_url('assets/')}}bower_components/moment/min/moment.min.js"></script>
 <script src="{{base_url('assets/')}}bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -239,8 +222,6 @@
 <script
 		src="{{base_url('assets/')}}bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"
 		charset="UTF-8"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="{{base_url('assets/')}}plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
 <script src="{{base_url('assets/')}}bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -263,7 +244,6 @@
 <script src="{{base_url('assets/bower_components/datatables.net/js/buttons.bootstrap.min.js')}}"></script>
 <!-- InputMask -->
 <script src="{{base_url('assets/')}}bower_components/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-
 <!-- jQuery Validate -->
 <script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/jquery.validate.js"></script>
 <script src="{{base_url('assets/')}}bower_components/jquery-validation/dist/additional-methods.js"></script>

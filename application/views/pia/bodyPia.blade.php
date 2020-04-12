@@ -9,8 +9,6 @@ $cor = "success";
 <style>
 	.nav-pills, .nav-stacked {
 		padding-right: 0px !important;
-		border-right: 1px solid #ccc;
-		border-radius: 5px;
 	}
 
 	.nav-stacked > li.active > a {
@@ -29,6 +27,10 @@ $cor = "success";
 	.row-100 {
 		margin-left: 0 !important;
 		margin-right: 0 !important;
+	}
+
+	.tab-content {
+		border-left: 1px solid #ccc;
 	}
 
 </style>
@@ -115,7 +117,8 @@ $cor = "success";
 						<h4 class="text-primary">Dados do P.I.A. / Ato Infracional</h4>
 					</div>
 					<div class="col-sm-2">
-						<button type="button" class="btn btn-success btn-block btn-sm"><strong>SALVAR</strong></button>
+						<button type="button" id="idProcesso" class="btn btn-success btn-block btn-sm">
+							<strong>SALVAR</strong></button>
 					</div>
 				</div> <!-- Titulo -->
 				<div class="row row-100">
@@ -213,6 +216,11 @@ $cor = "success";
 						</div>
 					</div>
 				</div> <!-- motivacao e reflexao -->
+				<script>
+					$('#idProcesso').on("click", function () {
+						alert('oi babaca');
+					});
+				</script>
 			</div>
 			<div role="tabpanel" class="tab-pane " id="tab-2">
 				tab2

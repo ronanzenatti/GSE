@@ -16,4 +16,18 @@ class Pia_model extends MY_Model
 			['tabela' => 'documentos d', 'juncao' => 'a.id_adolescente = d.adolescente_id', 'tipo' => 'LEFT']
 		);
 	}
+
+	public function getTotalProcessos($idAdolescente)
+	{
+		$this->db->select("COUNT(p.id_pia) AS qtdeProcessos, CASE WHEN p.medida_aplicada = 1 THEN 'L.A.' WHEN p.medida_aplicada = 2 THEN 'P.S.C.' WHEN p.medida_aplicada IS NULL THEN 'N/A' ELSE 'L.A. e P.S.C.' END AS medida");
+		$this->db->from($this->table);
+		$this->db->where("p.adolescente_id", $idAdolescente);
+		$this->db->where('p.deleted_at IS NULL ', null, false);
+		$this->db->group_by('p.medida_aplicada ');
+		$query = $this->db->get();
+//		echo "<pre>";
+//        print_r($this->db->last_query());
+//        exit();
+		return $query->result();
+	}
 }
