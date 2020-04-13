@@ -39,7 +39,7 @@ $cor = "success";
 </style>
 
 @section('content')
-	<form id="formPia" role="form" action="{{base_url('pia/save')}}" method="post" autocomplete="off">
+	<form id="formPia" role="form" action="{{base_url('pia/criarPia')}}" method="post" autocomplete="off">
 		<div class="box-body">
 			<h3 class="form-title">Buscar Adolescente</h3>
 			<div class="row">

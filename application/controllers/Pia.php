@@ -26,7 +26,7 @@ class Pia extends CI_Controller
 		$this->blade->view('pia/iuPia');
 	}
 
-	public function save()
+	public function criarPia()
 	{
 		$obj = Array();
 
@@ -46,6 +46,22 @@ class Pia extends CI_Controller
 		redirect('/pia/elaboracao/' . $id);
 	}
 
+	public function save()
+	{
+		$idPia = $this->input->post('idPia');
+		parse_str($this->input->post('form'), $form);
+
+		$form['data_recepcao'] = (empty($form['data_recepcao'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['data_recepcao'])));
+		$form['data_inicio'] = (empty($form['data_inicio'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['data_inicio'])));
+		$form['updated_at'] = date('Y-m-d H:i:s');
+		$form['motivacao'] = $this->input->post('motivacao');
+		$form['reflexao'] = $this->input->post('reflexao');
+
+		$this->pm->table = "pias";
+		$this->pm->Update($idPia, $form);
+		echo $idPia;
+	}
+
 	public function elaboracao($id)
 	{
 		$dados = array();
@@ -53,7 +69,7 @@ class Pia extends CI_Controller
 		$dados['obj'] = $this->pm->GetById('id_pia', $id);
 		$dados['obj']['data_inicio'] = (!empty($dados['obj']['data_inicio'])) ? date("d/m/Y", strtotime($dados['obj']['data_inicio'])) : null;
 		$dados['obj']['data_recepcao'] = (!empty($dados['obj']['data_recepcao'])) ? date("d/m/Y", strtotime($dados['obj']['data_recepcao'])) : null;
-		$dados['processos'] = $this->pm->getTotalProcessos($dados['obj']['adolescente_id']);
+		$dados['processos'] = $this->pm->getTotalProcessos($dados['obj']['adolescente_id'], $id);
 		$qtdeProcessos = 0;
 		foreach ($dados['processos'] as $p) {
 			$qtdeProcessos = $qtdeProcessos + $p->qtdeProcessos;
