@@ -709,6 +709,23 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
 					<button type="button" class="btn btn-success" id="salvarEnd">Salvar</button>
 				</div>
+
+				<div class="modal fade" id="modalCep">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<p id="loadingTexto">Aguarde</p>
+							</div>
+							<div class="modal-body" id="modalBody">
+								<img id="loadingImagem" src="/assets/img/loading.gif">
+							</div>
+							<div class="modal-footer">
+								<p id="loadingTexto">Buscando endereço...</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<script>
 					$("#formEndereco").validate();
 					$('.mask_CEP').inputmask('99.999-999');
@@ -724,7 +741,6 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 							$('input').iCheck('update');
 							$("#mudanca_div").show();
 						} else {
-							console.log("vazio");
 							$('#ativoE').iCheck('check');
 							$('input').iCheck('update');
 							$("#mudanca_div").hide();
@@ -732,7 +748,7 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 					});
 
 					$('#modalEndereco').on('hide.bs.modal', function (e) {
-						if (e.target.id != "dt_mudanca") {
+						if (e.target.id == "modalEndereco") {
 							$("#formEndereco input[type=text], input[type=password], input[type=number], input[type=email], textarea").each(function () {
 								$(this).val(null);
 							});
@@ -774,6 +790,31 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 							});
 						}
 					});
+
+					$('#cep').focusout(function () {
+						var cep = $('#cep').val();
+						$.ajax({
+							url: "/Endereco/consultaCep",
+							type: 'POST',
+							data: {
+								'cep': cep
+							},
+							dataType: 'json',
+							beforeSend: function () {
+								$("#modalCep").modal('show');
+							},
+							success: function (dados) {
+								$('#logradouro').val(dados.logradouro);
+								$('#bairro').val(dados.bairro);
+								$('#cidade').val(dados.localidade);
+								$('#estado').val(dados.uf);
+							},
+							complete: function () {
+								$("#modalCep").modal('hide')
+							}
+						});
+					});
+
 				</script>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->

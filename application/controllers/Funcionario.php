@@ -143,4 +143,14 @@ class Funcionario extends CI_Controller
         //output to json format
         echo json_encode($output);
     }
+
+    public function consultaCep(){
+		
+        $cep = $this->input->post('cep');
+		$cep = str_replace('-', '', $cep);
+		$cep = str_replace('.','', $cep);
+		        
+        echo $this->curl->consultaCep($cep);
+        
+    }
 }
