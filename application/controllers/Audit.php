@@ -32,7 +32,8 @@ class Audit extends CI_Controller
 		'situacao_habitacional' => 'Situação Habitacional',
 		'situacoes_escolares' => 'Situações Escolares',
 		'trabalhos' => 'Trabalhos',
-		'usuarios' => 'Usuários'
+		'usuarios' => 'Usuários',
+		'termos_compromissos' => 'Termos'
 	);
 
 	function __construct()
@@ -466,6 +467,7 @@ class Audit extends CI_Controller
 			'id_usuario' => 'Código',
 			'funcionario_id' => 'Funcionário',
 			'cargo_id' => 'Cargo',
+			'termo_id' => 'Termo',
 			'ip_address' => 'IP',
 			'salt' => 'Salt',
 			'email' => 'E-mail',
@@ -479,6 +481,14 @@ class Audit extends CI_Controller
 			'active' => 'Ativo',
 			'termo' => 'Termo',
 			'data_termo' => 'Data do Termo',
+			'created_at' => 'Criado',
+			'updated_at' => 'Atualizado',
+			'deleted_at' => 'Deletado',
+		);
+		$this->campos['termos_compromissos'] = array(
+			'id_termo' => 'Código',
+			'nome' => 'Nome',
+			'texto' => 'Descrição do Termo',
 			'created_at' => 'Criado',
 			'updated_at' => 'Atualizado',
 			'deleted_at' => 'Deletado',

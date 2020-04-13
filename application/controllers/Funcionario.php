@@ -12,7 +12,7 @@ class Funcionario extends CI_Controller
         $this->load->model('Cargo_model', 'cm');
         $this->load->model('Entidade_model', 'em');
         $this->load->model('Ion_auth_model', 'iam');
-        $this->load->library('curl');
+        $this->load->model('TermoCompromisso_model', 'tcm');
     }
 
     public function index()
@@ -52,6 +52,7 @@ class Funcionario extends CI_Controller
         $usr['ip_address'] = $this->input->ip_address();
 
         $usr['cargo_id'] = $this->input->post('id_cargo');
+        $usr['termo_id'] = $this->input->post('id_termo');
         $usr['email'] = $this->input->post('email');
         $usr['password'] = (!empty($this->input->post('senha'))) ? $this->iam->hash_password($this->input->post('senha')) : null;
         $usr['active'] = 1;
@@ -92,9 +93,10 @@ class Funcionario extends CI_Controller
         $dados = Array();
         $dados['obj'] = $this->fm->GetById('id_funcionario', $id);
         $dados['obj']['dt_nasc'] = (!empty($dados['obj']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['obj']['dt_nasc'])) : null;
-        $dados['objU'] = $this->um->GetByFuncionario($id);
+		$dados['objU'] = $this->um->GetByFuncionario($id);
         $dados['objC'] = $this->cm->GetById('id_cargo', $dados['objU']['cargo_id']);
         $dados['objE'] = $this->em->GetById('id_entidade', $dados['obj']['entidade_id']);
+        $dados['objTC'] = $this->tcm->GetById('id_termo', $dados['objU']['termo_id']);
         $this->blade->view('funcionarios/iuFuncionario', $dados);
     }
 

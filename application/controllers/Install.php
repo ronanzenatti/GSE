@@ -12,6 +12,7 @@ class Install extends CI_Controller
 		$this->load->model('Funcionario_model', 'fm');
 		$this->load->model('Usuario_model', 'um');
 		$this->load->model('Ion_auth_model', 'iam');
+		$this->load->model('TermoCompromisso_model', 'tcm');
 		$this->fm->table = "funcionarios";
 		$this->um->table = "usuarios";
 	}
@@ -76,9 +77,18 @@ class Install extends CI_Controller
 			);
 			$idF = $this->fm->Insert($funcionario);
 
+			$termo = array(
+				'nome' => 'Termo do Administrador',
+				'texto' => 'Termo para o Administrador do Sistema',
+				'created_at' => date("Y-m-d H:i:s"),
+				'updated_at' => date("Y-m-d H:i:s")
+			);
+			$idTC = $this->tcm->Insert($termo);
+
 			$usr['ip_address'] = $this->input->ip_address();
 
 			$usr['cargo_id'] = $idC;
+			$usr['termo_id'] = $idTC;
 			$usr['email'] = 'ronan.zenatti@etec.sp.gov.br';
 			$usr['password'] = $this->iam->hash_password('P#ssw0rdr');
 			$usr['active'] = 1;
