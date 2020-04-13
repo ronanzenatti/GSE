@@ -170,6 +170,18 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 						</div>
 					</div>
 
+					<div class="col-sm-3">
+						<label>Visualizar Termo:</label>
+						<div class="input-group input-group-sm">
+							<span class="input-group-btn">
+								<a type="button" class="btn btn-info btn-block" id="visualizar" onclick="visualizarTermo()">
+									Visualizar Termo
+								</a>
+							<span id="escolha-termo" class="error"></span>
+							</span>
+						</div>
+					</div>
+
 				</div>
 			</div>
 			<br/>
@@ -216,6 +228,22 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 @section('js')
 
 	<script>
+
+		function visualizarTermo() {
+			var termo = $("#id_termo").select2('data');
+			if (termo[0].id) {
+				if ($("#escolha-termo").hasClass("escolha-termo")) {
+					$("#escolha-termo").html("");
+				};
+				$("#visualizar").attr("href", "/TermoCompromisso/visualizar/" + termo[0].id);
+				$("#visualizar").attr("target", "_blank");
+			} else {
+				$("#escolha-termo").addClass('escolha-termo');
+				$("#escolha-termo").html("Escolha um termo para ver sua descrição");
+			};
+		};
+
+
 		$("#id_entidade").select2({
 			ajax: {
 				url: '/entidade/select2Json',

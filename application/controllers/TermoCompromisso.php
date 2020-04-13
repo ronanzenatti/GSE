@@ -66,7 +66,8 @@ class TermoCompromisso extends CI_Controller
 				$row[] = $obj->nome;
 				$row[] = $obj->texto;
 	
-				$btns = "<a href='" . base_url('TermoCompromisso/alterar/' . $obj->id_termo) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
+				$btns = "<a href='" . base_url('TermoCompromisso/visualizar/' . $obj->id_termo) . "' class='btn btn-info btn-sm'> <i class='fa fa-book' aria-hidden='true'></i></a> ";
+				$btns .= "<a href='" . base_url('TermoCompromisso/alterar/' . $obj->id_termo) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
 				$btns .= "<button type='button' onclick='deletarRegistro(\"TermoCompromisso\", " . $obj->id_termo . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
 				$row[] = $btns;
 	
@@ -81,6 +82,12 @@ class TermoCompromisso extends CI_Controller
 			);
 			//output to json format
 			echo json_encode($output);
+		}
+
+		public function visualizar($id)
+		{
+			$obj["termo"] = $this->tcm->GetById('id_termo', $id);
+			$this->blade->view('termo_compromisso/visualizar', $obj);
 		}
 
 		public function select2Json()
