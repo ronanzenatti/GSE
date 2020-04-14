@@ -14,7 +14,7 @@ $cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 				<div class="form-group">
 					<div class="col-sm-2">
 						<label for="tipo">Tipo</label>
-						<select class="form-control" id="tipo" name="tipo" >
+						<select class="form-control" id="tipo" name="tipo">
 							<option value=""> - SELECIONE -</option>
 							<option value="C">CREAS</option>
 							<option value="M">MP-SP</option>
@@ -43,9 +43,9 @@ $cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 						<label for="cep">CEP</label>
 						<input type="text" class="form-control text-center mask_CEP" id="cep" name="cep"
 							   maxlength="10"
-							   minlength="10" value="{{(isset($obj['cep']) ? $obj['cep'] : null)}}">	
+							   minlength="10" value="{{(isset($obj['cep']) ? $obj['cep'] : null)}}">
 					</div>
-        			<div class="col-sm-8">
+					<div class="col-sm-8">
 						<label for="logradouro">Logradouro</label>
 						<input type="text" class="form-control" id="logradouro" name="logradouro"
 							   value="{{(isset($obj['logradouro']) ? $obj['logradouro'] : null)}}">
@@ -129,12 +129,12 @@ $cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 					</div>
 					<div class="col-sm-4">
 						<label for="resp_tel">Telefones do Responsável</label>
-						<input type="text" class="form-control" id="resp_tel" name="resp_tel" required 
+						<input type="text" class="form-control" id="resp_tel" name="resp_tel" required
 							   value="{{(isset($obj['resp_tel']) ? $obj['resp_tel'] : null)}}">
 					</div>
 					<div class="col-sm-4">
 						<label for="resp_email">E-mail do Responsável</label>
-						<input type="email" class="form-control" id="resp_email" name="resp_email" required 
+						<input type="email" class="form-control" id="resp_email" name="resp_email" required
 							   value="{{(isset($obj['resp_email']) ? $obj['resp_email'] : null)}}">
 					</div>
 				</div>
@@ -165,7 +165,7 @@ $cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 				<div class="modal-header">
 					<p id="loadingTexto">Aguarde</p>
 				</div>
-				<div class="modal-body" id="modalBody">
+				<div class="modal-body" id="modalBody" style="text-align: center">
 					<img id="loadingImagem" src="/assets/img/loading.gif">
 				</div>
 				<div class="modal-footer">
@@ -177,38 +177,36 @@ $cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 @endsection
 
 @section('js')
-<script>
-	$("form").validate();
+	<script>
+		$("form").validate();
 
-	@if(isset($obj['id_entidade']))
-	$('#estado').val("{{$obj['estado']}}").trigger('change');
-	$('#tipo').val("{{$obj['tipo']}}").trigger('change');
-	@endif
+		@if(isset($obj['id_entidade']))
+		$('#estado').val("{{$obj['estado']}}").trigger('change');
+		$('#tipo').val("{{$obj['tipo']}}").trigger('change');
+		@endif
 
-	$('#cep').focusout(function(){
-		var cep = $('#cep').val();
-		$.ajax({   
-			url: "/Entidade/consultaCep",   
-			type : 'POST',   
-			data : {   
-				'cep': cep   
-			},   
-			dataType : 'json',   
-			beforeSend: function(){                     
-				$("#modalCep").modal('show');   
-			},   
-			success: function(dados){
-				$('#logradouro').val(dados.logradouro);
-				$('#bairro').val(dados.bairro);
-				$('#cidade').val(dados.localidade);
-				$('#estado').val(dados.uf);                     
-			},   
-			complete: function(){
-				$("#modalCep").modal('hide')
-			} 
+		$('#cep').focusout(function () {
+			var cep = $('#cep').val().replace('.', '').replace('-', '');
+
+			$.ajax({
+				url: `https://viacep.com.br/ws/${cep}/json/`,
+				type: 'GET',
+				dataType: 'json',
+				beforeSend: function () {
+					$("#modalCep").modal('show');
+				},
+				success: function (dados) {
+					console.log(dados);
+					$('#logradouro').val(dados.logradouro);
+					$('#bairro').val(dados.bairro);
+					$('#cidade').val(dados.localidade);
+					$('#estado').val(dados.uf);
+				},
+				complete: function () {
+					$("#modalCep").modal('hide')
+				}
+			});
 		});
-	});   
-			
-</script>
+
+	</script>
 @endsection
-			
