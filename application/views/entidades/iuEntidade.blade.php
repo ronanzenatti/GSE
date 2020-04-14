@@ -200,7 +200,7 @@ $cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 					$('#logradouro').val(dados.logradouro);
 					$('#bairro').val(dados.bairro);
 					$('#cidade').val(dados.localidade);
-					$('#estado').val(dados.uf);
+					$('#estado').val(dados.uf).trigger('change');
 				},
 				complete: function () {
 					$("#modalCep").modal('hide')
