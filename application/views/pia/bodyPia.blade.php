@@ -4,13 +4,11 @@ $cor = "success";
 ?>
 @section('titulo', 'Elaboração do P. I. A.:')
 @section('box-color', 'box-' . $cor)
-@section('moreInfo', " n° 001/2019")
+@section('moreInfo', 'nº ' . str_pad($obj['id_pia'], 4, "0", STR_PAD_LEFT))
 
 <style>
 	.nav-pills, .nav-stacked {
 		padding-right: 0px !important;
-		border-right: 1px solid #ccc;
-		border-radius: 5px;
 	}
 
 	.nav-stacked > li.active > a {
@@ -22,14 +20,34 @@ $cor = "success";
 		padding: 10px 5px 10px 5px !important;
 	}
 
+	h4 {
+		font-weight: bold !important;
+	}
+
+	.row-100 {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	.tab-content {
+		border-left: 1px solid #ccc;
+	}
+
 </style>
 @section('content')
+	<input type="hidden" id="id_pia" name="id_pia" value="{{$obj['id_pia']}}">
+	<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
 	<div class="row">
 		<div class="col-xs-12">
 			<h2 class="page-header" style="padding-right: 10px; padding-left: 10px; margin: 0 0 5px 0;">
 				<i class="fa fa-user"></i> <strong class="text-primary"> &nbsp;
-					Adolescente: </strong>MONICA MEDEIROS DO NASCIMENTO
-				<span class="pull-right"><strong class="text-primary">RG:</strong> 41.324.990-6</span>
+					Adolescente: </strong>{{$ado['nome']}}
+				<a href="/adolescente/alterar/{{$ado['id_adolescente']}}" target="_blank"
+				   style="margin-left: 20px;font-size: 65%;">
+					<i class='fa fa-pencil' aria-hidden='true'> </i>
+					Alterar dados
+				</a>
+				<span class="pull-right"><strong class="text-primary">RG:</strong> {{$doc['rg']}}</span>
 			</h2>
 		</div>
 	</div>
@@ -37,7 +55,7 @@ $cor = "success";
 		<ul class="nav nav-pills nav-stacked col-sm-3">
 			<li role="presentation" class="active">
 				<a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab">
-					Dados do P. I. A. / Processo Judicial
+					Dados do P. I. A. / Ato Infracional
 				</a>
 			</li>
 			<li role="presentation" class="">
@@ -94,7 +112,115 @@ $cor = "success";
 
 		<div class="tab-content col-sm-9">
 			<div role="tabpanel" class="tab-pane active" id="tab-1">
-				tab1
+				<form id="formProcess">
+					<div class="row row-100">
+						<div class="col-sm-10">
+							<h4 class="text-primary">Dados do P.I.A. / Ato Infracional</h4>
+						</div>
+						<div class="col-sm-2">
+							<button type="button" id="idProcesso" class="btn btn-success btn-block btn-sm">
+								<strong>SALVAR</strong></button>
+						</div>
+					</div> <!-- Titulo -->
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label for="dt_nasc">Data de Recepção:</label>
+								<div class="input-group">
+									<input type="text" class="form-control datepicker text-center mask_date"
+										   id="data_recepcao" autofocus required
+										   name="data_recepcao" minlength="10"
+										   value="{{(isset($obj['data_recepcao']) ? $obj['data_recepcao'] : null)}}"/>
+
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label for="data_inicio">Data de Início da MSE:</label>
+								<div class="input-group">
+									<input type="text" class="form-control datepicker text-center mask_date"
+										   id="data_inicio"
+										   name="data_inicio" minlength="10"
+										   value="{{(isset($obj['data_inicio']) ? $obj['data_inicio'] : null)}}"/>
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<label for="ass_juridico">Assessoramento jurídico:</label>
+								<select class="form-control" id="ass_juridico" name="ass_juridico" required>
+									<option value="1">Defensor Público</option>
+									<option value="2">Defensor Particular</option>
+								</select>
+							</div>
+						</div>
+					</div> <!-- Datas e defensor -->
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-5">
+								<label for="numero_processo">Numero do Processo:</label>
+								<input type="text" class="form-control" id="numero_processo" name="numero_processo"
+									   value="{{(isset($obj['numero_processo']) ? $obj['numero_processo'] : null)}}">
+							</div>
+							<div class="col-sm-7">
+								<label for="ato_infracional">Ato Infracional:</label>
+								<input type="text" class="form-control" id="ato_infracional" name="ato_infracional"
+									   maxlength="45"
+									   value="{{(isset($obj['ato_infracional']) ? $obj['ato_infracional'] : null)}}">
+							</div>
+						</div>
+					</div> <!-- processo e ato -->
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-3">
+								<label for="medida_aplicada">Medida aplicada:</label>
+								<select class="form-control" id="medida_aplicada" name="medida_aplicada" required>
+									<option value=""> - SELECIONE -</option>
+									<option value="1">L.A.</option>
+									<option value="2">P.S.C.</option>
+									<option value="2">L.A. e P.S.C.</option>
+								</select>
+							</div>
+							<div class="col-sm-4 text-center" style="padding-top: 30px">
+								<i class="fa fa-question-circle-o text-primary" style="cursor: pointer"
+								   data-toggle="tooltip" title="Somente processos cadastrados no sistema GSE."></i>
+								<strong>Outros processos: </strong>
+								<button type='button' onclick='showProcessos({{$obj["adolescente_id"]}})'
+										class='btn btn-default btn-sm'><span
+											class='badge'>{{$obj["qtdeProcessos"]}}</span>
+								</button>
+							</div>
+							<div class="col-sm-5">
+								<label for="outros_processos">
+									<i class="fa fa-question-circle-o text-primary"
+									   style="cursor: pointer"
+									   data-toggle="tooltip"
+									   title="Incluir somente processos que não constem no sistema."></i>
+									Outros Processos:</label>
+								<input type="text" class="form-control" id="outros_processos" name="outros_processos"
+									   value="{{(isset($obj['outros_processos']) ? $obj['outros_processos'] : null)}}">
+							</div>
+						</div>
+					</div> <!-- medida e outros processos -->
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label for="motivacao">O que o motivou a praticar o ato infracional?</label>
+								<textarea name="motivacao" id="motivacao"
+										  class="form-control">{{(isset($obj['motivacao']) ? $obj['motivacao'] : null)}}</textarea>
+							</div>
+							<div class="col-sm-12">
+								<label for="reflexao">Qual a sua reflexão frente as consequência do ato
+									infracional?</label>
+								<textarea name="reflexao" id="reflexao"
+										  class="form-control">{{(isset($obj['reflexao']) ? $obj['reflexao'] : null)}}</textarea>
+							</div>
+						</div>
+					</div> <!-- motivacao e reflexao -->
+				</form>
 			</div>
 			<div role="tabpanel" class="tab-pane " id="tab-2">
 				tab2
@@ -127,15 +253,51 @@ $cor = "success";
 				tab11
 			</div>
 		</div>
-
-
 	</div>
 @endsection
 
-
-
 @section('js')
+	<!-- CKEDITOR -->
+	<script src="{{base_url()}}assets/bower_components/ckeditor/ckeditor.js"></script>
+	<script src="{{base_url()}}assets/bower_components/ckeditor/lang/pt-br.js"></script>
+
 	<script>
-		$('body').addClass('sidebar-collapse')
+		$('body').addClass('sidebar-collapse');
+		$('form').validate();
+
+		$('#ass_juridico').val("{{$obj['ass_juridico']}}").trigger('change');
+		$('#medida_aplicada').val("{{$obj['medida_aplicada']}}").trigger('change');
+
+		CKEDITOR.replace('motivacao', {
+			customConfig: 'config.js'
+		});
+
+		CKEDITOR.replace('reflexao', {
+			customConfig: 'config.js'
+		});
+	</script>
+
+	<script>
+		$('#idProcesso').on("click", function () {
+			$.ajax({
+				url: '/pia/save',
+				type: 'POST',
+				data: {
+					form: $('#formProcess').serialize(),
+					idA: $('#adolescente_id').val(),
+					idPia: $('#id_pia').val(),
+					motivacao: CKEDITOR.instances.motivacao.getData(),
+					reflexao: CKEDITOR.instances.reflexao.getData(),
+				}, success: function (result) {
+					swal({
+						position: 'top-end',
+						type: 'success',
+						title: 'Ato infracional salvo com Sucesso!!!',
+						showConfirmButton: true,
+						timer: 1500
+					});
+				}
+			});
+		});
 	</script>
 @endsection

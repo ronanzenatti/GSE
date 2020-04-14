@@ -149,9 +149,9 @@ class Adolescente extends CI_Controller
 	{
 		$res = array();
 
-		$this->am->select = "a.id_adolescente AS id, a.nome, d.RG, d.CPF, a.responsavel, ";
+		$this->am->select = "a.id_adolescente AS id, a.nome, d.rg, d.cpf, a.responsavel, ";
 		$this->am->select .= "DATE_FORMAT(a.dt_nasc, '%d/%m/%Y') AS dt_nasc, ";
-		$this->am->select .= "TIMESTAMPDIFF(YEAR,a.dt_nasc, CURDATE()) AS idade, a.responsavel";
+		$this->am->select .= "TIMESTAMPDIFF(YEAR, a.dt_nasc, CURDATE()) AS idade, a.responsavel";
 
 		$term = $this->input->post('term');
 		if (isset($term))
@@ -162,5 +162,16 @@ class Adolescente extends CI_Controller
 		$all = $this->am->GetAll('nome', 'asc', true, $where, 'a');
 
 		echo json_encode(array("results" => $all));
+	}
+
+	public function getByIdJson()
+	{
+		$this->am->select = "a.id_adolescente AS id, a.nome, d.rg, d.cpf, a.responsavel, ";
+		$this->am->select .= "DATE_FORMAT(a.dt_nasc, '%d/%m/%Y') AS dt_nasc, ";
+		$this->am->select .= "TIMESTAMPDIFF(YEAR, a.dt_nasc, CURDATE()) AS idade, a.responsavel";
+
+		$id = $this->input->post('id');
+		$obj = $this->am->GetAll($sort = 'a.id_adolescente', $order = 'asc', $null = false, $where = ['a.id_adolescente' => $id]);
+		echo json_encode($obj);
 	}
 }
