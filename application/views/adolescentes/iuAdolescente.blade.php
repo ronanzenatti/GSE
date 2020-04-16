@@ -716,7 +716,7 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 							<div class="modal-header">
 								<p id="loadingTexto">Aguarde</p>
 							</div>
-							<div class="modal-body" id="modalBody">
+							<div class="modal-body" id="modalBody" style="text-align: center">
 								<img id="loadingImagem" src="/assets/img/loading.gif">
 							</div>
 							<div class="modal-footer">
@@ -792,13 +792,11 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 					});
 
 					$('#cep').focusout(function () {
-						var cep = $('#cep').val();
+						var cep = $('#cep').val().replace('.', '').replace('-', '');
+
 						$.ajax({
-							url: "/Endereco/consultaCep",
-							type: 'POST',
-							data: {
-								'cep': cep
-							},
+							url: `https://viacep.com.br/ws/${cep}/json/`,
+							type: 'GET',
 							dataType: 'json',
 							beforeSend: function () {
 								$("#modalCep").modal('show');
@@ -807,7 +805,7 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 								$('#logradouro').val(dados.logradouro);
 								$('#bairro').val(dados.bairro);
 								$('#cidade').val(dados.localidade);
-								$('#estado').val(dados.uf);
+								$('#estado').val(dados.uf).trigger('change');
 							},
 							complete: function () {
 								$("#modalCep").modal('hide')

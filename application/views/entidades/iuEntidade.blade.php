@@ -196,7 +196,6 @@ $cor = (isset($obj['id_entidade'])) ? "warning" : "success";
 					$("#modalCep").modal('show');
 				},
 				success: function (dados) {
-					console.log(dados);
 					$('#logradouro').val(dados.logradouro);
 					$('#bairro').val(dados.bairro);
 					$('#cidade').val(dados.localidade);
