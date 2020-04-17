@@ -1,0 +1,121 @@
+@extends('template')
+@section('titulo', 'Validar Termo')
+@section('subtitulo',' - '.$objFuncionario['nome'])
+
+@section('content')
+	<div class="box-body">
+		<h3 class="form-title">Entidade</h3>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-12">
+					<div class="col-sm-6">
+						<label>Nome:</label>
+						<input type="text" class="form-control" id="nomeEntidade" name="nomeEntidade" disabled
+									value="{{(isset($objEntidade['nome']) ? $objEntidade['nome'] : null)}}">
+					</div>
+					<div class="col-sm-6">
+						<label>Responsável:</label>
+						<input type="text" class="form-control" id="responsavelEntidade" name="responsavelEntidade" disabled
+									value="{{(isset($objEntidade['responsavel']) ? $objEntidade['responsavel'] : null)}}">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<div class="col-sm-6">
+					<label>Email:</label>
+						<input type="text" class="form-control" id="emailEntidade" name="emailEntidade" disabled
+									value="{{(isset($objEntidade['email']) ? $objEntidade['email'] : null)}}">
+					</div>
+					<div class="col-sm-6">
+						<label>Email do Responsável:</label>
+						<input type="text" class="form-control" id="emailRespoEntidade" name="emailRespoEntidade" disabled
+									value="{{(isset($objEntidade['resp_email']) ? $objEntidade['resp_email'] : null)}}">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12">
+					<div class="col-sm-6">
+						<label>Telefones:</label>
+							<input type="text" class="form-control" id="telefonesEntidade" name="telefonesEntidade" disabled
+										value="{{(isset($objEntidade['telefones']) ? $objEntidade['telefones'] : null)}}">
+					</div>
+					<div class="col-sm-6">
+							<label>Telefone do Responsável:</label>
+							<input type="text" class="form-control" id="telRespoEntidade" name="telRespoEntidade" disabled
+										value="{{(isset($objEntidade['resp_tel']) ? $objEntidade['resp_tel'] : null)}}">
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<h3 class="form-title">Funcionário</h3>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-12">
+					<div class="col-sm-6">
+						<label>Nome:</label>
+						<input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario" disabled
+									value="{{(isset($objFuncionario['nome']) ? $objFuncionario['nome'] : null)}}">
+					</div>
+					<div class="col-sm-2">
+						<label>CPF:</label>
+						<input type="text" class="form-control" id="cpfFuncionario" name="cpfFuncionario" disabled
+									value="{{(isset($objFuncionario['cpf']) ? $objFuncionario['cpf'] : null)}}">
+					</div>
+					<div class="col-sm-2">
+						<label>RG:</label>
+						<input type="text" class="form-control" id="rgFuncionario" name="rgFuncionario" disabled
+									value="{{(isset($objFuncionario['rg']) ? $objFuncionario['rg'] : null)}}">
+					</div>
+					<div class="col-sm-2">
+						<label>Telefones:</label>
+						<input type="text" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario" disabled
+									value="{{(isset($objFuncionario['telefones']) ? $objFuncionario['telefones'] : null)}}">
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<h3 class="form-title">Termo de Compromisso</h3>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-12">
+					<div class="col-sm-3">
+						<label>Nome do Termo:</label>
+							<input type="text" class="form-control" id="nomeTermo" name="nomeTermo" disabled
+										value="{{(isset($objTermo['nome']) ? $objTermo['nome'] : null)}}">
+					</div>
+					<div class="col-sm-3">
+						<label>Hora de Validação:</label>
+						<input type="text" class="form-control datepicker" id="horaTermo" name="horaTermo" disabled
+										value="{{date('d/m/Y H:i:s')}}"/>
+					</div>
+					<div class="col-sm-2 text-center">
+					<label>Visualizar Termo</label>
+						<a class="btn btn-info btn-block" target="_blank" 
+								href="{{base_url("TermoCompromisso/visualizar/" . $objTermo['id_termo'])}}">
+							<i class='fa fa-book' aria-hidden='true'></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="box-footer">
+		<div class="row">
+			<div class="col-sm-6 text-left">
+				<a href="{{base_url("ValidarTermo")}}" class="btn btn-default">Voltar</a>
+			</div>
+			<div class="col-sm-6 text-right">
+				<button class="btn btn-success">Validar Termo</button>
+			</div>
+		</div>
+	</div>
+@endsection
+
+@section('js')
+
+@endsection
+

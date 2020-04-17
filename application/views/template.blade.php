@@ -159,6 +159,11 @@
 					</a>
 				</li>
 				<li>
+					<a href="{{base_url('ValidarTermo/')}}">
+						<i class="fa fa-folder"></i> <span>Validar Termo</span>
+					</a>
+				</li>
+				<li>
 					<a href="https://goo.gl/forms/x9wcoIDNRsmlf1eH2" target="_blank">
 						<i class="fa fa-support"></i> <span>Suporte</span>
 					</a>

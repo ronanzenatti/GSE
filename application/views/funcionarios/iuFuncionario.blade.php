@@ -177,7 +177,7 @@ $cor = (isset($obj['id_funcionario'])) ? "warning" : "success";
 								<a type="button" class="btn btn-info btn-block" id="visualizar" onclick="visualizarTermo()">
 									Visualizar Termo
 								</a>
-							<span id="escolha-termo" class="error"></span>
+								<span id="escolha-termo" class="error"></span>
 							</span>
 						</div>
 					</div>
