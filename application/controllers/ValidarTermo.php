@@ -20,17 +20,31 @@ class ValidarTermo extends CI_Controller
 
 	public function save()
 	{
+		$obj = Array();
+		$obj['data_termo'] = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $this->input->post('horaTermo'))));
+		$obj['user_validate_id'] = $_SESSION['user_id'];
+		$id = $this->input->post('idUsuario');
+
+		if ($id) {
+			$obj['updated_at'] = date('Y-m-d H:i:s');
+			$this->um->Update($id, $obj);
+		}
+		redirect('ValidarTermo/');
 
 	}
 
-	public function alterar()
+	public function deletar($id)
 	{
+		$obj = Array();
+		$obj['data_termo'] = NULL;
+		$obj['user_validate_id'] = 0;
+		$idUsuario = $id;
 
-	}
-
-	public function deletar()
-	{
-
+		if ($idUsuario) {
+			$obj['updated_at'] = date('Y-m-d H:i:s');
+			$this->um->Update($id, $obj);
+		}
+		redirect('ValidarTermo/');
 	}
 
 	public function validar($id)
@@ -58,12 +72,13 @@ class ValidarTermo extends CI_Controller
 			$row[] = $obj->nome;
 			$row[] = $obj->entidade;
 			$row[] = $termo['nome'];
-			$row[] = $usuario['data_termo'];
-
+			
 			if ($usuario['data_termo'] != null) {
+				$row[] = date('d/m/Y H:i:s', strtotime($usuario['data_termo']));
 				$btns = "<a target='_blank' href='" . base_url('TermoCompromisso/visualizar/' . $termo['id_termo']) . "' class='btn btn-info btn-sm'>Visualizar</a> ";
-				$btns .= "<button type='button' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+				$btns .= "<a href='" . base_url('ValidarTermo/deletar/' . $usuario['id_usuario']) . "' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
 			} else {
+				$row[] = $usuario['data_termo'];
 				$btns = "<a href='" . base_url('ValidarTermo/validar/' . $obj->id_funcionario) . "' class='btn btn-success btn-sm'>Validar</a>";
 			}
 			$row[] = $btns;

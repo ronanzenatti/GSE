@@ -1,4 +1,9 @@
 @extends('template')
+
+<?php
+	$horaValidacao = date('d/m/Y H:i:s');
+?>
+
 @section('titulo', 'Validar Termo')
 @section('subtitulo',' - '.$objFuncionario['nome'])
 
@@ -90,7 +95,7 @@
 					<div class="col-sm-3">
 						<label>Hora de Validação:</label>
 						<input type="text" class="form-control datepicker" id="horaTermo" name="horaTermo" disabled
-										value="{{date('d/m/Y H:i:s')}}"/>
+										value="{{(isset($horaValidacao) ? $horaValidacao : null)}}"/>
 					</div>
 					<div class="col-sm-2 text-center">
 					<label>Visualizar Termo</label>
@@ -109,13 +114,52 @@
 				<a href="{{base_url("ValidarTermo")}}" class="btn btn-default">Voltar</a>
 			</div>
 			<div class="col-sm-6 text-right">
-				<button class="btn btn-success">Validar Termo</button>
+				<button class="btn btn-success" id="validarTermo">Validar Termo</button>
+			</div>
+		</div>
+	</div>
+
+	{{---------------- MODAL  -------------------------------------------------------------------}}
+	<div class="modal fade" id="modalTermo" role="dialog">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<form id="formTermo" role="form" action="{{base_url('ValidarTermo/save')}}" method="post">
+					<input name="horaTermo" id="horaTermo" type="hidden" 
+								value="{{(isset($horaValidacao) ? $horaValidacao : null)}}"/>
+					<input name="idUsuario" id="idUsuario" type="hidden" 
+								value="{{(isset($objUsuario['id_usuario']) ? $objUsuario['id_usuario'] : null)}}"/>
+					<div class="modal-header bg-warning">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h1 class="modal-title"><strong>Aviso</strong></h1>
+						<h4>Ao confirmar o usuário abaixo terá acesso completo ao sistema conforme a sua entidade.</h4>
+					</div>
+					<div class="modal-body">
+						<div class="box-body">
+							<h4>Usuário: <b>{{(isset($objFuncionario['nome']) ? $objFuncionario['nome'] : null)}}</b></h4>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
+						<button type="submit" class="btn btn-success pull-right">Confirmar</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
 @endsection
 
 @section('js')
+	<script>
+		$("#validarTermo").click(function (e) {
 
+			$('#modalTermo').modal({
+				show: true,
+				keyboard: false,
+			});
+
+		});
+	</script>
 @endsection
 
