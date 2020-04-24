@@ -276,6 +276,7 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 				<button type="reset" class="btn btn-default">Limpar</button>
 			</div>
 			<div class="col-sm-4 text-right">
+				<button type="submit" id="btnFin" class="btn btn-primary hide">Finalizar</button>&nbsp;&nbsp;&nbsp;
 				<button type="submit" id="save" class="btn btn-{{$cor}}">Salvar</button>
 			</div>
 		</div>
@@ -346,12 +347,18 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 			if ($(e.target).attr("href") == "#tab-3") {
 				$("#btnEnd").removeClass("hide");
 				$("#btnCont").addClass("hide");
+				$("#btnFin").addClass("hide");
+				
 			} else if ($(e.target).attr("href") == "#tab-4") {
 				$("#btnCont").removeClass("hide");
 				$("#btnEnd").addClass("hide");
+				$("#btnFin").removeClass("hide");
+				
 			} else {
 				$("#btnCont").addClass("hide");
 				$("#btnEnd").addClass("hide");
+				$("#btnFin").addClass("hide");
+				
 			}
 			$("form").each(function () {
 				$(this).validate();
@@ -464,7 +471,8 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 			"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]]
 		});
 
-		$("#save").click(function (e) {
+		$("#save, #btnFin").click(function (e) {
+			$id = $(this).attr('id');
 			$("a[href='#tab-2']").click();
 			if ($("a[href='#tab-2']").attr('aria-expanded') && $("#formDocumento").valid()) {
 				$("a[href='#tab-1']").click();
@@ -498,7 +506,11 @@ $cor = (isset($obj['id_adolescente'])) ? "warning" : "success";
 											title: 'Adolescente salvo com Sucesso!!!',
 											showConfirmButton: true,
 											//timer: 1500
-										});
+										}).then (function(){
+											if ($id == "btnFin"){
+												$(location).attr('href', '/adolescente');
+											}												
+										});									
 										$(".tabEnd").removeClass("disabled");
 										$(".tabCont").removeClass("disabled");
 									} else {
