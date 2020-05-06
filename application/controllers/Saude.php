@@ -9,6 +9,9 @@ class Saude extends CI_Controller
 		parent::__construct();
 		$this->load->model('Saude_model', 'sm');
 		$this->load->model('Adolescente_model', 'am');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

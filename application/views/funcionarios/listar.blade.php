@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 @section('titulo', 'Listar Funcionários')
 
 @section('content')
@@ -75,4 +75,3 @@
 		});
 	</script>
 @endsection
-

@@ -9,6 +9,9 @@ class Profissionalizacao extends CI_Controller
 		parent::__construct();
 		$this->load->model('Profissionalizacao_model', 'prom');
 		$this->load->model('Adolescente_model', 'am');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 
 	}
 

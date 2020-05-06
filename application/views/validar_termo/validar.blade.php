@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 
 <?php
 	$horaValidacao = date('d/m/Y H:i:s');

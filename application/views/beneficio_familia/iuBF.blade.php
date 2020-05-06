@@ -1,4 +1,9 @@
-@extends('template')
+<?php 
+	if ($_SESSION['extends_module'] == 'sem_validacao/template') {
+		redirect('/principal');
+	}
+?>
+@extends($_SESSION['extends_module'])
 <?php
 $titulo = (isset($obj['id_beneficio_familia'])) ? "Alterar" : "Inserir";
 $cor = (isset($obj['id_beneficio_familia'])) ? "warning" : "success";

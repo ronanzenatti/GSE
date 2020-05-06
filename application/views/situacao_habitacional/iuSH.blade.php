@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 <?php
 $cor = (isset($sh['id_sh'])) ? "warning" : "success";
 ?>

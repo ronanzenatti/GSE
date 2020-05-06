@@ -48,6 +48,9 @@ class ComposicaoFamiliar extends CI_Controller
 		$this->load->model('Adolescente_model', 'am');
 		$this->load->model('Documento_model', 'dm');
 		$this->load->model('Endereco_model', 'emm');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function adolescente($id)

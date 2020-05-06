@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 
 @section('titulo', 'Auditoria')
 @section('box-color', 'box-danger')

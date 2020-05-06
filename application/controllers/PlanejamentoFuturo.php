@@ -9,6 +9,9 @@ class PlanejamentoFuturo extends CI_Controller
 		parent::__construct();
 		$this->load->model('PlanejamentoFuturo_model', 'pfm');
 		$this->load->model('Adolescente_model', 'am');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

@@ -10,6 +10,9 @@ class GrupoFamiliar extends CI_Controller
 		$this->load->model('GrupoFamiliar_model', 'gfm');
 		$this->load->model('Adolescente_model', 'am');
 		$this->load->model('Documento_model', 'dm');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 	
 	public function adolescente($id)

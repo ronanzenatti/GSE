@@ -11,6 +11,9 @@ class ValidarTermo extends CI_Controller
 		$this->load->model('Funcionario_model', 'fm');
 		$this->load->model('Entidade_model', 'em');
 		$this->load->model('Usuario_model', 'um');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

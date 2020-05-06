@@ -7,6 +7,7 @@ class Principal extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Usuario_model', 'um');
 		if (!$this->ion_auth->logged_in()) {
 			redirect('auth/login');
 		}
@@ -14,7 +15,13 @@ class Principal extends CI_Controller
 
 	public function index()
 	{
-		$this->blade->view('template');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			$obj['usuario'] = $this->um->GetById('id_usuario', $_SESSION['user_id']);
+			$this->blade->view('sem_validacao/template', $obj);
+		} else {
+			$this->blade->view('template');
+		}
+
 	}
 
 }

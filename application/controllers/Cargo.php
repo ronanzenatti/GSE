@@ -8,6 +8,9 @@ class Cargo extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Cargo_model', 'cm');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

@@ -9,6 +9,9 @@ class Trabalho extends CI_Controller
 		parent::__construct();
 		$this->load->model('Trabalho_model', 'tm');
 		$this->load->model('Adolescente', 'am');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

@@ -9,6 +9,9 @@ class Meta extends CI_Controller
 		parent::__construct();
 		$this->load->model('Meta_model', 'mm');
 		$this->load->model('Pia_model', 'pm');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

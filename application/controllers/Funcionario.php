@@ -13,6 +13,9 @@ class Funcionario extends CI_Controller
 		$this->load->model('Entidade_model', 'em');
 		$this->load->model('Ion_auth_model', 'iam');
 		$this->load->model('TermoCompromisso_model', 'tcm');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 
 		$this->load->library('curl');
 	}
@@ -58,7 +61,7 @@ class Funcionario extends CI_Controller
 		$usr['email'] = $this->input->post('email');
 		$usr['password'] = (!empty($this->input->post('senha'))) ? $this->iam->hash_password($this->input->post('senha')) : null;
 		$usr['active'] = 1;
-		$usr['termo'] = 0;
+		$usr['data_termo'] = NULL;
 
 		if (empty($id)) {
 			$obj['created_at'] = date('Y-m-d H:i:s');

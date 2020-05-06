@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 <?php
 $titulo = (isset($obj['id_horario_familia'])) ? "Alterar" : "Inserir";
 $cor = (isset($obj['id_horario_familia'])) ? "warning" : "success";
