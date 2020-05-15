@@ -8,10 +8,6 @@ class Entidade extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Entidade_model', 'em');
-		$this->load->library('curl');
-		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
-			header('Location: /principal');
-		}
 	}
 
 	public function index()
@@ -121,13 +117,4 @@ class Entidade extends CI_Controller
 		echo json_encode(array("results" => $res));
 	}
 
-	public function consultaCep(){
-		
-        $cep = $this->input->post('cep');
-		$cep = str_replace('-', '', $cep);
-		$cep = str_replace('.','', $cep);
-		        
-        echo $this->curl->consultaCep($cep);
-        
-    }
 }
