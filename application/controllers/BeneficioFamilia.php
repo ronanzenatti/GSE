@@ -8,6 +8,9 @@ class BeneficioFamilia extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('BeneficioFamilia_model', 'bf');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 		//model do grupo familiar
 	}
 

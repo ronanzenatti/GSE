@@ -44,6 +44,9 @@ class Audit extends CI_Controller
 		$this->load->model('Cargo_model', 'cm');
 		$this->load->model('Entidade_model', 'em');
 		$this->load->model('Audit_model', 'aum');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 
 		$this->montaCampos();
 	}

@@ -7,21 +7,30 @@ class TermoCompromisso extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('TermoCompromisso_model', 'tcm');
+				$this->load->model('TermoCompromisso_model', 'tcm');
     }
 
     public function index()
     {
+			if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+				header('Location: /principal');
+			}
 			$this->blade->view('termo_compromisso/listar');
     }	
 
     public function inserir()
     {
+			if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+				header('Location: /principal');
+			}
 			$this->blade->view('termo_compromisso/iuTC');
     }
 
     public function save()
     {
+			if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+				header('Location: /principal');
+			}
 			$obj = Array();
 			$id = $this->input->post('id_termo');
 			
@@ -42,6 +51,9 @@ class TermoCompromisso extends CI_Controller
 
     public function alterar($id)
     {
+			if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+				header('Location: /principal');
+			}
 			$dados = Array();
 			$dados['obj'] = $this->tcm->GetById('id_termo', $id);
 			$this->blade->view('termo_compromisso/iuTC', $dados);
@@ -49,6 +61,9 @@ class TermoCompromisso extends CI_Controller
 		
     public function deletar()
     {
+			if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+				header('Location: /principal');
+			}
 			$id = $this->input->post('id');
 			return $this->tcm->DeleteLogico($id);
     }

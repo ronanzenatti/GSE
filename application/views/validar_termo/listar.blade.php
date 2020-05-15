@@ -1,17 +1,15 @@
 @extends($_SESSION['extends_module'])
-@section('titulo', 'Listar Cursos')
+@section('titulo', 'Validação do Termo')
 
 @section('content')
-	<div class="text-right">
-		<a href="{{base_url('Curso/inserir')}}" class="btn btn-success btn-novo">Novo</a>
-	</div>
-	<table id="tableCursos" class="table table-striped table-bordered table-hover" cellspacing="0">
+	<table id="tableTermos" class="table table-striped table-bordered table-hover" cellspacing="0">
 		<thead>
 		<tr>
 			<th>#</th>
 			<th>Nome</th>
-			<th>Instituição</th>
-			<th>Conclusão</th>
+			<th>Entidade</th>
+			<th>Nome do Termo</th>
+			<th>Data de Valiação</th>
 			<th>Ações</th>
 		</tr>
 		</thead>
@@ -21,19 +19,19 @@
 @endsection
 
 @section('js')
-	<script>
+<script>
 		$(function () {
-			$('table').dataTable({
+			$('#tableTermos').dataTable({
 				responsive: true,
 				processing: true,
 				serverSide: true,
 				ajax: {
-					url: "{{base_url('curso/Ajax_Datatables')}}",
+					url: "{{base_url('ValidarTermo/Ajax_Datatables')}}",
 					type: "POST"
 				},
 				pagingType: "full_numbers",
 				columnDefs: [
-					{targets: [4], orderable: false,}
+					{targets: [3], orderable: false,}
 				],
 				language: {
 					decimal: ",",

@@ -116,71 +116,14 @@
 		</nav>
 	</header>
 	<!-- Left side column. contains the logo and sidebar -->
-	<aside class="main-sidebar">
-		<!-- sidebar: style can be found in sidebar.less -->
-		<section class="sidebar">
-			<!-- sidebar menu: : style can be found in sidebar.less -->
-			<ul class="sidebar-menu" data-widget="tree">
-				<li>
-					<a href="{{base_url('adolescente/')}}">
-						<i class="fa fa-user"></i> <span>Adolescentes</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{base_url('pia/')}}">
-						<i class="fa fa-file-powerpoint-o"></i> <span>P. I. A.</span>
-					</a>
-				</li>
-				<li class="treeview">
-					<a href="#">
-						<i class="fa fa-info"></i> <span>Cadastros</span>
-						<span class="pull-right-container">
-							<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li class="active">
-							<a href="{{base_url('entidade/')}}"><i class="fa fa-circle-o"></i> Entidades</a>
-						</li>
-						<li class="active">
-							<a href="{{base_url('cargo/')}}"><i class="fa fa-circle-o"></i> Cargos</a>
-						</li>
-						<li class="active">
-							<a href="{{base_url('TermoCompromisso/')}}"><i class="fa fa-circle-o"></i> Compromisso</a>
-						</li>
-						<li class="active">
-							<a href="{{base_url('funcionario/')}}"><i class="fa fa-circle-o"></i> Funcionários</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="{{base_url('audit/')}}">
-						<i class="fa fa-eye"></i> <span>Auditoria</span>
-					</a>
-				</li>
-				<li>
-					<a href="{{base_url('ValidarTermo/')}}">
-						<i class="fa fa-folder"></i> <span>Validar Termo</span>
-					</a>
-				</li>
-				<li>
-					<a href="https://goo.gl/forms/x9wcoIDNRsmlf1eH2" target="_blank">
-						<i class="fa fa-support"></i> <span>Suporte</span>
-					</a>
-				</li>
-
-
-			</ul>
-		</section>
-		<!-- /.sidebar -->
-	</aside>
+	
 
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				<strong>@yield('titulo', "Menu Principal") <span class="text-danger">@yield('moreInfo', '')</span>
+				<strong>@yield('titulo', "Validar termo") <span class="text-danger">@yield('moreInfo', '')</span>
 					<small class="text-danger">@yield('subtitulo')</small>
 				</strong>
 			</h1>
@@ -191,7 +134,7 @@
 
 		<!-- Main content -->
 		<section class="content">
-			<div class="box @yield('box-color')">
+			<div class="box box-danger">
 				<div class="box-body">
 					@yield('content')
 				</div>

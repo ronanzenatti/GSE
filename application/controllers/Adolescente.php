@@ -14,6 +14,9 @@ class Adolescente extends CI_Controller
 		$this->load->model("Contato_model", "com");
 		$this->load->model("Endereco_model", "edm");
 		$this->load->model('Entidade_model', 'em');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

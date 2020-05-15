@@ -1,4 +1,4 @@
-@extends('template')
+@extends($_SESSION['extends_module'])
 <?php
 $titulo = (isset($obj['id_termo'])) ? "Alterar" : "Inserir";
 $cor = (isset($obj['id_termo'])) ? "warning" : "success";
@@ -43,7 +43,6 @@ $cor = (isset($obj['id_termo'])) ? "warning" : "success";
 					<button type="submit" class="btn btn-{{$cor}}">Salvar</button>
 				</div>
 			</div>
-
 		</div>
 	</form>
 @endsection

@@ -10,6 +10,9 @@ class GrupoFamiliar extends CI_Controller
 		$this->load->model('GrupoFamiliar_model', 'gfm');
 		$this->load->model('Adolescente_model', 'am');
 		$this->load->model('Documento_model', 'dm');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 	
 	public function adolescente($id)
@@ -58,50 +61,10 @@ class GrupoFamiliar extends CI_Controller
 	public function Ajax_Datatables()
 	{
 
-		// $list = $this->cm->Get_Datatables();
-		// $data = array();
-		// $no = $_POST['start'];
-		// foreach ($list as $obj) {
-		// 	$no++;
-		// 	$row = array();
-		// 	//    $row[] = $no;
-		// 	$row[] = $obj->id_cargo;
-		// 	$row[] = $obj->nome;
-		// 	$row[] = $obj->descricao;
-
-		// 	$btns = "<a href='" . base_url('cargo/alterar/' . $obj->id_cargo) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-		// 	$btns .= "<button type='button' onclick='deletarRegistro(\"cargo\", " . $obj->id_cargo . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
-		// 	$row[] = $btns;
-
-		// 	$data[] = $row;
-		// }
-
-		// $output = array(
-		// 	"draw" => $_POST['draw'],
-		// 	"recordsTotal" => $this->cm->count_all(),
-		// 	"recordsFiltered" => $this->cm->count_filtered(),
-		// 	"data" => $data,
-		// );
-		// //output to json format
-		// echo json_encode($output);
 	}
 
 	public function select2Json()
 	{
-		// $res = array();
-		// $term = $this->input->post('term');
-		// if (isset($term))
-		// 	$where = "nome LIKE '%$term%'";
-		// else
-		// 	$where = null;
 
-		// $all = $this->cm->GetAll('nome', 'asc', true, $where);
-		// if (isset($all)) {
-		// 	foreach ($all as $i) {
-		// 		array_push($res, array("id" => (int)$i['id_cargo'], "text" => $i['nome']));
-		// 	}
-		// }
-
-		// echo json_encode(array("results" => $res));
 	}
 }

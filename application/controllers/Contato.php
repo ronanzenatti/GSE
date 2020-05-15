@@ -8,6 +8,9 @@ class Contato extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Contato_model', 'com');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()

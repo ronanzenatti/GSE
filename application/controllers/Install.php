@@ -92,8 +92,8 @@ class Install extends CI_Controller
 			$usr['email'] = 'ronan.zenatti@etec.sp.gov.br';
 			$usr['password'] = $this->iam->hash_password('P#ssw0rdr');
 			$usr['active'] = 1;
-			$usr['termo'] = 1;
 			$usr['funcionario_id'] = $idF;
+			$usr['data_termo'] = date('Y-m-d H:i:s');
 			$usr['created_at'] = date('Y-m-d H:i:s');
 			$usr['updated_at'] = date('Y-m-d H:i:s');
 			$this->um->Insert($usr);

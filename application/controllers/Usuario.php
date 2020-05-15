@@ -10,6 +10,9 @@ class Usuario extends CI_Controller
 		$this->load->model('Usuario_model', 'um');
 		$this->load->model('Funcionario', 'fm');
 		$this->load->model('Cargo', 'cm');
+		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
+			header('Location: /principal');
+		}
 	}
 
 	public function index()
