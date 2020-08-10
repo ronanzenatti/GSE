@@ -3,60 +3,115 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Trabalho extends CI_Controller
 {
-
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Adolescente_model', 'am');
+		$this->load->model('Documento_model', 'dm');
+		$this->load->model('Pia_model', 'pm');
 		$this->load->model('Trabalho_model', 'tm');
-		$this->load->model('Adolescente', 'am');
 		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
 			header('Location: /principal');
 		}
 	}
 
-	public function index()
-	{
-		$this->blade->view('trabalhos/listar');
-	}
-
-	public function inserir()
-	{
-		$this->blade->view('trabalhos/iuTrabalho');
-	}
-
 	public function save()
 	{
-		$obj = Array();
-		$id = $this->input->post('id_');
+		parse_str($this->input->post('form'), $form);
 
-		$obj['id_adolescente'] = $this->input->post('adolescente_id');
-		$obj['id_trabalho'] = $this->input->post('id_trabalho');
-		$obj['empresa'] = $this->input->post('empresa');
-		$obj['salario'] = $this->input->post('salario');
-		$obj['dt_inicio'] = date("Y-m-d", strtotime(str_replace("/", "-", $this->input->post['dt_inicio'])));
-		$obj['horario_inicio'] = date("H:i", strtotime(str_replace(":", $this->input->post['horario_inicio'])));
-		$obj[''] = date("H:i", strtotime(str_replace(":", $this->input->post['horario_fim'])));
-		$obj['dt_recisao'] = date("Y-m-d", strtotime(str_replace("/", "-", $this->input->post['dt_recisao'])));
-		$obj['obs'] = $this->input->post('obs');
-		$obj['motivo_recisao'] = $this->input->post('motivo_recisao');
-		$obj['tipo'] = $this->input->post('tipo');
+		$form['dt_inicio'] = (empty($form['dt_inicio'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['dt_inicio'])));
+		$form['dt_recisao'] = (empty($form['dt_recisao'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['dt_recisao'])));
+		$form['salario'] = (empty($form['salario'])) ? null : (str_replace(".", "", $form['salario']));
 
-
-	if (empty($id)) {
-		$obj['created_at'] = date('Y-m-d H:i:s');
-		$obj['updated_at'] = date('Y-m-d H:i:s');
-		$this->tm->Insert($obj);
-	} else {
-		$obj['updated_at'] = date('Y-m-d H:i:s');
-		$this->tm->Update($id, $obj);
+		$this->tm->table = "trabalhos";
+		if (empty($form['id_trabalho'])) {
+			$form['created_at'] = date('Y-m-d H:i:s');
+			$form['updated_at'] = date('Y-m-d H:i:s');
+			echo $this->tm->Insert($form);
+		} else {
+			$form['updated_at'] = date('Y-m-d H:i:s');
+			$this->tm->Update($form['id_trabalho'], $form);
+			echo $form['id_trabalho'];
+		}
 	}
-	redirect('Trabalho/');
 
-	public function alterar($id)
+	public function elaboracao($id)
 	{
+		$dados = array();
+		$dados['id'] = $id;
+		$dados['obj'] = $this->pm->GetById('id_pia', $id);
+		$dados['obj']['data_inicio'] = (!empty($dados['obj']['data_inicio'])) ? date("d/m/Y", strtotime($dados['obj']['data_inicio'])) : null;
+		$dados['obj']['data_recepcao'] = (!empty($dados['obj']['data_recepcao'])) ? date("d/m/Y", strtotime($dados['obj']['data_recepcao'])) : null;
+		$dados['processos'] = $this->pm->getTotalProcessos($dados['obj']['adolescente_id'], $id);
+		$qtdeProcessos = 0;
+		foreach ($dados['processos'] as $p) {
+			$qtdeProcessos = $qtdeProcessos + $p->qtdeProcessos;
+		}
+		$dados['obj']['qtdeProcessos'] = $qtdeProcessos;
+
+		$dados['ado'] = $this->am->GetById('id_adolescente', $dados['obj']['adolescente_id']);
+		$dados['ado']['dt_nasc'] = (!empty($dados['ado']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['ado']['dt_nasc'])) : null;
+
+		$dados['doc'] = $this->dm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+		$dados['doc']['rg_emissao'] = (!empty($dados['objD']['rg_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['rg_emissao'])) : null;
+
+		$dados['tr'] = $this->tm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+		
+		$this->blade->view('trabalho/bodyPia', $dados);
+	}
+
+	public function Ajax_Datatables()
+	{
+		$idA = $this->input->post('idA');
+		$where = array("adolescente_id" => $idA);
+		$list = $this->tm->Get_Datatables('t', $where);
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $obj) {
+			$no++;
+			$row = array();
+			//    $row[] = $no;
+			$row[] = $obj->empresa;
+			$row[] = date('d/m/Y', strtotime($obj->dt_inicio));
+			$row[] = date('d/m/Y', strtotime($obj->dt_recisao));
+			$row[] = date('H:i', strtotime($obj->horario_inicio)) . " - " . date('H:i', strtotime($obj->horario_fim));
+			
+			$btns = "<button type='button' onclick='iuTrabalho($obj->id_trabalho)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+			$btns .= " <button type='button' onclick='deletarRegistro(\"trabalho\", " . $obj->id_trabalho . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+
+			$row[] = $btns;
+			$data[] = $row;
+		}
+
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->tm->Count_All('t', $where),
+			"recordsFiltered" => $this->tm->Count_Filtered('t', $where),
+			"data" => $data,
+		);
+		//output to json format
+		echo json_encode($output);
+	}
+
+	public function alterar()  
+	{	
+		$idA = $this->input->post('idA');
+		$idT = $this->input->post('idT');
+
 		$dados = Array();
-		$dados['obj'] = $this->tm->GetById('id_trabalho', $id);
-		$this->blade->view('trabalhos/iuTrabalho', $dados);
+		$dados = $this->tm->GetById('id_trabalho', $idT);
+
+		if (!empty($dados['dt_inicio'])) {
+			$dados['dt_inicio'] = date("d/m/Y", strtotime($dados['dt_inicio']));
+		}
+		if (!empty($dados['dt_recisao'])) {
+			$dados['dt_recisao'] = date("d/m/Y", strtotime($dados['dt_recisao']));
+		}
+		if (!empty($dados['salario'])) {
+			$dados['salario'] = (str_replace(".", ",", $dados['salario']));
+		}
+		
+		echo json_encode($dados);
 	}
 
 	public function deletar()
@@ -64,61 +119,5 @@ class Trabalho extends CI_Controller
 		$id = $this->input->post('id');
 		return $this->tm->DeleteLogico($id);
 	}
-
-	public function Ajax_Datatables()
-	{
-
-		$list = $this->tm->Get_Datatables();
-		$data = array();
-		$no = $_POST['start'];
-		foreach ($list as $obj) {
-			$no++;
-			$row = array();
-			//    $row[] = $no;
-			$row[] = $obj-id_trabalho>;
-			$row[] = $obj->empresa;
-			$row[] = $obj->salario;
-			$row[] = date('d/m/Y', strtotime($obj->dt_inicio));
-			$row[] = date('H:i', strtotime($obj->horario_inicio));
-			$row[] = date('H:i', strtotime($obj->horario_fim));
-			$row[] = date('d/m/Y', strtotime($obj->dt_recisao));
-			$row[] = $obj->obs;
-			$row[] = $obj->motivo_recisao;
-			$row[] = $obj->tipo;
-
-			$btns = "<a href='" . base_url('Trabalho/alterar/' . $obj->id_trabalho) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"Trabalho\", " . $obj->id_trabalho . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
-			$row[] = $btns;
-
-			$data[] = $row;
-		}
-
-		$output = array(
-			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->tm->count_all(),
-			"recordsFiltered" => $this->tm->count_filtered(),
-			"data" => $data,
-		);
-		//output to json format
-		echo json_encode($output);
-	}
-
-	// public function select2Json()
-	// {
-	// 	$res = array();
-	// 	$term = $this->input->post('term');
-	// 	if (isset($term))
-	// 		$where = "nome LIKE '%$term%'";
-	// 	else
-	// 		$where = null;
-
-	// 	$all = $this->tm->GetAll('nome', 'asc', true, $where);
-	// 	if (isset($all)) {
-	// 		foreach ($all as $i) {
-	// 			array_push($res, array("id" => (int)$i['id_situacao_escolar'], "text" => $i['nome']));
-	// 		}
-	// 	}
-
-	// 	echo json_encode(array("results" => $res));
-	// }
+	
 }
