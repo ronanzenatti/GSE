@@ -1,19 +1,17 @@
-@extends($_SESSION['extends_module'])
-@section('titulo', 'Listar Lazeres, Culturas e Esportes')
+@extends('template')
+@section('titulo', 'Listar Planos Individuais de Atendimento (P. I. A.)')
 
 @section('content')
 	<div class="text-right">
-		<a href="{{base_url('LazerCulturaEsporte/inserir')}}" class="btn btn-success btn-novo">Novo</a>
+		<a href="{{base_url('Pia/inserir')}}" class="btn btn-success btn-novo">Novo</a>
 	</div>
-	<table id="tableCargos" class="table table-striped table-bordered table-hover" cellspacing="0">
+	<table id="tablePia" class="table table-striped table-bordered table-hover" cellspacing="0">
 		<thead>
 		<tr>
-			<th>#</th>
-			<th>Participa - Cultural</th>
-			<th>Interesse - Cultural</th>
-			<th>Participa - Esportiva</th>
-			<th>Interesse - Esportiva</th>
-			<th>Lazer</th>			
+			<th>Numero</th>
+			<th>Adolescente</th>
+			<th>RG</th>
+			<th>Recepção</th>
 			<th>Ações</th>
 		</tr>
 		</thead>
@@ -30,12 +28,12 @@
 				processing: true,
 				serverSide: true,
 				ajax: {
-					url: "{{base_url('LazerCulturaEsporte/Ajax_Datatables')}}",
+					url: "{{base_url('pia/Ajax_Datatables')}}",
 					type: "POST"
 				},
 				pagingType: "full_numbers",
 				columnDefs: [
-					{targets: [6], orderable: false,}
+					{targets: [4], orderable: false,}
 				],
 				language: {
 					decimal: ",",
