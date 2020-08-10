@@ -7,8 +7,10 @@ class SituacaoEscolar extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('SituacaoEscolar_model', 'sem');
 		$this->load->model('Adolescente_model', 'am');
+		$this->load->model('Documento_model', 'dm');
+		$this->load->model('Pia_model', 'pm');
+		$this->load->model('SituacaoEscolar_model', 'sem');
 		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
 			header('Location: /principal');
 		}
@@ -26,93 +28,62 @@ class SituacaoEscolar extends CI_Controller
 
 	public function save()
 	{
-		$obj = Array();
-		$id = $this->input->post('id_');
-		
-		$obj['id_adolescente'] = $this->input->post('adolescente_id');
-		$obj['grau_escolaridade'] = $this->input->post('grau_escolaridade');
-		$obj['estudando'] = $this->input->post('estudando');
-		$obj['ano_abandono'] = $this->input->post('ano_abandono');
-		$obj['ultima_escola'] = $this->input->post('ultima_escola');
-		$obj['retornar'] = $this->input->post('retornar');
-		$obj['atestado_matricula'] = $this->input->post('atestado_matricula');
+		parse_str($this->input->post('form'), $form);
 
-		if (empty($id)) {
-			$obj['created_at'] = date('Y-m-d H:i:s');
-			$obj['updated_at'] = date('Y-m-d H:i:s');
-			$this->sem->Insert($obj);
+		$form['estudando'] = isset($form['ativoE']) ? 1 : 0;
+		$form['retornar'] = isset($form['ativoR']) ? 1 : 0;
+
+		unset($form['ativoE']);
+		unset($form['ativoR']);
+
+		$form['atestado_matricula'] = (empty($form['atestado_matricula'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['atestado_matricula'])));
+
+		if (empty($form['id_situacao_escolar'])) {
+			$form['created_at'] = date('Y-m-d H:i:s');
+			$form['updated_at'] = date('Y-m-d H:i:s');
+			$this->sem->Insert($form);
 		} else {
-			$obj['updated_at'] = date('Y-m-d H:i:s');
-			$this->sem->Update($id, $obj);
+			$form['updated_at'] = date('Y-m-d H:i:s');
+			$this->sem->Update($form['id_situacao_escolar'], $form);
 		}
-		redirect('SituacaoEscolar/');
+		// redirect('');
 	}
 
-	public function alterar($id)
-	{
-		$dados = Array();
-		$dados['obj'] = $this->sem->GetById('id_situacao_escolar', $id);
-		$this->blade->view('situacoes_escolares/iuSE', $dados);
-	}
-
-	public function deletar()
-	{
-		$id = $this->input->post('id');
-		return $this->sem->DeleteLogico($id);
-	}
-
-	public function Ajax_Datatables()
-	{
-
-		$list = $this->sem->Get_Datatables();
-		$data = array();
-		$no = $_POST['start'];
-		foreach ($list as $obj) {
-			$no++;
-			$row = array();
-			//    $row[] = $no;
-			$row[] = $obj->id_situacao_escolar;
-			$row[] = $obj->grau_escolaridade;
-			$row[] = $obj->estudando;
-			$row[] = $obj->ano_abandono;
-			$row[] = $obj->ultima_escola;
-			$row[] = $obj->retornar;
-			$row[] = $obj->atestado_matricula;
-
-			$btns = "<a href='" . base_url('SituacaoEscolar/alterar/' . $obj->id_situacao_escolar) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"SituacaoEscolar\", " . $obj->id_situacao_escolar . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
-			$row[] = $btns;
-
-			$data[] = $row;
-		}
-
-		$output = array(
-			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->sem->count_all(),
-			"recordsFiltered" => $this->sem->count_filtered(),
-			"data" => $data,
-		);
-		//output to json format
-		echo json_encode($output);
-	}
-
-	// public function select2Json()
-	// {
-	// 	$res = array();
-	// 	$term = $this->input->post('term');
-	// 	if (isset($term))
-	// 		$where = "nome LIKE '%$term%'";
-	// 	else
-	// 		$where = null;
-
-	// 	$all = $this->sem->GetAll('nome', 'asc', true, $where);
-	// 	if (isset($all)) {
-	// 		foreach ($all as $i) {
-	// 			array_push($res, array("id" => (int)$i['id_situacao_escolar'], "text" => $i['nome']));
-	// 		}
-	// 	}
-
-	// 	echo json_encode(array("results" => $res));
+	// if (ano_abandono) {
+	// 	$("#ativoE").removeAttr("checked");
 	// }
+	// if (obj.ativo == 0) {
+	// 	$("#ativoE").removeAttr("checked");
+	// }
+
+	public function elaboracao($id)
+	{
+		$dados = array();
+		$dados['id'] = $id;
+		$dados['obj'] = $this->pm->GetById('id_pia', $id);
+		$dados['obj']['data_inicio'] = (!empty($dados['obj']['data_inicio'])) ? date("d/m/Y", strtotime($dados['obj']['data_inicio'])) : null;
+		$dados['obj']['data_recepcao'] = (!empty($dados['obj']['data_recepcao'])) ? date("d/m/Y", strtotime($dados['obj']['data_recepcao'])) : null;
+		$dados['processos'] = $this->pm->getTotalProcessos($dados['obj']['adolescente_id'], $id);
+		$qtdeProcessos = 0;
+		foreach ($dados['processos'] as $p) {
+			$qtdeProcessos = $qtdeProcessos + $p->qtdeProcessos;
+		}
+		$dados['obj']['qtdeProcessos'] = $qtdeProcessos;
+
+		$dados['ado'] = $this->am->GetById('id_adolescente', $dados['obj']['adolescente_id']);
+		$dados['ado']['dt_nasc'] = (!empty($dados['ado']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['ado']['dt_nasc'])) : null;
+
+		$dados['doc'] = $this->dm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+		$dados['doc']['rg_emissao'] = (!empty($dados['objD']['rg_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['rg_emissao'])) : null;
+		
+		$dados['se'] = $this->sem->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+		// $dados['se']['id_situacao_escolar'] = (!empty($dados['se']['id_situacao_escolar'])) ? date("d/m/Y", strtotime($dados['se']['id_situacao_escolar'])) : null;
+		// $dados['se']['atestado_matricula'] = (!empty($dados['se']['atestado_matricula'])) ? date("d/m/Y", strtotime($dados['se']['atestado_matricula'])) : null;
+		//se colocar atestado sem id_situacao, dá erro quando id_situacao é nulo
+		
+		$this->blade->view('situacoes_escolares/bodyPia', $dados);
+	}
+
+	
 }
 

@@ -1,20 +1,17 @@
-@extends($_SESSION['extends_module'])
-@section('titulo', 'Listar Situações Escolares')
+@extends('template')
+@section('titulo', 'Listar Planos Individuais de Atendimento (P. I. A.)')
 
 @section('content')
 	<div class="text-right">
-		<a href="{{base_url('SituacaoEscolar/inserir')}}" class="btn btn-success btn-novo">Novo</a>
+		<a href="{{base_url('Pia/inserir')}}" class="btn btn-success btn-novo">Novo</a>
 	</div>
-	<table id="tableSituacoesEscolares" class="table table-striped table-bordered table-hover" cellspacing="0">
+	<table id="tablePia" class="table table-striped table-bordered table-hover" cellspacing="0">
 		<thead>
 		<tr>
-			<th>#</th>
-			<th>Grau de Escolaridade</th>
-			<th>Estudando</th>
-			<th>Ano do Abandono</th>
-			<th>Última Escola</th>
-			<th>Retornar</th>
-			<th>Atestado de Matrícula</th>
+			<th>Numero</th>
+			<th>Adolescente</th>
+			<th>RG</th>
+			<th>Recepção</th>
 			<th>Ações</th>
 		</tr>
 		</thead>
@@ -31,12 +28,12 @@
 				processing: true,
 				serverSide: true,
 				ajax: {
-					url: "{{base_url('SituacaoEscolar/Ajax_Datatables')}}",
+					url: "{{base_url('pia/Ajax_Datatables')}}",
 					type: "POST"
 				},
 				pagingType: "full_numbers",
 				columnDefs: [
-					{targets: [7], orderable: false,}
+					{targets: [4], orderable: false,}
 				],
 				language: {
 					decimal: ",",
