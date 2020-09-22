@@ -286,7 +286,7 @@ $cor = "success";
 												<div class="col-sm-6">
 													<label for="empresa">Empresa:</label>
 													<input type="text" class="form-control" name="empresa" id="empresa"
-														autofocus/>
+														required autofocus/>
 												</div>
 												<div class="col-sm-3">
 													<label for="tipo">Tipo</label>
@@ -494,7 +494,7 @@ $cor = "success";
 				type: 'POST',
 				data: {
 					idT: idT,
-					idA: $("#adolescete_id").val()
+					idA: $("#adolescente_id").val()
 				},
 				success: function (result) {
 					var obj = JSON.parse(result);
@@ -531,9 +531,7 @@ $cor = "success";
 
 @endsection
 
-<!-- 	
-		NOVO TRABALHO - ESTÁ SALVANDO A DATA 31/12/1969 E HORA 00:00:00 QUANDO NÃO PREENCHE NADA
-		NOVO TRABALHO - NÃO PODE SALVAR SE NÃO PREENCHER NADA
+<!--    
 		NOVO TRABALHO - CAMPO 'TIPO' DO MODAL DEVE INICIAR VAZIO
 		COLOCAR O DATATABLES NA MARGEM CORRETA
 		CAMPOS OBS E MOTIVO DA RECISÃO SERÃO IGUAIS MOTIVAÇÃO E REFLEXÃO DO PIA?

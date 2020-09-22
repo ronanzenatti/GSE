@@ -16,14 +16,16 @@ class Trabalho extends CI_Controller
 	}
 
 	public function save()
-	{
+	{	
+		$this->tm->table = "trabalhos";
 		parse_str($this->input->post('form'), $form);
-
+		
 		$form['dt_inicio'] = (empty($form['dt_inicio'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['dt_inicio'])));
 		$form['dt_recisao'] = (empty($form['dt_recisao'])) ? null : date("Y-m-d", strtotime(str_replace("/", "-", $form['dt_recisao'])));
+		$form['horario_inicio'] = (empty($form['horario_inicio'])) ? null : date("H:i", strtotime(str_replace("/", "-", $form['horario_inicio'])));
+		$form['horario_fim'] = (empty($form['horario_fim'])) ? null : date("H:i", strtotime(str_replace("/", "-", $form['horario_fim'])));
 		$form['salario'] = (empty($form['salario'])) ? null : (str_replace(".", "", $form['salario']));
 
-		$this->tm->table = "trabalhos";
 		if (empty($form['id_trabalho'])) {
 			$form['created_at'] = date('Y-m-d H:i:s');
 			$form['updated_at'] = date('Y-m-d H:i:s');
@@ -72,9 +74,9 @@ class Trabalho extends CI_Controller
 			$row = array();
 			//    $row[] = $no;
 			$row[] = $obj->empresa;
-			$row[] = date('d/m/Y', strtotime($obj->dt_inicio));
-			$row[] = date('d/m/Y', strtotime($obj->dt_recisao));
-			$row[] = date('H:i', strtotime($obj->horario_inicio)) . " - " . date('H:i', strtotime($obj->horario_fim));
+			$row[] = (!empty($obj->dt_inicio)) ? date("d/m/Y", strtotime($obj->dt_inicio)) : null;
+			$row[] = (!empty($obj->dt_recisao)) ? date("d/m/Y", strtotime($obj->dt_recisao)) : null;
+			$row[] = ((!empty($obj->horario_inicio)) ? date("H:i", strtotime($obj->horario_inicio)) : "-- : --") . " - " . ((!empty($obj->horario_fim)) ? date("H:i", strtotime($obj->horario_fim)) : "-- : --");
 			
 			$btns = "<button type='button' onclick='iuTrabalho($obj->id_trabalho)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
 			$btns .= " <button type='button' onclick='deletarRegistro(\"trabalho\", " . $obj->id_trabalho . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
