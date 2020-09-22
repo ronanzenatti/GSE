@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class ValidarTermo extends CI_Controller
 {
@@ -23,7 +23,7 @@ class ValidarTermo extends CI_Controller
 
 	public function save()
 	{
-		$obj = Array();
+		$obj = array();
 		$obj['data_termo'] = date('Y-m-d H:i:s', strtotime(str_replace("/", "-", $this->input->post('horaTermo'))));
 		$obj['user_validate_id'] = $_SESSION['user_id'];
 		$id = $this->input->post('idUsuario');
@@ -38,7 +38,7 @@ class ValidarTermo extends CI_Controller
 
 	public function deletar($id)
 	{
-		$obj = Array();
+		$obj = array();
 		$obj['data_termo'] = NULL;
 		$obj['user_validate_id'] = 0;
 		$idUsuario = $id;
@@ -75,10 +75,10 @@ class ValidarTermo extends CI_Controller
 			$row[] = $obj->nome;
 			$row[] = $obj->entidade;
 			$row[] = $termo['nome'];
-			
+
 			if ($usuario['data_termo'] != null) {
 				$row[] = date('d/m/Y H:i:s', strtotime($usuario['data_termo']));
-				$btns = "<a target='_blank' href='" . base_url('TermoCompromisso/visualizar/' . $termo['id_termo']) . "' class='btn btn-info btn-sm'>Visualizar</a> ";
+				$btns = "<a target='_blank' href='" . base_url('TermoCompromisso/visualizar/' . $usuario['termo_id']) . "' class='btn btn-info btn-sm'>Visualizar</a> ";
 				$btns .= "<a href='" . base_url('ValidarTermo/deletar/' . $usuario['id_usuario']) . "' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></a>";
 			} else {
 				$row[] = $usuario['data_termo'];
