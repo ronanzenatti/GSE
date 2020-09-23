@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Install extends CI_Controller
 {
@@ -40,7 +40,7 @@ class Install extends CI_Controller
 				'cep' => '14.940-000',
 				'telefones' => '(16) 3341-7046 / 3342-6039',
 				'email' => 'e161dir@cps.sp.gov.br',
-				'responsavel' => 'Patricia',
+				'responsavel' => 'Diretora',
 				'resp_tel' => '(16) 3341-7046',
 				'resp_email' => 'e161dir@cps.sp.gov.br',
 				'created_at' => date("Y-m-d H:i:s"),
