@@ -12,7 +12,10 @@ class Pia extends CI_Controller
 		$this->load->model("Contato_model", "com");
 		$this->load->model("Endereco_model", "edm");
 		$this->load->model('Entidade_model', 'em');
+		$this->load->model('LazerCulturaEsporte_model', 'lcem');
 		$this->load->model('Pia_model', 'pm');
+		$this->load->model('SituacaoEscolar_model', 'sem');
+		$this->load->model('Trabalho_model', 'tm');
 		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
 			header('Location: /principal');
 		}
@@ -84,6 +87,15 @@ class Pia extends CI_Controller
 
 		$dados['doc'] = $this->dm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
 		$dados['doc']['rg_emissao'] = (!empty($dados['objD']['rg_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['rg_emissao'])) : null;
+		
+		$dados['se'] = $this->sem->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+		// $dados['se']['id_situacao_escolar'] = (!empty($dados['se']['id_situacao_escolar'])) ? date("d/m/Y", strtotime($dados['se']['id_situacao_escolar'])) : null;
+		// $dados['se']['atestado_matricula'] = (!empty($dados['se']['atestado_matricula'])) ? date("d/m/Y", strtotime($dados['se']['atestado_matricula'])) : null;
+		//se colocar atestado sem id_situacao, dá erro quando id_situacao é nulo
+
+		$dados['tr'] = $this->tm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+
+		$dados['lce'] = $this->lcem->GetById('adolescente_id', $dados['obj']['adolescente_id']);
 
 		$this->blade->view('pia/bodyPia', $dados);
 	}

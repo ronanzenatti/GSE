@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Trabalho extends CI_Controller
 {
+
 	function __construct()
 	{
 		parent::__construct();
@@ -36,32 +37,7 @@ class Trabalho extends CI_Controller
 			echo $form['id_trabalho'];
 		}
 	}
-
-	public function elaboracao($id)
-	{
-		$dados = array();
-		$dados['id'] = $id;
-		$dados['obj'] = $this->pm->GetById('id_pia', $id);
-		$dados['obj']['data_inicio'] = (!empty($dados['obj']['data_inicio'])) ? date("d/m/Y", strtotime($dados['obj']['data_inicio'])) : null;
-		$dados['obj']['data_recepcao'] = (!empty($dados['obj']['data_recepcao'])) ? date("d/m/Y", strtotime($dados['obj']['data_recepcao'])) : null;
-		$dados['processos'] = $this->pm->getTotalProcessos($dados['obj']['adolescente_id'], $id);
-		$qtdeProcessos = 0;
-		foreach ($dados['processos'] as $p) {
-			$qtdeProcessos = $qtdeProcessos + $p->qtdeProcessos;
-		}
-		$dados['obj']['qtdeProcessos'] = $qtdeProcessos;
-
-		$dados['ado'] = $this->am->GetById('id_adolescente', $dados['obj']['adolescente_id']);
-		$dados['ado']['dt_nasc'] = (!empty($dados['ado']['dt_nasc'])) ? date("d/m/Y", strtotime($dados['ado']['dt_nasc'])) : null;
-
-		$dados['doc'] = $this->dm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
-		$dados['doc']['rg_emissao'] = (!empty($dados['objD']['rg_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['rg_emissao'])) : null;
-
-		$dados['tr'] = $this->tm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
-		
-		$this->blade->view('trabalho/bodyPia', $dados);
-	}
-
+	
 	public function Ajax_Datatables()
 	{
 		$idA = $this->input->post('idA');
@@ -121,5 +97,4 @@ class Trabalho extends CI_Controller
 		$id = $this->input->post('id');
 		return $this->tm->DeleteLogico($id);
 	}
-	
 }

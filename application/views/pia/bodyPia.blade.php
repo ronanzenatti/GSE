@@ -221,8 +221,234 @@ $cor = "success";
 						</div>
 					</div> <!-- motivacao e reflexao -->
 				</form>
+
+				<form id="formEscol" action="#">
+					<input type="hidden" id="id_situacao_escolar" name="id_situacao_escolar" value="{{$se['id_situacao_escolar']}}">
+					<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
+					<div class="row row-100">
+						<div class="col-sm-10">
+							<h4 class="text-primary">Escolarização</h4>
+						</div>
+						<div class="col-sm-2">
+							<button type="button" id="salvarEscol" class="btn btn-success btn-block btn-sm">
+								<strong>SALVAR</strong></button>
+						</div>
+					</div>
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-4">
+								<label for="grau_escolaridade">Grau de Escolaridade:</label>
+								<input type="text" class="form-control" id="grau_escolaridade" name="grau_escolaridade"
+										value="{{(isset($se['grau_escolaridade']) ? $se['grau_escolaridade'] : null)}}">
+								<!-- <select class="form-control" id="grau_escolaridade" name="grau_escolaridade">
+									<option value=""> - SELECIONE - </option>
+									<option value="1"></option>
+								</select> -->
+							</div>
+							<div class="col-sm-5">
+								<label for="ultima_escola">Última Escola:</label>
+								<input type="text" class="form-control" id="ultima_escola" name="ultima_escola"
+										value="{{(isset($se['ultima_escola']) ? $se['ultima_escola'] : null)}}">
+							</div>
+							<div class="col-sm-3">
+								<label for="atestado_matricula">Atestado de Matrícula:</label>
+								<div class="input-group">
+									<input type="text" class="form-control datepicker text-center mask_date"
+										id="atestado_matricula"
+										name="atestado_matricula" minlength="10" value="{{(isset($se['atestado_matricula']) ? $se['atestado_matricula'] : null)}}">
+									<div class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<div class="row row-100">
+						<div class="form-group"></div>
+							<div class="col-sm-4" style="padding-top: 25px;">
+								<label for="estudando">
+									<input type="checkbox" class="minimal-red" id="ativoE" name="ativoE"
+									value="{{(isset($se['estudando']) ? '1' : '0')}}">Estudando
+								</label>
+							</div>
+							<div class="col-sm-4">
+								<label for="ano_abandono">Ano de Abandono:</label>
+								<input type="text" class="form-control" id="ano_abandono" name="ano_abandono"
+										value="{{(isset($se['ano_abandono']) ? $se['ano_abandono'] : null)}}">
+							</div>
+							<div class="col-sm-4" style="padding-top: 25px;">
+								<label for="retornar">
+									<input type="checkbox" class="minimal-red" id="ativoR" name="ativoR">Pretende Retornar?
+								</label>
+							</div>
+						</div>
+					</div>
+				</form>
+
+				<div class="row row-100">
+					<div class="col-sm-10">
+						<h4 class="text-primary">Atividades Laborativas</h4>
+					</div>
+					<div class="col-sm-2">
+						<a class="btn btn-success btn-block btn-sm" id="btnTrab" href="#" data-toggle="modal" data-target="#modalTrabalho">Novo Trabalho</a>
+					</div>
+				</div>
+				<div class="row row-100">
+					<div class="col-sm-12">
+						<table id="tableTrab" class="table table-striped table-bordered table-hover" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Empresa</th>
+									<th>Início</th>
+									<th>Recisão</th>
+									<th>Expediente</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="modal fade" id="modalTrabalho" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+											aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Trabalho</h4>
+							</div>
+							<div class="modal-body">
+								<form id="formTrabalho" role="form" action="#" method="post">
+									<input type="hidden" id="id_trabalho" name="id_trabalho">
+									<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
+									<div class="box-body">
+										<div class="row">
+											<div class="form-group">
+												<div class="col-sm-6">
+													<label for="empresa">Empresa:</label>
+													<input type="text" class="form-control" name="empresa" id="empresa"
+														required autofocus/>
+												</div>
+												<div class="col-sm-3">
+													<label for="tipo">Tipo</label>
+													<select name="tipo" class="form-control select2" id="tipo">
+														<option> </option>
+														<option value="F">Formal</option>
+														<option value="I">Informal</option>
+													</select>
+												</div>
+												<div class="col-sm-3">
+													<label for="salario">Salário</label>
+													<input type="text" class="form-control maskMoney text-center" id="salario" name="salario">
+												</div>
+											</div>
+										</div>
+										<div class=" row">
+											<div class="form-group">
+												<div class="col-sm-3">
+													<label for="dt_inicio">Data de Início</label>
+													<input type="text" class="form-control datepicker text-center mask_date" id="dt_inicio" name="dt_inicio"
+														>
+												</div>
+												<div class="col-sm-3">
+													<label for="dt_recisao">Data da Recisão</label>
+													<input type="text" class="form-control datepicker text-center mask_date" id="dt_recisao" name="dt_recisao">
+												</div>
+												<div class="col-sm-3">
+													<label for="horario_inicio">Horário da Entrada:</label>
+													<input type="time" class="form-control text-center" id="horario_inicio" name="horario_inicio">
+												</div>
+												<div class="col-sm-3">
+													<label for="horario_fim">Horário da Saída:</label>
+													<input type="time" class="form-control text-center" id="horario_fim" name="horario_fim">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="form-group">
+												<div class="col-sm-6">
+													<label for="obs">Obs:</label>
+													<input type="text" class="form-control" id="obs" name="obs">
+												</div>
+												<div class="col-sm-6">
+													<label for="motivo_recisao">Motivo da Recisão:</label>
+													<input type="text" class="form-control" id="motivo_recisao" name="motivo_recisao">
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-success" id="salvarTrab">Salvar</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+
+				<form id="formLCE" action="#">
+					<input type="hidden" id="ld_lce" name="ld_lce" value="{{$lce['ld_lce']}}">
+					<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
+					<div class="row row-100">
+						<div class="col-sm-10">
+							<h4 class="text-primary">Lazer, Cultura e Esporte</h4>
+						</div>
+						<div class="col-sm-2">
+							<button type="button" id="salvarLCE" class="btn btn-success btn-block btn-sm">
+								<strong>SALVAR</strong></button>
+						</div>
+					</div>
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label for="cultural_participa">Participa de quais atividades culturais?</label>
+								<input type="text" class="form-control" id="cultural_participa" name="cultural_participa" maxlength="191"
+										value="{{(isset($lce['cultural_participa']) ? $lce['cultural_participa'] : null)}}">
+							</div>
+						</div>
+					</div>
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label for="cultural_interesse">Tem interesse em quais atividades culturais?</label>
+								<input type="text" class="form-control" id="cultural_interesse" name="cultural_interesse" maxlength="191"
+										value="{{(isset($lce['cultural_interesse']) ? $lce['cultural_interesse'] : null)}}">
+							</div>
+						</div>
+					</div>
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label for="esportiva_participa">Participa de quais atividades esportivas?</label>
+								<input type="text" class="form-control" id="esportiva_participa" name="esportiva_participa" maxlength="191"
+										value="{{(isset($lce['esportiva_participa']) ? $lce['esportiva_participa'] : null)}}">
+							</div>
+						</div>
+					</div>
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label for="esportiva_interesse">Tem interesse em quais atividades esportivas?</label>
+								<input type="text" class="form-control" id="esportiva_interesse" name="esportiva_interesse" maxlength="191"
+										value="{{(isset($lce['esportiva_interesse']) ? $lce['esportiva_interesse'] : null)}}">
+							</div>
+						</div>
+					</div>
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-12">
+								<label for="lazer">Quais atividades faz na hora de lazer?</label>
+								<input type="text" class="form-control" id="lazer" name="lazer" maxlength="191"
+										value="{{(isset($lce['lazer']) ? $lce['lazer'] : null)}}">
+							</div>
+						</div>
+					</div>	
+				</form>
 			</div>
-			<div role="tabpanel" class="tab-pane " id="tab-2">
+			<!-- <div role="tabpanel" class="tab-pane " id="tab-2">
 				tab2
 			</div>
 			<div role="tabpanel" class="tab-pane " id="tab-3">
@@ -251,7 +477,7 @@ $cor = "success";
 			</div>
 			<div role="tabpanel" class="tab-pane " id="tab-11">
 				tab11
-			</div>
+			</div> -->
 		</div>
 	</div>
 @endsection
@@ -300,4 +526,195 @@ $cor = "success";
 			});
 		});
 	</script>
+
+	<!-- ESCOLARIZAÇÃO -->
+	<script>
+		$('#ano_abandono').datepicker({
+			viewMode: 'years',
+			minViewMode: 'years',
+			format: 'yyyy',
+			orientation: 'bottom'
+		});
+		
+		// Se for usar select no Grau de Escolaridade
+		// @if(isset($obj['id_adolescente']))
+		// $('#grau_escolaridade').val("{{$obj['grau_escolaridade']}}").trigger('change');
+		// @endif
+
+		$('#salvarEscol').on("click", function () {
+			if ($("#formEscol").valid()){
+				$.ajax({
+					url: '/SituacaoEscolar/save',
+					type: 'POST',
+					data: {
+						form: $("#formEscol").serialize()
+					},
+					success: function (result) {
+						swal({
+							position: 'top-end',
+							type: 'success',
+							title: 'Escolarização salva com Sucesso!!!',
+							showConfirmButton: true
+						});
+					}
+				});
+			}			
+		});
+	</script>
+	<!-- ESCOLARIZAÇÃO -->
+
+	<!-- ATIVIDADES LABORATIVAS -->
+	<script> 
+		$("#formTrabalho").validate();
+		$('.mask_date').inputmask('99/99/9999');
+		$('.datepicker').datepicker({
+			language: 'pt-BR'
+		});
+		$(".maskMoney").maskMoney({
+			showSymbol:true, symbol:"R$", decimal:",", thousands:"."
+		});
+
+		$("#salvarTrab").click(function (e) {
+			if ($("#formTrabalho").valid()) {
+				$.ajax({
+					url: '/trabalho/save',
+					type: 'POST',
+					data: {
+						form: $('#formTrabalho').serialize(),
+						idA: $('#adolescente_id').val()
+					},
+					success: function (result) {
+						$('#formTrabalho').each(function () {
+							$(this).val(null);
+						});
+						$("#tableTrab").DataTable().ajax.reload();
+						$("#modalTrabalho").modal('hide');
+						swal({
+							position: 'top-end',
+							type: 'success',
+							title: 'Trabalho salvo com Sucesso!!!',
+							showConfirmButton: true
+						})	
+					}
+				});
+			}
+		});
+
+		$('#tableTrab').dataTable({
+			responsive: true,
+			processing: true,
+			serverSide: true,
+			ajax: {
+				url: "{{base_url('trabalho/Ajax_Datatables')}}",
+				type: "POST",
+				data: function (a) {
+					a.idA = $("#adolescente_id").val()
+				}
+			},
+			pagingType: "full_numbers",
+			columnDefs: [
+				{targets: [4], orderable: false, class: "text-center"},
+				{targets: 4, search: false},
+			],
+			language: {
+				decimal: ",",
+				thousands: "."
+			},
+			language: {
+				"sEmptyTable": "Nenhum registro encontrado",
+				"sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+				"sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+				"sInfoFiltered": "(Filtrados de _MAX_ registros)",
+				"sInfoPostFix": "",
+				"sInfoThousands": ".",
+				"sLengthMenu": "_MENU_ resultados por página",
+				"sLoadingRecords": "Carregando...",
+				"sProcessing": "Processando...",
+				"sZeroRecords": "Nenhum registro encontrado",
+				"sSearch": "Pesquisar",
+				"oPaginate": {
+					"sFirst": "<i class='fa fa-angle-double-left'></i>",
+					"sLast": "<i class='fa fa-angle-double-right'></i>",
+					"sNext": "<i class='fa fa-angle-right'></i>",
+					"sPrevious": "<i class='fa fa-angle-left'></i>"
+				},
+				"oAria": {
+					"sSortAscending": ": Ordenar colunas de forma ascendente",
+					"sSortDescending": ": Ordenar colunas de forma descendente"
+				}
+			},
+			"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]]
+		});
+		
+		function iuTrabalho(idT) {
+			$.ajax({
+				url: '/trabalho/alterar',
+				type: 'POST',
+				data: {
+					idT: idT,
+					idA: $("#adolescente_id").val()
+				},
+				success: function (result) {
+					var obj = JSON.parse(result);
+					$("#id_trabalho").val(obj.id_trabalho);
+					$("#empresa").val(obj.empresa);
+					$("#salario").val(obj.salario);
+					$("#dt_inicio").val(obj.dt_inicio);
+					$("#dt_recisao").val(obj.dt_recisao);
+					$("#horario_inicio").val(obj.horario_inicio);
+					$("#horario_fim").val(obj.horario_fim);
+					$("#tipo").val(obj.tipo).trigger('change');
+					$("#obs").val(obj.obs);
+					$("#motivo_recisao").val(obj.motivo_recisao);
+					
+					$('#modalTrabalho').modal({
+						show: true,
+						keyboard: false,
+					});
+				}
+			});
+		}
+
+		$('#modalTrabalho').on('hide.bs.modal', function (e) {
+			if (e.target.id == "modalTrabalho") {
+				$("#formTrabalho input[type=text], input[type=password], input[type=number], input[type=email], input[type=time], textarea").each(function () {
+					$(this).val(null);
+				});
+				//Não está abrindo vazio na primeira opção
+				$('#formTrabalho select option:first').prop('selected', true);
+				$('#id_trabalho').val(null);
+			}
+		});
+
+	// 		NOVO TRABALHO - CAMPO 'TIPO' DO MODAL DEVE INICIAR VAZIO
+	// 		COLOCAR O DATATABLES NA MARGEM CORRETA
+	// 		CAMPOS OBS E MOTIVO DA RECISÃO SERÃO IGUAIS MOTIVAÇÃO E REFLEXÃO DO PIA?
+
+	</script>
+	<!-- ATIVIDADES LABORATIVAS -->	
+	
+	<!-- ATIVIDADES CULTURAIS -->
+	<script>
+		$('#salvarLCE').on("click", function () {	
+			if ($("#formLCE").valid()){
+				$.ajax({
+					url: '/LazerCulturaEsporte/save',
+					type: 'POST',
+					data: {
+						form: $("#formLCE").serialize()
+					},
+					success: function (result) {
+						swal({
+							position: 'top-end',
+							type: 'success',
+							title: 'Dados salvos com Sucesso!!!',
+							showConfirmButton: true
+						});
+					}
+				});
+			}			
+		});
+	</script>
+	<!-- ATIVIDADES CULTURAIS -->
+
 @endsection
