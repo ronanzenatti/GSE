@@ -36,15 +36,6 @@ class SituacaoEscolar extends CI_Controller
 			$form['updated_at'] = date('Y-m-d H:i:s');
 			$this->sem->Update($form['id_situacao_escolar'], $form);
 		}
-		// redirect('');
 	}
-
-	// if (ano_abandono) {
-	// 	$("#ativoE").removeAttr("checked");
-	// }
-	// if (obj.ativo == 0) {
-	// 	$("#ativoE").removeAttr("checked");
-	// }
-
 }
 

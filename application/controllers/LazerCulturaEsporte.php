@@ -26,8 +26,5 @@ class LazerCulturaEsporte extends CI_Controller
 			$form['updated_at'] = date('Y-m-d H:i:s');
 			$this->lcem->Update($form['ld_lce'], $form);
 		}
-		//redirect('');
 	}
-
-	
 }
