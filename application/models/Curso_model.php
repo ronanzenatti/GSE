@@ -7,8 +7,8 @@ class Curso_model extends MY_Model
 		parent::__construct();
 		$this->table = "cursos c";
 		$this->pk_name = 'id_curso';
-		$this->column_order = array('id_curso', 'adolescente_id', 'adolescente_id', 'nome', 'instituicao', 'conclusao', 'created_at', 'updated_at', 'deleted_at');
-		$this->column_search = array('id_curso', 'adolescente_id', 'adolescente_id', 'nome', 'instituicao', 'conclusao', 'created_at', 'updated_at', 'deleted_at');
+		$this->column_order = array('c.id_curso', 'c.adolescente_id', 'c.nome', 'c.instituicao', 'c.conclusao');
+		$this->column_search = array('c.id_curso', 'c.adolescente_id', 'c.nome', 'c.instituicao', 'c.conclusao','c.created_at', 'c.updated_at', 'c.deleted_at');
 		$this->order = array('id_curso');
 		$this->dates = array('created_at', 'updated_at', 'deleted_at');
 		$this->joins = array(

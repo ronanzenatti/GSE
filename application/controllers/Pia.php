@@ -9,11 +9,13 @@ class Pia extends CI_Controller
 		parent::__construct();
 		$this->load->model('Adolescente_model', 'am');
 		$this->load->model('Documento_model', 'dm');
-		$this->load->model("Contato_model", "com");
-		$this->load->model("Endereco_model", "edm");
+		$this->load->model('Contato_model', 'com');
+		$this->load->model('Curso_model', 'cum');
+		$this->load->model('Endereco_model', 'edm');
 		$this->load->model('Entidade_model', 'em');
 		$this->load->model('LazerCulturaEsporte_model', 'lcem');
 		$this->load->model('Pia_model', 'pm');
+		$this->load->model('Profissionalizacao_model', 'prom');
 		$this->load->model('SituacaoEscolar_model', 'sem');
 		$this->load->model('Trabalho_model', 'tm');
 		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
@@ -89,9 +91,14 @@ class Pia extends CI_Controller
 		$dados['doc']['rg_emissao'] = (!empty($dados['objD']['rg_emissao'])) ? date("d/m/Y", strtotime($dados['objD']['rg_emissao'])) : null;
 		
 		$dados['se'] = $this->sem->GetById('adolescente_id', $dados['obj']['adolescente_id']);
-		// $dados['se']['id_situacao_escolar'] = (!empty($dados['se']['id_situacao_escolar'])) ? date("d/m/Y", strtotime($dados['se']['id_situacao_escolar'])) : null;
-		// $dados['se']['atestado_matricula'] = (!empty($dados['se']['atestado_matricula'])) ? date("d/m/Y", strtotime($dados['se']['atestado_matricula'])) : null;
-		//se colocar atestado sem id_situacao, dá erro quando id_situacao é nulo
+		$dados['se']['atestado_matricula'] = (!empty($dados['se']['atestado_matricula'])) ? date("d/m/Y", strtotime($dados['se']['atestado_matricula'])) : null;
+		$dados['se']['estudando'] = ($dados['se']['estudando'] == 1) ? 'checked' : 'unchecked';
+		$dados['se']['retornar'] = ($dados['se']['retornar'] == 1) ? 'checked' : 'unchecked';
+
+		$dados['cur'] = $this->tm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+
+		$dados['pro'] = $this->prom->GetById('adolescente_id', $dados['obj']['adolescente_id']);
+		$dados['pro']['registrado'] = ($dados['pro']['registrado'] == 1) ? 'checked' : 'unchecked';
 
 		$dados['tr'] = $this->tm->GetById('adolescente_id', $dados['obj']['adolescente_id']);
 

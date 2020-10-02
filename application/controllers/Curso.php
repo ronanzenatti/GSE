@@ -7,107 +7,82 @@ class Curso extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Curso_model', 'cum');
 		$this->load->model('Adolescente_model', 'am');
+		$this->load->model('Documento_model', 'dm');
+		$this->load->model('Pia_model', 'pm');
+		$this->load->model('Curso_model', 'cum');
 		if ($_SESSION['extends_module'] && $_SESSION['extends_module'] == 'sem_validacao/template') {
 			header('Location: /principal');
 		}
 	}
 
-	public function index()
-	{
-		$this->blade->view('cursos/listar');
-	}
-
-	public function inserir()
-	{
-		$this->blade->view('cursos/iuCurso');
-	}
-
 	public function save()
-	{
-		$obj = Array();
-		$id = $this->input->post('id_');
+	{	
+		$this->cum->table = "cursos";
+		parse_str($this->input->post('form'), $form);
 
-		$obj['id_adolescente'] = $this->input->post('adolescente_id');
-		$obj['nome'] = mb_strtoupper($this->input->post('nome'), 'UTF-8');
-		$obj['instituicao'] = $this->input->post('instituicao');
-		$obj['conclusao'] = $this->input->post('conclusao');
+		$form['nome'] = mb_strtoupper($form['curso'], 'UTF-8');
+		unset($form['curso']);
+		$form['instituicao'] = mb_strtoupper($form['instituicao'], 'UTF-8');
 
-		if (empty($id)) {
-			$obj['created_at'] = date('Y-m-d H:i:s');
-			$obj['updated_at'] = date('Y-m-d H:i:s');
-			$this->cum->Insert($obj);
+		if (empty($form['id_curso'])) {
+			$form['created_at'] = date('Y-m-d H:i:s');
+			$form['updated_at'] = date('Y-m-d H:i:s');
+			echo $this->cum->Insert($form);
 		} else {
-			$obj['updated_at'] = date('Y-m-d H:i:s');
-			$this->cum->Update($id, $obj);
+			$form['updated_at'] = date('Y-m-d H:i:s');
+			$this->cum->Update($form['id_curso'], $form);
+			echo $form['id_curso'];
 		}
-		redirect('Curso/');
-	}
-
-	public function alterar($id)
-	{
-		$dados = Array();
-		$dados['obj'] = $this->cum->GetById('id_curso', $id);
-		$this->blade->view('cursos/iuCurso', $dados);
-	}
-
-	public function deletar()
-	{
-		$id = $this->input->post('id');
-		return $this->com->DeleteLogico($id);
 	}
 
 	public function Ajax_Datatables()
 	{
-
-		$list = $this->cum->Get_Datatables();
+		$idA = $this->input->post('idA');
+		$where = array("adolescente_id" => $idA);
+		$list = $this->cum->Get_Datatables("c", $where);
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $obj) {
 			$no++;
 			$row = array();
 			//    $row[] = $no;
-			$row[] = $obj->id_curso;
 			$row[] = $obj->nome;
 			$row[] = $obj->instituicao;
 			$row[] = $obj->conclusao;
 
-
-			$btns = "<a href='" . base_url('Curso/alterar/' . $obj->id_curso) . "' class='btn btn-warning btn-sm'> <i class='fa fa-pencil' aria-hidden='true'></i></a> ";
-			$btns .= "<button type='button' onclick='deletarRegistro(\"Curso\", " . $obj->id_curso . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			$btns = "<button type='button' onclick='iuCurso($obj->id_curso)' class='btn btn-warning btn-sm '> <i class='fa fa-pencil' aria-hidden='true'></i></button> ";
+			$btns .= " <button type='button' onclick='deletarRegistro(\"curso\", " . $obj->id_curso . ")' class='btn btn-danger btn-sm'><i class='fa fa-trash-o' aria-hidden='true'></i></button>";
+			
 			$row[] = $btns;
-
 			$data[] = $row;
 		}
 
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->cum->count_all(),
-			"recordsFiltered" => $this->cum->count_filtered(),
+			"recordsTotal" => $this->cum->Count_All("c", $where),
+			"recordsFiltered" => $this->cum->Count_Filtered("c", $where),
 			"data" => $data,
 		);
 		//output to json format
 		echo json_encode($output);
 	}
 
-	public function select2Json()
+	public function alterar()
 	{
-		$res = array();
-		$term = $this->input->post('term');
-		if (isset($term))
-			$where = "nome LIKE '%$term%'";
-		else
-			$where = null;
+		$idA = $this->input->post('idA');
+		$idC = $this->input->post('idC');
 
-		$all = $this->cum->GetAll('nome', 'asc', true, $where);
-		if (isset($all)) {
-			foreach ($all as $i) {
-				array_push($res, array("id" => (int)$i['id_curso'], "text" => $i['nome']));
-			}
-		}
+		$dados = Array();
+		$dados = $this->cum->GetById('id_curso', $idC);
+		
+		echo json_encode($dados);
+	}
 
-		echo json_encode(array("results" => $res));
+	public function deletar()
+	{
+		$id = $this->input->post('id');
+		return $this->cum->DeleteLogico($id);
 	}
 }
 

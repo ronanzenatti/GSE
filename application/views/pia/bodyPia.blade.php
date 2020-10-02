@@ -221,7 +221,8 @@ $cor = "success";
 						</div>
 					</div> <!-- motivacao e reflexao -->
 				</form>
-
+				
+				<!-- TAB 6 ESCOLARIZAÇÃO -->
 				<form id="formEscol" action="#">
 					<input type="hidden" id="id_situacao_escolar" name="id_situacao_escolar" value="{{$se['id_situacao_escolar']}}">
 					<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
@@ -268,7 +269,7 @@ $cor = "success";
 							<div class="col-sm-4" style="padding-top: 25px;">
 								<label for="estudando">
 									<input type="checkbox" class="minimal-red" id="ativoE" name="ativoE"
-									value="{{(isset($se['estudando']) ? '1' : '0')}}">Estudando
+									{{($se['estudando'])}} >Estudando
 								</label>
 							</div>
 							<div class="col-sm-4">
@@ -278,13 +279,105 @@ $cor = "success";
 							</div>
 							<div class="col-sm-4" style="padding-top: 25px;">
 								<label for="retornar">
-									<input type="checkbox" class="minimal-red" id="ativoR" name="ativoR">Pretende Retornar?
+									<input type="checkbox" class="minimal-red" id="ativoR" name="ativoR" {{($se['retornar'])}}>Pretende Retornar?
 								</label>
 							</div>
 						</div>
 					</div>
 				</form>
+				
+				<!-- TAB 7 PROFISSIONALIZAÇÃO -->
+				<div class="row row-100">
+					<div class="col-sm-10">
+						<h4 class="text-primary">Profisionalização</h4>
+					</div>
+					<div class="col-sm-2">
+						<a class="btn btn-success btn-block btn-sm" id="btnCurso" href="#" data-toggle="modal" data-target="#modalCurso">Novo Curso</a>
+					</div>
+				</div>
+				<div class="row row-100">
+					<div class="col-sm-12">
+						<table id="tableCurso" class="table table-striped table-bordered table-hover" cellspacing="0">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Instituição</th>
+									<th>Conclusão</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="modal fade" id="modalCurso" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+											aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Curso</h4>
+							</div>
+							<div class="modal-body">
+								<form id="formCurso" role="form" action="#" method="post">
+									<input type="hidden" id="id_curso" name="id_curso">
+									<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
+									<div class="box-body">
+										<div class="row">
+											<div class="form-group">
+												<div class="col-sm-6">
+													<label for="curso">Nome:</label>
+													<input type="text" class="form-control" name="curso" id="curso" autofocus/>
+												</div>
+												<div class="col-sm-6">
+													<label for="instituicao">Instituição:</label>
+													<input type="text" class="form-control" name="instituicao" id="instituicao"/>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="col-sm-3">
+													<label for="conclusao">Ano de conclusão</label>
+													<input type="text" class="form-control" id="conclusao" name="conclusao">
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+								<button type="button" class="btn btn-success" id="salvarCurso">Salvar</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<form id="formProf" action="#">
+					<input type="hidden" id="id_profissionalizacao" name="id_profissionalizacao" value="{{$pro['id_profissionalizacao']}}">
+					<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
+					<div class="row row-100">
+						<div class="col-sm-2">
+							<button type="button" id="salvarProf" class="btn btn-success btn-block btn-sm">
+								<strong>SALVAR</strong></button>
+						</div>
+					</div>
+					<div class="row row-100">
+						<div class="form-group">
+							<div class="col-sm-4" style="padding-top: 25px;">
+								<label>
+									<input type="checkbox" class="minimal-red" id="registrado" name="registrado"{{($pro['registrado'])}}>Registrado?
+								</label>
+							</div>
+							<div class="col-sm-12">
+								<label for="interesses_cursos">Tem interesse em curso(s)?</label>
+								<input type="text" class="form-control" id="interesses_cursos" name="interesses_cursos" maxlength="191"
+										value="{{(isset($pro['interesses_cursos']) ? $pro['interesses_cursos'] : null)}}">
+							</div>
+						</div>
+					</div>
+				</form>
 
+				<!-- TAB 8 ATIVIDADES LABORATIVAS-->
 				<div class="row row-100">
 					<div class="col-sm-10">
 						<h4 class="text-primary">Atividades Laborativas</h4>
@@ -310,7 +403,6 @@ $cor = "success";
 						</table>
 					</div>
 				</div>
-
 				<div class="modal fade" id="modalTrabalho" tabindex="-1" role="dialog">
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
@@ -389,6 +481,7 @@ $cor = "success";
 					</div>	
 				</div>
 
+				<!-- TAB 9 ATIVIDADES CULTURAIS-->
 				<form id="formLCE" action="#">
 					<input type="hidden" id="ld_lce" name="ld_lce" value="{{$lce['ld_lce']}}">
 					<input type="hidden" id="adolescente_id" name="adolescente_id" value="{{$ado['id_adolescente']}}">
@@ -535,7 +628,14 @@ $cor = "success";
 			format: 'yyyy',
 			orientation: 'bottom'
 		});
-		
+
+		// retorna do banco, mas não ocorre na ação do momento
+		if ($("#ativoE").is(':checked')) {
+			$("#ano_abandono, #ativoR").prop( "disabled", true);
+		}else{
+			$("#ano_abandono, #ativoR").prop( "disabled", false);
+		}
+
 		// Se for usar select no Grau de Escolaridade
 		// @if(isset($obj['id_adolescente']))
 		// $('#grau_escolaridade').val("{{$obj['grau_escolaridade']}}").trigger('change');
@@ -561,7 +661,135 @@ $cor = "success";
 			}			
 		});
 	</script>
-	<!-- ESCOLARIZAÇÃO -->
+	
+	<!-- PROFISSIONALIZAÇÃO -->
+	<script> 
+		$("#formCurso").validate();
+
+		$("#salvarCurso").click(function (e) {
+			if ($("#formCurso").valid()) {
+				$.ajax({
+					url: '/curso/save',
+					type: 'POST',
+					data: {
+						form: $('#formCurso').serialize(),
+						id_adolescente: $("#id_adolescente").val()
+					},
+					success: function (result) {
+						$('#formCurso').each(function () {
+							$(this).val(null);
+						});
+						$("#tableCurso").DataTable().ajax.reload();
+						$("#modalCurso").modal('hide');
+						swal({
+							position: 'top-end',
+							type: 'success',
+							title: 'Curso salvo com Sucesso!!!',
+							showConfirmButton: true
+						})	
+					}
+				});
+			}
+		});
+
+		$('#tableCurso').dataTable({
+			responsive: true,
+			processing: true,
+			serverSide: true,
+			ajax: {
+				url: "{{base_url('curso/Ajax_Datatables')}}",
+				type: "POST",
+				data: function (a) {
+					a.idA = $("#adolescente_id").val()
+				}
+			},
+			pagingType: "full_numbers",
+			columnDefs: [
+				{targets: [3], orderable: false, class: "text-center"},
+				{targets: 3, search: false},
+			],
+			language: {
+				decimal: ",",
+				thousands: "."
+			},
+			language: {
+				"sEmptyTable": "Nenhum registro encontrado",
+				"sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+				"sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+				"sInfoFiltered": "(Filtrados de _MAX_ registros)",
+				"sInfoPostFix": "",
+				"sInfoThousands": ".",
+				"sLengthMenu": "_MENU_ resultados por página",
+				"sLoadingRecords": "Carregando...",
+				"sProcessing": "Processando...",
+				"sZeroRecords": "Nenhum registro encontrado",
+				"sSearch": "Pesquisar",
+				"oPaginate": {
+					"sFirst": "<i class='fa fa-angle-double-left'></i>",
+					"sLast": "<i class='fa fa-angle-double-right'></i>",
+					"sNext": "<i class='fa fa-angle-right'></i>",
+					"sPrevious": "<i class='fa fa-angle-left'></i>"
+				},
+				"oAria": {
+					"sSortAscending": ": Ordenar colunas de forma ascendente",
+					"sSortDescending": ": Ordenar colunas de forma descendente"
+				}
+			},
+			"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Todos"]]
+		});
+		
+		function iuCurso(idC) {
+			$.ajax({
+				url: '/curso/alterar',
+				type: 'POST',
+				data: {
+					idC: idC,
+					idA: $("#adolescente_id").val()
+				},
+				success: function (result) {
+					var obj = JSON.parse(result);
+					$("#id_curso").val(obj.id_curso);
+					$("#curso").val(obj.nome);
+					$("#instituicao").val(obj.instituicao);
+					$("#conclusao").val(obj.conclusao);
+					
+					$('#modalCurso').modal({
+						show: true,
+						keyboard: false,
+					});
+				}
+			});
+		}
+
+		$('#modalCurso').on('hide.bs.modal', function (e) {
+			if (e.target.id == "modalCurso") {
+				$("#formCurso input[type=text], input[type=password], input[type=number], input[type=email], input[type=time], textarea").each(function () {
+					$(this).val(null);
+				});
+				$('#id_curso').val(null);
+			}
+		});
+
+		$('#salvarProf').on("click", function () {	
+			if ($("#formProf").valid()){
+				$.ajax({
+					url: '/profissionalizacao/save',
+					type: 'POST',
+					data: {
+						form: $("#formProf").serialize()
+					},
+					success: function (result) {
+						swal({
+							position: 'top-end',
+							type: 'success',
+							title: 'Dados salvos com Sucesso!!!',
+							showConfirmButton: true
+						});
+					}
+				});
+			}			
+		});
+	</script>
 
 	<!-- ATIVIDADES LABORATIVAS -->
 	<script> 
@@ -687,11 +915,8 @@ $cor = "success";
 		});
 
 	// 		NOVO TRABALHO - CAMPO 'TIPO' DO MODAL DEVE INICIAR VAZIO
-	// 		COLOCAR O DATATABLES NA MARGEM CORRETA
 	// 		CAMPOS OBS E MOTIVO DA RECISÃO SERÃO IGUAIS MOTIVAÇÃO E REFLEXÃO DO PIA?
-
 	</script>
-	<!-- ATIVIDADES LABORATIVAS -->	
 	
 	<!-- ATIVIDADES CULTURAIS -->
 	<script>
@@ -715,6 +940,5 @@ $cor = "success";
 			}			
 		});
 	</script>
-	<!-- ATIVIDADES CULTURAIS -->
 
 @endsection
